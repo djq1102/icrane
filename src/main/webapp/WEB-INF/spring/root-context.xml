@@ -8,6 +8,7 @@
 	
 	<import resource="config/velocity-config.xml"/>
 	<import resource="config/db-config.xml"/>
+	<import resource="config/security-config.xml"/>
 	
 	<bean id="resourceConfiguration" class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
 	    <property name="location">
