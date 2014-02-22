@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE generatorConfiguration
+  PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"
+  "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
+
+<generatorConfiguration>
+    <classPathEntry location="D:/m/mysql/mysql-connector-java/5.1.28/mysql-connector-java-5.1.28.jar" />
+    <context id="DB2Tables" targetRuntime="MyBatis3">
+
+        <commentGenerator>
+            <property name="suppressDate" value="true" />
+        </commentGenerator>
+
+        <jdbcConnection driverClass="com.mysql.jdbc.Driver"
+            connectionURL="jdbc:mysql://42.121.53.40/msystem" userId="root" password="12191ecbc2">
+        </jdbcConnection>
+
+        <javaTypeResolver>
+            <property name="forceBigDecimals" value="false" />
+        </javaTypeResolver>
+
+        <javaModelGenerator targetPackage="com.monitor.app.dataobject"
+            targetProject="./src/main/java">
+            <property name="enableSubPackages" value="true" />
+            <property name="trimStrings" value="true" />
+        </javaModelGenerator>
+
+        <sqlMapGenerator targetPackage="conf.sqlMap"
+            targetProject="./src/main/resources">
+            <property name="enableSubPackages" value="true" />
+        </sqlMapGenerator>
+
+        <javaClientGenerator type="XMLMAPPER"
+            targetPackage="com.monitor.app.myibatis.map" targetProject="./src/main/java">
+            <property name="enableSubPackages" value="true" />
+        </javaClientGenerator>
+
+        <table tableName="cr_content" domainObjectName="Content"/>
+        <table tableName="cr_customer" domainObjectName="Customer"/>
+        <table tableName="cr_customer_content_relation" domainObjectName="CustomerContentRelation"/>
+        <table tableName="cr_device" domainObjectName="Device"/>
+        <table tableName="cr_device_alarm" domainObjectName="DeviceAlarm"/>
+        <table tableName="cr_device_alarm_detail" domainObjectName="DeviceAlarmDetail"/>
+        <table tableName="cr_model_accessory" domainObjectName="ModelAccessory"/>
+        <table tableName="cr_model_var" domainObjectName="ModelVar"/>
+        <table tableName="cr_model_var_value" domainObjectName="ModelVarValue"/>
+        <table tableName="cr_plc_model" domainObjectName="plcModel"/>
+        <table tableName="cr_site" domainObjectName="Site"/>
+        <table tableName="cr_site_style" domainObjectName="SiteStyle"/>
+        <table tableName="cr_user_device_relation" domainObjectName="UserDeviceRelation"/>
+        <table tableName="cr_user_info" domainObjectName="UserInfo"/>
+        <table tableName="cr_user_site_relation" domainObjectName="UserSiteRelation"/>
+        
+    </context>
+</generatorConfiguration>
