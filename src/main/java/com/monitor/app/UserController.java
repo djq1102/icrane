@@ -80,4 +80,13 @@ public class UserController {
 		return "testUser";
 	}
 	
+	@RequestMapping(value = "/login")
+	public String login( Model model) {
+		
+		logger.warn(">>>action=login" );
+		
+		
+		return "login";
+	}
+	
 }

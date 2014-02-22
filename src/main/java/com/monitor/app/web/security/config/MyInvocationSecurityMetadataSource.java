@@ -37,7 +37,7 @@ public class MyInvocationSecurityMetadataSource implements FilterInvocationSecur
 		resourceMap = new HashMap<String, Collection<ConfigAttribute>>();
 		
 		Collection<ConfigAttribute> atts = new ArrayList<ConfigAttribute>();
-		ConfigAttribute ca = new SecurityConfig(RoleEnum.SUPER_ADMIN.name());
+		ConfigAttribute ca = new SecurityConfig(RoleEnum.ROLE_SUPERADMIN.name());
 		atts.add(ca);
 		
 		resourceMap.put("/index", atts);

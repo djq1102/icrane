@@ -29,12 +29,12 @@ public class MyUserDetailService implements UserDetailsService {
 			throws UsernameNotFoundException {
 
 		Collection<GrantedAuthority> auths = new ArrayList<GrantedAuthority>();
-		SimpleGrantedAuthority auth2 = new SimpleGrantedAuthority(GENERAL_ADMIN.name());
+		SimpleGrantedAuthority auth2 = new SimpleGrantedAuthority(ROLE_GENERALADMIN.name());
 		auths.add(auth2);
 
 		if (username.equals("qinde")) {
 			auths = new ArrayList<GrantedAuthority>();
-			SimpleGrantedAuthority auth1 = new SimpleGrantedAuthority(SUPER_ADMIN.name());
+			SimpleGrantedAuthority auth1 = new SimpleGrantedAuthority(ROLE_SUPERADMIN.name());
 			auths.add(auth1);
 		}
 

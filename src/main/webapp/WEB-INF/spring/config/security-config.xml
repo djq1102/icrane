@@ -13,8 +13,8 @@
              authentication-failure-url="/login?error=true"
              default-target-url="/index" />
              
-         <intercept-url pattern="/admin#super" access="SUPER_ADMIN"/>
-         <intercept-url pattern="/**" access="GENERAL_ADMIN"/>
+         <intercept-url pattern="/admin" access="ROLE_SUPERADMIN"/>
+         <intercept-url pattern="/**" access="ROLE_GENERALADMIN"/>
         
          <logout logout-success-url="/login" />
          <http-basic />

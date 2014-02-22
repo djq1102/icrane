@@ -55,7 +55,6 @@ public class MyFilterSecurityInterceptor extends AbstractSecurityInterceptor
 	}
 
 	public void invoke(FilterInvocation fi) throws IOException,ServletException {
-		// 在执行doFilter之前，进行权限的检查
 		InterceptorStatusToken token = super.beforeInvocation(fi);
 		try {
 			fi.getChain().doFilter(fi.getRequest(), fi.getResponse());

@@ -10,6 +10,6 @@ package com.monitor.app.web.security.util;
 public enum RoleEnum {
 
 	
-	SUPER_ADMIN, CUTOMER_ADMIN, GENERAL_ADMIN
+	ROLE_SUPERADMIN, ROLE_CUTOMERADMIN, ROLE_GENERALADMIN
 	
 }
