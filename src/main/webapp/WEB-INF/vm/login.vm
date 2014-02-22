@@ -1,4 +1,4 @@
-<form action="/user/query" method="post">
+<form action="http://localhost:8080/user/query" method="post">
     <table>
     	<tr>
     		<td>用户:</td>
