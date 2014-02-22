@@ -1,65 +1,7 @@
-<html>
-<head>
-	<meta charset="utf-8"/>
-	<meta content="text/html;charset=utf-8" http-equiv="Content-Type"/>
-	<title>Home</title>
-	<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-	<meta name="description" content=""/>
-	<meta name="author" content=""/>
-	<link href="/style/default.css" rel="stylesheet">
-	<style type="text/css">
-        body {
-            padding-top: 60px;
-            padding-bottom: 40px;
-        }
-        
-        .navbar-text a {
-            padding: 10px 15px;
-        }
 
-        @media (max-width: 980px) {
-            body {
-                padding-top: 0;
-                padding-bottom: 0;
-            }
-            .navbar-fixed-top {
-                position: static;
-                margin-bottom: 20px
-            }
-            .nav.pull-right .divider-vertical {
-                margin: 0;
-                visibility: hidden;
-            }
-        }
-		
-        td [class^=icon-], td [class*=" icon-"] {
-            margin-right: 5px;
-        }
-        
-        .nav-list {
-            padding: 0 !important;
-        }
-        .nav-list > li > a {
-            padding: 8px 14px !important;
-        }
-        
-        .nav-list > .nav-header {
-            padding: 8px 14px !important;
-        }
-        
-		.active.emphasize {
-			font-weight: 700;
-			font-size: 18px;
-		}
-		.active.emphasize a {
-			color: #FFFF55 !important;
-		}
-        
-    </style>
-</head>
-<body>
+
 <h1>
-	Hello world!  
+	Hello world!  $rc
 </h1>
 
 <P> The time on the server is xxx. </P>
@@ -87,5 +29,4 @@ $result.msg
 	<input type="submit" value="新增机构"/>
 </form>
 
-</body>
-</html>
+

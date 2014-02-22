@@ -65,4 +65,19 @@ public class UserController {
 		return "testUser";
 	}
 	
+	@RequestMapping(value = "/user/query")
+	public String query( Model model) {
+		
+		logger.warn(">>>action=query" );
+		
+		ServiceResult result2 = userService.queryAllUser();
+		if(result2.isSuccess()){
+			List<User> users  = (List<User>)result2.getModule();
+			model.addAttribute("users", users);
+		}else{
+			model.addAttribute("result2", result2);
+		}
+		return "testUser";
+	}
+	
 }
