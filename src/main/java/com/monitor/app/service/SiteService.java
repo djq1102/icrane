@@ -5,12 +5,15 @@ import java.util.List;
 
 import javax.annotation.Resource;
 
+import org.springframework.stereotype.Service;
+
 import com.monitor.app.dao.user.SiteDao;
 import com.monitor.app.dataobject.Site;
 import com.monitor.app.exception.DAOException;
 import com.monitor.app.exception.ManagerException;
 import com.monitor.app.result.ServiceResult;
 
+@Service
 public class SiteService {
 	
 	@Resource
