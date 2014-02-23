@@ -81,12 +81,38 @@ public class UserController {
 	}
 	
 	@RequestMapping(value = "/login")
-	public String login( Model model) {
+	public String login() {
 		
-		logger.warn(">>>action=login" );
+		logger.warn(">>>action=login");
 		
 		
 		return "login";
+	}
+	@RequestMapping(value = "/403")
+	public String userDenied() {
+		
+		logger.warn(">>>action=denied" );
+		
+		
+		return "403";
+	}
+	
+	@RequestMapping(value = "/index")
+	public String index() {
+		
+		logger.warn(">>>action=index" );
+		
+		
+		return "index";
+	}
+	
+	@RequestMapping(value = "/admin")
+	public String admin() {
+		
+		logger.warn(">>>action=admin" );
+		
+		
+		return "admin";
 	}
 	
 }

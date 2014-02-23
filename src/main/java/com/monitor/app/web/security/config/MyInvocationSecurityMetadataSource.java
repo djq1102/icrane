@@ -40,8 +40,7 @@ public class MyInvocationSecurityMetadataSource implements FilterInvocationSecur
 		ConfigAttribute ca = new SecurityConfig(RoleEnum.ROLE_SUPERADMIN.name());
 		atts.add(ca);
 		
-		resourceMap.put("/index", atts);
-		resourceMap.put("/i", atts);
+		resourceMap.put("/admin", atts);
 	}
 
 	@Override
