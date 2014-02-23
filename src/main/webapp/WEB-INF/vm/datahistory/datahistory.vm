@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+
+<!--[if IE 8]> <html lang="en" class="ie8"> <![endif]-->
+
+<!--[if IE 9]> <html lang="en" class="ie9"> <![endif]-->
+
+<!--[if !IE]><!--> <html lang="en"> <!--<![endif]-->
+
+<!-- BEGIN HEAD -->
+#parse("/common/head.vm")
+<!-- END HEAD -->
+<!-- BEGIN BODY -->
+<body class="page-header-fixed">
+<!-- BEGIN HEADER -->
+#parse ("/common/header.vm")
+<!-- END HEADER -->
+
+<!-- BEGIN CONTAINER -->
+<div class="page-container row-fluid">
+<!-- BEGIN SIDEBAR -->
+#menu (13)
+<!-- END SIDEBAR -->
+
+<!-- BEGIN PAGE -->
+#parse ("/datahistory/datahistory_page_content.vm")
+<!-- END PAGE -->
+</div>
+<!-- END CONTAINER -->
+
+<!-- BEGIN FOOTER -->
+#parse ("/common/footer.vm")
+<!-- END FOOTER -->
+</body>
+<!-- END BODY -->
+
+
+
+<!-- BEGIN JAVASCRIPTS(Load javascripts at bottom, this will reduce page load time) -->
+
+
+	<!-- BEGIN CORE PLUGINS -->
+
+
+	#parse("/common/script.vm")	
+
+
+	<!-- END CORE PLUGINS -->
+
+
+	<!-- BEGIN PAGE LEVEL PLUGINS -->
+
+
+	<script src="media/js/jquery.flot.js"></script>
+
+
+	<script src="media/js/jquery.flot.resize.js"></script>
+
+
+	<script src="media/js/jquery.flot.pie.js"></script>
+
+
+	<script src="media/js/jquery.flot.stack.js"></script>
+
+
+	<script src="media/js/jquery.flot.crosshair.js"></script>
+
+
+	<!-- END PAGE LEVEL PLUGINS -->
+
+
+	<!-- BEGIN PAGE LEVEL SCRIPTS -->
+
+
+	<script src="media/js/app.js"></script>
+
+
+	<script src="media/js/charts.js"></script>      
+
+
+	<script>
+
+
+		jQuery(document).ready(function() {       
+
+
+		   // initiate layout and plugins
+
+
+		   App.init();
+
+
+		   Charts.init();
+
+
+		   Charts.initCharts();
+
+
+		   Charts.initPieCharts();
+
+
+		});
+
+
+	</script>
+
+
+	<!-- END PAGE LEVEL SCRIPTS -->
+</html>
