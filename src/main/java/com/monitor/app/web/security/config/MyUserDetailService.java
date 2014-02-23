@@ -6,6 +6,8 @@ package com.monitor.app.web.security.config;
 import java.util.ArrayList;
 import java.util.Collection;
 
+import javax.annotation.Resource;
+
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.User;
@@ -13,7 +15,11 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 
-import static com.monitor.app.web.security.util.RoleEnum.*;
+import com.monitor.app.dataobject.UserInfo;
+import com.monitor.app.result.ServiceResult;
+import com.monitor.app.service.UserInfoService;
+import com.monitor.app.web.security.util.RoleEnum;
+import com.monitor.app.web.security.util.RoleEnumUtil;
 
 /**
  * 
@@ -24,27 +30,28 @@ import static com.monitor.app.web.security.util.RoleEnum.*;
  */
 public class MyUserDetailService implements UserDetailsService {
 
+	@Resource
+	private UserInfoService userInfoService;
+	
 	@Override
 	public UserDetails loadUserByUsername(String username)
 			throws UsernameNotFoundException {
 
-		Collection<GrantedAuthority> auths = new ArrayList<GrantedAuthority>();
-		SimpleGrantedAuthority auth1 = new SimpleGrantedAuthority(ROLE_GENERALADMIN.name());
-		auths.add(auth1);
-
-		if (username.equals("qinde")) {
-			auths = new ArrayList<GrantedAuthority>();
-			SimpleGrantedAuthority auth2 = new SimpleGrantedAuthority(ROLE_SUPERADMIN.name());
-			auths.add(auth1);
-			auths.add(auth2);
+		ServiceResult result = userInfoService.queryUser(username);
+		if(result==null || !result.isSuccess()){
+			throw new UsernameNotFoundException(username);
 		}
-
-		// User(String username, String password, boolean enabled, boolean
-		// accountNonExpired,
-		// boolean credentialsNonExpired, boolean accountNonLocked,
-		// Collection<GrantedAuthority> authorities) {
-		User user = new User(username, "123456", true, true, true, true, auths);
+		
+		UserInfo userInfo = (UserInfo)result.getModule();
+		String password = userInfo.getPassword();
+		
+		RoleEnum role = RoleEnumUtil.toAuthRole(userInfo.getRoleType());
+		SimpleGrantedAuthority auth = new SimpleGrantedAuthority(role.name());
+		
+		Collection<GrantedAuthority> auths = new ArrayList<GrantedAuthority>();
+		auths.add(auth);
+		
+		User user = new User(username, password, true, true, true, true, auths);
 		return user;
-
 	}
 }
