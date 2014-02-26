@@ -22,16 +22,13 @@
 <!-- END SIDEBAR -->
 
 <!-- BEGIN PAGE -->
-#parse ("/datahistory/datahistory_page_content.vm")
+#parse ("/datahistory/datahistory_input_page_content.vm")
 <!-- END PAGE -->
 </div>
 <!-- END CONTAINER -->
 
 <!-- BEGIN FOOTER -->
 <!-- END FOOTER -->
-
-
-
 
 <!-- BEGIN JAVASCRIPTS(Load javascripts at bottom, this will reduce page load time) -->
 

@@ -10,7 +10,7 @@
 
 								<div class="actions">
 
-									<a href="#" class="btn blue"><i class="icon-pencil"></i> 新增</a>
+									<a href="datainput.do" class="btn blue"><i class="icon-pencil"></i> 新增</a>
 
 									<div class="btn-group">
 
@@ -32,7 +32,7 @@
 
 											<li class="divider"></li>
 
-											<li><a href="#"><i class="i"></i> Make admin</a></li>
+											<li><a href="#"><i class="i"></i>admin</a></li>
 
 										</ul>
 
@@ -62,11 +62,46 @@
 											
 											<th class="hidden-480">机型名称</th>
 
+											<th class="hidden-480">操作</th>
 										</tr>
 
 									</thead>
 
-									<tbody>
+									<tbody role="alert" aria-live="polite" aria-relevant="all">
+										<tr class="gradeX odd">
+
+											<td class=" sorting_1"><span><input type="checkbox" class="checkboxes" value="1"></span></td>
+
+											<td class=" ">1000</td>
+
+											<td class="hidden-480 ">北京铁路局</td>
+											
+											<td class="hidden-480 ">北京货运中心</td>
+											
+											<td class="hidden-480 ">CT200</td>
+											
+											<td class="hidden-480 ">西门子</td>
+
+											<td class=" "><a class="删除" href="javascript:;">删除</a>&nbsp;<a class="edit" href="javascript:;">修改</a></td>
+
+										</tr>
+										<tr class="gradeX even">
+
+											<td class=" sorting_1"><span><input type="checkbox" class="checkboxes" value="2"></span></td>
+											
+											<td class=" ">2000</td>
+
+											<td class="hidden-480 ">北京铁路局</td>
+											
+											<td class="hidden-480 ">北京货运中心</td>
+											
+											<td class="hidden-480 ">CT201</td>
+											
+											<td class="hidden-480 ">西门子</td>
+
+											<td class=" "><a class="delete" href="javascript:;">删除</a>&nbsp;<a class="edit" href="javascript:;">修改</a></td>
+
+										</tr>
 
 									</tbody>
 

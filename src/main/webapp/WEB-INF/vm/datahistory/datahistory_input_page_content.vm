@@ -46,10 +46,17 @@
 
 								<i class="icon-home"></i>
 
-								<a href="index.html">设备历史数据查询</a> 
+								<a href="datahistory.do">设备历史数据查询</a> 
+								
+								<span class="icon-angle-right"></span>		
 
-							</li>			
+							</li>	
+							
+							<li>
 
+
+								<a href="index.html">设备历史数据新增</a> 
+							</li>
 						</ul>
 
 						<!-- END PAGE TITLE & BREADCRUMB-->
@@ -64,14 +71,8 @@
 				
 				<div class="row-fluid">
 					<!-- BEGIN SEARCH FORM -->
-					#parse("/datahistory/datahistory_search_form.vm")
+					#parse("/datahistory/datahistory_input_form.vm")
 					<!-- END SEARCH FORM -->
-				</div>
-				<div class="row-fluid">
-					<!-- BEGIN SEARCH RESULT -->
-					#parse("/datahistory/datahistory_search_list.vm")
-					<!-- END SEARCH RESULT -->
-
 				</div>
 
 				<!-- END PAGE CONTENT-->

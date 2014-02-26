@@ -11,8 +11,6 @@
 
 				<a href="javascript:;" class="collapse"></a>
 
-				<a href="javascript:;" class="reload"></a>
-
 			</div>
 
 		</div>
@@ -25,11 +23,44 @@
 
 					<div class="control-group">
 
+						<label class="control-label">所属客户</label>
+
+						<div class="controls">
+
+							<select class="small m-wrap" tabindex="1">
+
+								<option value="Category 1">上海铁路局</option>
+
+								<option value="Category 2">北京铁路局</option>
+
+
+							</select>
+
+						</div>
+
+					</div>
+
+				</div>
+
+				<!--/span-->
+				<div class="span4 ">
+
+					<div class="control-group">
+
 						<label class="control-label">所属现场</label>
 
 						<div class="controls">
 
-							<input type="text" class="m-wrap span12"> 
+							<select class="small m-wrap" tabindex="1">
+
+								<option value="Category 1">杭州</option>
+
+								<option value="Category 2">北京</option>
+
+								<option value="Category 3">上海</option>
+
+
+							</select>
 
 						</div>
 
@@ -55,22 +86,6 @@
 
 				</div>
 
-				<!--/span-->
-				<div class="span4 ">
-
-					<div class="control-group">
-
-						<label class="control-label">State</label>
-
-						<div class="controls">
-
-							<input type="text" class="m-wrap span12"> 
-
-						</div>
-
-					</div>
-
-				</div>
 				<!--/span-->
 			</div>
 			
