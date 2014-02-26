@@ -1,6 +1,3 @@
-#macro(test)  
-    hello world!我是macro
-#end
 #macro( menu $id)
 <div class="page-sidebar nav-collapse collapse">
 
