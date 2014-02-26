@@ -27,4 +27,10 @@ public class DeviceDataHistoryController {
 		return "datahistory/datahistory";
 	}
 	
+	@RequestMapping(value = "/datainput", method = RequestMethod.GET)
+	public String input(Locale locale, Model model) {
+		logger.info("[设备历史数据新增]");
+		return "datahistory/datahistory_input";
+	}
+	
 }
