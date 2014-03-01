@@ -30,6 +30,14 @@
 	<link href="/media/css/uniform.default.css" rel="stylesheet" type="text/css"/>
 
 	<!-- END GLOBAL MANDATORY STYLES -->
+	
+		<!-- BEGIN PAGE LEVEL STYLES -->
+
+	<link rel="stylesheet" type="text/css" href="/media/css/select2_metro.css" />
+
+	<link rel="stylesheet" href="/media/css/DT_bootstrap.css" />
+
+	<!-- END PAGE LEVEL STYLES -->
 
 	<link rel="shortcut icon" href="/media/image/favicon.ico" />
 </head>
