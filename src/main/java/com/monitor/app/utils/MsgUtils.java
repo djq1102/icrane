@@ -11,7 +11,11 @@ import com.monitor.app.result.msg.MsgEnum;
  *
  */
 public class MsgUtils {
-
+	
+	public static final String MSG_SUCCESS = "success";
+	
+	public static final String MSG_FAIL = "fail";
+	
 	public static ServiceResult fillMsg(MsgEnum msgEnum){
 		ServiceResult result = new ServiceResult(false);
 		

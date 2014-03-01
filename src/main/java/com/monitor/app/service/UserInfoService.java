@@ -3,10 +3,13 @@
  */
 package com.monitor.app.service;
 
+import java.util.List;
+
 import javax.annotation.Resource;
 
 import com.monitor.app.dao.userinfo.UserInfoQueryDao;
 import com.monitor.app.dataobject.UserInfo;
+import com.monitor.app.query.UserInfoQuery;
 import com.monitor.app.result.ServiceResult;
 import com.monitor.app.result.msg.MsgEnum;
 import com.monitor.app.utils.MsgUtils;
@@ -28,6 +31,43 @@ public class UserInfoService {
 		}
 		
 		return MsgUtils.fillModule(userInfo);
+	}
+	
+	public ServiceResult userInfoAdd(UserInfo userInfo){
+		userInfoQueryDao.addUserInfo(userInfo);
+		return MsgUtils.fillModule(userInfo);
+	}
+	
+	public ServiceResult userInfoEdit(UserInfo userInfo) {
+		userInfoQueryDao.update(userInfo);
+		return MsgUtils.fillModule(userInfo);
+	}
+	
+	public ServiceResult queryUserInfoByuserId(long userId){
+		UserInfo userInfo = userInfoQueryDao.queryUserInfoByUserId(userId);
+		if(userInfo==null){
+			return MsgUtils.fillMsg(MsgEnum.USER_NOT_EXIST);
+		}
+		return MsgUtils.fillModule(userInfo);
+	}
+	
+	
+	public ServiceResult queryUserInfoByCustomerId(long customerId){
+		UserInfoQuery userInfoQuery = new UserInfoQuery();
+		userInfoQuery.setCustomerId(customerId);
+		List<UserInfo> userInfoList =  userInfoQueryDao.queryUserInfo(userInfoQuery);
+		if(userInfoList == null){
+			return MsgUtils.fillMsg(MsgEnum.FAIL_USER_QUERY);
+		}
+		return MsgUtils.fillModule(userInfoList);
+	} 
+		
+	public ServiceResult queryAllUserInfo(UserInfoQuery UserInfoQuery){
+		List<UserInfo> userInfoList =  userInfoQueryDao.queryUserInfo(UserInfoQuery);
+		if(userInfoList == null){
+			return MsgUtils.fillMsg(MsgEnum.FAIL_USER_QUERY);
+		}
+		return MsgUtils.fillModule(userInfoList);
 	}
 	
 }
