@@ -5,7 +5,7 @@
 <!-- END SIDEBAR -->
 
 <!-- BEGIN PAGE -->
-#parse ("/userinfo/userinfo_page_content.vm")
+#parse ("/userinfo/userinfo_input_page_content.vm")
 <!-- END PAGE -->
 </div>
 <!-- END CONTAINER -->
