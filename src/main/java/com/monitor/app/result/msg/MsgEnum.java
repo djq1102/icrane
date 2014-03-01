@@ -13,6 +13,7 @@ public enum MsgEnum {
 	USER_NOT_EXIST("用户不存在"),
 	FAIL_USER_QUERY("用户查询失败");
 	
+	
 	private String msg;
 	
 	private MsgEnum(String msg){
