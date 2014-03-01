@@ -65,7 +65,12 @@ $screen_content
 	<script src="/icrane/media/js/app.js"></script>
 
 
-	<script src="/icrane/media/js/charts.js"></script>      
+	<script src="/icrane/media/js/charts.js"></script>    
+	
+
+	<script type="text/javascript" src="/icrane/media/js/jquery.dataTables.js"></script>
+
+	<script type="text/javascript" src="/icrane/media/js/DT_bootstrap.js"></script>  
 
 
 	<script>
