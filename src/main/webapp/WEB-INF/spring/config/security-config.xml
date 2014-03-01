@@ -39,7 +39,7 @@
      
      <!-- 认证管理器，实现用户认证的入口，主要实现UserDetailsService接口即可 -->
      <authentication-manager alias="authenticationManager">
-         <authentication-provider user-service-ref="userDetailService">
+         <authentication-provider user-service-ref="userDetailsService">
              <!--   如果用户的密码采用加密的话，可以加“盐”
                  <password-encoder hash="md5" />
              -->
@@ -47,8 +47,10 @@
      </authentication-manager>
      
      <!-- 初始化用户信息 -->
-     <beans:bean id="userDetailService" class="com.monitor.app.web.security.config.MyUserDetailService" />
- 
+     <beans:bean id="userDetailsService" class="com.monitor.app.web.security.config.MyUserDetailService" />
+     <beans:bean id="userInfoService" class="com.monitor.app.service.UserInfoService" />
+     
+     
   	 <!-- 资源定义，即定义某一资源可以被哪些角色访问 -->
      <beans:bean id="securityMetadataSource" class="com.monitor.app.web.security.config.MyInvocationSecurityMetadataSource" />
      

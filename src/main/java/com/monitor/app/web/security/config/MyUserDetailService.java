@@ -8,16 +8,19 @@ import java.util.Collection;
 
 import javax.annotation.Resource;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
+import org.springframework.stereotype.Service;
 
 import com.monitor.app.dataobject.UserInfo;
 import com.monitor.app.result.ServiceResult;
 import com.monitor.app.service.UserInfoService;
+import com.monitor.app.utils.SpringBeanUtil;
 import com.monitor.app.web.security.util.RoleEnum;
 import com.monitor.app.web.security.util.RoleEnumUtil;
 
@@ -30,13 +33,13 @@ import com.monitor.app.web.security.util.RoleEnumUtil;
  */
 public class MyUserDetailService implements UserDetailsService {
 
-	@Resource
-	private UserInfoService userInfoService;
+	//@Autowired
+	//private UserInfoService userInfoService;
 	
 	@Override
 	public UserDetails loadUserByUsername(String username)
 			throws UsernameNotFoundException {
-
+		UserInfoService userInfoService = (UserInfoService)SpringBeanUtil.getBean("userInfoService");
 		ServiceResult result = userInfoService.queryUser(username);
 		if(result==null || !result.isSuccess()){
 			throw new UsernameNotFoundException(username);

@@ -187,6 +187,7 @@
                     <source>1.6</source>
                     <target>1.6</target>
                     <compilerArgument>-Xlint:all</compilerArgument>
+                    <encoding>utf-8</encoding>
                     <showWarnings>true</showWarnings>
                     <showDeprecation>true</showDeprecation>
                 </configuration>

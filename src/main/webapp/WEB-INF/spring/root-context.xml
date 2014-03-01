@@ -16,5 +16,6 @@
 	    </property>
 	</bean>
 	
+	<bean id="springBeanUtil" class="com.monitor.app.utils.SpringBeanUtil"/>
 	
 </beans>
