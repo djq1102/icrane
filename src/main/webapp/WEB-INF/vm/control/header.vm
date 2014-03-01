@@ -18,7 +18,7 @@
 
 				<a href="javascript:;" class="btn-navbar collapsed" data-toggle="collapse" data-target=".nav-collapse">
 
-				<img src="media/image/menu-toggler.png" alt="" />
+				<img src="/icrane/media/image/menu-toggler.png" alt="" />
 
 				</a>          
 
@@ -32,7 +32,7 @@
 
 						<a href="#" class="dropdown-toggle" data-toggle="dropdown">
 
-						<img alt="" src="media/image/avatar1_small.jpg" />
+						<img alt="" src="/icrane/media/image/avatar1_small.jpg" />
 
 						<span class="username">Bob Nilson</span>
 

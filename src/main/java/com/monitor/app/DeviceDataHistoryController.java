@@ -20,14 +20,14 @@ public class DeviceDataHistoryController {
 	/**
 	 * Simply selects the home view to render by returning its name.
 	 */
-	@RequestMapping(value = "/datahistory", method = RequestMethod.GET)
+	@RequestMapping(value = "/data/datahistory", method = RequestMethod.GET)
 	public String datahistory(Locale locale, Model model) {
 		logger.info("[设备历史数据查询]");
 		
 		return "datahistory/datahistory";
 	}
 	
-	@RequestMapping(value = "/datainput", method = RequestMethod.GET)
+	@RequestMapping(value = "/data/datainput", method = RequestMethod.GET)
 	public String input(Locale locale, Model model) {
 		logger.info("[设备历史数据新增]");
 		return "datahistory/datahistory_input";

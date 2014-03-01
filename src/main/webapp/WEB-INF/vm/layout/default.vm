@@ -1,18 +1,83 @@
-<html>
-<head>
-	<meta charset="utf-8"/>
-	<meta content="text/html;charset=utf-8" http-equiv="Content-Type"/>
-	<title>Home</title>
-	<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-	<meta name="description" content=""/>
-	<meta name="author" content=""/>
-	<link href="/style/default.css" rel="stylesheet">
-	<link href="/style/sub.css" rel="stylesheet">
-</head>
-<body>
-	#parse('control/head.vm')
-	#parse('control/menu.vm')
-	$screen_content
-	#parse('control/foot.vm')
+<!DOCTYPE html>
+
+<!--[if IE 8]> <html lang="en" class="ie8"> <![endif]-->
+
+<!--[if IE 9]> <html lang="en" class="ie9"> <![endif]-->
+
+<!--[if !IE]><!--> <html lang="en"> <!--<![endif]-->
+
+<!-- BEGIN HEAD -->
+#parse("control/head.vm")
+<!-- END HEAD -->
+<!-- BEGIN BODY -->
+<body class="page-header-fixed">
+<!-- BEGIN HEADER -->
+#parse ("control/header.vm")
+<!-- END HEADER -->
+
+<!-- BEGIN CONTAINER -->
+$screen_content
+<!-- END CONTAINER -->
+
+<!-- BEGIN FOOTER -->
+#parse("control/footer.vm")
+<!-- END FOOTER -->
+
+
+
+
+<!-- BEGIN JAVASCRIPTS(Load javascripts at bottom, this will reduce page load time) -->
+
+
+	<!-- BEGIN CORE PLUGINS -->
+
+
+	#parse("control/script.vm")	
+
+
+	<!-- END CORE PLUGINS -->
+
+
+	<!-- BEGIN PAGE LEVEL PLUGINS -->
+
+
+	<script src="/icrane/media/js/jquery.flot.js"></script>
+
+
+	<script src="/icrane/media/js/jquery.flot.resize.js"></script>
+
+
+	<script src="/icrane/media/js/jquery.flot.pie.js"></script>
+
+
+	<script src="/icrane/media/js/jquery.flot.stack.js"></script>
+
+
+	<script src="/icrane/media/js/jquery.flot.crosshair.js"></script>
+
+
+	<!-- END PAGE LEVEL PLUGINS -->
+
+
+	<!-- BEGIN PAGE LEVEL SCRIPTS -->
+
+
+	<script src="/icrane/media/js/app.js"></script>
+
+
+	<script src="/icrane/media/js/charts.js"></script>      
+
+
+	<script>
+
+		jQuery(document).ready(function() {       
+		   // initiate layout and plugins
+		   App.init();
+
+		});
+	</script>
+
+	<!-- END PAGE LEVEL SCRIPTS -->
 </body>
+<!-- END BODY -->
 </html>

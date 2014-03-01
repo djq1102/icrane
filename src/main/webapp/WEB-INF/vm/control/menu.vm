@@ -1,1 +1,310 @@
-menu.vm test...
+#macro( menu $id)
+<div class="page-sidebar nav-collapse collapse">
+
+			<!-- BEGIN SIDEBAR MENU -->        
+
+			<ul class="page-sidebar-menu">
+
+				<li>
+
+					<!-- BEGIN SIDEBAR TOGGLER BUTTON -->
+
+					<div class="sidebar-toggler hidden-phone"></div>
+
+					<!-- BEGIN SIDEBAR TOGGLER BUTTON -->
+
+				</li>
+				<li >
+
+					<a href="index.html">
+
+					<i class="icon-home"></i> 
+
+					<span class="title">首页</span>
+
+					<span class="selected"></span>
+
+					</a>
+
+				</li>
+
+				<li #if ($id > 0 && $id < 4) class="start active" #end>
+
+					<a href="javascript:;">
+
+					<i class="icon-cogs"></i> 
+
+					<span class="title">系统管理</span>
+
+					<span class="arrow "></span>
+
+					</a>
+
+					<ul class="sub-menu">
+
+						<li #if ($id == 1) class="active" #end >
+
+							<a href="">
+
+							参数维护</a>
+
+						</li>
+						<li #if ($id == 2) class="active" #end>
+
+							<a href="">
+
+							个性化设置</a>
+
+						</li>
+						<li #if ($id == 3) class="active" #end>
+
+							<a href="">
+
+							用户管理</a>
+
+						</li>
+					</ul>
+
+				</li>
+				<li #if ($id > 3 && $id < 8) class="start active" #end>
+
+					<a class="active" href="javascript:;">
+
+					<i class="icon-sitemap"></i> 
+
+					<span class="title">客户数据管理</span>
+
+					<span class="arrow "></span>
+
+					</a>
+
+					<ul class="sub-menu">
+						
+						<li #if ($id == 4) class="active" #end>
+
+							<a href="">
+
+							客户管理</a>
+
+						</li>
+						<li #if ($id == 5) class="active" #end>
+
+							<a href="">
+
+							现场管理</a>
+
+						</li>
+						<li #if ($id == 6) class="active" #end>
+
+							<a href="">
+
+							设备管理</a>
+
+						</li>
+						<li #if ($id == 7) class="active" #end >
+
+							<a href="">
+
+							设备分配管理</a>
+
+						</li>
+						
+					</ul>
+
+				</li>
+				<li #if ($id > 7 && $id < 11) class="start active" #end>
+
+					<a class="active" href="javascript:;">
+
+					<i class="icon-th"></i> 
+
+					<span class="title">机型数据管理</span>
+
+					<span class="arrow "></span>
+
+					</a>
+
+					<ul class="sub-menu">
+
+						<li #if ($id == 8) class="active" #end >
+
+							<a href="">
+
+							机型管理</a>
+
+						</li>
+						
+						<li #if ($id == 9) class="active" #end >
+
+							<a href="">
+
+							机型变量管理</a>
+
+						</li>
+						<li #if ($id == 10) class="active" #end >
+
+							<a href="">
+
+							图形管理</a>
+
+						</li>
+						
+					</ul>
+
+				</li>
+				<li  #if ($id > 10 && $id < 13) class="start active" #end>
+
+					<a class="active" href="javascript:;">
+
+					<i class="icon-wrench"></i> 
+
+					<span class="title">配件管理</span>
+
+					<span class="arrow "></span>
+
+					</a>
+
+					<ul class="sub-menu">
+
+				
+						<li #if ($id == 11) class="active" #end >
+
+							<a href="">
+
+							机型配件价格查询</a>
+
+						</li>
+					
+						<li #if ($id == 12) class="active" #end >
+
+							<a href="">
+
+							配件价格管理</a>
+
+						</li>
+						
+					</ul>
+
+				</li>
+
+				<li #if ($id > 12 && $id < 16) class="start active" #end>
+
+					<a href="javascript:;">
+
+					<i class="icon-eye-open"></i> 
+
+					<span class="title">设备监控管理</span>
+
+					<span class="arrow "></span>
+
+					</a>
+
+					<ul class="sub-menu">
+
+						<li #if ($id == 13) class="active" #end>
+
+							<a href="">
+
+							设备数据监控</a>
+
+						</li>
+						<li #if ($id == 14) class="active" #end>
+
+							<a href="">
+
+							设备视频监控</a>
+
+						</li>
+						<li #if ($id == 15) class="active" #end >
+
+							<a href="">
+
+							设备历史数据查询</a>
+
+						</li>
+
+					</ul>
+
+				</li>
+					<li #if ($id > 15 && $id < 17) class="start active" #end>
+
+					<a href="javascript:;">
+
+					<i class="icon-warning-sign"></i> 
+
+					<span class="title">设备异常管理</span>
+
+					<span class="arrow "></span>
+
+					</a>
+
+					<ul class="sub-menu">
+
+						<li #if ($id == 16) class="active" #end>
+
+							<a href="">
+
+							报警规则设置</a>
+
+						</li>
+
+					</ul>
+
+				</li>
+				<li #if ($id > 16 && $id < 18) class="start active" #end>
+
+					<a href="javascript:;">
+
+					<i class="icon-table"></i> 
+
+					<span class="title">内容发布管理</span>
+
+					<span class="arrow "></span>
+
+					</a>
+
+					<ul class="sub-menu">
+
+						<li  #if ($id == 17) class="active" #end>
+
+							<a href="">
+
+							信息发布设置</a>
+
+						</li>
+
+					</ul>
+
+				</li>
+				<li #if ($id > 17 && $id < 19) class="start active" #end>
+
+					<a href="javascript:;">
+
+					<i class="icon-map-marker"></i> 
+
+					<span class="title">地图</span>
+
+					<span class="arrow "></span>
+
+					</a>
+
+					<ul class="sub-menu">
+
+						<li   #if ($id == 18) class="active" #end>
+
+							<a href="">
+
+							设备分布图</a>
+
+						</li>
+
+					</ul>
+
+				</li>
+
+			</ul>
+
+			<!-- END SIDEBAR MENU -->
+
+		</div>
+#end
