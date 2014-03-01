@@ -1,4 +1,4 @@
-
+#set($layout="empty.vm")
 
 <h1>
 	Hello world!  $rc
