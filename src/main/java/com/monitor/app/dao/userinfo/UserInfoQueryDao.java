@@ -53,7 +53,7 @@ public interface UserInfoQueryDao {
 	
 	@Insert({"insert into cr_user_info (user_name,user_phone,user_email,login_name,password,customer_id,role_type,gmt_create,gmt_modify) "
 	  		+ "values (#{userName}, #{userPhone}, #{userEmail}, "
-	  		+ "#{loginName}, #{password}, #{customerId},#{roleType},now(),now()})"})
+	  		+ "#{loginName}, #{password}, #{customerId},#{roleType},now(),now())"})
 	public void addUserInfo(UserInfo userInfo);
 	
 	@Update({"update cr_user_info set cr_user_info user_name=#{userName}#,user_phone=#{userPhone}#,user_email=#userEmail#,login_name=#loginName#"
@@ -74,6 +74,8 @@ public interface UserInfoQueryDao {
 			  @Result(property = "gmtModify", column = "gmt_modify")
 	})
 	public List<UserInfo> queryUserInfo(UserInfoQuery userInfoQuery);
+	
+	
 	
 	@Select("SELECT count(*) as total FROM cr_user_info")
 	int totalCount(UserInfoQuery userInfoQuery) throws DAOException;

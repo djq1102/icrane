@@ -29,13 +29,19 @@ public class UserInfoController {
 	@Resource
 	private UserInfoService userInfoService;
 	
-	@RequestMapping(value = "/userInfo/add")
-	public String add(@RequestParam("userName") String userName, @RequestParam("userPhone") String userPhone, 
+	@RequestMapping(value = "/userInfo/userinfoInput",method = RequestMethod.GET)
+	public String userinfoInput(Model model) {
+		logger.warn(">>>action=userInput");
+		return "userInfo/userinfo_input";
+	}
+	
+	@RequestMapping(value = "/userInfo/addUserInfo")
+	public String addUserInfo(@RequestParam("userName") String userName, @RequestParam("userPhone") String userPhone, 
 			@RequestParam("userEmail") String userEmail, @RequestParam("loginName") String loginName,
 			@RequestParam("password") String password, 
 			@RequestParam("customerId") long customerId, 
 			@RequestParam("roleType") int roleType, Model model) {
-		logger.warn(">>>action=add," + userName);
+		logger.warn(">>>action=addUserInfo," + userName);
 		UserInfo userInfo = new UserInfo();
 		userInfo.setUserName(userName);
 		userInfo.setUserPhohe(userPhone);
@@ -50,7 +56,7 @@ public class UserInfoController {
 		}else{
 			model.addAttribute("msg",MsgUtils.MSG_FAIL);
 		}
-		return "userInfo/userInfoList";
+		return "userInfo/userinfo";
 	}
 	
 	@RequestMapping(value = "/userInfo/editInfo",method = RequestMethod.GET)
@@ -89,15 +95,15 @@ public class UserInfoController {
 			}else{
 				model.addAttribute("msg",MsgUtils.MSG_FAIL);
 			}
-			return "userInfo/userInfoList";
+			return "userInfo/userinfo";
 		}else{
-			return "userInfo/userInfoList";
+			return "userInfo/userinfo";
 		}
 	}
 	
 	@SuppressWarnings("unchecked")
-	@RequestMapping(value = "/userInfo/queryAllUserInfo",method = RequestMethod.GET)
-	public String queryAllUserInfo(@RequestParam("customerId") long customerId,Model model) {
+	@RequestMapping(value = "/userInfo/index",method = RequestMethod.GET)
+	public String index(@RequestParam("customerId") long customerId,Model model) {
 		logger.warn(">>>action=queryAllUserInfo" );
 		ServiceResult result = userInfoService.queryUserInfoByCustomerId(customerId);
 		if(result.isSuccess()){
@@ -106,7 +112,7 @@ public class UserInfoController {
 		}else{
 			model.addAttribute("msg", MsgUtils.MSG_FAIL);
 		}
-		return "userInfo/userInfoList";
+		return "userInfo/userinfo";
 	}
 
 }
