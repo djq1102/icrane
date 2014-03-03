@@ -27,6 +27,7 @@
 	</bean>  
 	
 	<bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
+	    <property name="configLocation" value="conf/icrane.mybatis.config.xml"/>
 	    <property name="dataSource" ref="dataSource" />
 	</bean>
 	 
@@ -36,5 +37,5 @@
        <!-- optional unless there are multiple session factories defined -->
         <property name="sqlSessionFactoryBeanName" value="sqlSessionFactory" />
     </bean>
-	
+    
 </beans>
