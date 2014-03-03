@@ -39,7 +39,7 @@ public class UserInfoService {
 	}
 	
 	public ServiceResult userInfoEdit(UserInfo userInfo) {
-		userInfoQueryDao.update(userInfo);
+		userInfoQueryDao.updateUserInfo(userInfo);
 		return MsgUtils.fillModule(userInfo);
 	}
 	
