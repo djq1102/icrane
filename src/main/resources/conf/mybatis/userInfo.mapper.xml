@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="GBK" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.monitor.app.dao.userinfo.UserInfoQueryDao">
+	<resultMap type="UserInfo" id="userInfoResult">
+		<result property="userId" column="user_id"/>
+		<result property="userName" column="user_name"/>
+		<result property="userPhone" column="user_phone"/>
+		<result property="userEmail" column="user_email"/>
+		<result property="loginName" column="login_name"/>
+		<result property="password" column="password"/>
+		<result property="customerId" column="customer_id"/>
+		<result property="roleType" column="role_type"/>
+		<result property="gmtCreate" column="gmt_create"/>
+		<result property="gmtModify" column="gmt_modify"/>
+	</resultMap>
+	<sql id="userInfoFields">
+		<![CDATA[
+			user_id,
+			user_name,
+			user_phone,
+			user_email,
+			login_name,
+			password,
+			customer_id,
+			role_type,
+			gmt_create,
+			gmt_modify
+		]]>
+	</sql>
+	
+	<sql id="selectCondition">
+		<where>
+			<if test="null != customerId">
+				AND customer_id = #{customerId}
+			</if>
+		</where>
+	</sql>
+	
+	<sql id="updateFields">
+		<set>
+			gmt_modify = now(),
+			<if test="null != userName">
+				user_name = #{duration},
+			</if>
+			<if test="null != userPhone">
+				user_phone = #{userPhone},
+			</if>
+			
+			<if test="null != userEmail">
+				user_email = #{userEmail},
+			</if>
+			<if test="null != loginName">
+				login_name = #{loginName},
+			</if>
+		</set>
+	</sql>
+	
+	<insert id="addUserInfo" useGeneratedKeys="true" keyProperty="userId" parameterType="UserInfo">
+		<![CDATA[
+		INSERT INTO cr_user_info(
+		]]>
+		<include refid="userInfoFields"/>
+		<![CDATA[
+		) VALUES (
+		    #{userId},
+			#{userName}, 
+			#{userPhone}, 
+			#{userEmail}, 
+	  		#{loginName}, 
+	  		#{password}, 
+	  		#{customerId},
+	  		#{roleType},
+	  		now(),
+	  		now()
+		)
+		]]>
+	</insert>
+	
+	<select id="queryUserInfoByUserId" parameterType="java.lang.Long"  resultMap="userInfoResult">
+		SELECT <include refid="userInfoFields"/>
+		FROM cr_user_info WHERE user_id = #{userId}
+	</select>
+	
+	<select id="queryUserInfo" parameterType="UserInfoQuery" resultMap="userInfoResult">
+		SELECT <include refid="userInfoFields"/>
+		FROM cr_user_info
+		<include refid="selectCondition"/>
+		<if test="begin != null and end != null">
+			limit #{begin}, #{end}
+		</if>
+	</select>
+	
+	<update id="updateUserInfo" parameterType="UserInfo">
+		UPDATE cr_user_info
+		<include refid="updateFields"/>
+		WHERE user_id = #{userId}
+	</update>
+</mapper>
