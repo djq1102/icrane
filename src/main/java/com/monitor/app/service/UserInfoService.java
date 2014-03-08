@@ -24,7 +24,6 @@ public class UserInfoService {
 	private UserInfoQueryDao userInfoQueryDao;
 	
 	public ServiceResult queryUser(String nick){
-		
 		UserInfo userInfo = userInfoQueryDao.queryUserByNick(nick);
 		if(userInfo==null){
 			return MsgUtils.fillMsg(MsgEnum.USER_NOT_EXIST);
@@ -34,12 +33,18 @@ public class UserInfoService {
 	}
 	
 	public ServiceResult userInfoAdd(UserInfo userInfo){
-		userInfoQueryDao.addUserInfo(userInfo);
+		int row = userInfoQueryDao.addUserInfo(userInfo);
+		if(row != 1){
+			return MsgUtils.fillMsg(MsgEnum.USER_ADD_FAIL);
+		}
 		return MsgUtils.fillModule(userInfo);
 	}
 	
 	public ServiceResult userInfoEdit(UserInfo userInfo) {
-		userInfoQueryDao.updateUserInfo(userInfo);
+		int row = userInfoQueryDao.updateUserInfo(userInfo);
+		if(row != 1){
+			return MsgUtils.fillMsg(MsgEnum.USER_UPDATE_FAIL);
+		}
 		return MsgUtils.fillModule(userInfo);
 	}
 	
@@ -69,5 +74,7 @@ public class UserInfoService {
 		}
 		return MsgUtils.fillModule(userInfoList);
 	}
+	
+	
 	
 }

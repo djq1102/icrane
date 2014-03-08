@@ -36,13 +36,12 @@ public interface UserInfoQueryDao {
 	
 	public UserInfo queryUserInfoByUserId(long userId);
 	
-	public void addUserInfo(UserInfo userInfo);
+	public int addUserInfo(UserInfo userInfo);
 	
-    public void updateUserInfo(UserInfo userInfo);
+    public int updateUserInfo(UserInfo userInfo);
     
 	public List<UserInfo> queryUserInfo(UserInfoQuery userInfoQuery);
 	
-	@Select("SELECT count(*) as total FROM cr_user_info")
-	int totalCount(UserInfoQuery userInfoQuery) throws DAOException;
+	public int countAll(UserInfoQuery userInfoQuery) throws DAOException;
 	
 }

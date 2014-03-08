@@ -2,23 +2,21 @@ package com.monitor.app.dao.user;
 
 import java.util.List;
 
-import org.apache.ibatis.annotations.Param;
-import org.apache.ibatis.annotations.Select;
-
 import com.monitor.app.dataobject.Site;
 import com.monitor.app.exception.DAOException;
+import com.monitor.app.query.SiteQuery;
 
 public interface SiteDao {
 	
-	  @Select("insert into cr_site (site_name,site_address,location,customer_id,contact_name,contact_phone,contact_email,status,gmt_create,gmt_modify) "
-		  		+ "values (#{site.siteName}, #{site.siteAddress}, #{site.location}, #{site.customerId}, #{site.contactName}, #{site.contactPhone},#{site.contactEmail},#{site.status},now(),now())")
-	  void addSite(@Param("Site") Site site) throws DAOException;
+	 public int addSite(Site site) throws DAOException;
 	  
-	  @Select("SELECT * FROM cr_site")
-	  List<Site> queryAllSite()throws DAOException;
+	 public Site queryBySiteId(long siteId) throws DAOException;
+	 
+	 public int updateSite(Site site) throws DAOException;
+	 
+	 public List<Site> querySite(SiteQuery query) throws DAOException;
 	  
-	  @Select("SELECT count(*) as total FROM cr_site")
-	  int totalCount() throws DAOException;
+	 public int countAll(SiteQuery query) throws DAOException;
 	  
 }
    
