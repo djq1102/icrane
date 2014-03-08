@@ -23,6 +23,13 @@ public enum MsgEnum {
 	DEVICE_UPDATE_FAIL("设备修改失败"),
 	DEVICE_NOT_EXIST("设备不存在"),
 	
+	USER_DEVICE_RELATION_ADD_FAIL("添加用户关联设备失败"),
+	USER_DEVICE_RELATION_DELETE_FAIL("删除用户关联设备失败"),
+	USER_DEVICE_RELATION("用户关联设备不存在"),
+	
+	USER_SITE_RELATION_ADD_FAIL("添加用户关联现场失败"),
+	USER_SITE_RELATION_DELETE_FAIL("删除用户关联现场失败"),
+	
 	SITE_ADD_FAIL("现场添加失败"),
 	SITE_NOT_EXIST("现场不存在"),
 	SITE_UPDATE_FAIL("现场修改失败");

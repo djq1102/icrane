@@ -41,10 +41,18 @@
 		FROM cr_user_device_relation where user_id = #{userId}
 	</select>
 	
-	<delete id="batchDeleteUserDeviceRelationBydeviceId" parameterMap="java.util.List">
-		delete from cr_user_site_relation where device_id in 
-		<foreach item="item" index="index" collection="list" open="(" separator="," close=")">
+	<delete id="batchDeleteUserDeviceRelationBydeviceId" parameterMap="java.util.Map">
+		delete from cr_user_site_relation where user_id = #userId# and device_id in 
+		<foreach item="item" index="index" collection="deviceIds" open="(" separator="," close=")">
 				#{item}
 		</foreach>
 	</delete>
+	
+	<delete id="batchDeleteUserDeviceRelationBysiteId" parameterMap="java.util.Map">
+		delete from cr_user_site_relation where user_id = #userId# and site_id in 
+		<foreach item="item" index="index" collection="siteIds" open="(" separator="," close=")">
+				#{item}
+		</foreach>
+	</delete>
+	
 </mapper>
