@@ -9,14 +9,18 @@ import org.springframework.stereotype.Service;
 
 import com.monitor.app.dao.user.DeviceDao;
 import com.monitor.app.dataobject.Device;
-import com.monitor.app.dataobject.Site;
 import com.monitor.app.exception.DAOException;
 import com.monitor.app.exception.ManagerException;
 import com.monitor.app.query.DeviceQuery;
-import com.monitor.app.query.SiteQuery;
 import com.monitor.app.result.ServiceResult;
 import com.monitor.app.result.msg.MsgEnum;
 import com.monitor.app.utils.MsgUtils;
+
+/**
+ * 
+ * @author tmac
+ *
+ */
 
 @Service
 public class DeviceService {

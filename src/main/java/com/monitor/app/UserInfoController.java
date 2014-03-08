@@ -59,8 +59,8 @@ public class UserInfoController {
 		return "userInfo/userinfo";
 	}
 	
-	@RequestMapping(value = "/userInfo/editInfo",method = RequestMethod.GET)
-	public String editInfo(@RequestParam("userId") long userId,Model model) {
+	@RequestMapping(value = "/userInfo/editUserInfo",method = RequestMethod.GET)
+	public String editUserInfo(@RequestParam("userId") long userId,Model model) {
 		logger.warn(">>>action=edit" );
 		ServiceResult result = userInfoService.queryUserInfoByuserId(userId);
 		if(result.isSuccess()){
@@ -72,8 +72,8 @@ public class UserInfoController {
 		return "userInfo/userInfoEdit";
 	}
 	
-	@RequestMapping(value = "/userInfo/edit")
-	public String edit(@RequestParam("userId")long userId,@RequestParam("userName") String userName, @RequestParam("userPhone") String userPhone, 
+	@RequestMapping(value = "/userInfo/updateUserInfo")
+	public String updateUserInfo(@RequestParam("userId")long userId,@RequestParam("userName") String userName, @RequestParam("userPhone") String userPhone, 
 			@RequestParam("userEmail") String userEmail, @RequestParam("loginName") String loginName,
 			@RequestParam("password") String password, 
 			@RequestParam("customerId") long customerId, 

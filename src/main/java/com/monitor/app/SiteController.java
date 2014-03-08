@@ -42,13 +42,13 @@ public class SiteController {
 		site.setLocation(location);
 		ServiceResult result	= siteService.addSite(site);
 		model.addAttribute("result", result);
-		ServiceResult serviceResult = siteService.queryAllSite();
-		if(serviceResult.isSuccess()){
-			List<Site> users  = (List<Site>)serviceResult.getModule();
-			model.addAttribute("users", users);
-		}else{
-			model.addAttribute("result2", serviceResult);
-		}
+//		ServiceResult serviceResult = siteService.queryAllSite();
+//		if(serviceResult.isSuccess()){
+//			List<Site> users  = (List<Site>)serviceResult.getModule();
+//			model.addAttribute("users", users);
+//		}else{
+//			model.addAttribute("result2", serviceResult);
+//		}
 		return "";
 	}
 	
