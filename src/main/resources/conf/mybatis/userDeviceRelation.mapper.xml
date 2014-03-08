@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="GBK" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.monitor.app.dao.user.UserDeviceRelationDao">
+	<resultMap type="UserDeviceRelation" id="userDeviceRelationResult">
+		<result property="id" column="id"/>
+		<result property="userId" column="user_id"/>
+		<result property="siteId" column="site_id"/>
+		<result property="deviceId" column="device_id"/>
+		<result property="deviceName" column="device_name"/>
+		<result property="gmtCreate" column="gmt_create"/>
+		<result property="gmtModify" column="gmt_modify"/>
+	</resultMap>
+	
+	<sql id="userDeviceRelationFields">
+		<![CDATA[
+			id,
+			user_id,
+			site_id,
+			device_id,
+			device_name,
+			gmt_create,
+			gmt_modify
+		]]>
+	</sql>
+	
+	<insert id="batchInsertUserDeviceRelation" useGeneratedKeys="true" parameterType="java.util.List">
+		<selectKey resultType="long" keyProperty="id" order="AFTER">
+			SELECT
+			LAST_INSERT_ID()
+		</selectKey>
+		insert into cr_user_device_relation (user_id,site_id,device_id,device_name,gmt_create,gmt_modify) 
+		values
+		<foreach collection="list" item="item" index="index" separator="," >
+			(#{item.userId},#{item.siteId},#{item.deviceId},#{item.deviceName},now(),now())
+		</foreach>
+	</insert>
+	
+	<select id="queryUserDeviceRelationByUserId" parameterType="java.lang.Long" resultMap="userSiteRelationResult">
+		SELECT <include refid="userDeviceRelationFields"/>
+		FROM cr_user_device_relation where user_id = #{userId}
+	</select>
+	
+	<delete id="batchDeleteUserDeviceRelationBydeviceId" parameterMap="java.util.List">
+		delete from cr_user_site_relation where device_id in 
+		<foreach item="item" index="index" collection="list" open="(" separator="," close=")">
+				#{item}
+		</foreach>
+	</delete>
+</mapper>

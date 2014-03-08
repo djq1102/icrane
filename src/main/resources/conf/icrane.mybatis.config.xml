@@ -28,11 +28,26 @@
 	
 	<typeAliases>
 		<typeAlias alias="UserInfo" type="com.monitor.app.dataobject.UserInfo"/>
+		<typeAlias alias="Customer" type="com.monitor.app.dataobject.Customer"/>
+		<typeAlias alias="Site"     type="com.monitor.app.dataobject.Site"/>
+		<typeAlias alias="Device"   type="com.monitor.app.dataobject.Device"/>
+		<typeAlias alias="UserSiteRelation" type="com.monitor.app.dataobject.UserSiteRelation"/>
+		<typeAlias alias="UserDeviceRelation"  type="com.monitor.app.dataobject.UserDeviceRelation"/>
+		
 		<typeAlias alias="UserInfoQuery" type="com.monitor.app.query.UserInfoQuery"/>
+		<typeAlias alias="customerInfoQuery" type="com.monitor.app.query.CustomerInfoQuery"/>
+		<typeAlias alias="siteQuery"   type="com.monitor.app.query.SiteQuery"/>
+		<typeAlias alias="deviceQuery" type="com.monitor.app.query.DeviceQuery"/>
     </typeAliases>
 	
 	<mappers>
 		<mapper resource="conf/mybatis/userInfo.mapper.xml"/>
+		<mapper resource="conf/mybatis/customer.mapper.xml"/>
+		<mapper resource="conf/mybatis/site.mapper.xml"/>
+		<mapper resource="conf/mybatis/device.mapper.xml"/>
+		<mapper resource="conf/mybatis/userSiteRelation.mapper.xml"/>
+		<mapper resource="conf/mybatis/userDeviceRelation.mapper.xml"/>
+		
 	</mappers>
 	
 </configuration>

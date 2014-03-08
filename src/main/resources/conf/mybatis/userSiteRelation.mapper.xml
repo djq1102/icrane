@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="GBK" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.monitor.app.dao.user.UserSiteRelationDao">
+	<resultMap type="UserSiteRelation" id="userSiteRelationResult">
+		<result property="id" column="id"/>
+		<result property="userId" column="user_id"/>
+		<result property="siteId" column="site_id"/>
+		<result property="siteName" column="site_name"/>
+		<result property="gmtCreate" column="gmt_create"/>
+		<result property="gmtModify" column="gmt_modify"/>
+	</resultMap>
+	
+	<sql id="userSiteRelationFields">
+		<![CDATA[
+			id,
+			user_id,
+			site_id,
+			site_name,
+			gmt_create,
+			gmt_modify
+		]]>
+	</sql>
+	
+	<insert id="batchInsertUserSiteRelation" useGeneratedKeys="true" parameterType="java.util.List">
+		<selectKey resultType="long" keyProperty="id" order="AFTER">
+			SELECT
+			LAST_INSERT_ID()
+		</selectKey>
+		insert into cr_user_site_relation (user_id,site_id,site_name,gmt_create,gmt_modify) 
+		values
+		<foreach collection="list" item="item" index="index" separator="," >
+			(#{item.userId},#{item.siteId},#{item.siteName},now(),now())
+		</foreach>
+	</insert>
+	
+	<select id="queryUserSiteRelationByUserId" parameterType="java.lang.Long" resultMap="userSiteRelationResult">
+		SELECT <include refid="userSiteRelationFields"/>
+		FROM cr_user_site_relation where user_id = #{userId}
+	</select>
+	
+	<delete id="batchDeleteUserSiteRelationBySiteId" parameterMap="java.util.List">
+		delete from cr_user_site_relation where site_id in 
+		<foreach item="item" index="index" collection="list" open="(" separator="," close=")">
+				#{item}
+		</foreach>
+	</delete>
+</mapper>

@@ -86,11 +86,13 @@
 		SELECT <include refid="userInfoFields"/>
 		FROM cr_user_info
 		<include refid="selectCondition"/>
-		<if test="begin != null and end != null">
-			limit #{begin}, #{end}
-		</if>
 	</select>
 	
+	<select id="countAll" resultType="int">
+        select count(*) c from cr_user_info;
+        <include refid="selectCondition"/>
+    </select>	
+    
 	<update id="updateUserInfo" parameterType="UserInfo">
 		UPDATE cr_user_info
 		<include refid="updateFields"/>
