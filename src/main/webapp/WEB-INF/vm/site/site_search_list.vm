@@ -49,7 +49,7 @@
 									<thead>
 
 										<tr>
-
+											<th style="width:8px;"><input type="checkbox" class="group-checkable" data-set="#sample_2 .checkboxes" /></th>
 
 											<th>现场编号</th>
 											
@@ -71,46 +71,6 @@
 									</thead>
 
 									<tbody role="alert" aria-live="polite" aria-relevant="all">
-										<tr class="gradeX odd">
-
-
-											<td class=" ">1000</td>
-
-											<td class="hidden-480 ">北京铁路局</td>
-											
-											<td class="hidden-480 ">现场1</td>
-											
-											<td class="hidden-480 ">张三</td>
-											
-											<td class="hidden-480 ">123@123.com</td>
-											
-											<td class="hidden-480 ">13588010101</td>
-											
-											<td class="hidden-480 ">在建</td>
-
-											<td class=" "><a class="view" href="javascript:;">查看</a>&nbsp;<a class="delete" href="javascript:;">删除</a>&nbsp;<a class="edit" href="javascript:;">修改</a></td>
-
-										</tr>
-										<tr class="gradeX even">
-
-
-											<td class=" ">1000</td>
-
-											<td class="hidden-480 ">北京铁路局</td>
-											
-											<td class="hidden-480 ">现场1</td>
-											
-											<td class="hidden-480 ">张三</td>
-											
-											<td class="hidden-480 ">123@123.com</td>
-											
-											<td class="hidden-480 ">13588010101</td>
-											
-											<td class="hidden-480 ">在建</td>
-
-											<td class=" "><a class="view" href="javascript:;">查看</a>&nbsp;<a class="delete" href="javascript:;">删除</a>&nbsp;<a class="edit" href="javascript:;">修改</a></td>
-
-										</tr>
 										
 									</tbody>
 
