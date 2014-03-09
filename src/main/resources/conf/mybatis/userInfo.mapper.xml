@@ -77,6 +77,11 @@
 		]]>
 	</insert>
 	
+	<select id="queryUserByNick" parameterMap="java.lang.String" resultMap="userInfoResult">
+		SELECT <include refid="userInfoFields"/>
+	    FROM cr_user_info WHERE login_name = #{nick}#
+	</select>
+	
 	<select id="queryUserInfoByUserId" parameterType="java.lang.Long"  resultMap="userInfoResult">
 		SELECT <include refid="userInfoFields"/>
 		FROM cr_user_info WHERE user_id = #{userId}
