@@ -114,5 +114,20 @@ public class UserInfoController {
 		}
 		return "userInfo/userinfo";
 	}
+	
+	@SuppressWarnings("unchecked")
+	@RequestMapping(value = "/userInfo/all",method = RequestMethod.GET)
+	public String index(@RequestParam("p") int page, @RequestParam("ps") int pagesize,Model model) {
+		logger.warn(">>>action=queryAllUserInfo" );
+		ServiceResult result = userInfoService.queryUsersByPage(page,pagesize);
+		
+		if(result.isSuccess()){
+			List<UserInfo> userInfoList  = (List<UserInfo>)result.getModule();
+			model.addAttribute("userInfoList", userInfoList);
+		}else{
+			model.addAttribute("msg", MsgUtils.MSG_FAIL);
+		}
+		return "userInfo/userinfo";
+	}
 
 }

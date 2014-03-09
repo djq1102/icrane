@@ -75,6 +75,15 @@ public class UserInfoService {
 		return MsgUtils.fillModule(userInfoList);
 	}
 	
-	
+	public ServiceResult queryUsersByPage(int page,int pagesize){
+		UserInfoQuery userInfoQuery = new UserInfoQuery();
+		userInfoQuery.setCurrentPage(page);
+		userInfoQuery.setPageSize(pagesize);
+		List<UserInfo> userInfoList =  userInfoQueryDao.queryUserInfo(userInfoQuery);
+		if(userInfoList == null){
+			return MsgUtils.fillMsg(MsgEnum.FAIL_USER_QUERY);
+		}
+		return MsgUtils.fillModule(userInfoList);
+	}
 	
 }

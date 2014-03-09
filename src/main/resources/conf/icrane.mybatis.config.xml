@@ -4,6 +4,7 @@
 <configuration>
 	<properties>
 		<property name="dialect" value="mysql"/>
+		<property name="pageSqlId" value=".*queryUserInfo$"/> 
 	</properties>
 	<settings>
 		<!-- 全局的映射器启用或者禁用缓存 -->

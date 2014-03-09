@@ -1,9 +1,9 @@
 package com.monitor.app.query;
 
-import java.io.Serializable;
+import com.monitor.app.dao.common.Pagination;
 
 
-public class UserInfoQuery implements Serializable{
+public class UserInfoQuery extends Pagination{
 	/**
 	 * 
 	 */

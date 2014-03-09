@@ -26,9 +26,16 @@
 		</property>  
 	</bean>  
 	
+	
+	<bean id="paginationInterceptor" class="com.monitor.app.db.interceptor.PaginationInterceptor"/>
 	<bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
 	    <property name="configLocation" value="classpath:conf/icrane.mybatis.config.xml"/>
 	    <property name="dataSource" ref="dataSource" />
+	    <property name="plugins">
+	        <array>
+	            <ref bean="paginationInterceptor"/>
+	        </array>
+	    </property>
 	</bean>
 	 
 	
