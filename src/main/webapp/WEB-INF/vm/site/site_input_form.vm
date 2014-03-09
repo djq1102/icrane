@@ -1,0 +1,166 @@
+<div class="span12">
+	<!-- BEGIN INPUT PORTLET-->
+
+	<div class="portlet box blue">
+
+		<div class="portlet-title">
+
+			<div class="caption"><i class="icon-search"></i>设备基础信息</div>
+
+		</div>
+		
+		<div class="portlet-body form" style="display: block;">
+		
+		<form class="form-horizontal">
+			<div class="row-fluid">
+
+				<div class="span4 ">
+
+					<div class="control-group">
+
+						<label class="control-label">所属客户:</label>
+
+						<div class="controls">
+
+							<select class="small m-wrap" tabindex="1">
+
+								<option value="Category 1">北京铁路局</option>
+
+								<option value="Category 2">广州铁路局</option>
+
+							</select>
+
+						</div>
+
+					</div>
+
+				</div>
+
+				<!--/span-->
+				<div class="span4 ">
+
+					<div class="control-group">
+
+						<label class="control-label">现场名称:</label>
+
+						<div class="controls">
+
+							<input type="text" class="m-wrap span12"> 
+
+						</div>
+
+					</div>
+
+				</div>
+
+				<!--/span-->
+
+				<div class="span4 ">
+
+					<div class="control-group">
+
+						<label class="control-label">状态:</label>
+
+						<div class="controls">
+
+							<select class="small m-wrap" tabindex="1">
+
+								<option value="Category 1">在建</option>
+
+								<option value="Category 2">维修</option>
+
+							</select>
+
+						</div>
+
+					</div>
+
+				</div>
+
+				<!--/span-->
+			</div>
+			<!--/row-->
+			<div class="row-fluid">
+				<div class="span4 ">
+
+					<div class="control-group">
+
+						<label class="control-label">地址:</label>
+
+						<div class="controls">
+
+							<input type="text" class="m-wrap span12"> 
+
+						</div>
+					</div>
+
+				</div>
+
+				<!--/span-->
+
+				<div class="span4 ">
+
+					<div class="control-group">
+
+						<label class="control-label">联系人:</label>
+
+						<div class="controls">
+
+							<input type="text" class="m-wrap span12"> 
+
+						</div>
+					</div>
+
+				</div>
+
+				<!--/span-->
+				<div class="span4 ">
+
+					<div class="control-group">
+
+						<label class="control-label">手机号:</label>
+
+						<div class="controls">
+
+							<input type="text" class="m-wrap span12" > 
+
+						</div>
+
+					</div>
+
+				</div>
+				<!--/span-->
+			</div>
+			<!--/row-->
+			<div class="row-fluid">
+				<div class="span4 ">
+
+					<div class="control-group">
+
+						<label class="control-label">邮箱:</label>
+
+						<div class="controls">
+
+							<input type="text" class="m-wrap span12"> 
+
+						</div>
+					</div>
+
+				</div>
+
+				<!--/span-->
+			</div>
+			<!--/row-->
+			<div class="form-actions">
+
+				<button type="submit" class="btn blue"><i class="icon-ok"></i> 保存</button>
+
+				<button type="button" class="btn">取消</button>
+
+			</div>
+		</form>
+		</div>
+		
+	</div>
+	<!-- END INPUT FORM>
+</div>

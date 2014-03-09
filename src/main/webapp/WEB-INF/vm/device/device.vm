@@ -1,0 +1,53 @@
+<!-- BEGIN CONTAINER -->
+<div class="page-container row-fluid">
+<!-- BEGIN SIDEBAR -->
+#menu (3)
+<!-- END SIDEBAR -->
+
+<!-- BEGIN PAGE -->
+#parse ("/device/device_page_content.vm")
+<!-- END PAGE -->
+</div>
+<!-- END CONTAINER -->
+
+
+<!-- BEGIN JAVASCRIPTS(Load javascripts at bottom, this will reduce page load time) -->
+
+
+<!-- BEGIN CORE PLUGINS -->
+
+
+#parse("control/script.vm")	
+
+
+<!-- END CORE PLUGINS -->
+
+
+<!-- BEGIN PAGE LEVEL PLUGINS -->
+
+<script type="text/javascript" src="/media/js/select2.min.js"></script>
+
+<script type="text/javascript" src="/media/js/jquery.dataTables.js"></script>
+
+
+<!-- END PAGE LEVEL PLUGINS -->
+
+<!-- BEGIN PAGE LEVEL SCRIPTS -->
+
+<script src="/media/js/app.js"></script>
+
+<script src="/media/js/table-managed.js"></script>     
+
+
+
+<script>
+
+	jQuery(document).ready(function() {       
+	   // initiate layout and plugins
+	   App.init();
+	   TableManaged.init();
+
+	});
+</script>
+
+<!-- END PAGE LEVEL SCRIPTS -->
