@@ -44,7 +44,7 @@
 		<mapper resource="conf/mybatis/userInfo.mapper.xml"/>
 		<mapper resource="conf/mybatis/customer.mapper.xml"/>
 		<mapper resource="conf/mybatis/site.mapper.xml"/>
-		<!--<mapper resource="conf/mybatis/userSiteRelation.mapper.xml"/>-->
+		<mapper resource="conf/mybatis/userSiteRelation.mapper.xml"/>
 		<mapper resource="conf/mybatis/userDeviceRelation.mapper.xml"/>
 		<mapper resource="conf/mybatis/device.mapper.xml"/>
 		
