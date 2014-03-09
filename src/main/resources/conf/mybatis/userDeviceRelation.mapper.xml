@@ -36,19 +36,19 @@
 		</foreach>
 	</insert>
 	
-	<select id="queryUserDeviceRelationByUserId" parameterType="java.lang.Long" resultMap="userSiteRelationResult">
+	<select id="queryUserDeviceRelationByUserId" parameterType="java.lang.Long" resultMap="userDeviceRelationResult">
 		SELECT <include refid="userDeviceRelationFields"/>
 		FROM cr_user_device_relation where user_id = #{userId}
 	</select>
 	
-	<delete id="batchDeleteUserDeviceRelationBydeviceId" parameterMap="java.util.Map">
+	<delete id="batchDeleteUserDeviceRelationBydeviceId" parameterType="java.util.Map">
 		delete from cr_user_site_relation where user_id = #userId# and device_id in 
 		<foreach item="item" index="index" collection="deviceIds" open="(" separator="," close=")">
 				#{item}
 		</foreach>
 	</delete>
 	
-	<delete id="batchDeleteUserDeviceRelationBysiteId" parameterMap="java.util.Map">
+	<delete id="batchDeleteUserDeviceRelationBysiteId" parameterType="java.util.Map">
 		delete from cr_user_site_relation where user_id = #userId# and site_id in 
 		<foreach item="item" index="index" collection="siteIds" open="(" separator="," close=")">
 				#{item}

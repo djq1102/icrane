@@ -35,7 +35,7 @@
 	<sql id="selectCondition">
 		<where>
 			<if test="null != deviceId">
-				AND device_id = #{deviceId}
+				device_id = #{deviceId}
 			</if>
 		</where>
 	</sql>

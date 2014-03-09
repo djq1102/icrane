@@ -39,7 +39,7 @@
 		FROM cr_user_site_relation where user_id = #{userId}
 	</select>
 	
-	<delete id="batchDeleteUserSiteRelationBySiteId" parameterMap="java.util.List">
+	<delete id="batchDeleteUserSiteRelationBySiteId" parameterType="java.util.Map">
 		delete from cr_user_site_relation where user_id = #{userId} and site_id in 
 		<foreach item="item" index="index" collection="siteIds" open="(" separator="," close=")">
 				#{item}

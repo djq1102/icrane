@@ -31,7 +31,7 @@
 	<sql id="selectCondition">
 		<where>
 			<if test="null != customerId">
-				AND customer_id = #{customerId}
+				customer_id = #{customerId}
 			</if>
 		</where>
 	</sql>

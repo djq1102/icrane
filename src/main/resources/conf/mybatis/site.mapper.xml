@@ -35,7 +35,7 @@
 	<sql id="selectCondition">
 		<where>
 			<if test="null != siteId">
-				AND site_id = #{siteId}
+				site_id = #{siteId}
 			</if>
 		</where>
 	</sql>
@@ -103,7 +103,7 @@
 		FROM cr_site where site_id = #{siteId}
 	</select>
 	
-	<select id="countAll" parameterType="siteQuery" resultMap="int">
+	<select id="countAll" parameterType="siteQuery" resultType="java.lang.Integer">
         select count(*) c from cr_site;
         <include refid="selectCondition"/>
     </select>	
