@@ -52,7 +52,7 @@ public class PaginationInterceptor implements Interceptor{
 		       }
 	       }else{
 	    	   Pagination pageObj = (Pagination)pagination;
-	    	   rowBounds = new RowBounds((pageObj.getCurrentPage()-1)*10, 10);
+	    	   rowBounds = new RowBounds((pageObj.getCurrentPage()-1)*pageObj.getPageSize(), pageObj.getPageSize());
 	       }
 	       
 	
