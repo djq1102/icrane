@@ -25,6 +25,6 @@ public interface UserInfoQueryDao {
     
 	public List<UserInfo> queryUserInfo(UserInfoQuery userInfoQuery);
 	
-	public int countAll(UserInfoQuery userInfoQuery) throws DAOException;
+	public int countAllUserInfo(UserInfoQuery userInfoQuery) throws DAOException;
 	
 }
