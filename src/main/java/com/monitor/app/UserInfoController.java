@@ -25,7 +25,7 @@ import com.monitor.app.utils.MsgUtils;
 @Controller
 public class UserInfoController {
 	
-	private static final Logger logger = LoggerFactory.getLogger(UserController.class);
+	private static final Logger logger = LoggerFactory.getLogger(UserInfoController.class);
 	@Resource
 	private UserInfoService userInfoService;
 	
