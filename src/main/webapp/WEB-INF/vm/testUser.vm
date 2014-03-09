@@ -1,4 +1,4 @@
-#set($layout="empty.vm")
+#set($layout="/layout/empty.vm")
 
 <h1>
 	Hello world!  $rc
@@ -10,6 +10,7 @@
 
 $result.msg
 
+${username}<br/>
 用户列表:
 #foreach($user in $users)
 	$user.customerId,$user.customerName,$user.customerAddress<br/>

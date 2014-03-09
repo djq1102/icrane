@@ -1,1 +1,6 @@
+#set($layout="/layout/empty.vm")
 index testing...
+
+<br/>
+<a href ="/logout">登出, ${username}
+</a>
