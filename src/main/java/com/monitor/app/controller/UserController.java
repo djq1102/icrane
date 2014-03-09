@@ -1,19 +1,22 @@
-package com.monitor.app;
+package com.monitor.app.controller;
 
+import java.util.Enumeration;
 import java.util.List;
 
 import javax.annotation.Resource;
+import javax.servlet.http.HttpSession;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.User;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import com.monitor.app.dataobject.User;
 import com.monitor.app.result.ServiceResult;
 import com.monitor.app.service.UserService;
 
@@ -77,16 +80,26 @@ public class UserController {
 		}else{
 			model.addAttribute("result2", result2);
 		}
+		
+		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+		if(auth!=null){
+			UserDetails userDetails = (UserDetails) auth.getPrincipal();
+			if(userDetails!=null){
+				model.addAttribute("username", userDetails.getUsername());
+			}
+		}
 		return "testUser";
 	}
 	
 	@RequestMapping(value = "/login")
-	public String login() {
+	public String login(Model model,HttpSession session) {
+		boolean logined = "1".equals(session.getAttribute("login"));
+		logger.warn(">>>action=login,logined=" + session.getAttribute("login"));
+		if(logined){
+				return "redirect:index";
+		}
 		
-		logger.warn(">>>action=login");
-		
-		
-		return "login";
+		return "login/login";
 	}
 	@RequestMapping(value = "/403")
 	public String userDenied() {
@@ -98,8 +111,17 @@ public class UserController {
 	}
 	
 	@RequestMapping(value = "/index")
-	public String index() {
+	public String index(Model model,HttpSession session) {
 		
+		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+		if(auth!=null){
+			UserDetails userDetails = (UserDetails) auth.getPrincipal();
+			if(userDetails!=null){
+				model.addAttribute("username", userDetails.getUsername());
+				session.setAttribute("login", "1");
+				return "index";
+			}
+		}
 		logger.warn(">>>action=index" );
 		
 		

@@ -41,11 +41,16 @@ public class MyUserDetailService implements UserDetailsService {
 			throws UsernameNotFoundException {
 		UserInfoService userInfoService = (UserInfoService)SpringBeanUtil.getBean("userInfoService");
 		ServiceResult result = userInfoService.queryUser(username);
-		if(result==null || !result.isSuccess()){
+		if(!result.isSuccess()){
 			throw new UsernameNotFoundException(username);
 		}
 		
 		UserInfo userInfo = (UserInfo)result.getModule();
+		/*UserInfo userInfo = new UserInfo();
+		userInfo.setCustomerId(1L);
+		userInfo.setLoginName("qinde");
+		userInfo.setPassword("123456");
+		userInfo.setRoleType((short)0);*/
 		String password = userInfo.getPassword();
 		
 		RoleEnum role = RoleEnumUtil.toAuthRole(userInfo.getRoleType());

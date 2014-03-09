@@ -37,10 +37,14 @@ public class MyInvocationSecurityMetadataSource implements FilterInvocationSecur
 		resourceMap = new HashMap<String, Collection<ConfigAttribute>>();
 		
 		Collection<ConfigAttribute> atts = new ArrayList<ConfigAttribute>();
-		ConfigAttribute ca = new SecurityConfig(RoleEnum.ROLE_SUPERADMIN.name());
-		atts.add(ca);
+		ConfigAttribute ca_super = new SecurityConfig(RoleEnum.ROLE_SUPERADMIN.name());
+		ConfigAttribute ca_customer = new SecurityConfig(RoleEnum.ROLE_CUTOMERADMIN.name());
+		ConfigAttribute ca_general = new SecurityConfig(RoleEnum.ROLE_GENERALADMIN.name());
+		atts.add(ca_super);
+		atts.add(ca_customer);
+		atts.add(ca_general);
 		
-		resourceMap.put("/admin", atts);
+		resourceMap.put("/index", atts);
 	}
 
 	@Override
