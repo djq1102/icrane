@@ -50,7 +50,6 @@
 
 										<tr>
 
-											<th style="width:8px;"><input type="checkbox" class="group-checkable" data-set="#sample_2 .checkboxes" /></th>
 
 											<th>设备编号</th>
 											
@@ -62,46 +61,11 @@
 											
 											<th class="hidden-480">机型名称</th>
 
-											<th class="hidden-480">操作</th>
 										</tr>
 
 									</thead>
 
 									<tbody role="alert" aria-live="polite" aria-relevant="all">
-										<tr class="gradeX odd">
-
-											<td class=" sorting_1"><span><input type="checkbox" class="checkboxes" value="1"></span></td>
-
-											<td class=" ">1000</td>
-
-											<td class="hidden-480 ">北京铁路局</td>
-											
-											<td class="hidden-480 ">北京货运中心</td>
-											
-											<td class="hidden-480 ">CT200</td>
-											
-											<td class="hidden-480 ">西门子</td>
-
-											<td class=" "><a class="删除" href="javascript:;">删除</a>&nbsp;<a class="edit" href="javascript:;">修改</a></td>
-
-										</tr>
-										<tr class="gradeX even">
-
-											<td class=" sorting_1"><span><input type="checkbox" class="checkboxes" value="2"></span></td>
-											
-											<td class=" ">2000</td>
-
-											<td class="hidden-480 ">北京铁路局</td>
-											
-											<td class="hidden-480 ">北京货运中心</td>
-											
-											<td class="hidden-480 ">CT201</td>
-											
-											<td class="hidden-480 ">西门子</td>
-
-											<td class=" "><a class="delete" href="javascript:;">删除</a>&nbsp;<a class="edit" href="javascript:;">修改</a></td>
-
-										</tr>
 
 									</tbody>
 

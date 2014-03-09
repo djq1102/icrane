@@ -50,7 +50,6 @@
 
 										<tr>
 
-											<th style="width:8px;"><input type="checkbox" class="group-checkable" data-set="#sample_2 .checkboxes" /></th>
 
 											<th>现场编号</th>
 											
@@ -74,7 +73,6 @@
 									<tbody role="alert" aria-live="polite" aria-relevant="all">
 										<tr class="gradeX odd">
 
-											<td class=" sorting_1"><span><input type="checkbox" class="checkboxes" value="1"></span></td>
 
 											<td class=" ">1000</td>
 
@@ -95,7 +93,6 @@
 										</tr>
 										<tr class="gradeX even">
 
-										<td class=" sorting_1"><span><input type="checkbox" class="checkboxes" value="1"></span></td>
 
 											<td class=" ">1000</td>
 
