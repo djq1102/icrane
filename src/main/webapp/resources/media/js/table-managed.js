@@ -38,7 +38,7 @@ var TableManaged = function() {
 								},
 								"aoColumnDefs" : [ {
 									'bSortable' : false,
-									'aTargets' : [ ajax_data.last_index ], 
+									'aTargets' : [ ajax_data.last_index], 
 									'mRender': function ( data, type, full ) {
 								        return '<a href="'+ajax_data.edit_url+data+'">修改</a>'+'&nbsp;<a href="'+ajax_data.delete_url+data+'">删除</a>';
 									}
@@ -63,6 +63,15 @@ var TableManaged = function() {
 			jQuery('#sample_2_wrapper .dataTables_length select').select2(); // initialzie
 			// select2
 			// dropdown
+		},
+	
+	reload:function(tableId, urlData){
+		  oTable = $(tableId).dataTable();
+//		  /* Example call to load a new file */
+		  oTable.fnReloadAjax( urlData );
+
+		  /* Example call to reload from original file */
+//		  oTable.fnReloadAjax();
 		}
 
 	};
