@@ -16,7 +16,7 @@
 		</div>
 		
 		<div class="portlet-body form" style="display: block;">
-		<form class="form-horizontal">
+		<form class="form-horizontal" action="/userInfo/all.do">
 			<div class="row-fluid">
 
 				<div class="span4 ">
@@ -100,7 +100,7 @@
 
 						<div class="controls">
 
-							<input type="text" class="m-wrap span12"> 
+							<input id="userPhone" name="userPhone" type="text" class="m-wrap span12" value="${userPhone}"> 
 
 						</div>
 
@@ -116,7 +116,7 @@
 				<div class="span4 ">
 					<div class="control-group">
 						<div class="controls">
-							<button class="btn purple">查询 <i class="icon-search"></i></button>	</div>
+							<button id="search_button" class="btn purple">查询 <i class="icon-search"></i></button>	</div>
 					</div>
 				</div>
 			</div>
