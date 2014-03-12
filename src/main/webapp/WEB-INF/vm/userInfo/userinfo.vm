@@ -42,19 +42,24 @@
 
 <script>
 
-	var ajax_data = {
-			ajax_url:"http://localhost:8080/demo/JqueryTableServlet",
-			last_index:8,
-			delete_url:"http://localhost:8080/demo/JqueryTableServlet?id=",
-			edit_url:"http://localhost:8080/demo/JqueryTableServlet?id="
-	} 
+	
 	
 	jQuery(document).ready(function() {   
-		    console.log(ajax_data.ajax_url);
+		  
 	   // initiate layout and plugins
+	    var custId = $("#custId").val();
+   		var roleType = $("#roleType");
+   		var userName = $("#userName").val();
+   		var userPhone =$("#userPhone").val();
+	   var ajax_data = {
+			ajax_url:"http://localhost:8080/userInfo/queryList.do?userPhone="+userPhone,
+			last_index:6,
+			delete_url:"http://localhost:8080/demo/JqueryTableServlet?id=",
+			edit_url:"http://localhost:8080/demo/JqueryTableServlet?id="
+		} 
+		  console.log(ajax_data.ajax_url);
 	   App.init();
 	   TableManaged.init(ajax_data);
-
 	});
 </script>
 
