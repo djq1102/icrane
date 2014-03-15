@@ -11,12 +11,10 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.servlet.ModelAndView;
 
 import com.alibaba.fastjson.JSONObject;
 import com.monitor.app.dataobject.UserInfo;
@@ -43,7 +41,7 @@ public class UserInfoController {
 		return "userInfo/userinfo_input";
 	}
 	
-	@RequestMapping(value = "/userInfo/addUserInfo")
+	@RequestMapping(value = "/userInfo/addUserInfo",method = RequestMethod.POST)
 	public String addUserInfo(@RequestParam("userName") String userName, @RequestParam("userPhone") String userPhone, 
 			@RequestParam("userEmail") String userEmail, @RequestParam("loginName") String loginName,
 			@RequestParam("password") String password, 
@@ -52,19 +50,17 @@ public class UserInfoController {
 		logger.warn(">>>action=addUserInfo," + userName);
 		UserInfo userInfo = new UserInfo();
 		userInfo.setUserName(userName);
-		userInfo.setUserPhohe(userPhone);
+		userInfo.setUserPhone(userPhone);
 		userInfo.setUserEmail(userEmail);
 		userInfo.setLoginName(loginName);
 		userInfo.setPassword(password);
 		userInfo.setCustomerId(customerId);
 		userInfo.setRoleType((short)roleType);
 		ServiceResult result = userInfoService.userInfoAdd(userInfo);
-		if(result.isSuccess()){
-			model.addAttribute("msg", MsgUtils.MSG_SUCCESS);
-		}else{
-			model.addAttribute("msg",MsgUtils.MSG_FAIL);
+		if(!result.isSuccess()){
+			logger.error(">>>action=addUserInfor error" + userName);
 		}
-		return "userInfo/userinfo";
+		return "redirect:userInfo/index.htm";
 	}
 	
 	@RequestMapping(value = "/userInfo/editUserInfo",method = RequestMethod.GET)
@@ -77,7 +73,17 @@ public class UserInfoController {
 		}else{
 			model.addAttribute("msg", MsgUtils.MSG_FAIL);
 		}
-		return "userInfo/userInfoEdit";
+		return "userInfo/userinfo_edit_input";
+	}
+	
+	@RequestMapping(value = "/userInfo/deleteUserInfo",method = RequestMethod.GET)
+	public String deleteUserInfo(@RequestParam("userId") long userId,Model model) {
+		logger.warn(">>>action=edit" );
+		ServiceResult result = userInfoService.userInfoDelte(userId);
+		if(!result.isSuccess()){
+			logger.warn(">>>action=deleteUserInfo error userId="+userId );
+		}
+		return "userInfo/userinfo";
 	}
 	
 	@RequestMapping(value = "/userInfo/updateUserInfo")
@@ -91,7 +97,7 @@ public class UserInfoController {
 		if(result.isSuccess()){
 			UserInfo userInfo = (UserInfo)result.getModule();
 			userInfo.setUserName(userName);
-			userInfo.setUserPhohe(userPhone);
+			userInfo.setUserPhone(userPhone);
 			userInfo.setUserEmail(userEmail);
 			userInfo.setLoginName(loginName);
 			userInfo.setPassword(password);
@@ -110,23 +116,25 @@ public class UserInfoController {
 	}
 	
 	@RequestMapping(value = "/userInfo/index",method = {RequestMethod.POST,RequestMethod.GET})
-	public String index(Model model,@ModelAttribute UserInfo userInfo) {
+	public String index(Model model,UserInfo userInfo) {
 		logger.warn(">>>action=/userInfo/index" );
-		if(userInfo.getUserPhone() != null){
-			model.addAttribute("userPhone", userInfo.getUserPhone());
-		}
+		model.addAttribute("userPhone", userInfo.getUserPhone());
+		model.addAttribute("userName", userInfo.getUserName());
 		return "userInfo/userinfo";
 	}
-	
 	
 	@SuppressWarnings({ "rawtypes", "unchecked" })
 	@RequestMapping(value = "/userInfo/queryList",method = RequestMethod.GET,produces = "application/json; charset=utf-8")
 	@ResponseBody 
 	public String queryUserInfoList(@RequestParam("iDisplayStart") int start, @RequestParam("iDisplayLength") int pagesize, @RequestParam("sEcho") int sEcho,
-		@ModelAttribute UserInfo userInfo){
+		UserInfo userInfo){
 		long customerId = 1;
 		UserInfoQuery userInfoQuery = new UserInfoQuery();
 		userInfoQuery.setCustomerId(customerId);
+		userInfoQuery.setUserPhone(userInfo.getUserPhone());
+		userInfoQuery.setUserName(userInfo.getUserName());
+		userInfoQuery.setBegin(start);
+		userInfoQuery.setEnd(start+pagesize);
 		ServiceResult result = userInfoService.queryAllUserInfo(userInfoQuery);
 		ServiceResult numResult = userInfoService.totalCount(userInfoQuery);
 		List<UserInfo> userInfoList  = (List<UserInfo>)result.getModule();
