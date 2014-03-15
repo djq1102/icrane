@@ -1,122 +1,30 @@
 <div class="span6 responsive" data-tablet="span12 fix-offset" data-desktop="span6">
-
 						<!-- BEGIN EXAMPLE TABLE PORTLET-->
-
 						<div class="portlet box grey">
-
 							<div class="portlet-title">
-
 								<div class="caption"><i class="icon-user"></i>客户列表</div>
-
 								<div class="actions">
-
-									<a href="datainput.do" class="btn blue"><i class="icon-pencil"></i> 新增</a>
-
-									<div class="btn-group">
-
-										<a class="btn green" href="#" data-toggle="dropdown">
-
-										<i class="icon-cogs"></i> 工具
-
-										<i class="icon-angle-down"></i>
-
-										</a>
-
-										<ul class="dropdown-menu pull-right">
-
-											<li><a href="#"><i class="icon-pencil"></i> Edit</a></li>
-
-											<li><a href="#"><i class="icon-trash"></i> Delete</a></li>
-
-											<li><a href="#"><i class="icon-ban-circle"></i> Ban</a></li>
-
-											<li class="divider"></li>
-
-											<li><a href="#"><i class="i"></i>admin</a></li>
-
-										</ul>
-
-									</div>
-
+									<a href="customerInput.htm" class="btn blue"><i class="icon-pencil"></i> 新增</a>
 								</div>
-
 							</div>
 
 							<div class="portlet-body">
-
 								<table class="table table-striped table-bordered table-hover" id="sample_2">
-
 									<thead>
-
 										<tr>
-
-											<th style="width:8px;"><input type="checkbox" class="group-checkable" data-set="#sample_2 .checkboxes" /></th>
-
 											<th>客户编号</th>
-											
 											<th class="hidden-480">客户类型</th>
-											
 											<th class="hidden-480">客户名称</th>
-
 											<th class="hidden-480">联系人</th>
-											
 											<th class="hidden-480">手机号</th>
-											
 											<th class="hidden-480">邮箱</th>
-
 											<th class="hidden-480">操作</th>
 										</tr>
-
 									</thead>
-
 									<tbody role="alert" aria-live="polite" aria-relevant="all">
-										<tr class="gradeX odd">
-
-											<td class=" sorting_1"><span><input type="checkbox" class="checkboxes" value="1"></span></td>
-
-											<td class=" ">1000</td>
-
-											<td class="hidden-480 ">平台客户</td>
-											
-											<td class="hidden-480 ">京能电力</td>
-											
-											<td class="hidden-480 ">张三</td>
-											
-											<td class="hidden-480 ">123@123.com</td>
-											
-											<td class="hidden-480 ">13588010101</td>
-
-											<td class=" "><a class="view" href="javascript:;">查看</a>&nbsp;<a class="delete" href="javascript:;">删除</a>&nbsp;<a class="edit" href="javascript:;">修改</a></td>
-
-										</tr>
-										<tr class="gradeX even">
-
-										<td class=" sorting_1"><span><input type="checkbox" class="checkboxes" value="1"></span></td>
-
-											<td class=" ">1000</td>
-
-											<td class="hidden-480 ">平台客户</td>
-											
-											<td class="hidden-480 ">北京铁路局</td>
-											
-											<td class="hidden-480 ">李四</td>
-											
-											<td class="hidden-480 ">123@123.com</td>
-											
-											<td class="hidden-480 ">13588010101</td>
-
-											<td class=" "><a class="view" href="javascript:;">查看</a>&nbsp;<a class="delete" href="javascript:;">删除</a>&nbsp;<a class="edit" href="javascript:;">修改</a></td>
-
-										</tr>
-										
 									</tbody>
-
 								</table>
-								
 							</div>
-
 						</div>
-
 						<!-- END EXAMPLE TABLE PORTLET-->
-
 					</div>

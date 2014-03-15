@@ -1,66 +1,38 @@
 <div class="span12">
 	<!-- BEGIN SEARCH PORTLET-->
-
 	<div class="portlet ">
-
 		<div class="portlet-title">
-
 			<div class="caption"><i class="icon-search"></i>查询条件</div>
-
 			<div class="tools">
-
 				<a href="javascript:;" class="collapse"></a>
-
 			</div>
-
 		</div>
 		
 		<div class="portlet-body form" style="display: block;">
-		<form class="form-horizontal">
+		<form class="form-horizontal" action="/customer/index.do" method="POST">
 			<div class="row-fluid">
-
 				<div class="span4 ">
-
 					<div class="control-group">
-
 						<label class="control-label">客户类型</label>
-
 						<div class="controls">
-
-							<select class="small m-wrap" tabindex="1">
-
-								<option value="Category 1">平台客户</option>
-
-								<option value="Category 2">机构客户</option>
-
-
+							<select class="small m-wrap" tabindex="1" name="customerType">
+								<option value="0">平台客户</option>
+								<option value="1">机构客户</option>
 							</select>
-
 						</div>
-
 					</div>
-
 				</div>
 
 				<!--/span-->
 				<div class="span4 ">
-
 					<div class="control-group">
-
 						<label class="control-label">客户名称</label>
-
 						<div class="controls">
-
-							<input type="text" class="m-wrap span12"> 
-
+							<input type="text" id="customerName" class="m-wrap span12" name="customerName" value="$!{customerName}"> 
 						</div>
-
 					</div>
-
 				</div>
-
 				<!--/span-->
-
 			</div>
 			<!--/row-->
 			
@@ -74,9 +46,6 @@
 			</div>
 		</form>
 		</div>
-		
 	</div>
-
 	<!-- END SEARCH FORM>
-
 </div>

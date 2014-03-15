@@ -46,7 +46,7 @@
 							</li>	
 							
 							<li>
-								客户新增 
+								客户编辑 
 							</li>
 						</ul>
 
@@ -62,7 +62,7 @@
 				
 				<div class="row-fluid">
 					<!-- BEGIN SEARCH FORM -->
-					#parse("/customer/customer_input_form.vm")
+					#parse("/customer/customer_edit_input_form.vm")
 					<!-- END SEARCH FORM -->
 				</div>
 
