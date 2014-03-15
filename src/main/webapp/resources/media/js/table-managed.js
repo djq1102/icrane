@@ -19,6 +19,7 @@ var TableManaged = function() {
 								// here
 								],
 								// set the initial value
+								"bSort": false,
 								"bFilter": false,//去掉搜索框
 								"bServerSide" : true,
 								"sAjaxSource" : ajax_data.ajax_url,
@@ -32,6 +33,7 @@ var TableManaged = function() {
 										"sPrevious" : "前一页",
 										"sNext" : "后一页"
 									},
+									"sZeroRecords": "对不起，查询不到相关数据！",
 									"sEmptyTable" : "表中无数据存在！",
 					                "sInfo" : "当前显示 _START_ 到 _END_ 条，共 _TOTAL_ 条记录",
 									
@@ -40,7 +42,7 @@ var TableManaged = function() {
 									'bSortable' : false,
 									'aTargets' : [ ajax_data.last_index], 
 									'mRender': function ( data, type, full ) {
-								        return '<a href="'+ajax_data.edit_url+data+'">修改</a>'+'&nbsp;<a href="'+ajax_data.delete_url+data+'">删除</a>';
+								        return '<a href="'+ajax_data.edit_url+data+'">修改</a>'+'&nbsp;<a href="'+ajax_data.delete_url+data+'">删除</a>'+'&nbsp;<a href="'+ajax_data.view_url+data+'">查看</a>';
 									}
 								}]
 							});
