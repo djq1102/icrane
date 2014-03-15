@@ -17,7 +17,7 @@
 	<sql id="customerFields">
 		<![CDATA[
 			customer_id,
-			customerName,
+			customer_name,
 			customer_type,
 			customer_address,
 			contact_name,
@@ -31,7 +31,13 @@
 	<sql id="selectCondition">
 		<where>
 			<if test="null != customerId">
-				customer_id = #{customerId}
+				AND customer_id = #{customerId}
+			</if>
+			<if test="null != customerName and customerName != ''">
+				AND customer_name = #{customerName}
+			</if>
+			<if test="null != customerType and customerType != ''">
+				AND customer_type = #{customerType}
 			</if>
 		</where>
 	</sql>
@@ -49,7 +55,7 @@
 				customer_address = #{customerAddress},
 			</if>
 			<if test="null != contactName">
-				contact_name = #{contact_name},
+				contact_name = #{contactName},
 			</if>
 			<if test=" null != contactPhone">
 				contact_phone = #{contactPhone},
@@ -82,7 +88,7 @@
 	
 	<select id="queryCustomer" parameterType="customerInfoQuery" resultMap="customerResult">
 		SELECT <include refid="customerFields"/>
-		FROM cr_customer
+		FROM cr_customer 
 		<include refid="selectCondition"/>
 	</select>
 	
@@ -92,7 +98,7 @@
 	</select>
 	
 	<select id="countAll" resultType="int">
-        select count(*) c from cr_customer;
+        select count(*) c from cr_customer 
         <include refid="selectCondition"/>
     </select>	
     
