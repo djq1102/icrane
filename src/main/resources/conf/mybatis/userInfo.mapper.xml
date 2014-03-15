@@ -34,6 +34,12 @@
 			<if test="null != customerId">
 				customer_id = #{customerId}
 			</if>
+			<if test="null != userPhone and userPhone != '' ">
+				AND user_phone = #{userPhone}
+			</if>
+			<if test="null != userName and userName != '' ">
+				AND user_name = #{userName}
+			</if>
 		</where>
 	</sql>
 	
@@ -41,7 +47,7 @@
 		<set>
 			gmt_modify = now(),
 			<if test="null != userName">
-				user_name = #{duration},
+				user_name = #{userName},
 			</if>
 			<if test="null != userPhone">
 				user_phone = #{userPhone},
@@ -82,11 +88,14 @@
 	    FROM cr_user_info WHERE login_name = #{nick}
 	</select>
 	
-		
 	<select id="queryUserInfoByUserId" parameterType="java.lang.Long"  resultMap="userInfoResult">
 		SELECT <include refid="userInfoFields"/>
 		FROM cr_user_info WHERE user_id = #{userId}
 	</select>
+	
+	<delete id="deleteUserInfo" parameterType="java.lang.Long">
+		DELETE cr_user_info where user_id = #{userId}
+	</delete>
 	
 	<select id="queryUserInfo" parameterType="UserInfoQuery" resultMap="userInfoResult">
 		SELECT <include refid="userInfoFields"/>
