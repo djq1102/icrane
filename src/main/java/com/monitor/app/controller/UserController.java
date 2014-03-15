@@ -1,6 +1,5 @@
 package com.monitor.app.controller;
 
-import java.util.Enumeration;
 import java.util.List;
 
 import javax.annotation.Resource;
@@ -19,6 +18,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import com.monitor.app.result.ServiceResult;
 import com.monitor.app.service.UserService;
+import com.monitor.app.web.security.ext.SessionConstant;
+import com.monitor.app.web.security.ext.UserExt;
 
 /**
  * Handles requests for the application home page.
@@ -119,6 +120,9 @@ public class UserController {
 			if(userDetails!=null){
 				model.addAttribute("username", userDetails.getUsername());
 				session.setAttribute("login", "1");
+				UserExt userExt = (UserExt)userDetails;
+				session.setAttribute(SessionConstant.USER_ID, userExt.getUserId());
+				session.setAttribute(SessionConstant.CUSTOMER_ID, userExt.getCustomerId());
 				return "index";
 			}
 		}
