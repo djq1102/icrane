@@ -54,7 +54,6 @@ public class PaginationInterceptor implements Interceptor{
 	    	   Pagination pageObj = (Pagination)pagination;
 	    	   rowBounds = new RowBounds((pageObj.getCurrentPage()-1)*pageObj.getPageSize(), pageObj.getPageSize());
 	       }
-	       
 	
 	       Dialect.Type databaseType  =null;
 	       try{
