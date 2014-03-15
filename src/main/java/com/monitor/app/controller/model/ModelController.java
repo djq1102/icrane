@@ -24,6 +24,13 @@ public class ModelController {
 	@Resource
 	private ModelService modelService;
 	
+	@RequestMapping(value = "/model/index")
+	public String index( Model model) throws Exception{
+		
+		
+		return "plcModel/edit_input";
+	}
+	
 	@RequestMapping(value = "/model/add")
 	public String add(@RequestParam("name") String name, @RequestParam("sensorType") int sensorType, 
 			@RequestParam("ioType") int ioType, Model model) throws Exception{
