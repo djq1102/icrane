@@ -23,6 +23,8 @@ public interface UserInfoQueryDao {
 	
     public int updateUserInfo(UserInfo userInfo);
     
+    public int deleteUserInfo(long userId);
+    
 	public List<UserInfo> queryUserInfo(UserInfoQuery userInfoQuery);
 	
 	public int countAllUserInfo(UserInfoQuery userInfoQuery) throws DAOException;

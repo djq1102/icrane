@@ -151,7 +151,7 @@ public class UserInfo {
      *
      * @mbggenerated
      */
-    public void setUserPhohe(String userPhone) {
+    public void setUserPhone(String userPhone) {
         this.userPhone = userPhone == null ? null : userPhone.trim();
     }
 

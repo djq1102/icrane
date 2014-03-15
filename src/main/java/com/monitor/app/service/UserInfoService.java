@@ -10,7 +10,6 @@ import javax.annotation.Resource;
 import com.monitor.app.dao.userinfo.UserInfoQueryDao;
 import com.monitor.app.dataobject.UserInfo;
 import com.monitor.app.exception.DAOException;
-import com.monitor.app.exception.ManagerException;
 import com.monitor.app.query.UserInfoQuery;
 import com.monitor.app.result.ServiceResult;
 import com.monitor.app.result.msg.MsgEnum;
@@ -50,14 +49,22 @@ public class UserInfoService {
 		return MsgUtils.fillModule(userInfo);
 	}
 	
-	public ServiceResult queryUserInfoByuserId(long userId){
+	public ServiceResult userInfoDelte(long userId) {
+		int row = userInfoQueryDao.deleteUserInfo(userId);
+		if(row != 1){
+			return MsgUtils.fillMsg(MsgEnum.USER_UPDATE_FAIL);
+		}
+		ServiceResult result = new ServiceResult(true);
+		return result;
+	}
+	
+   public ServiceResult queryUserInfoByuserId(long userId){
 		UserInfo userInfo = userInfoQueryDao.queryUserInfoByUserId(userId);
 		if(userInfo==null){
 			return MsgUtils.fillMsg(MsgEnum.USER_NOT_EXIST);
 		}
 		return MsgUtils.fillModule(userInfo);
 	}
-	
 	
 	public ServiceResult queryUserInfoByCustomerId(long customerId){
 		UserInfoQuery userInfoQuery = new UserInfoQuery();
