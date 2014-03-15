@@ -9,6 +9,8 @@ import javax.annotation.Resource;
 
 import com.monitor.app.dao.userinfo.UserInfoQueryDao;
 import com.monitor.app.dataobject.UserInfo;
+import com.monitor.app.exception.DAOException;
+import com.monitor.app.exception.ManagerException;
 import com.monitor.app.query.UserInfoQuery;
 import com.monitor.app.result.ServiceResult;
 import com.monitor.app.result.msg.MsgEnum;
@@ -73,6 +75,15 @@ public class UserInfoService {
 			return MsgUtils.fillMsg(MsgEnum.FAIL_USER_QUERY);
 		}
 		return MsgUtils.fillModule(userInfoList);
+	}
+	
+	public ServiceResult totalCount(UserInfoQuery userInfoQuery){
+		try {
+			int totalNum = userInfoQueryDao.countAllUserInfo(userInfoQuery);
+			return MsgUtils.fillModule(totalNum);
+		} catch (DAOException e) {
+			return MsgUtils.fillMsg(MsgEnum.FAIL_USER_QUERY);
+		}
 	}
 	
 	public ServiceResult queryUsersByPage(int page,int pagesize){
