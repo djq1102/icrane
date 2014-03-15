@@ -1,7 +1,7 @@
 /**
  * 
  */
-package com.monitor.app.dao.var;
+package com.monitor.app.dao.model;
 
 import java.util.List;
 

@@ -11,8 +11,8 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 
-import com.monitor.app.dao.model.ModelVarDao;
-import com.monitor.app.dataobject.ModelVar;
+import com.monitor.app.dao.model.ModelDao;
+import com.monitor.app.dataobject.PlcModel;
 import com.monitor.app.result.ServiceResult;
 import com.monitor.app.result.msg.MsgEnum;
 import com.monitor.app.utils.MsgUtils;
@@ -22,16 +22,16 @@ import com.monitor.app.utils.MsgUtils;
  *
  */
 @Service
-public class VariableService {
+public class ModelService {
 
-	private static final Logger log = LoggerFactory.getLogger(VariableService.class);
+	private static final Logger log = LoggerFactory.getLogger(ModelService.class);
 	
 	@Resource
-	private ModelVarDao modelVarDao;
+	private ModelDao modelDao;
 	
-	public ServiceResult addModelVar(ModelVar modelVar){
+	public ServiceResult addModel(PlcModel plcModel){
 		try{
-			int count = modelVarDao.addModelVar(modelVar);
+			int count = modelDao.addModel(plcModel);
 			if(count<=0){
 				return MsgUtils.fillMsg(MsgEnum.MODEL_VAR_ADD_FAIL);
 			}
@@ -43,9 +43,9 @@ public class VariableService {
 		return MsgUtils.fillModule(null);
 	}
 	
-	public ServiceResult updateModelVar(ModelVar modelVar){
+	public ServiceResult updateModel(PlcModel plcModel){
 		try{
-			int count = modelVarDao.updateModelVar(modelVar);
+			int count = modelDao.updateModel(plcModel);
 			if(count<=0){
 				return MsgUtils.fillMsg(MsgEnum.MODEL_VAR_UPDATE_FAIL);
 			}
@@ -58,9 +58,9 @@ public class VariableService {
 		
 	}
 	
-	public ServiceResult delModelVar(long varId){
+	public ServiceResult delModel(long modelId){
 		try{
-			int count = modelVarDao.delModelVar(varId);
+			int count = modelDao.delModel(modelId);
 			if(count<=0){
 				return MsgUtils.fillMsg(MsgEnum.MODEL_VAR_DELETE_FAIL);
 			}
@@ -73,17 +73,18 @@ public class VariableService {
 		
 	}
 	
-	public ServiceResult queryModelVars(long modelId){
-		List<ModelVar> vars = null;
+	public ServiceResult queryModels(String modelName){
+		List<PlcModel> models = null;
 		try{
-			vars = modelVarDao.queryVarsByModelId(modelId);
+			models = modelDao.queryByModelName(modelName);
 			
 		}catch(Exception e){
 			log.error("query_model_var_fails",e);
 			return MsgUtils.fillMsg(MsgEnum.MODEL_VAR_QUERY_FAIL);
 		}
+		
 		//success
-		return MsgUtils.fillModule(vars);
+		return MsgUtils.fillModule(models);
 	}
 	
 }
