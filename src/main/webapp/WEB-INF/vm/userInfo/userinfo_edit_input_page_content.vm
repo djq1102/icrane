@@ -46,16 +46,14 @@
 
 								<i class="icon-home"></i>
 
-								<a href="inxdex.do">用户管理</a> 
+								<a href="index.do">用户管理</a> 
 								
 								<span class="icon-angle-right"></span>		
 
 							</li>	
 							
 							<li>
-
-
-								<a href="/userInfo/userinfoInput.do"">用户新增</a> 
+								用户编辑
 							</li>
 						</ul>
 
@@ -71,7 +69,7 @@
 				
 				<div class="row-fluid">
 					<!-- BEGIN SEARCH FORM -->
-					#parse("/userinfo/userinfo_input_form.vm")
+					#parse("/userinfo/userinfo_edit_input_form.vm")
 					<!-- END SEARCH FORM -->
 				</div>
 

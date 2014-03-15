@@ -52,10 +52,10 @@
    		var userName = $("#userName").val();
    		var userPhone =$("#userPhone").val();
 	   var ajax_data = {
-			ajax_url:"/userInfo/queryList.do?userInfo.usePhone="+userPhone,
+			ajax_url:"/userInfo/queryList.do?userPhone="+userPhone+"&userName="+userName,
 			last_index:6,
 			delete_url:"http://localhost:8080/demo/JqueryTableServlet?id=",
-			edit_url:"http://localhost:8080/demo/JqueryTableServlet?id="
+			edit_url:"/userInfo/editUserInfo.do?userId="
 		} 
 		  console.log(ajax_data.ajax_url);
 	   App.init();
