@@ -16,7 +16,7 @@
 	<resources mapping="/js/**" location="/resources/js/" />
 	<resources mapping="/style/**" location="/resources/style/" />
 	<resources mapping="/image/**" location="/resources/image/" />
-	<resources mapping="/**/media/**" location="/resources/media/" />
+	<resources mapping="/media/**" location="/resources/media/" />
 	<context:component-scan base-package="com.monitor.app" />
 	
 	
