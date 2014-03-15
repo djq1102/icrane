@@ -75,5 +75,17 @@ public class CustomerService {
 		result.setModule(list);
 		return result;
 	}
+	
+	public ServiceResult totalCount(CustomerInfoQuery query) throws ManagerException{
+		int num = 0;
+		try{
+			num = customerDao.countAll(query);
+		}catch(DAOException e){
+			throw new ManagerException(e);
+		}
+		ServiceResult result = new ServiceResult(true);
+		result.setModule(num);
+		return result;
+	}
 
 }

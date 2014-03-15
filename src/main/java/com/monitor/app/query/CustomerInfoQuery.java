@@ -1,8 +1,8 @@
 package com.monitor.app.query;
 
-import java.io.Serializable;
+import com.monitor.app.dao.common.Pagination;
 
-public class CustomerInfoQuery implements Serializable{
+public class CustomerInfoQuery extends Pagination{
 
 	/**
 	 * 
@@ -12,6 +12,8 @@ public class CustomerInfoQuery implements Serializable{
 	private Long customerId;
 	
 	private String customerName;
+	
+	private Short customerType;
 	
 	public Long getCustomerId() {
 		return customerId;
@@ -29,5 +31,11 @@ public class CustomerInfoQuery implements Serializable{
 		this.customerName = customerName;
 	}
 
-	
+	public Short getCustomerType() {
+		return customerType;
+	}
+
+	public void setCustomerType(Short customerType) {
+		this.customerType = customerType;
+	}
 }

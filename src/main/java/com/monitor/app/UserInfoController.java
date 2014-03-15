@@ -21,6 +21,7 @@ import com.monitor.app.dataobject.UserInfo;
 import com.monitor.app.query.UserInfoQuery;
 import com.monitor.app.result.ServiceResult;
 import com.monitor.app.service.UserInfoService;
+import com.monitor.app.utils.JsonUtil;
 import com.monitor.app.utils.MsgUtils;
 
 /**
@@ -60,7 +61,7 @@ public class UserInfoController {
 		if(!result.isSuccess()){
 			logger.error(">>>action=addUserInfor error" + userName);
 		}
-		return "redirect:userInfo/index.htm";
+		return "redirect:/index.htm";
 	}
 	
 	@RequestMapping(value = "/userInfo/editUserInfo",method = RequestMethod.GET)
@@ -139,13 +140,7 @@ public class UserInfoController {
 		ServiceResult numResult = userInfoService.totalCount(userInfoQuery);
 		List<UserInfo> userInfoList  = (List<UserInfo>)result.getModule();
 		List<Map> resultMap = buildList(userInfoList);
-		Map map = new HashMap();//jquery datatable 需要的数据类型封装
-		map.put("aaData", resultMap);//数据集
-		map.put("iTotalRecords", numResult.getModule());//总条数
-		map.put("iTotalDisplayRecords", numResult.getModule());//过滤之后显示的实际条数
-		map.put("sEcho", sEcho);//来自客户端 sEcho 的没有变化的复制品
-		logger.warn(">>>userInfo="+JSONObject.toJSONString(map));
-		return JSONObject.toJSONString(map);
+		return JsonUtil.buildJosn(resultMap, numResult, sEcho);
 	}
 	
 	@SuppressWarnings({ "rawtypes", "unchecked" })
