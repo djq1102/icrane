@@ -16,7 +16,7 @@
 		</div>
 		
 		<div class="portlet-body form" style="display: block;">
-		<form class="form-horizontal" action="/userInfo/all.do">
+		<form class="form-horizontal" action="/userInfo/index.do" method="POST">
 			<div class="row-fluid">
 
 				<div class="span4 ">
@@ -78,7 +78,7 @@
 
 						<div class="controls">
 
-							<input type="text" class="m-wrap span12"> 
+							<input type="text" class="m-wrap span12" > 
 
 						</div>
 

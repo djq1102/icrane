@@ -55,7 +55,7 @@
 							<li>
 
 
-								<a href="index.html">用户新增</a> 
+								<a href="/userInfo/userinfoInput.do"">用户新增</a> 
 							</li>
 						</ul>
 
