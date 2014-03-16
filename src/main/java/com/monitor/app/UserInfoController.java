@@ -16,7 +16,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.alibaba.fastjson.JSONObject;
 import com.monitor.app.dataobject.UserInfo;
 import com.monitor.app.query.UserInfoQuery;
 import com.monitor.app.result.ServiceResult;

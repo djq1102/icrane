@@ -65,6 +65,16 @@ public class SiteService {
 		return MsgUtils.fillModule(site);
 	}
 	
+	public ServiceResult totalCount(SiteQuery query) throws ManagerException{
+		int rows = 0;
+		try {
+			rows = siteDao.countAll(query);
+		} catch (DAOException e){
+			throw new ManagerException(e);
+		}
+		return MsgUtils.fillModule(rows);
+	}
+	
 	public ServiceResult queryAllSite(SiteQuery query) throws ManagerException{
 		List<Site> siteList = new ArrayList<Site>();
 		try{
