@@ -19,6 +19,8 @@ public interface CustomerDao {
 	  
 	 public List<Customer> queryCustomer(CustomerInfoQuery query) throws DAOException;
 	 
+	 public List<Customer> queryAllCustomer() throws DAOException;
+	 
 	 public Customer queryByCustomerId(long customerId) throws DAOException;
 	 
 	 public int countAll(CustomerInfoQuery query) throws DAOException;
