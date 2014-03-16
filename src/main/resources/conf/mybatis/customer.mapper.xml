@@ -92,6 +92,12 @@
 		<include refid="selectCondition"/>
 	</select>
 	
+	<select id="queryAllCustomer" resultMap="customerResult">
+		SELECT <include refid="customerFields"/>
+		FROM cr_customer 
+		<include refid="selectCondition"/>
+	</select>
+	
 	<select id="queryByCustomerId" parameterType="java.lang.Long" resultMap="customerResult">
 		SELECT <include refid="customerFields"/>
 		FROM cr_customer where customer_id =  #{customerId}
