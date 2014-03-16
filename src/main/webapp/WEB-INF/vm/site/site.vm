@@ -39,19 +39,20 @@
 <script src="/media/js/table-managed.js"></script>     
 
 <script>
-	var ajax_data = {
-			ajax_url:"http://localhost:8080/demo/JqueryTableServlet",
-			last_index:8,
+
+	jQuery(document).ready(function() {  
+	   var siteName = $("#siteName").val();
+	   var customerId = $("#customerId").val();
+		var ajax_data = {
+			ajax_url:"/site/querySiteList.do?siteName="+siteName+"&customerId="+customerId,
+			last_index:7,
 			delete_url:"http://localhost:8080/demo/JqueryTableServlet?id=",
-			edit_url:"http://localhost:8080/demo/JqueryTableServlet?id="
-	} 
-	
-	jQuery(document).ready(function() {   
-		    console.log(ajax_data.ajax_url);
+			edit_url:"/site/editSite.do?siteId="
+		} 
+		console.log(ajax_data.ajax_url);
 	   // initiate layout and plugins
 	   App.init();
 	   TableManaged.init(ajax_data);
-
 	});
 </script>
 

@@ -2,88 +2,50 @@
 	<!-- BEGIN SEARCH PORTLET-->
 
 	<div class="portlet ">
-
 		<div class="portlet-title">
-
 			<div class="caption"><i class="icon-search"></i>查询条件</div>
-
 			<div class="tools">
-
 				<a href="javascript:;" class="collapse"></a>
-
 			</div>
-
 		</div>
 		
 		<div class="portlet-body form" style="display: block;">
-		<form class="form-horizontal">
+		<form class="form-horizontal" action="/site/index.do" method="post">
 			<div class="row-fluid">
-
 				<div class="span4 ">
-
 					<div class="control-group">
-
 						<label class="control-label">所属客户</label>
-
 						<div class="controls">
-
-							<select class="small m-wrap" tabindex="1">
-
-								<option value="Category 1">北京铁路局</option>
-
-								<option value="Category 2">广州铁路局</option>
-
-
+							<select id="customerId"  class="small m-wrap" tabindex="1" name="customerId">
+								#foreach($customer in $customers)
+									<option value="$!{customer.customerId}">$!{customer.customerName}</option>
+								#end	
 							</select>
-
 						</div>
-
 					</div>
-
 				</div>
 
 				<!--/span-->
 				<div class="span4 ">
-
 					<div class="control-group">
-
 						<label class="control-label">现场名称</label>
-
 						<div class="controls">
-
-							<input type="text" class="m-wrap span12"> 
-
+							<input id="siteName" type="text" class="m-wrap span12" name="siteName" value="$!{siteName}"> 
 						</div>
-
 					</div>
-
 				</div>
 
 				<!--/span-->
 				<div class="span4 ">
-
 					<div class="control-group">
-
 						<label class="control-label">状态</label>
-
 						<div class="controls">
-
-							<select class="small m-wrap" tabindex="1">
-
-								<option value="Category 1">在建</option>
-
-								<option value="Category 2">维修</option>
-
-								<option value="Category 2">维修</option>
-
-								<option value="Category 2">维修</option>
-
+							<select class="small m-wrap" tabindex="1" name="status" id="status">
+								<option value="1">在建</option>
+								<option value="2">维修</option>
 							</select>
-
 						</div>
-
 					</div>
-
 				</div>
 
 				<!--/span-->

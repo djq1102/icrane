@@ -44,9 +44,8 @@
 								<a href="index.htm">现场管理</a> 
 								<span class="icon-angle-right"></span>		
 							</li>	
-							
 							<li>
-								现场新增
+								现场编辑
 							</li>
 						</ul>
 
@@ -62,7 +61,7 @@
 				
 				<div class="row-fluid">
 					<!-- BEGIN SEARCH FORM -->
-					#parse("/site/site_input_form.vm")
+					#parse("/site/site_edit_input_form.vm")
 					<!-- END SEARCH FORM -->
 				</div>
 
