@@ -63,7 +63,7 @@ public class ModelController extends AbstractController{
 
 	@RequestMapping(value = "/model/query",method = RequestMethod.GET,produces = "application/json; charset=utf-8")
 	@ResponseBody
-	public String update(@RequestParam("modelId") int modelId, @RequestParam("modelName") String modelName,
+	public String query(@RequestParam("modelId") int modelId, @RequestParam("modelName") String modelName,
 			@RequestParam("iDisplayStart") int start, @RequestParam("iDisplayLength") int pagesize,
 			@RequestParam("sEcho") int sEcho, Model model) throws Exception{
 		
@@ -72,7 +72,6 @@ public class ModelController extends AbstractController{
 		query.setModelName(modelName);
 		query.setBegin(start);
 		query.setEnd(start+pagesize);
-		
 		
 		ServiceResult dataResult = modelService.queryModels(query);
 		ServiceResult countResult = modelService.totalCount(query);
@@ -113,6 +112,7 @@ public class ModelController extends AbstractController{
 			map.put("1", plc.getModelName());
 			map.put("2", plc.getSensorType());
 			map.put("3", plc.getIoType());
+			map.put("4", plc.getModelId());
 			result.add(map);
 		}
 		return result;

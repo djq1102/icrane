@@ -2,7 +2,7 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.monitor.app.dao.model.ModelDao">
-	<resultMap type="PlcModel" id="plcModelResult">
+	<resultMap type="PlcModel" id="plcModelResult" >
 		<result property="modelId" column="model_id"/>
 		<result property="modelName" column="model_name"/>
 		<result property="sensorType" column="sensor_type"/>
@@ -24,7 +24,7 @@
 	
 	<sql id="selectCondition">
 		<where>
-			<if test="null != modelId">
+			<if test="0 != modelId">
 				AND model_id = #{modelId}
 			</if>
 			<if test="null != modelName and modelName != ''">
@@ -69,7 +69,7 @@
 		DELETE cr_plc_model WHERE model_id = #{modelId}
 	</delete>
 	
-	<select id="queryPlcModel" parameterType="PlcModelQuery" resultMap="plcModelResult">
+	<select id="queryPlcModel" parameterType="plcModelQuery" resultMap="plcModelResult">
 		SELECT <include refid="modelFields"/>
 		FROM cr_plc_model 
 		<include refid="selectCondition"/>

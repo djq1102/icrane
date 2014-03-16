@@ -88,7 +88,7 @@ public class ModelService {
 	}
 	
 	public ServiceResult totalCount(PlcModelQuery query){
-		long count = 0;
+		int count = 0;
 		try{
 			count = modelDao.totalCount(query);
 		}catch(Exception e){

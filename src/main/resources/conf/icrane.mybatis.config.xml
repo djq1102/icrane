@@ -34,11 +34,13 @@
 		<typeAlias alias="Device"   type="com.monitor.app.dataobject.Device"/>
 		<typeAlias alias="UserSiteRelation" type="com.monitor.app.dataobject.UserSiteRelation"/>
 		<typeAlias alias="UserDeviceRelation"  type="com.monitor.app.dataobject.UserDeviceRelation"/>
+		<typeAlias alias="PlcModel" type="com.monitor.app.dataobject.PlcModel"/>
 		
 		<typeAlias alias="UserInfoQuery" type="com.monitor.app.query.UserInfoQuery"/>
 		<typeAlias alias="customerInfoQuery" type="com.monitor.app.query.CustomerInfoQuery"/>
 		<typeAlias alias="siteQuery"   type="com.monitor.app.query.SiteQuery"/>
 		<typeAlias alias="deviceQuery" type="com.monitor.app.query.DeviceQuery"/>
+		<typeAlias alias="plcModelQuery" type="com.monitor.app.query.PlcModelQuery"/>
     </typeAliases>
 	
 	<mappers>
@@ -48,7 +50,7 @@
 		<mapper resource="conf/mybatis/userSiteRelation.mapper.xml"/>
 		<mapper resource="conf/mybatis/userDeviceRelation.mapper.xml"/>
 		<mapper resource="conf/mybatis/device.mapper.xml"/>
-		
+		<mapper resource="conf/mybatis/plcModel.mapper.xml"/>
 		
 	</mappers>
 	

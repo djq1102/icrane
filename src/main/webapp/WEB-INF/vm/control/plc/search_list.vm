@@ -16,6 +16,7 @@
 						<th class="hidden-480">机型名称</th>
 						<th class="hidden-480">机型协议</th>
 						<th class="hidden-480">接口类型</th>
+						<th class="hidden-480">操作</th>
 					</tr>
 				</thead>
 				<tbody role="alert" aria-live="polite" aria-relevant="all">

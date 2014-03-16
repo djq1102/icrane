@@ -22,6 +22,6 @@ public interface ModelDao {
 	
 	public List<PlcModel> queryPlcModel(PlcModelQuery query);
 	
-	public long totalCount(PlcModelQuery query);
+	public int totalCount(PlcModelQuery query);
 	
 }
