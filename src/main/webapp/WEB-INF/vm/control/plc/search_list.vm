@@ -1,0 +1,27 @@
+<div class="span6 responsive" data-tablet="span12 fix-offset" data-desktop="span6">
+	<!-- BEGIN EXAMPLE TABLE PORTLET-->
+	<div class="portlet box grey">
+		<div class="portlet-title">
+			<div class="caption"><i class="icon-user"></i>机型列表</div>
+			<div class="actions">
+				<a href="edit_input" class="btn blue"><i class="icon-pencil"></i> 新增</a>
+			</div>
+		</div>
+
+		<div class="portlet-body">
+			<table class="table table-striped table-bordered table-hover" id="sample_2">
+				<thead>
+					<tr>
+						<th>机型编号</th>
+						<th class="hidden-480">机型名称</th>
+						<th class="hidden-480">机型协议</th>
+						<th class="hidden-480">接口类型</th>
+					</tr>
+				</thead>
+				<tbody role="alert" aria-live="polite" aria-relevant="all">
+				</tbody>
+			</table>
+		</div>
+	</div>
+	<!-- END EXAMPLE TABLE PORTLET-->
+</div>

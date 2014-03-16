@@ -3,14 +3,24 @@
  */
 package com.monitor.app.controller.model;
 
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
 import javax.annotation.Resource;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.monitor.app.controller.AbstractController;
 import com.monitor.app.dataobject.PlcModel;
+import com.monitor.app.query.PlcModelQuery;
 import com.monitor.app.result.ServiceResult;
 import com.monitor.app.service.ModelService;
 
@@ -19,7 +29,7 @@ import com.monitor.app.service.ModelService;
  *
  */
 @Controller
-public class ModelController {
+public class ModelController extends AbstractController{
 
 	@Resource
 	private ModelService modelService;
@@ -28,7 +38,7 @@ public class ModelController {
 	public String index( Model model) throws Exception{
 		
 		
-		return "plcModel/edit_input";
+		return "plcModel/plcModel";
 	}
 	
 	@RequestMapping(value = "/model/add")
@@ -51,7 +61,32 @@ public class ModelController {
 		return plcModel;
 	}
 
-	@RequestMapping(value = "/model/update")
+	@RequestMapping(value = "/model/query",method = RequestMethod.GET,produces = "application/json; charset=utf-8")
+	@ResponseBody
+	public String update(@RequestParam("modelId") int modelId, @RequestParam("modelName") String modelName,
+			@RequestParam("iDisplayStart") int start, @RequestParam("iDisplayLength") int pagesize,
+			@RequestParam("sEcho") int sEcho, Model model) throws Exception{
+		
+		PlcModelQuery query = new PlcModelQuery();
+		query.setModelId(modelId);
+		query.setModelName(modelName);
+		query.setBegin(start);
+		query.setEnd(start+pagesize);
+		
+		
+		ServiceResult dataResult = modelService.queryModels(query);
+		ServiceResult countResult = modelService.totalCount(query);
+		if(dataResult.isSuccess() && dataResult.getModule()!=null&& countResult.isSuccess()){
+			List<PlcModel> plcModels = (List<PlcModel>)dataResult.getModule();
+			List<Map> resultMap = buildList(plcModels);
+			long total = Long.parseLong(countResult.getModule().toString());
+			return outputJsonAsResponse(resultMap, total , sEcho);
+		}
+		
+		return outputJsonAsResponse(Collections.EMPTY_LIST, 0 , sEcho);
+	}
+	
+	@RequestMapping(value = "/model/edit")
 	public String update(@RequestParam("modelId") int modelId, @RequestParam("name") String name,
 			@RequestParam("sensorType") int sensorType, @RequestParam("ioType") int ioType, 
 			Model model) throws Exception{
@@ -69,12 +104,17 @@ public class ModelController {
 		return "";
 	}
 	
-	@RequestMapping(value = "/model/query")
-	public String query(@RequestParam("modelName") String modelName, Model model) throws Exception{
-		ServiceResult result = modelService.queryModels(modelName);
-		
-		
-		return "";
+	@SuppressWarnings({ "rawtypes", "unchecked" })
+	private List<Map> buildList(List<PlcModel> modelList){
+		List<Map> result = new ArrayList<Map>();
+		for(PlcModel plc:modelList){
+			Map map = new HashMap();
+			map.put("0", plc.getModelId());
+			map.put("1", plc.getModelName());
+			map.put("2", plc.getSensorType());
+			map.put("3", plc.getIoType());
+			result.add(map);
+		}
+		return result;
 	}
-	
 }

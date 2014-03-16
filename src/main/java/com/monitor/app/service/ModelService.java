@@ -13,6 +13,7 @@ import org.springframework.stereotype.Service;
 
 import com.monitor.app.dao.model.ModelDao;
 import com.monitor.app.dataobject.PlcModel;
+import com.monitor.app.query.PlcModelQuery;
 import com.monitor.app.result.ServiceResult;
 import com.monitor.app.result.msg.MsgEnum;
 import com.monitor.app.utils.MsgUtils;
@@ -33,11 +34,11 @@ public class ModelService {
 		try{
 			int count = modelDao.addModel(plcModel);
 			if(count<=0){
-				return MsgUtils.fillMsg(MsgEnum.MODEL_VAR_ADD_FAIL);
+				return MsgUtils.fillMsg(MsgEnum.MODEL_ADD_FAIL);
 			}
 		}catch(Exception e){
-			log.error("add_model_var_fails",e);
-			return MsgUtils.fillMsg(MsgEnum.MODEL_VAR_ADD_FAIL);
+			log.error("add_model_fails",e);
+			return MsgUtils.fillMsg(MsgEnum.MODEL_ADD_FAIL);
 		}
 		//success
 		return MsgUtils.fillModule(null);
@@ -47,11 +48,11 @@ public class ModelService {
 		try{
 			int count = modelDao.updateModel(plcModel);
 			if(count<=0){
-				return MsgUtils.fillMsg(MsgEnum.MODEL_VAR_UPDATE_FAIL);
+				return MsgUtils.fillMsg(MsgEnum.MODEL_UPDATE_FAIL);
 			}
 		}catch(Exception e){
-			log.error("update_model_var_fails",e);
-			return MsgUtils.fillMsg(MsgEnum.MODEL_VAR_UPDATE_FAIL);
+			log.error("update_model_fails",e);
+			return MsgUtils.fillMsg(MsgEnum.MODEL_UPDATE_FAIL);
 		}
 		//success
 		return MsgUtils.fillModule(null);
@@ -62,29 +63,40 @@ public class ModelService {
 		try{
 			int count = modelDao.delModel(modelId);
 			if(count<=0){
-				return MsgUtils.fillMsg(MsgEnum.MODEL_VAR_DELETE_FAIL);
+				return MsgUtils.fillMsg(MsgEnum.MODEL_DELETE_FAIL);
 			}
 		}catch(Exception e){
-			log.error("del_model_var_fails",e);
-			return MsgUtils.fillMsg(MsgEnum.MODEL_VAR_DELETE_FAIL);
+			log.error("del_model_fails",e);
+			return MsgUtils.fillMsg(MsgEnum.MODEL_DELETE_FAIL);
 		}
 		//success
 		return MsgUtils.fillModule(null);
 		
 	}
 	
-	public ServiceResult queryModels(String modelName){
+	public ServiceResult queryModels(PlcModelQuery query){
 		List<PlcModel> models = null;
 		try{
-			models = modelDao.queryByModelName(modelName);
 			
+			models = modelDao.queryPlcModel(query);
 		}catch(Exception e){
-			log.error("query_model_var_fails",e);
-			return MsgUtils.fillMsg(MsgEnum.MODEL_VAR_QUERY_FAIL);
+			log.error("query_model_fails",e);
+			return MsgUtils.fillMsg(MsgEnum.MODEL_QUERY_FAIL);
 		}
-		
 		//success
 		return MsgUtils.fillModule(models);
+	}
+	
+	public ServiceResult totalCount(PlcModelQuery query){
+		long count = 0;
+		try{
+			count = modelDao.totalCount(query);
+		}catch(Exception e){
+			log.error("query_model_total_count_fails",e);
+			return MsgUtils.fillMsg(MsgEnum.MODEL_QUERY_FAIL);
+		}
+		
+		return MsgUtils.fillModule(count);
 	}
 	
 }
