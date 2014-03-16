@@ -73,6 +73,9 @@ public class ModelController extends AbstractController{
 		query.setBegin(start);
 		query.setEnd(start+pagesize);
 		
+		model.addAttribute("modelId", modelId);
+		model.addAttribute("modelName", modelName);
+		
 		ServiceResult dataResult = modelService.queryModels(query);
 		ServiceResult countResult = modelService.totalCount(query);
 		if(dataResult.isSuccess() && dataResult.getModule()!=null&& countResult.isSuccess()){
