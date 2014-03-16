@@ -58,7 +58,7 @@
 						</li>
 						<li #if ($id == 3) class="active" #end>
 
-							<a href="">
+							<a href="/userInfo/index.htm">
 
 							用户管理</a>
 
@@ -82,21 +82,21 @@
 						
 						<li #if ($id == 4) class="active" #end>
 
-							<a href="">
+							<a href="/customer/index.htm">
 
 							客户管理</a>
 
 						</li>
 						<li #if ($id == 5) class="active" #end>
 
-							<a href="">
+							<a href="/site/index.htm">
 
 							现场管理</a>
 
 						</li>
 						<li #if ($id == 6) class="active" #end>
 
-							<a href="">
+							<a href="/device/index.htm">
 
 							设备管理</a>
 
