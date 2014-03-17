@@ -5,7 +5,8 @@
 <!-- END SIDEBAR -->
 
 <!-- BEGIN PAGE -->
-#parse ("/control/plc/edit_input_page_content.vm")
+#set($formActionUrl="/model/update")
+#parse ("/control/plc/edit_page.vm")
 <!-- END PAGE -->
 </div>
 <!-- END CONTAINER -->

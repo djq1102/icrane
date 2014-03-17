@@ -60,6 +60,7 @@ public class ModelService {
 	}
 	
 	public ServiceResult delModel(long modelId){
+		if(modelId<=0) return MsgUtils.fillMsg(MsgEnum.REQUEST_PARAM_ERROR);
 		try{
 			int count = modelDao.delModel(modelId);
 			if(count<=0){
@@ -85,6 +86,19 @@ public class ModelService {
 		}
 		//success
 		return MsgUtils.fillModule(models);
+	}
+	
+	public ServiceResult queryModel(long modelId){
+		if(modelId<=0) return MsgUtils.fillMsg(MsgEnum.REQUEST_PARAM_ERROR);
+		PlcModel model = null;
+		try{
+			model = modelDao.queryPlcModelById(modelId);
+		}catch(Exception e){
+			log.error("query_model_fails,modelId="+modelId,e);
+			return MsgUtils.fillMsg(MsgEnum.MODEL_QUERY_FAIL);
+		}
+		//success
+		return MsgUtils.fillModule(model);
 	}
 	
 	public ServiceResult totalCount(PlcModelQuery query){

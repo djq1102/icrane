@@ -9,7 +9,7 @@
 		</div>
 		
 		<div class="portlet-body form" style="display: block;">
-		<form class="form-horizontal" action="/model/query" method="POST">
+		<form class="form-horizontal" action="/model/index" method="POST">
 			<div class="row-fluid">
 				<!--/span-->
 				<div class="span4 ">

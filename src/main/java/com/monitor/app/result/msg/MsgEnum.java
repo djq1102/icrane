@@ -44,7 +44,9 @@ public enum MsgEnum {
 	
 	SITE_ADD_FAIL("现场添加失败"),
 	SITE_NOT_EXIST("现场不存在"),
-	SITE_UPDATE_FAIL("现场修改失败");
+	SITE_UPDATE_FAIL("现场修改失败"),
+	
+	REQUEST_PARAM_ERROR("请求参数错误");
 	
 	
 	private String msg;

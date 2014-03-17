@@ -35,7 +35,7 @@
 		var ajax_data = {
 			ajax_url:"/model/query?modelId="+modelId+"&modelName="+modelName,
 			last_index:4,
-			delete_url:"/model/del?id="+modelId,
+			delete_url:"/model/del?modelId="+modelId,
 			edit_url:"/model/edit?modelId="+modelId
 		} 
 	   console.log(ajax_data.ajax_url);

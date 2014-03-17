@@ -36,7 +36,7 @@
 
 						<h3 class="page-title">
 
-							用户管理
+							机型管理
 
 						</h3>
 
@@ -46,14 +46,14 @@
 
 								<i class="icon-home"></i>
 
-								<a href="index.do">用户管理</a> 
+								<a href="index">机型管理</a> 
 								
 								<span class="icon-angle-right"></span>		
 
 							</li>	
 							
 							<li>
-								用户编辑
+								机型编辑
 							</li>
 						</ul>
 
@@ -69,7 +69,7 @@
 				
 				<div class="row-fluid">
 					<!-- BEGIN SEARCH FORM -->
-					#parse("/control/plc/edit_input_form.vm")
+					#parse("/control/plc/edit_form.vm")
 					<!-- END SEARCH FORM -->
 				</div>
 

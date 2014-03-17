@@ -23,6 +23,7 @@ import com.monitor.app.dataobject.PlcModel;
 import com.monitor.app.query.PlcModelQuery;
 import com.monitor.app.result.ServiceResult;
 import com.monitor.app.service.ModelService;
+import com.monitor.app.utils.MsgUtils;
 
 /**
  * @author ibm
@@ -35,22 +36,33 @@ public class ModelController extends AbstractController{
 	private ModelService modelService;
 	
 	@RequestMapping(value = "/model/index")
-	public String index( Model model) throws Exception{
+	public String index( PlcModel plcModel,Model model) throws Exception{
 		
-		
+		model.addAttribute("modelId", plcModel.getModelId());
+		model.addAttribute("modelName", plcModel.getModelName());
 		return "plcModel/plcModel";
 	}
 	
+	@RequestMapping(value = "/model/toAdd")
+	public String toAdd(Model model) throws Exception{
+		
+		return "plcModel/add";
+	}
+	
 	@RequestMapping(value = "/model/add")
-	public String add(@RequestParam("name") String name, @RequestParam("sensorType") int sensorType, 
+	public String add(@RequestParam("modelName") String name, @RequestParam("sensorType") int sensorType, 
 			@RequestParam("ioType") int ioType, Model model) throws Exception{
 		
 		PlcModel plcModel = buildPlcModel(name, sensorType, ioType);
 		
 		ServiceResult result = modelService.addModel(plcModel);
 		
-		
-		return "plcModel/";
+		if(result.isSuccess()){
+			model.addAttribute("msg", MsgUtils.MSG_SUCCESS);
+		}else{
+			model.addAttribute("msg",result.getMsg());
+		}
+		return "plcModel/plcModel";
 	}
 
 	private PlcModel buildPlcModel(String name, int sensorType, int ioType) {
@@ -73,9 +85,6 @@ public class ModelController extends AbstractController{
 		query.setBegin(start);
 		query.setEnd(start+pagesize);
 		
-		model.addAttribute("modelId", modelId);
-		model.addAttribute("modelName", modelName);
-		
 		ServiceResult dataResult = modelService.queryModels(query);
 		ServiceResult countResult = modelService.totalCount(query);
 		if(dataResult.isSuccess() && dataResult.getModule()!=null&& countResult.isSuccess()){
@@ -88,22 +97,42 @@ public class ModelController extends AbstractController{
 		return outputJsonAsResponse(Collections.EMPTY_LIST, 0 , sEcho);
 	}
 	
-	@RequestMapping(value = "/model/edit")
-	public String update(@RequestParam("modelId") int modelId, @RequestParam("name") String name,
+	@RequestMapping(value = "/model/update")
+	public String update(@RequestParam("modelId") int modelId, @RequestParam("modelName") String modelName,
 			@RequestParam("sensorType") int sensorType, @RequestParam("ioType") int ioType, 
 			Model model) throws Exception{
-		PlcModel plcModel = buildPlcModel(name, sensorType, ioType);
+		PlcModel plcModel = buildPlcModel(modelName, sensorType, ioType);
 		plcModel.setModelId(modelId);
 		
 		ServiceResult result = modelService.updateModel(plcModel);
-		return "";
+		if(result.isSuccess()){
+			model.addAttribute("msg", MsgUtils.MSG_SUCCESS);
+		}else{
+			model.addAttribute("msg",MsgUtils.MSG_FAIL);
+		}
+		return "plcModel/plcModel";
+	}
+	
+	@RequestMapping(value = "/model/edit")
+	public String edit(@RequestParam("modelId") int modelId, Model model) throws Exception{
+		ServiceResult result = modelService.queryModel(modelId);
+		if(!result.isSuccess()){
+			model.addAttribute("msg", result.getMsg());
+			return "plcModel/plcModel";
+		}
+		
+		model.addAttribute("plcModel", result.getModule());
+		return "plcModel/edit";
 	}
 	
 	@RequestMapping(value = "/model/del")
 	public String del(@RequestParam("modelId") int modelId, Model model) throws Exception{
 		ServiceResult result = modelService.delModel(modelId);
+		if(!result.isSuccess()){
+			model.addAttribute("msg", result.getMsg());
+		}
 		
-		return "";
+		return "plcModel/plcModel";
 	}
 	
 	@SuppressWarnings({ "rawtypes", "unchecked" })

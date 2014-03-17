@@ -28,7 +28,7 @@
 				AND model_id = #{modelId}
 			</if>
 			<if test="null != modelName and modelName != ''">
-				AND model_name = #{modelName}
+				AND model_name like "%"#{modelName}"%"
 			</if>
 		</where>
 	</sql>
@@ -73,6 +73,11 @@
 		SELECT <include refid="modelFields"/>
 		FROM cr_plc_model 
 		<include refid="selectCondition"/>
+	</select>
+	
+	<select id="queryPlcModelById" parameterType="java.lang.Long" resultMap="plcModelResult">
+		SELECT <include refid="modelFields"/>
+		FROM cr_plc_model where model_Id =  #{modelId}
 	</select>
 	
 	<select id="totalCount" resultType="int">
