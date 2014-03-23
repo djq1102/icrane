@@ -107,6 +107,16 @@
 		<include refid="selectCondition"/>
 	</select>
 	
+	<select id="querySiteByCustomerId"  parameterType="java.lang.Long" resultMap="siteResult">
+		SELECT <include refid="siteFields"/>
+		FROM cr_site where 	customer_id = #{customerId}
+	</select>
+	
+	<select id="queryAllSites"  resultMap="siteResult">
+		SELECT <include refid="siteFields"/>
+		FROM cr_site
+	</select>
+	
 	<select id="queryBySiteId" parameterType="java.lang.Long" resultMap="siteResult">
 		SELECT <include refid="siteFields"/>
 		FROM cr_site where site_id = #{siteId}

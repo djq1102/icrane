@@ -35,7 +35,19 @@
 	<sql id="selectCondition">
 		<where>
 			<if test="null != deviceId">
-				device_id = #{deviceId}
+				AND device_id = #{deviceId}
+			</if>
+			<if test="null != deviceName and deviceName != ''">
+			    AND device_name = #{deviceName}
+			</if>
+			<if test="null != deviceId">
+				AND device_id = #{deviceId}
+			</if>
+			<if test="null != siteId">
+				AND site_id = #{siteId}
+			</if>
+			<if test="null != customerId">
+				AND customer_id = #{customerId}
 			</if>
 		</where>
 	</sql>
@@ -104,9 +116,14 @@
 	</select>
 	
 	<select id="countAll" resultType="int">
-        select count(*) c from cr_device;
+        select count(*) c from cr_device
         <include refid="selectCondition"/>
     </select>	
+    
+    <delete id="deleteDevice" parameterType="java.lang.Long" >
+    	delete cr_device where device_id =  #{deviceId}
+    </delete>
+    
     
 	<update id="updateDevice" parameterType="Device">
 		UPDATE cr_device

@@ -75,6 +75,11 @@
 		<include refid="selectCondition"/>
 	</select>
 	
+	<select id="queryAllModels" resultMap="plcModelResult">
+		SELECT <include refid="modelFields"/>
+		FROM cr_plc_model 
+	</select>
+	
 	<select id="queryPlcModelById" parameterType="java.lang.Long" resultMap="plcModelResult">
 		SELECT <include refid="modelFields"/>
 		FROM cr_plc_model where model_Id =  #{modelId}
