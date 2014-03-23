@@ -16,7 +16,7 @@
              default-target-url="/index" always-use-default-target="false"/>
              
          <intercept-url pattern="/admin" access="ROLE_SUPERADMIN"/>
-         <intercept-url pattern="/**" access="ROLE_GENERALADMIN"/>
+         <intercept-url pattern="/**" access="ROLE_SUPERADMIN,ROLE_CUTOMERADMIN,ROLE_GENERALADMIN"/>
         
          <logout logout-url="/logout" logout-success-url="/login" />
          
