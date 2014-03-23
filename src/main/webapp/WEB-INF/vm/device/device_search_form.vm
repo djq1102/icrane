@@ -23,6 +23,7 @@
 						<label class="control-label">所属客户:</label>
 						<div class="controls">
 							<select id="customerId"  class="small m-wrap" tabindex="1" name="customerId" >
+								<option value="0" selected>--全部--</option>
 								#foreach($customer in $customers)
 									<option value="$!{customer.customerId}" #if($!{customerId} == $!{customer.customerId})selected#end>
 											$!{customer.customerName}</option>
@@ -38,7 +39,7 @@
 						<label class="control-label">所属现场</label>
 						<div class="controls">
 							<select id="siteId" class="small m-wrap" tabindex="1" name="siteId">
-                                <option value="all">--全部--</option>
+                                <option value="0">--全部--</option>
 								#foreach($site in $sites)
 									<option value="$!{site.siteId}" #if($!{siteId} == $!{site.siteId})selected#end>
 											$!{site.siteName}

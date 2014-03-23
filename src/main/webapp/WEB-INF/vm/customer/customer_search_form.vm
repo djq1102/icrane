@@ -15,9 +15,10 @@
 					<div class="control-group">
 						<label class="control-label">客户类型</label>
 						<div class="controls">
-							<select class="small m-wrap" tabindex="1" name="customerType">
-								<option value="0">平台客户</option>
-								<option value="1">机构客户</option>
+							<select id="custType" class="small m-wrap" tabindex="1" name="customerType">
+								<option value="0" #if('0' == $!{customerType}) selected #end>--全部--</option>
+								<option value="1" #if('1'== $!{customerType})selected #end>平台客户</option>
+								<option value="2" #if('2' == $!{customerType})selected #end>机构客户</option>
 							</select>
 						</div>
 					</div>

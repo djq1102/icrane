@@ -15,8 +15,8 @@
 						<label class="control-label">所属类型:</label>
 						<div class="controls">
 							<select class="small m-wrap" tabindex="1" name="customerType">
-								<option value="0">平台客户</option>
-								<option value="1">机构客户</option>
+								<option value="1" #if('1'== $!{customer.customerType})selected #end>平台客户</option>
+								<option value="2" #if('2' == $!{customer.customerType})selected #end>机构客户</option>
 							</select>
 						</div>
 					</div>

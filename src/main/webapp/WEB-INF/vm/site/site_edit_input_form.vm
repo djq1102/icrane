@@ -8,6 +8,7 @@
 		
 		<div class="portlet-body form" style="display: block;">
 		<form class="form-horizontal" action="/site/updateSite.do" method="post">
+			<input type="hidden" name="siteId" value="$!{site.siteId}"> 
 			<div class="row-fluid">
 				<div class="span4 ">
 					<div class="control-group">
@@ -39,8 +40,8 @@
 						<label class="control-label">状态:</label>
 						<div class="controls">
 							<select class="small m-wrap" tabindex="1" name="status">
-								<option value="1">在建</option>
-								<option value="2">维修</option>
+								<option value="1" #if('1'== $!{site.status}) selected #end>在建</option>
+								<option value="2" #if('2' == $!{site.status}) selected #end>维修</option>
 							</select>
 						</div>
 					</div>

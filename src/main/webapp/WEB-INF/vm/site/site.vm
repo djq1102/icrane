@@ -43,8 +43,9 @@
 	jQuery(document).ready(function() {  
 	   var siteName = $("#siteName").val();
 	   var customerId = $("#customerId").val();
+	   var status = $("#status").val();
 		var ajax_data = {
-			ajax_url:"/site/querySiteList.do?siteName="+siteName+"&customerId="+customerId,
+			ajax_url:"/site/querySiteList.do?siteName="+siteName+"&customerId="+customerId+"&status="+status,
 			last_index:7,
 			delete_url:"http://localhost:8080/demo/JqueryTableServlet?id=",
 			edit_url:"/site/editSite.do?siteId="

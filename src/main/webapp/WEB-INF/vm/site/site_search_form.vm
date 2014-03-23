@@ -16,9 +16,10 @@
 					<div class="control-group">
 						<label class="control-label">所属客户</label>
 						<div class="controls">
-							<select id="customerId"  class="small m-wrap" tabindex="1" name="customerId">
+							<select id="customerId" class="small m-wrap" tabindex="1" name="customerId">
+								<option value="0" selected>--全部--</option>
 								#foreach($customer in $customers)
-									<option value="$!{customer.customerId}">$!{customer.customerName}</option>
+									<option value="$!{customer.customerId}" #if($!{customerId} == $!{customer.customerId}) selected #end>$!{customer.customerName}</option>
 								#end	
 							</select>
 						</div>
@@ -41,8 +42,9 @@
 						<label class="control-label">状态</label>
 						<div class="controls">
 							<select class="small m-wrap" tabindex="1" name="status" id="status">
-								<option value="1">在建</option>
-								<option value="2">维修</option>
+								<option value="0" selected>--全部--</option>
+								<option value="1" #if('1'== $!{status}) selected #end>在建</option>
+								<option value="2" #if('2' == $!{status}) selected #end>维修</option>
 							</select>
 						</div>
 					</div>
