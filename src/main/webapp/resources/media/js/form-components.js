@@ -416,6 +416,8 @@ var FormComponents = function () {
     var handleMultiSelect = function () {
         $('#my_multi_select1').multiSelect();
         $('#my_multi_select2').multiSelect({
+        	selectableHeader: "<input type='text' class='search-input' autocomplete='off' placeholder='输入设备名称'>",
+        	  selectionHeader: "<input type='text' class='search-input' autocomplete='off' placeholder='输入设备名称'>",
             selectableOptgroup: true
         });        
     }
