@@ -12,7 +12,7 @@
 
 <!-- BEGIN PAGE -->
 #set($formActionUrl="/acc/add")
-#parse ("/control/acc/edit_page.vm")
+#parse ("control/acc/edit_page.vm")
 <!-- END PAGE -->
 </div>
 <!-- END CONTAINER -->

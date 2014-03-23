@@ -25,7 +25,11 @@
 					<div class="control-group">
 						<label class="control-label">配件价格:</label>
 						<div class="controls">
-							<input type="text" class="m-wrap span12" name="accessoryPrice" value="$!{accessory.accessoryPrice}"> 
+							#if($!{accessory.accessoryPrice})
+							<input type="text" class="m-wrap span12" name="accessoryPrice" value="$moneyUtil.formatLong4Money($!{accessory.accessoryPrice})">
+							#else
+								<input type="text" class="m-wrap span12" name="accessoryPrice" value="$!{accessory.accessoryPrice}"> 
+							#end
 						</div>
 					</div>
 				</div>
@@ -59,14 +63,7 @@
 					<div class="control-group">
 						<label class="control-label">选择图片:</label>
 						<div class="controls">
-							<input type="file" class="m-wrap span12" name="selectFile"> 
-						</div>
-					</div>
-				</div>
-				<!--/span-->
-				<div class="span4 ">
-					<div class="control-group">
-						<div class="controls">
+							<input type="file" class="m-wrap span12" name="selectFile" size="20"> 
 							<input type="button" class="m-wrap span12" name="upFile" value="上传"> 
 						</div>
 					</div>

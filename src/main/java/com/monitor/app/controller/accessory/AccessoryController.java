@@ -50,15 +50,11 @@ public class AccessoryController extends AbstractController{
 		return "accessory/add";
 	}
 	
-	@RequestMapping(value = "/accessory/add")
+	@RequestMapping(value = "/acc/add")
 	public String add(@RequestParam("accessoryName") String name, @RequestParam("accessoryPrice") String price, 
-			@RequestParam("imageName") String imageName, @RequestParam("imagePath") String imagePath, Model model) throws Exception{
+			@RequestParam("fileName") String fileName, @RequestParam("filePath") String filePath, Model model) throws Exception{
 		
-		//1.上传图片。。
-		//TODO
-		String fileName = imageName;
-		String filePath = imagePath;
-		
+		//1.上传图片后修改filename，filepath
 		ModelAccessory acc = buildModelAccessory(name, price, fileName, filePath);
 		ServiceResult result = accessoryService.addAccessory(acc);
 		
@@ -105,12 +101,10 @@ public class AccessoryController extends AbstractController{
 	
 	@RequestMapping(value = "/acc/update")
 	public String update(@RequestParam("accessoryId") long accessoryId, @RequestParam("accessoryName") String accessoryName,
-			@RequestParam("accessoryPrice") String accessoryPrice,@RequestParam("imageName") String imageName, @RequestParam("imagePath") String imagePath, 
+			@RequestParam("accessoryPrice") String accessoryPrice,@RequestParam("fileName") String fileName,
+			@RequestParam("filePath") String filePath, 
 			Model model) throws Exception{
 		//1.判断是否有修改过图片
-		String fileName = imageName;
-		String filePath = imagePath;
-		
 		ModelAccessory acc = buildModelAccessory(accessoryName,accessoryPrice, fileName, filePath);
 		acc.setAccessoryId(accessoryId);
 		

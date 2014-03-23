@@ -5,6 +5,11 @@
           <scope>application</scope>
           <class>org.apache.commons.lang.StringUtils</class>
      </tool>
+     <tool>
+          <key>moneyUtil</key>
+          <scope>application</scope>
+          <class>com.monitor.app.utils.MoneyUtil</class>
+     </tool>
 </toolbox>
 	
 	

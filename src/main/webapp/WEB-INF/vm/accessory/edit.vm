@@ -1,12 +1,18 @@
 <!-- BEGIN CONTAINER -->
 <div class="page-container row-fluid">
 <!-- BEGIN SIDEBAR -->
-#menu (8)
+#menu (11)
 <!-- END SIDEBAR -->
 
+#set($styleFilePath='control/style_customizer.vm')
+#set($pageTitle='配件管理')
+#set($pageHomeTitle='配件管理')
+#set($pageEditTitle='配件编辑')
+#set($pageEditFormPath='control/acc/edit_form.vm')
+
 <!-- BEGIN PAGE -->
-#set($formActionUrl="/model/update")
-#parse ("/control/plc/edit_page.vm")
+#set($formActionUrl="/acc/update")
+#parse ("control/acc/edit_page.vm")
 <!-- END PAGE -->
 </div>
 <!-- END CONTAINER -->
