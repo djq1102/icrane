@@ -40,10 +40,10 @@
 			<if test="null != siteName and siteName != ''">
 			    AND site_name = #{siteName}
 			</if>
-			<if test="null != status">
+			<if test="null != status and status != 0">
 				AND status = #{status}
 			</if>
-			<if test="null != customerId" >
+			<if test="null != customerId and customerId != 0" >
 				AND customer_id  = #{customerId}
 			</if>
 		</where>
@@ -62,7 +62,7 @@
 				location = #{location},
 			</if>
 			<if test="null != customerId">
-				customer_id = #{customerId}
+				customer_id = #{customerId},
 			</if>
 			<if test="null != contactName">
 				contact_name = #{contactName},

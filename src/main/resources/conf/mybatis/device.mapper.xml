@@ -40,13 +40,13 @@
 			<if test="null != deviceName and deviceName != ''">
 			    AND device_name = #{deviceName}
 			</if>
-			<if test="null != deviceId">
+			<if test="null != deviceId and deviceId != 0">
 				AND device_id = #{deviceId}
 			</if>
-			<if test="null != siteId">
+			<if test="null != siteId and siteId != 0">
 				AND site_id = #{siteId}
 			</if>
-			<if test="null != customerId">
+			<if test="null != customerId and customerId != 0">
 				AND customer_id = #{customerId}
 			</if>
 		</where>

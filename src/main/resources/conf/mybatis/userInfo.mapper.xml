@@ -31,7 +31,7 @@
 	
 	<sql id="selectCondition">
 		<where>
-			<if test="null != customerId">
+			<if test="null != customerId and customerId != 0">
 				customer_id = #{customerId}
 			</if>
 			<if test="null != userPhone and userPhone != '' ">
@@ -39,6 +39,9 @@
 			</if>
 			<if test="null != userName and userName != '' ">
 				AND user_name = #{userName}
+			</if>
+			<if test="null !=roleType and roleType != 0">
+				AND role_type = #{roleType}
 			</if>
 		</where>
 	</sql>
