@@ -40,6 +40,7 @@ public class CustomerController {
 	@RequestMapping(value = "/customer/index",method = {RequestMethod.POST,RequestMethod.GET})
 	public String index(Model model,Customer customer) {
 		logger.warn(">>>action=index");
+		model.addAttribute("customerType", customer.getCustomerType());
 		model.addAttribute("customerName", customer.getCustomerName());
 		return "customer/customer";
 	}

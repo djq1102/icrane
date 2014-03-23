@@ -70,9 +70,14 @@ public class SiteController {
 	@RequestMapping(value = "/site/updateSite")
 	public String updateSite(Site site,Model model) throws Exception{
 		site.setLocation("1204,32");
-		ServiceResult result = siteService.updateSite(site);
-		if(!result.isSuccess()){
-			logger.error(">>>action=addSite error" + site.getSiteName());
+		ServiceResult result = siteService.queryBySiteId(site.getSiteId());
+		if(result.isSuccess()){
+			ServiceResult updateresult = siteService.updateSite(site);
+			if(!updateresult.isSuccess()){
+				logger.error(">>>action=updateSite error" + site.getSiteName());
+			}
+		}else{
+			logger.error(">>>action=queryBySiteId error" + site.getSiteId());
 		}
 		return "redirect:index.htm";
 	}
@@ -100,7 +105,7 @@ public class SiteController {
 		SiteQuery query = new SiteQuery();
 		query.setSiteName(site.getSiteName());
 		query.setStatus(site.getStatus());
-		//query.setCustomerId(site.getCustomerId());
+		query.setCustomerId(site.getCustomerId());
 		query.setBegin(start);
 		query.setEnd(start+pagesize);
 		ServiceResult result = siteService.queryAllSite(query);

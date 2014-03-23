@@ -16,9 +16,12 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.monitor.app.dataobject.Customer;
 import com.monitor.app.dataobject.UserInfo;
+import com.monitor.app.exception.ManagerException;
 import com.monitor.app.query.UserInfoQuery;
 import com.monitor.app.result.ServiceResult;
+import com.monitor.app.service.CustomerService;
 import com.monitor.app.service.UserInfoService;
 import com.monitor.app.utils.JsonUtil;
 import com.monitor.app.utils.MsgUtils;
@@ -34,10 +37,13 @@ public class UserInfoController {
 	private static final Logger logger = LoggerFactory.getLogger(UserInfoController.class);
 	@Resource
 	private UserInfoService userInfoService;
+	@Resource
+	private CustomerService customerService;
 	
 	@RequestMapping(value = "/userInfo/userinfoInput",method = RequestMethod.GET)
-	public String userinfoInput(Model model) {
+	public String userinfoInput(Model model) throws ManagerException {
 		logger.warn(">>>action=userInput");
+		model.addAttribute("customers", queryAllCustomers());
 		return "userInfo/userinfo_input";
 	}
 	
@@ -60,15 +66,16 @@ public class UserInfoController {
 		if(!result.isSuccess()){
 			logger.error(">>>action=addUserInfor error" + userName);
 		}
-		return "redirect:/index.htm";
+		return "redirect:index.htm";
 	}
 	
 	@RequestMapping(value = "/userInfo/editUserInfo",method = RequestMethod.GET)
-	public String editUserInfo(@RequestParam("userId") long userId,Model model) {
+	public String editUserInfo(@RequestParam("userId") long userId,Model model) throws ManagerException {
 		logger.warn(">>>action=edit" );
 		ServiceResult result = userInfoService.queryUserInfoByuserId(userId);
 		if(result.isSuccess()){
 			UserInfo userInfo  = (UserInfo)result.getModule();
+			model.addAttribute("customers", queryAllCustomers());
 			model.addAttribute("userInfo", userInfo);
 		}else{
 			model.addAttribute("msg", MsgUtils.MSG_FAIL);
@@ -116,8 +123,11 @@ public class UserInfoController {
 	}
 	
 	@RequestMapping(value = "/userInfo/index",method = {RequestMethod.POST,RequestMethod.GET})
-	public String index(Model model,UserInfo userInfo) {
+	public String index(Model model,UserInfo userInfo) throws ManagerException {
 		logger.warn(">>>action=/userInfo/index" );
+		model.addAttribute("customers", queryAllCustomers());
+		model.addAttribute("customerId", userInfo.getCustomerId());
+		model.addAttribute("roleType", userInfo.getRoleType());
 		model.addAttribute("userPhone", userInfo.getUserPhone());
 		model.addAttribute("userName", userInfo.getUserName());
 		return "userInfo/userinfo";
@@ -128,11 +138,11 @@ public class UserInfoController {
 	@ResponseBody 
 	public String queryUserInfoList(@RequestParam("iDisplayStart") int start, @RequestParam("iDisplayLength") int pagesize, @RequestParam("sEcho") int sEcho,
 		UserInfo userInfo){
-		long customerId = 1;
 		UserInfoQuery userInfoQuery = new UserInfoQuery();
-		userInfoQuery.setCustomerId(customerId);
+		userInfoQuery.setCustomerId(userInfo.getCustomerId());
 		userInfoQuery.setUserPhone(userInfo.getUserPhone());
 		userInfoQuery.setUserName(userInfo.getUserName());
+		userInfoQuery.setRoleType(userInfo.getRoleType());
 		userInfoQuery.setBegin(start);
 		userInfoQuery.setEnd(start+pagesize);
 		ServiceResult result = userInfoService.queryAllUserInfo(userInfoQuery);
@@ -157,6 +167,13 @@ public class UserInfoController {
 			result.add(map);
 		}
 		return result;
+	}
+
+	@SuppressWarnings({ "unchecked", "rawtypes" })
+	private List<Customer> queryAllCustomers() throws ManagerException{
+		ServiceResult result = customerService.queryAllCustomers();
+		List<Customer> customers = (List)result.getModule();
+		return customers;
 	}
 
 }

@@ -15,6 +15,8 @@ public class UserInfoQuery extends Pagination{
 	
 	private String userName;
 	
+    private Short roleType;
+	
 	public void setCustomerId(Long customerId) {
 		this.customerId = customerId;
 	}
@@ -37,6 +39,14 @@ public class UserInfoQuery extends Pagination{
 
 	public void setUserName(String userName) {
 		this.userName = userName;
+	}
+
+	public Short getRoleType() {
+		return roleType;
+	}
+
+	public void setRoleType(Short roleType) {
+		this.roleType = roleType;
 	}
 
 
