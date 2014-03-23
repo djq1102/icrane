@@ -115,6 +115,11 @@
 		FROM cr_device where device_id =  #{deviceId}
 	</select>
 	
+	<select id="queryDevicesBySiteId" parameterType="java.lang.Long" resultMap="deviceResult">
+		SELECT <include refid="deviceFields"/>
+		FROM cr_device where site_id =  #{siteId}
+	</select>
+	
 	<select id="countAll" resultType="int">
         select count(*) c from cr_device
         <include refid="selectCondition"/>
