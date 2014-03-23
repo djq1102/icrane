@@ -29,7 +29,7 @@
 
 <script type="text/javascript" src="/media/js/jquery.dataTables.js"></script>
 
-
+<script type="text/javascript" src="/media/js/DT_bootstrap.js"></script>
 <!-- END PAGE LEVEL PLUGINS -->
 
 <!-- BEGIN PAGE LEVEL SCRIPTS -->
@@ -38,23 +38,23 @@
 
 <script src="/media/js/table-managed.js"></script>     
 
-
-
 <script>
 
-	var ajax_data = {
-			ajax_url:"http://localhost:8080/demo/JqueryTableServlet",
-			last_index:8,
-			delete_url:"http://localhost:8080/demo/JqueryTableServlet?id=",
-			edit_url:"http://localhost:8080/demo/JqueryTableServlet?id="
-	} 
+	jQuery(document).ready(function() {  
 	
-	jQuery(document).ready(function() {   
-		    console.log(ajax_data.ajax_url);
+	  var deviceName = $("#deviceName").val();
+	  var customerId = $("#customerId").val();
+	  var siteId = $("#siteId").val();
+	  var ajax_data = {
+			ajax_url:"/device/queryDeviceList.do?deviceName="+deviceName+"&customerId="+customerId+"&siteId="+siteId,
+			last_index:6,
+			delete_url:"http://localhost:8080/demo/JqueryTableServlet?id=",
+			edit_url:"/device/editDevice.do?deviceId="
+	  } 
+		console.log(ajax_data.ajax_url);
 	   // initiate layout and plugins
 	   App.init();
 	   TableManaged.init(ajax_data);
-
 	});
 </script>
 

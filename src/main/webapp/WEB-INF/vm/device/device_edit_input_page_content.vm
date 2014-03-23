@@ -35,7 +35,7 @@
 							</li>	
 							
 							<li>
-								设备新增
+								设备编辑
 							</li>
 						</ul>
 
@@ -51,7 +51,7 @@
 				
 				<div class="row-fluid">
 					<!-- BEGIN SEARCH FORM -->
-					#parse("/device/device_input_form.vm")
+					#parse("/device/device_edit_input_form.vm")
 					<!-- END SEARCH FORM -->
 				</div>
 

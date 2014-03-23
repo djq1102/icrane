@@ -11,7 +11,8 @@
 		
 		<div class="portlet-body form" style="display: block;">
 		
-		<form class="form-horizontal" action="/device/addDevice.htm" method="post">
+		<form class="form-horizontal" action="/device/updateDevice.htm" method="post">
+			<input type="hidden" name="deviceId" value="$!{device.deviceId}"> 
 			<div class="row-fluid">
 				<div class="span4 ">
 					<div class="control-group">
@@ -19,26 +20,24 @@
 						<div class="controls">
 							<select class="small m-wrap" tabindex="1" name="customerId">
 								#foreach($customer in $customers)
-									<option value="$!{customer.customerId}">$!{customer.customerName}</option>
+									<option value="$!{customer.customerId}" #if($!{device.customerId} == $!{customer.customerId})selected#end>$!{customer.customerName}</option>
 								#end	
 							</select>
 						</div>
-
 					</div>
-
 				</div>
 
 				<!--/span-->
 				<div class="span4 ">
-
 					<div class="control-group">
-
 						<label class="control-label">所属现场:</label>
-
 						<div class="controls">
 							<select class="small m-wrap" tabindex="1" name="siteId">
-								<option value="1">现场1</option>
-								<option value="2">现场2</option>
+								#foreach($site in $sites)
+									<option value="$!{site.siteId}" #if($!{device.siteId} == $!{site.siteId})selected#end>
+											$!{site.siteName}
+									</option>
+								#end
 							</select>
 						</div>
 					</div>
@@ -48,19 +47,12 @@
 				<!--/span-->
 
 				<div class="span4 ">
-
 					<div class="control-group">
-
 						<label class="control-label">设备名称:</label>
-
 						<div class="controls">
-
-							<input type="text" class="m-wrap span12" name="deviceName"> 
-
+							<input type="text" class="m-wrap span12" name="deviceName" value="$!{device.deviceName}"> 
 						</div>
-
 					</div>
-
 				</div>
 
 				<!--/span-->
@@ -68,13 +60,12 @@
 			<!--/row-->
 			<div class="row-fluid">
 				<div class="span4 ">
-
 					<div class="control-group">
 						<label class="control-label">机型名称:</label>
 						<div class="controls">
 							<select class="small m-wrap" tabindex="1" name="modelId">
 								#foreach($plcModel in $plcModels)
-									<option value="$!{plcModel.modelId}">$!{plcModel.modelName}</option>
+									<option value="$!{plcModel.modelId}" #if($!{device.modelId} == $!{plcModel.modelId})selected#end>$!{plcModel.modelName}</option>
 								#end	
 							</select>
 						</div>
@@ -84,66 +75,43 @@
 				<!--/span-->
 
 				<div class="span4 ">
-
 					<div class="control-group">
-
 						<label class="control-label">设备IP:</label>
-
 						<div class="controls">
-
-							<input type="text" class="m-wrap span12" name="deviceIp"> 
-
+							<input type="text" class="m-wrap span12" name="deviceIp" value="$!{device.deviceIp}"> 
 						</div>
 					</div>
-
 				</div>
 
 				<!--/span-->
 				<div class="span4 ">
-
 					<div class="control-group">
-
 						<label class="control-label">视频用户名:</label>
-
 						<div class="controls">
-
-							<input type="text" class="m-wrap span12" name="userName"> 
-
+							<input type="text" class="m-wrap span12" name="userName" value="$!{device.userName}"> 
 						</div>
-
 					</div>
-
 				</div>
-
 				<!--/span-->
 
 			</div>
 			<!--/row-->
 			<div class="row-fluid">
 				<div class="span4 ">
-
 					<div class="control-group">
-
 						<label class="control-label">视频密码:</label>
-
 						<div class="controls">
-
-							<input type="text" class="m-wrap span12" name="userPwd"> 
-
+							<input type="text" class="m-wrap span12" name="userPwd" value="$!{device.userPwd}"> 
 						</div>
 					</div>
-
 				</div>
 				<!--/span-->
 
 			</div>
 			<!--/row-->
 			<div class="form-actions">
-
 				<button type="submit" class="btn blue"><i class="icon-ok"></i> 保存</button>
-
 				<button type="button" class="btn">取消</button>
-
 			</div>
 		</form>
 		</div>

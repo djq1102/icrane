@@ -16,70 +16,47 @@
 		</div>
 		
 		<div class="portlet-body form" style="display: block;">
-		<form class="form-horizontal">
+		<form class="form-horizontal" action="/device/index.do" method="post">
 			<div class="row-fluid">
 				<div class="span4 ">
-
 					<div class="control-group">
-
-						<label class="control-label">所属客户</label>
-
+						<label class="control-label">所属客户:</label>
 						<div class="controls">
-
-							<select class="small m-wrap" tabindex="1">
-
-								<option value="Category 1">北京铁路局</option>
-
-								<option value="Category 2">广州铁路局</option>
-
-
+							<select id="customerId"  class="small m-wrap" tabindex="1" name="customerId" >
+								#foreach($customer in $customers)
+									<option value="$!{customer.customerId}" #if($!{customerId} == $!{customer.customerId})selected#end>
+											$!{customer.customerName}</option>
+								#end
 							</select>
-
 						</div>
-
 					</div>
-
 				</div>
 
 				<!--/span-->
 				<div class="span4 ">
-
 					<div class="control-group">
-
 						<label class="control-label">所属现场</label>
-
 						<div class="controls">
-
-							<select class="small m-wrap" tabindex="1">
-
-								<option value="Category 1">现场1</option>
-
-								<option value="Category 2">现场2</option>
-
-
+							<select id="siteId" class="small m-wrap" tabindex="1" name="siteId">
+                                <option value="all">--全部--</option>
+								#foreach($site in $sites)
+									<option value="$!{site.siteId}" #if($!{siteId} == $!{site.siteId})selected#end>
+											$!{site.siteName}
+									</option>
+								#end
 							</select>
-
 						</div>
-
 					</div>
-
 				</div>
 
 				<!--/span-->
 				<div class="span4 ">
-
 					<div class="control-group">
-
 						<label class="control-label">设备名称</label>
-
 						<div class="controls">
-
-							<input type="text" class="m-wrap span12"> 
-
+							<input  id="deviceName" type="text" class="m-wrap span12" name="deviceName" value="$!{deviceName}"> 
 						</div>
-
 					</div>
-
 				</div>
 				<!--/span-->
 			</div>
