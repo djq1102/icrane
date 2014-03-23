@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="GBK" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.monitor.app.dao.model.AccessoryDao">
+	<resultMap type="ModelAccessory" id="accessoryResult" >
+		<result property="accessoryId" column="accessory_id"/>
+		<result property="accessoryName" column="accessory_name"/>
+		<result property="accessoryPrice" column="accessory_price"/>
+		<result property="fileName" column="file_name"/>
+		<result property="filePath" column="file_path"/>
+		<result property="gmtCreate" column="gmt_create"/>
+		<result property="gmtModify" column="gmt_modify"/>
+	</resultMap>
+	
+	<sql id="accessoryFields">
+		<![CDATA[
+			accessory_id,
+			accessory_name,
+			accessory_price,
+			file_name,
+			file_path,
+			gmt_create,
+			gmt_modify
+		]]>
+	</sql>
+	
+	<sql id="selectCondition">
+		<where>
+			<if test="0 != modelId">
+				AND accessory_id = #{accessoryId}
+			</if>
+			<if test="null != accessoryName and accessoryName != ''">
+				AND accessory_name like "%"#{accessoryName}"%"
+			</if>
+		</where>
+	</sql>
+	
+	<sql id="updateFields">
+		<set>
+			gmt_modify = now(),
+			<if test="null != accessoryName">
+				accessory_name = #{accessoryName},
+			</if>
+			<if test="null != accessoryPrice">
+				accessory_price = #{accessoryPrice},
+			</if>
+			<if test="null != fileName">
+				file_name = #{fileName},
+			</if>
+			<if test="null != filePath">
+				file_path = #{filePath},
+			</if>
+		</set>
+	</sql>
+	
+	<insert id="addAccessory" useGeneratedKeys="true" keyProperty="accessoryId" parameterType="ModelAccessory">
+		<![CDATA[
+		INSERT INTO cr_device_accessory(
+		]]>
+		<include refid="accessoryFields"/>
+		<![CDATA[
+		) VALUES (
+		    #{accessoryId},
+		 	#{accessoryName}, 
+		 	#{accessoryPrice},
+		 	#{fileName}, 
+		 	#{filePath}, 
+	  		now(),
+	  		now()
+		)
+		]]>
+	</insert>
+	
+	<delete id="delAccessory" parameterType="java.lang.Long">
+		DELETE cr_device_accessory WHERE accessory_id = #{accessoryId}
+	</delete>
+	
+	<select id="queryModelAccessory" parameterType="AccessoryQuery" resultMap="accessoryResult">
+		SELECT <include refid="accessoryFields"/>
+		FROM cr_device_accessory 
+		<include refid="selectCondition"/>
+	</select>
+	
+	<select id="queryModelAccessoryById" parameterType="java.lang.Long" resultMap="accessoryResult">
+		SELECT <include refid="accessoryFields"/>
+		FROM cr_device_accessory where accessory_id =  #{accessoryId}
+	</select>
+	
+	<select id="totalCount" resultType="int">
+        select count(*) c from cr_device_accessory 
+        <include refid="selectCondition"/>
+    </select>	
+    
+	<update id="updateAccessory" parameterType="ModelAccessory">
+		UPDATE cr_device_accessory
+		<include refid="updateFields"/>
+		WHERE accessory_id = #{accessoryId}
+	</update>
+</mapper>
