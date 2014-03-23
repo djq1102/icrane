@@ -36,6 +36,8 @@
 	<link rel="stylesheet" type="text/css" href="/media/css/select2_metro.css" />
 
 	<link rel="stylesheet" href="/media/css/DT_bootstrap.css" />
+	
+	<link rel="stylesheet" type="text/css" href="/media/css/multi-select-metro.css" />
 
 	<!-- END PAGE LEVEL STYLES -->
 
