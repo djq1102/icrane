@@ -6,15 +6,16 @@
 		</div>
 		<div class="portlet-body form" style="display: block;">
 			
-		<form class="form-horizontal" action="/userInfo/addUserInfo.do" method="POST">
+		<form class="form-horizontal" action="/userInfo/addUserInfo.htm" method="POST">
 			<div class="row-fluid">
 				<div class="span4 ">
 					<div class="control-group">
 						<label class="control-label">所属客户:</label>
 						<div class="controls">
 							<select class="small m-wrap" tabindex="1" name="customerId">
-								<option value="1">平台管理员</option>
-								<option value="2">北京铁路局</option>
+								#foreach($customer in $customers)
+									<option value="$!{customer.customerId}">$!{customer.customerName}</option>
+								#end
 							</select>
 						</div>
 					</div>
@@ -25,9 +26,9 @@
 						<label class="control-label">用户角色:</label>
 						<div class="controls">
 							<select class="small m-wrap" tabindex="1" name="roleType">
-								<option value="0">平台管理员</option>
-								<option value="1">客户管理员</option>
-								<option value="2">普通用户</option>
+								<option value="1">平台管理员</option>
+								<option value="2">客户管理员</option>
+								<option value="3">普通用户</option>
 							</select>
 						</div>
 					</div>

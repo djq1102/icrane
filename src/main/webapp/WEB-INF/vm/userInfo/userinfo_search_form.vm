@@ -22,9 +22,12 @@
 					<div class="control-group">
 						<label class="control-label" >所属客户</label>
 						<div class="controls">
-							<select class="small m-wrap" tabindex="1" name="customerId">
-								<option value="0">北京京能</option>
-								<option value="1">北京铁路局</option>
+							<select id="custId"  class="small m-wrap" tabindex="1" name="customerId">
+								<option value="0" selected>--全部--</option>
+								#foreach($customer in $customers)
+									<option value="$!{customer.customerId}" #if($!{customerId} == $!{customer.customerId})selected#end>
+										  $!{customer.customerName}</option>
+								#end
 							</select>
 						</div>
 					</div>
@@ -32,17 +35,14 @@
 
 				<!--/span-->
 				<div class="span4 ">
-
 					<div class="control-group">
-
 						<label class="control-label">用户角色</label>
-
 						<div class="controls">
-
-							<select class="small m-wrap" tabindex="1" name="roleType">
-								<option value="0">平台管理员</option>
-								<option value="1">客户管理员</option>
-								<option value="2">普通用户</option>
+							<select  id="roleType" class="small m-wrap" tabindex="1" name="roleType">
+								<option value="0"  #if('0' == $!{roleType}) selected #end>--全部--</option>
+								<option value="1"  #if('1' == $!{roleType}) selected #end>平台管理员</option>
+								<option value="2"  #if('2' == $!{roleType}) selected #end>客户管理员</option>
+								<option value="3"  #if('3' == $!{roleType}) selected #end>普通用户</option>
 							</select>
 						</div>
 					</div>

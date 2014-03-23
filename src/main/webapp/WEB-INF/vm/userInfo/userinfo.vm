@@ -48,11 +48,11 @@
 		  
 	   // initiate layout and plugins
 	    var custId = $("#custId").val();
-   		var roleType = $("#roleType");
+   		var roleType = $("#roleType").val();
    		var userName = $("#userName").val();
    		var userPhone =$("#userPhone").val();
 	   var ajax_data = {
-			ajax_url:"/userInfo/queryList.do?userPhone="+userPhone+"&userName="+userName,
+			ajax_url:"/userInfo/queryList.do?userPhone="+userPhone+"&userName="+userName+"&roleType="+roleType+"&customerId="+custId,
 			last_index:6,
 			delete_url:"http://localhost:8080/demo/JqueryTableServlet?id=",
 			edit_url:"/userInfo/editUserInfo.do?userId="
