@@ -53,6 +53,20 @@ public class DeviceService {
 		return MsgUtils.fillModule(device);
 	}
 	
+	public ServiceResult deleteDevice(long deviceId) throws ManagerException{
+		try{
+			int row = deviceDao.deleteDevice(deviceId);
+			if(row != 1){
+				return MsgUtils.fillMsg(MsgEnum.DEVICE_ADD_FAIL);
+			}
+		}catch(DAOException e){
+			throw new ManagerException(e);
+		}
+		ServiceResult result = new ServiceResult(true);
+		return result;
+	}
+	
+	
 	public ServiceResult updateDevice(Device device) throws ManagerException{
 		try {
 			int rows = deviceDao.updateDevice(device);
@@ -74,6 +88,18 @@ public class DeviceService {
 		}
 		ServiceResult result = new ServiceResult(true);
 		result.setModule(list);
+		return result;
+	}
+
+	public ServiceResult totalCount(DeviceQuery query) throws ManagerException{
+		int num = 0;
+		try{
+			num = deviceDao.countAll(query);
+		}catch(DAOException e){
+			throw new ManagerException(e);
+		}
+		ServiceResult result = new ServiceResult(true);
+		result.setModule(num);
 		return result;
 	}
 

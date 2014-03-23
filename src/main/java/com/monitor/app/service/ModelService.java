@@ -88,6 +88,17 @@ public class ModelService {
 		return MsgUtils.fillModule(models);
 	}
 	
+	public ServiceResult queryAllModels(){
+		List<PlcModel> models = null;
+		try{
+			models = modelDao.queryAllModels();
+		}catch(Exception e){
+			log.error("query_model_var_fails",e);
+			return MsgUtils.fillMsg(MsgEnum.MODEL_VAR_QUERY_FAIL);
+		}
+		return MsgUtils.fillModule(models);
+	}
+	
 	public ServiceResult queryModel(long modelId){
 		if(modelId<=0) return MsgUtils.fillMsg(MsgEnum.REQUEST_PARAM_ERROR);
 		PlcModel model = null;

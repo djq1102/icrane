@@ -75,6 +75,19 @@ public class SiteService {
 		return MsgUtils.fillModule(rows);
 	}
 	
+	public ServiceResult queryAllSites() throws ManagerException{
+		List<Site> siteList = new ArrayList<Site>();
+		try{
+			siteList = siteDao.queryAllSites();
+		}catch(DAOException e){
+			throw new ManagerException(e);
+		}
+		ServiceResult result = new ServiceResult(true);
+		result.setModule(siteList);
+		return result;
+	}
+
+	
 	public ServiceResult queryAllSite(SiteQuery query) throws ManagerException{
 		List<Site> siteList = new ArrayList<Site>();
 		try{
@@ -87,4 +100,16 @@ public class SiteService {
 		return result;
 	}
 	
+	
+	public ServiceResult querySiteByCustomerId(long customerId) throws ManagerException{
+		List<Site> siteList = new ArrayList<Site>();
+		try{
+			siteList = siteDao.querySiteByCustomerId(customerId);
+		}catch(DAOException e){
+			throw new ManagerException(e);
+		}
+		ServiceResult result = new ServiceResult(true);
+		result.setModule(siteList);
+		return result;
+	}
 }

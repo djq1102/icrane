@@ -18,5 +18,7 @@ public interface DeviceDao {
 	  
 	  public int countAll(DeviceQuery deviceQuery) throws DAOException;
 	  
+	  public int deleteDevice(long deviceId) throws DAOException;
+	  
 
 }

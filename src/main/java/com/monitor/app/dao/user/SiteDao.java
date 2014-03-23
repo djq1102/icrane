@@ -15,6 +15,10 @@ public interface SiteDao {
 	 public int updateSite(Site site) throws DAOException;
 	 
 	 public List<Site> querySite(SiteQuery query) throws DAOException;
+	 
+	 public List<Site> querySiteByCustomerId(long customerId) throws DAOException;
+	 
+	 public List<Site> queryAllSites() throws DAOException;
 	  
 	 public int countAll(SiteQuery query) throws DAOException;
 	  

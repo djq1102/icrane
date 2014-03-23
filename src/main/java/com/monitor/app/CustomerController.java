@@ -115,7 +115,6 @@ public class CustomerController {
 		}
 	}
 	
-	
 	@SuppressWarnings({ "rawtypes", "unchecked" })
 	private List<Map> buildList(List<Customer> customerList){
 		List<Map> result = new ArrayList<Map>();

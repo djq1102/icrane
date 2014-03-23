@@ -80,8 +80,8 @@ public class ModelController extends AbstractController{
 			@RequestParam("sEcho") int sEcho, Model model) throws Exception{
 		
 		PlcModelQuery query = new PlcModelQuery();
-		query.setModelId(modelId);
-		query.setModelName(modelName);
+		//query.setModelId(modelId);
+		//query.setModelName(modelName);
 		query.setBegin(start);
 		query.setEnd(start+pagesize);
 		

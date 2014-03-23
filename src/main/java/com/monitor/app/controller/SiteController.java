@@ -67,6 +67,17 @@ public class SiteController {
 		return "redirect:index.htm";
 	}
 	
+	@RequestMapping(value = "/site/updateSite")
+	public String updateSite(Site site,Model model) throws Exception{
+		site.setLocation("1204,32");
+		ServiceResult result = siteService.updateSite(site);
+		if(!result.isSuccess()){
+			logger.error(">>>action=addSite error" + site.getSiteName());
+		}
+		return "redirect:index.htm";
+	}
+	
+	
 	@RequestMapping(value = "/site/editSite")
 	public String editSite(@RequestParam("siteId") long siteId,Model model) throws Exception{
 		ServiceResult result = siteService.queryBySiteId(siteId);
@@ -97,6 +108,18 @@ public class SiteController {
 		List<Site> siteList  = (List<Site>)result.getModule();
 		List<Map> resultMap = buildList(siteList);
 		return JsonUtil.buildJosn(resultMap, numResult, sEcho);
+	}
+	
+	@SuppressWarnings({ "unchecked"})
+	@RequestMapping(value = "/site/querySiteListBycustomerId",method = RequestMethod.GET,produces = "application/json; charset=utf-8")
+	public String querySiteListBycustomerId(@RequestParam("customerId") Long customerId) throws ManagerException{
+		logger.warn(">>>action=querySiteListBycustomerId" + customerId);
+		SiteQuery query = new SiteQuery();
+		query.setCustomerId(customerId);
+		ServiceResult result = siteService.querySiteByCustomerId(customerId);
+		List<Site> siteList  = (List<Site>)result.getModule();
+		return null;
+		
 	}
 	
 	@SuppressWarnings({ "rawtypes", "unchecked" })
