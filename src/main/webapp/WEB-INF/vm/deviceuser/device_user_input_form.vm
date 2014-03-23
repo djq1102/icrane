@@ -1,0 +1,71 @@
+<div class="span12">
+	<!-- BEGIN INPUT PORTLET-->
+
+	<div class="portlet box blue">
+
+		<div class="portlet-title">
+
+			<div class="caption"><i class="icon-search"></i>设备基础信息</div>
+
+		</div>
+		
+		<div class="portlet-body form" style="display: block;">
+		
+		<form class="form-horizontal" action="/deviceuser/addcommit.htm" method="post">
+			<!--/row-->
+			<div class="row-fluid">
+				<div class="span12 ">
+					<div class="control-group">
+										<label class="control-label">Grouped Options</label>
+										<div class="controls">
+											<select multiple="multiple" id="my_multi_select2" name="my_multi_select2">
+												<optgroup label="NFC EAST">
+													<option value="11">Dallas Cowboys</option>
+													<option  value="12">New York Giants</option>
+													<option  value="13">Philadelphia Eagles</option>
+													<option>Washington Redskins</option>
+												</optgroup>
+												<optgroup label="NFC NORTH">
+													<option>Chicago Bears</option>
+													<option>Detroit Lions</option>
+													<option>Green Bay Packers</option>
+													<option>Minnesota Vikings</option>
+												</optgroup>
+												<optgroup label="NFC SOUTH">
+													<option>Atlanta Falcons</option>
+													<option>Carolina Panthers</option>
+													<option>New Orleans Saints</option>
+													<option>Tampa Bay Buccaneers</option>
+												</optgroup>
+												<optgroup label="NFC WEST">
+													<option>Arizona Cardinals</option>
+													<option>St. Louis Rams</option>
+													<option>San Francisco 49ers</option>
+													<option>Seattle Seahawks</option>
+												</optgroup>
+											</select>
+										</div>
+									</div>
+					
+				</div>
+
+				<!--/span-->
+
+				
+
+			</div>
+			<!--/row-->
+			
+			<div class="form-actions">
+
+				<button type="submit" class="btn blue"><i class="icon-ok"></i> 保存</button>
+
+				<button type="button" class="btn">取消</button>
+
+			</div>
+		</form>
+		</div>
+		
+	</div>
+	<!-- END INPUT FORM>
+</div>
