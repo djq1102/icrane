@@ -1,0 +1,47 @@
+<div class="span12">
+	<!-- BEGIN SEARCH PORTLET-->
+	<div class="portlet ">
+		<div class="portlet-title">
+			<div class="caption"><i class="icon-search"></i>查询条件</div>
+			<div class="tools">
+				<a href="javascript:;" class="collapse"></a>
+			</div>
+		</div>
+		
+		<div class="portlet-body form" style="display: block;">
+		<form class="form-horizontal" action="$searchFormActionUrl" method="POST">
+			<div class="row-fluid">
+				<!--/span-->
+				<div class="span4 ">
+                	<div class="control-group">
+                		<label class="control-label">配件编号</label>
+                		<div class="controls">
+                			<input type="text" id="accessoryId" class="m-wrap span12" name="accessoryId" value="$!{accessoryId}"> 
+                		</div>
+                	</div>
+                </div>
+				<!--/span-->
+				<div class="span4 ">
+                	<div class="control-group">
+                		<label class="control-label">配件名称</label>
+                		<div class="controls">
+                			<input type="text" id="accessoryName" class="m-wrap span12" name="accessoryName" value="$!{accessoryName}"> 
+                		</div>
+                	</div>
+                </div>
+			</div>
+			<!--/row-->
+			
+			<div class="row-fluid">
+				<div class="span4 ">
+					<div class="control-group">
+						<div class="controls">
+							<button class="btn purple">查询 <i class="icon-search"></i></button>	</div>
+					</div>
+				</div>
+			</div>
+		</form>
+		</div>
+	</div>
+	<!-- END SEARCH FORM>
+</div>

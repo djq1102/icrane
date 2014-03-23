@@ -7,7 +7,7 @@ import com.monitor.app.dao.common.Pagination;
 
 /**
  * @author ibm
- *
+ * 
  */
 public class PlcModelQuery extends Pagination {
 
@@ -30,6 +30,5 @@ public class PlcModelQuery extends Pagination {
 	public static long getSerialversionuid() {
 		return serialVersionUID;
 	}
-	
 	
 }

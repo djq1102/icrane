@@ -1,0 +1,53 @@
+<div class="span12">
+	<!-- BEGIN INPUT PORTLET-->
+	<div class="portlet box blue">
+		<div class="portlet-title">
+			<div class="caption"><i class="icon-search"></i>设备基础信息</div>
+		</div>
+		<div class="portlet-body form" style="display: block;">
+			
+		<form class="form-horizontal" action="$formActionUrl" method="POST">
+			<input type="hidden" name="modelId" value="$!{plcModel.modelId}"> 
+			<!--/row-->
+			<div class="row-fluid">
+				<!--/span-->
+				<div class="span4 ">
+					<div class="control-group">
+						<label class="control-label">机型名称:</label>
+						<div class="controls">
+							<input type="text" class="m-wrap span12" name="modelName" value="$!{plcModel.modelName}"> 
+						</div>
+					</div>
+				</div>
+
+				<!--/span-->
+				<div class="span4 ">
+					<div class="control-group">
+						<label class="control-label">机型协议:</label>
+						<div class="controls">
+							<input type="text" class="m-wrap span12" name="sensorType" value="$!{plcModel.sensorType}"> 
+						</div>
+					</div>
+				</div>
+
+				<!--/span-->
+				<div class="span4 ">
+					<div class="control-group">
+						<label class="control-label">接口类型:</label>
+						<div class="controls">
+							<input type="text" class="m-wrap span12" name="ioType" value="$!{plcModel.ioType}"> 
+						</div>
+					</div>
+				</div>
+			</div>
+			<!--/row-->
+			
+			<div class="form-actions">
+				<button type="submit" class="btn blue"><i class="icon-ok"></i> 保存</button>
+				<button type="button" class="btn" onclick="javascript:window.history.back();">取消</button>
+			</div>
+		</form>
+		</div>
+	</div>
+	<!-- END INPUT FORM>
+</div>

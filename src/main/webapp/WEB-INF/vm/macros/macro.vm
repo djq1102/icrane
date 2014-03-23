@@ -283,3 +283,7 @@
 
 		</div>
 #end
+
+#macro(fillSearchListTableTitle $searchTitle)
+	<th>$searchTitle</th>
+#end

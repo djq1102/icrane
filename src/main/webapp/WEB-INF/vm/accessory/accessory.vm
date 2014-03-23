@@ -1,0 +1,60 @@
+<!-- BEGIN CONTAINER -->
+<div class="page-container row-fluid">
+<!-- BEGIN SIDEBAR -->
+#menu (11)
+<!-- END SIDEBAR -->
+
+<!-- USER-DEFINED VARIABLE SETTING -->
+#set($styleFilePath='control/style_customizer.vm')
+#set($pageTitle='配件管理')
+#set($pageHomeTitle='配件管理')
+##search_form
+#set($searchForm='control/acc/search_form.vm')
+#set($searchList='control/acc/search_list.vm')
+#set($searchFormActionUrl='/acc/index')
+##search_list
+#set($searchListTitle='配件列表')
+#set($searchTitleList=['配件编号','配件名称','配件价格','配件图片名称','配件图片路径','操作'])
+
+<!-- BEGIN PAGE -->
+#parse ("control/common/main_content.vm")
+<!-- END PAGE -->
+</div>
+<!-- END CONTAINER -->
+<!-- BEGIN JAVASCRIPTS(Load javascripts at bottom, this will reduce page load time) -->
+<!-- BEGIN CORE PLUGINS -->
+#parse("control/script.vm")	
+
+<!-- END CORE PLUGINS -->
+<!-- BEGIN PAGE LEVEL PLUGINS -->
+
+<script type="text/javascript" src="/media/js/select2.min.js"></script>
+
+<script type="text/javascript" src="/media/js/jquery.dataTables.js"></script>
+
+<script type="text/javascript" src="/media/js/DT_bootstrap.js"></script>
+<!-- END PAGE LEVEL PLUGINS -->
+
+<!-- BEGIN PAGE LEVEL SCRIPTS -->
+<script src="/media/js/app.js"></script>
+<script src="/media/js/table-managed.js"></script>         
+<script>
+		
+	jQuery(document).ready(function() {   
+		var accessoryId = $("#accessoryId").val();
+		if(accessoryId=="") accessoryId=0;
+		var accessoryName = $("#accessoryName").val();
+		var ajax_data = {
+			ajax_url:"/acc/query?accessoryId="+accessoryId+"&accessoryName="+accessoryName,
+			last_index:5,
+			delete_url:"/acc/del?accessoryId="+accessoryId,
+			edit_url:"/acc/edit?accessoryId="+accessoryId
+		} 
+	   console.log(ajax_data.ajax_url);
+	   //initiate layout and plugins
+	   App.init();
+	   TableManaged.init(ajax_data);
+	});
+</script>
+
+<!-- END PAGE LEVEL SCRIPTS -->

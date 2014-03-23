@@ -42,6 +42,12 @@ public enum MsgEnum {
 	MODEL_QUERY_FAIL("机型查询失败"),
 	MODEL_QUERY_EMPTY("未查到该机型"),
 	
+	ACCESSORY_ADD_FAIL("配件增加失败"),
+	ACCESSORY_UPDATE_FAIL("配件更新失败"),
+	ACCESSORY_DELETE_FAIL("配件删除失败"),
+	ACCESSORY_QUERY_FAIL("配件查询失败"),
+	ACCESSORY_QUERY_EMPTY("未查到该配件"),
+	
 	SITE_ADD_FAIL("现场添加失败"),
 	SITE_NOT_EXIST("现场不存在"),
 	SITE_UPDATE_FAIL("现场修改失败"),

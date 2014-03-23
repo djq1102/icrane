@@ -1,0 +1,13 @@
+<!-- BEGIN CONTAINER -->
+<div class="page-container row-fluid">
+<!-- BEGIN SIDEBAR -->
+#menu (8)
+<!-- END SIDEBAR -->
+
+<!-- BEGIN PAGE -->
+#set($formActionUrl="/model/update")
+#parse ("/control/plc/edit_page.vm")
+<!-- END PAGE -->
+</div>
+<!-- END CONTAINER -->
+

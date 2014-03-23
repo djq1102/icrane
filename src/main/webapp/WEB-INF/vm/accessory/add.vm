@@ -1,0 +1,19 @@
+<!-- BEGIN CONTAINER -->
+<div class="page-container row-fluid">
+<!-- BEGIN SIDEBAR -->
+#menu (11)
+<!-- END SIDEBAR -->
+
+#set($styleFilePath='control/style_customizer.vm')
+#set($pageTitle='配件管理')
+#set($pageHomeTitle='配件管理')
+#set($pageEditTitle='配件编辑')
+#set($pageEditFormPath='control/common/edit_form.vm')
+
+<!-- BEGIN PAGE -->
+#set($formActionUrl="/accessory/add")
+#parse ("/control/common/edit_page.vm")
+<!-- END PAGE -->
+</div>
+<!-- END CONTAINER -->
+
