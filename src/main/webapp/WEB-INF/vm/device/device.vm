@@ -46,7 +46,7 @@
 	  var customerId = $("#customerId").val();
 	  var siteId = $("#siteId").val();
 	  var ajax_data = {
-			ajax_url:"/device/queryDeviceList.do?deviceName="+deviceName+"&customerId="+customerId+"&siteId="+siteId,
+			ajax_url:"/device/queryDeviceList.do?deviceName="+deviceName+"&customerId="+customerId,
 			last_index:6,
 			delete_url:"http://localhost:8080/demo/JqueryTableServlet?id=",
 			edit_url:"/device/editDevice.do?deviceId="
