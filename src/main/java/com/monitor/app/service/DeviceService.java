@@ -53,6 +53,16 @@ public class DeviceService {
 		return MsgUtils.fillModule(device);
 	}
 	
+	public ServiceResult queryBySiteId(long siteId) throws ManagerException{
+		List<Device> devices = new ArrayList<Device>() ;
+		try {
+			devices = deviceDao.queryDevicesBySiteId(siteId);
+		} catch (DAOException e) {
+			throw new ManagerException(e);
+		}
+		return MsgUtils.fillModule(devices);
+	}
+	
 	public ServiceResult deleteDevice(long deviceId) throws ManagerException{
 		try{
 			int row = deviceDao.deleteDevice(deviceId);
@@ -65,7 +75,6 @@ public class DeviceService {
 		ServiceResult result = new ServiceResult(true);
 		return result;
 	}
-	
 	
 	public ServiceResult updateDevice(Device device) throws ManagerException{
 		try {
