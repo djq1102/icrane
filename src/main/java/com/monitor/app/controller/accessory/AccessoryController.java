@@ -23,7 +23,6 @@ import com.monitor.app.dataobject.ModelAccessory;
 import com.monitor.app.query.ModelAccessoryQuery;
 import com.monitor.app.result.ServiceResult;
 import com.monitor.app.service.AccessoryService;
-import com.monitor.app.service.ModelService;
 import com.monitor.app.utils.MoneyUtil;
 import com.monitor.app.utils.MsgUtils;
 
@@ -34,9 +33,6 @@ import com.monitor.app.utils.MsgUtils;
 @Controller
 public class AccessoryController extends AbstractController{
 
-	@Resource
-	private ModelService modelService;
-	
 	@Resource
 	private AccessoryService accessoryService;
 	
@@ -55,7 +51,7 @@ public class AccessoryController extends AbstractController{
 	}
 	
 	@RequestMapping(value = "/accessory/add")
-	public String add(@RequestParam("accessoryName") String name, @RequestParam("accessoryPrice") long price, 
+	public String add(@RequestParam("accessoryName") String name, @RequestParam("accessoryPrice") String price, 
 			@RequestParam("imageName") String imageName, @RequestParam("imagePath") String imagePath, Model model) throws Exception{
 		
 		//1.上传图片。。
@@ -63,7 +59,7 @@ public class AccessoryController extends AbstractController{
 		String fileName = imageName;
 		String filePath = imagePath;
 		
-		ModelAccessory acc = buildModelAccessory(name, fileName, filePath);
+		ModelAccessory acc = buildModelAccessory(name, price, fileName, filePath);
 		ServiceResult result = accessoryService.addAccessory(acc);
 		
 		if(result.isSuccess()){
@@ -74,9 +70,10 @@ public class AccessoryController extends AbstractController{
 		return "accessory/accessory";
 	}
 
-	private ModelAccessory buildModelAccessory(String name, String fileName, String filePath) {
+	private ModelAccessory buildModelAccessory(String name, String price,String fileName, String filePath) {
 		ModelAccessory acc= new ModelAccessory();
 		acc.setAccessoryName(name);
+		acc.setAccessoryPrice(MoneyUtil.parseCent4Money(price));
 		acc.setFileName(fileName);
 		acc.setFilePath(filePath);
 		return acc;
@@ -108,13 +105,13 @@ public class AccessoryController extends AbstractController{
 	
 	@RequestMapping(value = "/acc/update")
 	public String update(@RequestParam("accessoryId") long accessoryId, @RequestParam("accessoryName") String accessoryName,
-			@RequestParam("imageName") String imageName, @RequestParam("imagePath") String imagePath, 
+			@RequestParam("accessoryPrice") String accessoryPrice,@RequestParam("imageName") String imageName, @RequestParam("imagePath") String imagePath, 
 			Model model) throws Exception{
 		//1.判断是否有修改过图片
 		String fileName = imageName;
 		String filePath = imagePath;
 		
-		ModelAccessory acc = buildModelAccessory(accessoryName, fileName, filePath);
+		ModelAccessory acc = buildModelAccessory(accessoryName,accessoryPrice, fileName, filePath);
 		acc.setAccessoryId(accessoryId);
 		
 		ServiceResult result = accessoryService.updateAccessory(acc);

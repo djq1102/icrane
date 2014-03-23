@@ -8,11 +8,11 @@
 #set($pageTitle='配件管理')
 #set($pageHomeTitle='配件管理')
 #set($pageEditTitle='配件编辑')
-#set($pageEditFormPath='control/common/edit_form.vm')
+#set($pageEditFormPath='control/acc/edit_form.vm')
 
 <!-- BEGIN PAGE -->
-#set($formActionUrl="/accessory/add")
-#parse ("/control/common/edit_page.vm")
+#set($formActionUrl="/acc/add")
+#parse ("/control/acc/edit_page.vm")
 <!-- END PAGE -->
 </div>
 <!-- END CONTAINER -->
