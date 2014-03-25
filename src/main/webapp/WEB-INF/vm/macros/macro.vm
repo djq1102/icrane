@@ -128,7 +128,7 @@
 
 						<li #if ($id == 8) class="active" #end >
 
-							<a href="">
+							<a href="/model/index">
 
 							机型管理</a>
 
@@ -166,7 +166,7 @@
 
 					<ul class="sub-menu">
 
-				
+						<!--
 						<li #if ($id == 11) class="active" #end >
 
 							<a href="">
@@ -174,12 +174,12 @@
 							机型配件价格查询</a>
 
 						</li>
-					
+						-->
 						<li #if ($id == 12) class="active" #end >
 
-							<a href="">
+							<a href="/acc/index">
 
-							配件价格管理</a>
+							配件管理</a>
 
 						</li>
 						
