@@ -15,7 +15,9 @@ public interface UserDeviceRelationDao {
 	
 	@SuppressWarnings("rawtypes")
 	public int batchDeleteUserDeviceRelationBysiteId(Map params) throws DAOException;
+
+	public int deleteUserDeviceRelationByUserId(long userId) throws DAOException;
 	
-	public List<UserDeviceRelation> queryUserDeviceRelationByUserId(long userId) throws DAOException;
+	List<UserDeviceRelation> queryUserDeviceRelationByUserId(long userId) throws DAOException;
 
 }
