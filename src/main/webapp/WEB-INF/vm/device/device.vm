@@ -55,7 +55,25 @@
 	   // initiate layout and plugins
 	   App.init();
 	   TableManaged.init(ajax_data);
+	   initSelect();
 	});
+	
+	function initSelect(){
+		changCustomers($("#customerId").val());
+		$("#customerId").change(function(){
+	   		changCustomers($(this).val());
+	   });
+	}
+	
+	function changCustomers(customerId){  
+	    $.post("/site/querySiteListBycustomerId.do",{"customerId":customerId},function(json){  
+	        $("#siteId").html("");//
+	        $("#siteId").append("<option value='all'>--全部--</option>");  
+	        for(var i=0;i<json.length;i++){  
+	            $("#siteId").append("<option value='"+json[i].siteId+"'>"+json[i].siteName+"</option>");  
+	        }  
+	    },'json');  
+} 
 </script>
 
 <!-- END PAGE LEVEL SCRIPTS -->

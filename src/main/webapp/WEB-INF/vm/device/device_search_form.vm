@@ -40,11 +40,7 @@
 						<div class="controls">
 							<select id="siteId" class="small m-wrap" tabindex="1" name="siteId">
                                 <option value="0">--全部--</option>
-								#foreach($site in $sites)
-									<option value="$!{site.siteId}" #if($!{siteId} == $!{site.siteId})selected#end>
-											$!{site.siteName}
-									</option>
-								#end
+								
 							</select>
 						</div>
 					</div>
