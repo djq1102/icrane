@@ -78,9 +78,19 @@ public class DeviceUserController {
 		return "deviceuser/deviceuser";
 	}
 	
+	@SuppressWarnings({ "unchecked", "rawtypes" })
 	@RequestMapping(value = "/deviceuser/addcommit", method = {RequestMethod.GET,RequestMethod.POST})
 	public String addCommit(Locale locale, Model model,String[] my_multi_select2,@RequestParam("userId") long userId) throws ManagerException {
 		logger.info("[设备分配查询]分配数据："+ my_multi_select2);
+		ServiceResult userDeviceRelationResult = userDeviceRelationService.queryUserDeviceRelationByUserId(userId);
+		
+		if(userDeviceRelationResult.isSuccess()){
+			List<UserDeviceRelation> userDeviceRelations = (List)userDeviceRelationResult.getModule();
+			if(userDeviceRelations.size() > 0){
+				userDeviceRelationService.deleteUserDeviceRelationByUserId(userId);
+			}
+		}
+		
 		List<UserDeviceRelation> userDeviceRelations = new ArrayList<UserDeviceRelation>();
 		for(String deviceId : my_multi_select2){
 			ServiceResult deviceResult = deviceService.queryByDeviceId(Long.valueOf(deviceId));
