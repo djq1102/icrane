@@ -121,8 +121,6 @@ public class SiteController {
 	@ResponseBody
 	public String querySiteListBycustomerId(@RequestParam("customerId") Long customerId) throws ManagerException{
 		logger.warn(">>>action=querySiteListBycustomerId" + customerId);
-		SiteQuery query = new SiteQuery();
-		query.setCustomerId(customerId);
 		ServiceResult result = siteService.querySiteByCustomerId(customerId);
 		List<Site> siteList  = (List<Site>)result.getModule();
 		return JSONObject.toJSONString(siteList);

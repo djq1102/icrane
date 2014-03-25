@@ -15,7 +15,9 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.alibaba.fastjson.JSONObject;
 import com.monitor.app.dataobject.Device;
 import com.monitor.app.dataobject.Site;
 import com.monitor.app.dataobject.UserDeviceRelation;
@@ -76,6 +78,17 @@ public class DeviceUserController {
 			model.addAttribute("userId", userId);
 		}
 		return "deviceuser/deviceuser";
+	}
+	
+	@SuppressWarnings({ "unchecked", "rawtypes"})
+	@RequestMapping(value = "/deviceuser/queryDeviceUserByuserId",method = {RequestMethod.GET,RequestMethod.POST},produces = "application/json; charset=utf-8")
+	@ResponseBody
+	public String queryDeviceUserByuserId(@RequestParam("userId") Long userId) throws ManagerException{
+		logger.warn(">>>action=querySiteListBycustomerId" + userId);
+		ServiceResult result = userDeviceRelationService.queryUserDeviceRelationByUserId(userId);
+		List<UserDeviceRelation> userDeviceRelations = (List)result.getModule();
+		return JSONObject.toJSONString(userDeviceRelations);
+		
 	}
 	
 	@SuppressWarnings({ "unchecked", "rawtypes" })
