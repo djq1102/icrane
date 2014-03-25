@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.alibaba.fastjson.JSONObject;
 import com.monitor.app.dataobject.Customer;
 import com.monitor.app.dataobject.Site;
 import com.monitor.app.exception.ManagerException;
@@ -116,14 +117,15 @@ public class SiteController {
 	}
 	
 	@SuppressWarnings({ "unchecked"})
-	@RequestMapping(value = "/site/querySiteListBycustomerId",method = RequestMethod.GET,produces = "application/json; charset=utf-8")
+	@RequestMapping(value = "/site/querySiteListBycustomerId",method = {RequestMethod.GET,RequestMethod.POST},produces = "application/json; charset=utf-8")
+	@ResponseBody
 	public String querySiteListBycustomerId(@RequestParam("customerId") Long customerId) throws ManagerException{
 		logger.warn(">>>action=querySiteListBycustomerId" + customerId);
 		SiteQuery query = new SiteQuery();
 		query.setCustomerId(customerId);
 		ServiceResult result = siteService.querySiteByCustomerId(customerId);
 		List<Site> siteList  = (List<Site>)result.getModule();
-		return null;
+		return JSONObject.toJSONString(siteList);
 		
 	}
 	
