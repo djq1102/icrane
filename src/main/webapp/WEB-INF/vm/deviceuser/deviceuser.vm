@@ -49,15 +49,21 @@ input.search-input{
 	$('#my_multi_select2').multiSelect({
         	selectableHeader: "<input type='text' class='search-input' autocomplete='off' placeholder='输入设备名称'>",
         	  selectionHeader: "<input type='text' class='search-input' autocomplete='off' placeholder='输入设备名称'>",
-            selectableOptgroup: true
+		selectableOptgroup: true
         }); 
-        $('#my_multi_select2').multiSelect("select",['11','12']);
     }
 	jQuery(document).ready(function() {  
 	  // initiate layout and plugins
 	   App.init();
-		handleMultiSelect();
+	   handleMultiSelect();
+	   dataInit(${userId});
 	});
+	
+    function dataInit(userId){  
+	    $.post("/deviceuser/queryDeviceUserByuserId",{"userId":1},function(json){  
+	        $('#my_multi_select2').multiSelect("select",json.deviceIds);
+	    },'json');  
+	} 
 	
 </script>
 
