@@ -187,45 +187,6 @@
 
 				</li>
 
-				<li #if ($id > 12 && $id < 16) class="start active" #end>
-
-					<a href="javascript:;">
-
-					<i class="icon-eye-open"></i> 
-
-					<span class="title">设备监控管理</span>
-
-					<span class="arrow "></span>
-
-					</a>
-
-					<ul class="sub-menu">
-
-						<li #if ($id == 13) class="active" #end>
-
-							<a href="">
-
-							设备数据监控</a>
-
-						</li>
-						<li #if ($id == 14) class="active" #end>
-
-							<a href="">
-
-							设备视频监控</a>
-
-						</li>
-						<li #if ($id == 15) class="active" #end >
-
-							<a href="">
-
-							设备历史数据查询</a>
-
-						</li>
-
-					</ul>
-
-				</li>
 					<li #if ($id > 15 && $id < 17) class="start active" #end>
 
 					<a href="javascript:;">
