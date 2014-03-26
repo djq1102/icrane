@@ -15,16 +15,9 @@
 										<label class="control-label">配件选择</label>
 										<div class="controls">
 											<select multiple="multiple" id="my_multi_select2" name="my_multi_select2">
-												#foreach($param in ${siteMap.keySet()})  
-													#set($site = ${siteMap.get(${param})})
-													#foreach($s in ${site.keySet()})
-														<optgroup label="${s}">
 														#foreach($device in $site.get($s))	
 															<option value="$!{device.deviceId}">$!{device.deviceName}</option>
 														#end
-														</optgroup>
-													#end
-												#end
 											</select>
 										</div>
 									</div>
