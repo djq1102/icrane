@@ -87,7 +87,14 @@ public class DeviceUserController {
 		logger.warn(">>>action=querySiteListBycustomerId" + userId);
 		ServiceResult result = userDeviceRelationService.queryUserDeviceRelationByUserId(userId);
 		List<UserDeviceRelation> userDeviceRelations = (List)result.getModule();
-		return JSONObject.toJSONString(userDeviceRelations);
+		String[] deviceIds = new String[userDeviceRelations.size()];
+		for(int i=0;i<userDeviceRelations.size();i++){
+			deviceIds[i] = String.valueOf(userDeviceRelations.get(i).getDeviceId());
+		}
+		Map<String,String[]> maps = new HashMap<String, String[]>(); 
+		maps.put("deviceIds", deviceIds);
+		logger.warn(">>>action=querySiteListBycustomerId:" + maps);
+		return JSONObject.toJSONString(maps);
 		
 	}
 	
