@@ -34,7 +34,6 @@
 
 <script src="/media/js/app.js"></script>  
 
-<script src="/media/js/form-components.js"></script>   
 
 <style>
 input.search-input{
@@ -46,13 +45,20 @@ input.search-input{
 }
 </style>
 <script>
-
+  function handleMultiSelect() {
+	$('#my_multi_select2').multiSelect({
+        	selectableHeader: "<input type='text' class='search-input' autocomplete='off' placeholder='输入设备名称'>",
+        	  selectionHeader: "<input type='text' class='search-input' autocomplete='off' placeholder='输入设备名称'>",
+            selectableOptgroup: true
+        }); 
+        $('#my_multi_select2').multiSelect("select",['11','12']);
+    }
 	jQuery(document).ready(function() {  
 	  // initiate layout and plugins
 	   App.init();
-	    FormComponents.init();
-	 
+		handleMultiSelect();
 	});
+	
 </script>
 
 <!-- END PAGE LEVEL SCRIPTS -->
