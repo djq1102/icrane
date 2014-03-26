@@ -60,7 +60,7 @@ input.search-input{
 	});
 	
     function dataInit(userId){  
-	    $.post("/deviceuser/queryDeviceUserByuserId",{"userId":1},function(json){  
+	    $.post("/deviceuser/queryDeviceUserByuserId",{"userId":userId},function(json){  
 	        $('#my_multi_select2').multiSelect("select",json.deviceIds);
 	    },'json');  
 	} 
