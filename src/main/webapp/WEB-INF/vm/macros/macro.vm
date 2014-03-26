@@ -101,13 +101,6 @@
 							设备管理</a>
 
 						</li>
-						<li #if ($id == 7) class="active" #end >
-
-							<a href="">
-
-							设备分配管理</a>
-
-						</li>
 						
 					</ul>
 
@@ -141,13 +134,6 @@
 							机型变量管理</a>
 
 						</li>
-						<li #if ($id == 10) class="active" #end >
-
-							<a href="">
-
-							图形管理</a>
-
-						</li>
 						
 					</ul>
 
@@ -166,15 +152,6 @@
 
 					<ul class="sub-menu">
 
-						<!--
-						<li #if ($id == 11) class="active" #end >
-
-							<a href="">
-
-							机型配件价格查询</a>
-
-						</li>
-						-->
 						<li #if ($id == 12) class="active" #end >
 
 							<a href="/acc/index">
