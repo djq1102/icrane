@@ -16,6 +16,13 @@
 		<result property="gmtModify" column="gmt_modify"/>
 	</resultMap>
 	
+	<resultMap type="DeviceAccBindData" id="bindDataResult">
+		<result property="id" column="id"/>
+		<result property="deviceId" column="device_id"/>
+		<result property="accessoryId" column="accessory_id"/>
+		<result property="accessoryName" column="accessory_name"/>
+	</resultMap>
+	
 	<sql id="deviceFields">
 		<![CDATA[
 			device_id,
@@ -135,4 +142,11 @@
 		<include refid="updateFields"/>
 		WHERE device_id = #{deviceId}
 	</update>
+	
+	<!-- device accessory bind -->
+	<select id="queryDeviceBindDataByDeviceId" parameterType="java.lang.Long" resultMap="bindDataResult">
+		SELECT id,device_id,da.accessory_id,da.accessory_name
+		FROM cr_device_acc_relation dar,cr_device_accessory da
+		WHERE device_id = #{deviceId} and dar.accessory_id = da.accessory_id
+	</select>
 </mapper>

@@ -52,6 +52,9 @@ public class PaginationInterceptor implements Interceptor{
 		       }
 	       }else{
 	    	   Pagination pageObj = (Pagination)pagination;
+	    	   if(!pageObj.isNeedPagination()){
+	    		   return invocation.proceed();
+	    	   }
 	    	   //rowBounds = new RowBounds((pageObj.getCurrentPage()-1)*pageObj.getPageSize(), pageObj.getPageSize());
 	    	   rowBounds = new RowBounds(pageObj.getBegin(),pageObj.getEnd()-pageObj.getBegin());
 	    	   

@@ -7,7 +7,7 @@
 		
 		<div class="portlet-body form" style="display: block;">
 		<form class="form-horizontal" action="" method="post">
-			<input type="hidden" name="userId" value="$!{userId}"> 
+			<input type="hidden" name="deviceId" value="$!{deviceId}"> 
 			<!--/row-->
 			<div class="row-fluid">
 				<div class="span12 ">
@@ -15,9 +15,9 @@
 										<label class="control-label">配件选择</label>
 										<div class="controls">
 											<select multiple="multiple" id="my_multi_select2" name="my_multi_select2">
-														#foreach($device in $site.get($s))	
-															<option value="$!{device.deviceId}">$!{device.deviceName}</option>
-														#end
+													#foreach($acc in $accs)	
+														<option value="$!{acc.accessoryId}">$!{acc.accessoryName}</option>
+													#end
 											</select>
 										</div>
 									</div>

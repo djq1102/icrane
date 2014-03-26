@@ -89,12 +89,12 @@ input.search-input{
 	  // initiate layout and plugins
 	   App.init();
 	   handleMultiSelect();
-	   //dataInit(${deviceId});
+	   dataInit(${deviceId});
 	});
 	
-    function dataInit(userId){  
-	    $.post("/deviceuser/queryDeviceUserByuserId",{"deviceId":deviceId},function(json){  
-	        $('#my_multi_select2').multiSelect("select",json.deviceIds);
+    function dataInit(deviceId){  
+	    $.post("/device/queryBindData/"+deviceId,{"a":"b"},function(json){  
+	        $('#my_multi_select2').multiSelect("select",json.bindIds);
 	    },'json');  
 	} 
 	

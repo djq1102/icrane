@@ -3,6 +3,7 @@ package com.monitor.app.dao.user;
 import java.util.List;
 
 import com.monitor.app.dataobject.Device;
+import com.monitor.app.dataobject.DeviceAccessoryBindDO;
 import com.monitor.app.exception.DAOException;
 import com.monitor.app.query.DeviceQuery;
 
@@ -22,5 +23,5 @@ public interface DeviceDao {
 	  
 	  public int deleteDevice(long deviceId) throws DAOException;
 	  
-
+	  public List<DeviceAccessoryBindDO> queryDeviceBindDataByDeviceId(long deviceId) throws DAOException;
 }

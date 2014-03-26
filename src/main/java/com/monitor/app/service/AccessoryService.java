@@ -112,4 +112,9 @@ public class AccessoryService {
 		return MsgUtils.fillModule(count);
 	}
 	
+	public ServiceResult queryAllAccessorys(){
+		ModelAccessoryQuery query = new ModelAccessoryQuery();
+		query.setNeedPagination(false);
+		return queryAccessorys(query);
+	}
 }

@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 
 import com.monitor.app.dao.user.DeviceDao;
 import com.monitor.app.dataobject.Device;
+import com.monitor.app.dataobject.DeviceAccessoryBindDO;
 import com.monitor.app.exception.DAOException;
 import com.monitor.app.exception.ManagerException;
 import com.monitor.app.query.DeviceQuery;
@@ -112,4 +113,15 @@ public class DeviceService {
 		return result;
 	}
 
+	public ServiceResult queryDeviceAccBindData(long deviceId)  throws ManagerException{
+		List<DeviceAccessoryBindDO> bindDOList = null;
+		try{
+			bindDOList = deviceDao.queryDeviceBindDataByDeviceId(deviceId);
+		}catch(Exception e){
+			throw new ManagerException(e);
+		}
+		
+		return MsgUtils.fillModule(bindDOList);
+	}
+	
 }

@@ -36,6 +36,7 @@
 		<typeAlias alias="UserDeviceRelation"  type="com.monitor.app.dataobject.UserDeviceRelation"/>
 		<typeAlias alias="PlcModel"  type="com.monitor.app.dataobject.PlcModel"/>
 		<typeAlias alias="ModelAccessory" type="com.monitor.app.dataobject.ModelAccessory"/>
+		<typeAlias alias="DeviceAccBindData" type="com.monitor.app.dataobject.DeviceAccessoryBindDO"/>
 		
 		<typeAlias alias="UserInfoQuery" type="com.monitor.app.query.UserInfoQuery"/>
 		<typeAlias alias="customerInfoQuery" type="com.monitor.app.query.CustomerInfoQuery"/>

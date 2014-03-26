@@ -21,6 +21,8 @@ public class Pagination implements Serializable{
 	//default
 	private int pageSize=10;
 	
+	private boolean needPagination=true;
+	
 	public int getCurrentPage() {
 		return currentPage;
 	}
@@ -51,6 +53,14 @@ public class Pagination implements Serializable{
 
 	public void setEnd(int end) {
 		this.end = end;
+	}
+
+	public boolean isNeedPagination() {
+		return needPagination;
+	}
+
+	public void setNeedPagination(boolean needPagination) {
+		this.needPagination = needPagination;
 	}
 
 }
