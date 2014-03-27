@@ -12,8 +12,8 @@ public class DeviceAccessoryBindDO {
 	private long id;
 	private long deviceId;
 	private long accessoryId;
-	private String accessoryName;
-
+	private long userId;
+	
 	public long getId() {
 		return id;
 	}
@@ -38,12 +38,12 @@ public class DeviceAccessoryBindDO {
 		this.accessoryId = accessoryId;
 	}
 
-	public String getAccessoryName() {
-		return accessoryName;
+	public long getUserId() {
+		return userId;
 	}
 
-	public void setAccessoryName(String accessoryName) {
-		this.accessoryName = accessoryName;
+	public void setUserId(long userId) {
+		this.userId = userId;
 	}
 
 

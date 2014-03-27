@@ -124,4 +124,23 @@ public class DeviceService {
 		return MsgUtils.fillModule(bindDOList);
 	}
 	
+	public ServiceResult batchDeleteAccBind(long deviceId)  throws ManagerException{
+		try{
+			 deviceDao.batchDeleteAccBindBydeviceId(deviceId);
+		}catch(Exception e){
+			throw new ManagerException(e);
+		}
+		
+		return MsgUtils.fillModule(null);
+	}
+	
+	public ServiceResult batchAddAccBinds(List<DeviceAccessoryBindDO> binds)  throws ManagerException{
+		try{
+			 deviceDao.batchInsertAccBindRelation(binds);
+		}catch(Exception e){
+			throw new ManagerException(e);
+		}
+		
+		return MsgUtils.fillModule(null);
+	}
 }

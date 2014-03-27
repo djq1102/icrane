@@ -24,4 +24,9 @@ public interface DeviceDao {
 	  public int deleteDevice(long deviceId) throws DAOException;
 	  
 	  public List<DeviceAccessoryBindDO> queryDeviceBindDataByDeviceId(long deviceId) throws DAOException;
+	  
+	  public void batchDeleteAccBindBydeviceId(long deviceId)  throws DAOException;
+	  
+	  public void batchInsertAccBindRelation(List<DeviceAccessoryBindDO> binds)  throws DAOException;
+	  
 }

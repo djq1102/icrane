@@ -20,7 +20,7 @@
 		<result property="id" column="id"/>
 		<result property="deviceId" column="device_id"/>
 		<result property="accessoryId" column="accessory_id"/>
-		<result property="accessoryName" column="accessory_name"/>
+		<result property="userId" column="user_id"/>
 	</resultMap>
 	
 	<sql id="deviceFields">
@@ -149,4 +149,20 @@
 		FROM cr_device_acc_relation dar,cr_device_accessory da
 		WHERE device_id = #{deviceId} and dar.accessory_id = da.accessory_id
 	</select>
+	
+	<delete id="batchDeleteAccBindBydeviceId" parameterType="java.lang.Long">
+		delete from cr_device_acc_relation where device_id =#{deviceId}
+	</delete>
+	
+	<insert id="batchInsertAccBindRelation" useGeneratedKeys="true" parameterType="java.util.List">
+		<selectKey resultType="long" keyProperty="id" order="AFTER">
+			SELECT
+			LAST_INSERT_ID()
+		</selectKey>
+		insert into cr_device_acc_relation (user_id,device_id,accessory_id,gmt_create,gmt_modify) 
+		values
+		<foreach collection="list" item="item" index="index" separator="," >
+			(#{item.userId},#{item.deviceId},#{item.accessoryId},now(),now())
+		</foreach>
+	</insert>
 </mapper>
