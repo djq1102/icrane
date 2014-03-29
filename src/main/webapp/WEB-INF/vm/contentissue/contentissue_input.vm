@@ -1,0 +1,88 @@
+<!-- BEGIN CONTAINER -->
+<div class="page-container row-fluid">
+<!-- BEGIN SIDEBAR -->
+#menu (3)
+<!-- END SIDEBAR -->
+
+<!-- BEGIN PAGE -->
+#parse ("/contentissue/contentissue_input_page_content.vm")
+<!-- END PAGE -->
+</div>
+<!-- END CONTAINER -->
+#parse("control/script.vm")	
+<!-- BEGIN PAGE LEVEL PLUGINS -->
+
+<script type="text/javascript" src="/media/js/select2.min.js"></script>
+
+<script type="text/javascript" src="/media/js/jquery.multi-select.js"></script>  
+
+<script type="text/javascript" src="/media/js/jquery.quicksearch.js"></script>  
+<!-- END PAGE LEVEL PLUGINS -->
+
+<!-- BEGIN PAGE LEVEL SCRIPTS -->
+
+<script src="/media/js/app.js"></script>  
+
+
+<style>
+input.search-input{
+  box-sizing: border-box;
+  -moz-box-sizing:border-box;
+  width: 98%;
+  margin-bottom: 5px;
+  height: auto;
+}
+</style>
+	
+<script>
+	jQuery(document).ready(function() {  
+	  // initiate layout and plugins
+	   App.init();
+	   handleMultiSelect();
+	   //dataInit();
+	});
+  function handleMultiSelect() {
+	$('#my_multi_select2').multiSelect({
+        	selectableHeader: "<input type='text' class='search-input' autocomplete='off' placeholder='输入客户名称'>",
+        	  selectionHeader: "<input type='text' class='search-input' autocomplete='off' placeholder='输入客户名称'>",
+			selectableOptgroup: true,
+			 afterInit: function(ms){
+				    var that = this,
+				        $selectableSearch = that.$selectableUl.prev(),
+				        $selectionSearch = that.$selectionUl.prev(),
+				        selectableSearchString = '#'+that.$container.attr('id')+' .ms-elem-selectable:not(.ms-selected)',
+				        selectionSearchString = '#'+that.$container.attr('id')+' .ms-elem-selection.ms-selected';
+				
+				    that.qs1 = $selectableSearch.quicksearch(selectableSearchString)
+				    .on('keydown', function(e){
+				      if (e.which === 40){
+				        that.$selectableUl.focus();
+				        return false;
+				      }
+				    });
+				
+				    that.qs2 = $selectionSearch.quicksearch(selectionSearchString)
+				    .on('keydown', function(e){
+				      if (e.which == 40){
+				        that.$selectionUl.focus();
+				        return false;
+				      }
+				    });
+				  },
+			  afterSelect: function(){
+			    this.qs1.cache();
+			    this.qs2.cache();
+			  },
+			  afterDeselect: function(){
+			    this.qs1.cache();
+			    this.qs2.cache();
+			  }
+        }); 
+    }
+    function dataInit(){  
+	    $.post("/deviceuser/queryDeviceUserByuserId",{"deviceId":deviceId},function(json){  
+	        $('#my_multi_select2').multiSelect("select",json.customerIds);
+	    },'json');  
+	} 
+	
+</script>

@@ -1,0 +1,55 @@
+<div class="span12">
+	<!-- BEGIN INPUT PORTLET-->
+	<div class="portlet box blue">
+		<div class="portlet-title">
+			<div class="caption"><i class="icon-search"></i>内容发布信息</div>
+		</div>
+		<div class="portlet-body form" style="display: block;">
+			
+		<form class="form-horizontal" action="/userInfo/addUserInfo.htm" method="POST">
+			<div class="row-fluid">
+				<div class="span12 ">
+					<div class="control-group">
+										<label class="control-label">标题：</label>
+										<div class="controls">
+											<input type="text" placeholder="标题" class="m-wrap medium">
+										</div>
+									</div>
+					</div>
+				<!--/span-->
+			</div>
+			<!--/row-->
+			<div class="row-fluid">
+				<div class="span12 ">
+					<div class="control-group">
+										<label class="control-label">内容：</label>
+										<div class="controls">
+											<textarea class="span6 m-wrap" rows="3"></textarea>
+										</div>
+									</div>
+					</div>
+				<!--/span-->
+			</div>
+			<!--/row-->
+			<div class="row-fluid">
+				<div class="span12 ">
+					<div class="control-group">
+										<label class="control-label">客户选择</label>
+										<div class="controls">
+											<select multiple="multiple" id="my_multi_select2" name="my_multi_select2">
+											</select>
+										</div>
+									</div>
+					</div>
+				<!--/span-->
+			</div>
+			<!--/row-->
+			<div class="form-actions">
+				<button type="submit" class="btn blue"><i class="icon-ok"></i> 保存</button>
+				<button type="button" class="btn">取消</button>
+			</div>
+		</form>
+		</div>
+	</div>
+	<!-- END INPUT FORM>
+</div>
