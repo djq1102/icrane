@@ -1,0 +1,92 @@
+<div class="span12">
+	<!-- BEGIN INPUT PORTLET-->
+	<div class="portlet box blue">
+		<div class="portlet-title">
+			<div class="caption"><i class="icon-search"></i>文档信息</div>
+		</div>
+		
+		<div class="portlet-body form" style="display: block;">
+		<form class="form-horizontal" action="" method="post">
+			<input type="hidden" name="userId" value="$!{userId}">
+			<div class="row-fluid">
+				<div class="span6 ">	
+        			<table class="table table-hover table-striped table-bordered">
+        
+        					<tr>
+        
+        						<td>设备文档1</td>
+        
+        						<td><a href="#" class="btn red icn-only"><i class="icon-remove icon-white">删除</i></a></td>
+        
+        					</tr>
+							
+							<tr>
+        
+        						<td>设备文档1</td>
+        
+        						<td><a href="#" class="btn red icn-only"><i class="icon-remove icon-white">删除</i></a></td>
+        
+        					</tr>
+        
+							<tr>
+        
+        						<td>设备文档1</td>
+        
+        						<td><a href="#" class="btn red icn-only"><i class="icon-remove icon-white">删除</i></a></td>
+        
+        					</tr>
+        
+        
+        			</table>
+				</div>
+			</div>
+	
+			<!--/row-->
+			<div class="row-fluid">
+				<div class="span12 ">
+					<div class="control-group">
+											<div class="fileupload fileupload-new" data-provides="fileupload">
+
+												<div class="input-append">
+
+													<div class="uneditable-input">
+
+														<i class="icon-file fileupload-exists"></i> 
+
+														<span class="fileupload-preview"></span>
+
+													</div>
+
+													<span class="btn btn-file">
+
+													<span class="fileupload-new">选择文件</span>
+
+													<span class="fileupload-exists">更改</span>
+
+													<input type="file" class="default" />
+
+													</span>
+
+													<a href="#" class="btn fileupload-exists" data-dismiss="fileupload">删除</a>
+
+												</div>
+											</div>
+											
+											
+											
+						</div>
+					</div>
+				<!--/span-->
+			</div>
+			<!--/row-->
+			
+			<div class="form-actions">
+				<button type="submit" class="btn blue"><i class="icon-ok"></i> 上传</button>
+				<button type="button" class="btn">取消</button>
+			</div>
+		</form>
+		</div>
+		
+	</div>
+	<!-- END INPUT FORM>
+</div>
