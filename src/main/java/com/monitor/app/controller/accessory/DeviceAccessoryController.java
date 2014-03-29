@@ -61,7 +61,7 @@ public class DeviceAccessoryController extends AbstractController{
 			deviceService.batchAddAccBinds(binds);
 		}
 		
-		return "redirect:deviceaccessory/device_accessory";
+		return "redirect:/device/toBindAcc/"+deviceId;
 	}
 	
 	@RequestMapping(value = "/device/toBindAcc/{deviceId}")
@@ -103,7 +103,7 @@ public class DeviceAccessoryController extends AbstractController{
 		Map<String,List> maps = new HashMap<String, List>(); 
 		List<String> bindIds = new ArrayList<String>(accBindDOList.size());
 		for(DeviceAccessoryBindDO bindDO : accBindDOList){
-			bindIds.add(String.valueOf(bindDO.getId()));
+			bindIds.add(String.valueOf(bindDO.getAccessoryId()));
 		}
 		maps.put("bindIds", bindIds);
 		
