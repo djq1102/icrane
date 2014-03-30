@@ -34,7 +34,7 @@
 
 						<img alt="" src="/media/image/avatar1_small.jpg" />
 
-						<span class="username">Bob Nilson</span>
+						<span class="username">$!session.getAttribute("username")</span>
 
 						<i class="icon-angle-down"></i>
 
