@@ -122,6 +122,7 @@ public class UserController {
 				session.setAttribute("login", "1");
 				UserExt userExt = (UserExt)userDetails;
 				session.setAttribute(SessionConstant.USER_ID, userExt.getUserId());
+				session.setAttribute(SessionConstant.USER_NAME, userDetails.getUsername());
 				session.setAttribute(SessionConstant.CUSTOMER_ID, userExt.getCustomerId());
 				return "index";
 			}

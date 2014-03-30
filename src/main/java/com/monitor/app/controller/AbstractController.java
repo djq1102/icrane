@@ -36,4 +36,20 @@ public class AbstractController {
 		}
 		return 0L;
 	}
+	
+	public long getCustomerId(HttpSession session){
+		Object userId = session.getAttribute(SessionConstant.CUSTOMER_ID);
+		if(userId!=null){
+			return Long.parseLong(userId.toString());
+		}
+		return 0L;
+	}
+	
+	public String getUserName(HttpSession session){
+		Object username = session.getAttribute(SessionConstant.USER_NAME);
+		if(username!=null){
+			return username.toString();
+		}
+		return null;
+	}
 }
