@@ -33,7 +33,7 @@
     }   
     function attachSecretMessage(marker,name) {   
       var infowindow = new google.maps.InfoWindow(   
-          { content: '<b>设备名称: </b><a href="">'+name+'</a></br>',   
+          { content: '<b>设备名称: </b><a href="/front/device/index" target="_BLANK">'+name+'</a></br>',   
             size: new google.maps.Size(50,50)   
           });   
         google.maps.event.addListener(marker, 'click', function() {   

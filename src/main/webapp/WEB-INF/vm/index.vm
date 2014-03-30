@@ -4,7 +4,6 @@
 
 <link href="/media/css/global.css" type="text/css" rel="stylesheet" />
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-
 <script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=true"></script>
 <script type="text/javascript" src="/media/js/searchResultMap.js"></script>
  
@@ -26,11 +25,10 @@ function changeTrColor(obj){
     </div>
     <div style="clear:both;"></div>      
     <div class="main">
-    	<div style="clear:both; float:none;"></div>
-        <div class="content">
+    	 <div style="clear:both; float:none;"></div>
+         <div class="content"/>
          <div class="shezhi" ><a></a></div>
          <div class="caidan" ><a></a></div>
-         <div></div>
     </div>
-	 <div class="content_title" id="map_canvas" align="center" style="width: 100%; height: 100%""></div>  
+	<div class="content_title" id="map_canvas" align="center" style="width: 100%; height: 100%""></div>  
 </body>
