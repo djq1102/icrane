@@ -1,0 +1,48 @@
+<!-- BEGIN CONTAINER -->
+<div class="page-container row-fluid">
+<!-- BEGIN SIDEBAR -->
+#menu (8)
+<!-- END SIDEBAR -->
+
+<!-- BEGIN PAGE -->
+#parse ("control/plc/main_content.vm")
+<!-- END PAGE -->
+</div>
+<!-- END CONTAINER -->
+<!-- BEGIN JAVASCRIPTS(Load javascripts at bottom, this will reduce page load time) -->
+<!-- BEGIN CORE PLUGINS -->
+#parse("control/script.vm")	
+
+<!-- END CORE PLUGINS -->
+<!-- BEGIN PAGE LEVEL PLUGINS -->
+
+<script type="text/javascript" src="/media/js/select2.min.js"></script>
+
+<script type="text/javascript" src="/media/js/jquery.dataTables.js"></script>
+
+<script type="text/javascript" src="/media/js/DT_bootstrap.js"></script>
+<!-- END PAGE LEVEL PLUGINS -->
+
+<!-- BEGIN PAGE LEVEL SCRIPTS -->
+<script src="/media/js/app.js"></script>
+<script src="/media/js/table-managed.js"></script>         
+<script>
+		
+	jQuery(document).ready(function() {   
+		var modelId = $("#modelId").val();
+		if(modelId=="") modelId=0;
+		var modelName = $("#modelName").val();
+		var ajax_data = {
+			ajax_url:"/model/query?modelId="+modelId+"&modelName="+modelName,
+			last_index:4,
+			delete_url:"/model/del?modelId="+modelId,
+			edit_url:"/model/edit?modelId="+modelId
+		} 
+	   console.log(ajax_data.ajax_url);
+	   //initiate layout and plugins
+	   App.init();
+	   TableManaged.init(ajax_data);
+	});
+</script>
+
+<!-- END PAGE LEVEL SCRIPTS -->

@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.monitor.app.dataobject.ModelVar;
+import com.monitor.app.dataobject.PlcModel;
 
 /**
  * @author ibm
@@ -16,6 +17,13 @@ import com.monitor.app.dataobject.ModelVar;
  */
 @Controller
 public class VariableController {
+	
+	@RequestMapping(value = "/var/index")
+	public String index( PlcModel plcModel,Model model) throws Exception{
+		model.addAttribute("modelId", plcModel.getModelId());
+		model.addAttribute("modelName", plcModel.getModelName());
+		return "plcvar/plcvar";
+	}
 
 	
 	@RequestMapping(value = "/var/add")
