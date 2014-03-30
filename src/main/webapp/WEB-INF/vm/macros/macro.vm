@@ -34,7 +34,7 @@
 
 					<i class="icon-cogs"></i> 
 
-					<span class="title">系统管理</span>
+					<span class="title">系统管理</span>
 
 					<span class="arrow "></span>
 
@@ -42,20 +42,6 @@
 
 					<ul class="sub-menu">
 
-						<li #if ($id == 1) class="active" #end >
-
-							<a href="">
-
-							参数维护</a>
-
-						</li>
-						<li #if ($id == 2) class="active" #end>
-
-							<a href="">
-
-							个性化设置</a>
-
-						</li>
 						<li #if ($id == 3) class="active" #end>
 
 							<a href="/userInfo/index.htm">
@@ -154,7 +140,7 @@
 
 						<li #if ($id == 12) class="active" #end >
 
-							<a href="/acc/index">
+							<a href="/acc/index.htm">
 
 							配件管理</a>
 
@@ -205,7 +191,7 @@
 
 						<li  #if ($id == 17) class="active" #end>
 
-							<a href="/notice/index">
+							<a href="">
 
 							信息发布设置</a>
 
