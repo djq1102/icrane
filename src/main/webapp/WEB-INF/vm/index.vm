@@ -27,8 +27,7 @@ function changeTrColor(obj){
     <div class="main">
     	 <div style="clear:both; float:none;"></div>
          <div class="content"/>
-         <div class="shezhi" ><a></a></div>
-         <div class="caidan" ><a></a></div>
+         #parse ("/front/common/setting.vm")
     </div>
 	<div class="content_title" id="map_canvas" align="center" style="width: 100%; height: 100%""></div>  
 </body>
