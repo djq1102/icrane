@@ -10,7 +10,7 @@
 
 								<div class="actions">
 
-									<a href="userinfoInput.htm" class="btn blue"><i class="icon-pencil"></i> 新增</a>
+									<a href="/notice/toAdd" class="btn blue"><i class="icon-pencil"></i> 新增</a>
 								</div>
 
 							</div>

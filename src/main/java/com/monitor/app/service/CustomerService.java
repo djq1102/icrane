@@ -77,15 +77,10 @@ public class CustomerService {
 	}
 	
 	public ServiceResult queryAllCustomers() throws ManagerException{
-		List<Customer> list = new ArrayList<Customer>();
-		try{
-			list = customerDao.queryAllCustomer();
-		}catch(DAOException e){
-			throw new ManagerException(e);
-		}
-		ServiceResult result = new ServiceResult(true);
-		result.setModule(list);
-		return result;
+		CustomerInfoQuery query = new CustomerInfoQuery();
+		query.setNeedPagination(false);
+		
+		return queryAllCustomer(query);
 	}
 
 	

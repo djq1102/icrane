@@ -1,7 +1,7 @@
 <!-- BEGIN CONTAINER -->
 <div class="page-container row-fluid">
 <!-- BEGIN SIDEBAR -->
-#menu (3)
+#menu (17)
 <!-- END SIDEBAR -->
 
 <!-- BEGIN PAGE -->
@@ -39,7 +39,7 @@ input.search-input{
 	  // initiate layout and plugins
 	   App.init();
 	   handleMultiSelect();
-	   //dataInit();
+	   dataInit($!{noticeId});
 	});
   function handleMultiSelect() {
 	$('#my_multi_select2').multiSelect({
@@ -79,8 +79,9 @@ input.search-input{
 			  }
         }); 
     }
-    function dataInit(){  
-	    $.post("/deviceuser/queryDeviceUserByuserId",{"deviceId":deviceId},function(json){  
+    function dataInit(noticeId){  
+	    if(noticeId=="") noticeId=0;
+	    $.post("/notice/queryNoticeCustomerIds/"+noticeId,{"a":1},function(json){  
 	        $('#my_multi_select2').multiSelect("select",json.customerIds);
 	    },'json');  
 	} 

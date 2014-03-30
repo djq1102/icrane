@@ -1,7 +1,7 @@
 <!-- BEGIN CONTAINER -->
 <div class="page-container row-fluid">
 <!-- BEGIN SIDEBAR -->
-#menu (3)
+#menu (17)
 <!-- END SIDEBAR -->
 
 <!-- BEGIN PAGE -->
@@ -50,19 +50,17 @@
 	jQuery(document).ready(function() {   
 		  
 	   // initiate layout and plugins
-	    var custId = $("#custId").val();
-   		var roleType = $("#roleType").val();
-   		var userName = $("#userName").val();
-   		var userPhone =$("#userPhone").val();
+	    var noticeStart = $("#noticeStart").val();
+   		var noticeEnd = $("#noticeEnd").val();
 	   var ajax_data = {
-			ajax_url:"/userInfo/queryList.do?userPhone="+userPhone+"&userName="+userName+"&roleType="+roleType+"&customerId="+custId,
-			last_index:7,
-			delete_url:"http://localhost:8080/demo/JqueryTableServlet?id=",
-			edit_url:"/userInfo/editUserInfo.do?userId="
+			ajax_url:"/notice/query?noticeStart="+noticeStart+"&noticeEnd="+noticeEnd,
+			last_index:3,
+			delete_url:"/notice/del/",
+			edit_url:"/notice/edit/"
 		} 
 	   console.log(ajax_data.ajax_url);
 	   App.init();
-	   //tableInit(ajax_data);
+	   tableInit(ajax_data);
 	   handleDatePickers();
 	});
 	
@@ -98,16 +96,16 @@
 								"aoColumnDefs" : [
 													{
 													'bSortable' : false,
-													'aTargets' : [1], 
+													'aTargets' : [0], 
 													'mRender': function ( data, type, full ) {
 												        return '<a href="'+ajax_data.view_url+data+'">'+data+'</a>';
 													}
 													},
 													{
 													'bSortable' : false,
-													'aTargets' : [6], 
+													'aTargets' : [3], 
 													'mRender': function ( data, type, full ) {
-												        return '<a href="'+ajax_data.edit_url+data+'">修改</a>'+'&nbsp;<a href="'+ajax_data.delete_url+data+'">删除</a>'+'&nbsp;<a href="/deviceuser/adddevices.htm?userId='+data+'">分配</a>';
+												        return '<a href="'+ajax_data.edit_url+data+'">修改</a>'+'&nbsp;<a href="'+ajax_data.delete_url+data+'">删除</a>';
 													}
 													}
 												]

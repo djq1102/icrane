@@ -16,14 +16,14 @@
 		</div>
 		
 		<div class="portlet-body form" style="display: block;">
-		<form class="form-horizontal" action="/userInfo/index.do" method="POST">
+		<form class="form-horizontal" action="/notice/index" method="POST">
 			<div class="row-fluid">
 				<div class="span4 ">
 					<div class="control-group">
 						<label class="control-label" >开始日期</label>
 						<div class="controls">
 								<div class="input-append date date-picker" data-date="12-02-2012" data-date-format="dd-mm-yyyy" data-date-viewmode="years">
-														<input class="m-wrap m-ctrl-medium date-picker" readonly size="16" type="text" value="" /><span class="add-on"><i class="icon-calendar"></i></span>
+														<input class="m-wrap m-ctrl-medium date-picker" readonly size="16" type="text" value="$!noticeStart" name="noticeStart" id="noticeStart"/><span class="add-on"><i class="icon-calendar"></i></span>
 													</div>
 						</div>
 					</div>
@@ -35,7 +35,7 @@
 						<label class="control-label" >结束日期</label>
 						<div class="controls">
 								<div class="input-append date date-picker" data-date="12-02-2012" data-date-format="dd-mm-yyyy" data-date-viewmode="years">
-														<input class="m-wrap m-ctrl-medium date-picker" readonly size="16" type="text" value="" /><span class="add-on"><i class="icon-calendar"></i></span>
+														<input class="m-wrap m-ctrl-medium date-picker" readonly size="16" type="text" value="$!noticeEnd" name="noticeEnd" id="noticeEnd"/><span class="add-on"><i class="icon-calendar"></i></span>
 													</div>
 						</div>
 					</div>

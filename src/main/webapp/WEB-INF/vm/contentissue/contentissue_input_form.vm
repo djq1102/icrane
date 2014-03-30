@@ -6,13 +6,14 @@
 		</div>
 		<div class="portlet-body form" style="display: block;">
 			
-		<form class="form-horizontal" action="/userInfo/addUserInfo.htm" method="POST">
+		<form class="form-horizontal" action="/notice/addOrUpdate" method="POST">
+			<input type="hidden" name="noticeId" value="$!noticeId"/>
 			<div class="row-fluid">
 				<div class="span12 ">
 					<div class="control-group">
 										<label class="control-label">标题：</label>
 										<div class="controls">
-											<input type="text" placeholder="标题" class="m-wrap medium">
+											<input type="text" placeholder="标题" class="m-wrap medium" name="title" value="$!notice.title">
 										</div>
 									</div>
 					</div>
@@ -24,7 +25,7 @@
 					<div class="control-group">
 										<label class="control-label">内容：</label>
 										<div class="controls">
-											<textarea class="span6 m-wrap" rows="3"></textarea>
+											<textarea class="span6 m-wrap" rows="3" placeholder="内容" name="content">$!notice.content</textarea>
 										</div>
 									</div>
 					</div>
@@ -37,6 +38,9 @@
 										<label class="control-label">客户选择</label>
 										<div class="controls">
 											<select multiple="multiple" id="my_multi_select2" name="my_multi_select2">
+												#foreach($customer in $allCustomers)	
+														<option value="$!{customer.customerId}">$!{customer.customerName}</option>
+													#end
 											</select>
 										</div>
 									</div>

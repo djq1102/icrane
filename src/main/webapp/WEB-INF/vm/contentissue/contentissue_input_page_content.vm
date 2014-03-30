@@ -46,7 +46,7 @@
 
 								<i class="icon-home"></i>
 
-								<a href="index.do">内容管理</a> 
+								<a href="/notice/index">内容管理</a> 
 								
 								<span class="icon-angle-right"></span>		
 
@@ -55,7 +55,7 @@
 							<li>
 
 
-								<a href="/userInfo/userinfoInput.do"">内容发布</a> 
+								<a href="/notice/toAdd"">内容发布</a> 
 							</li>
 						</ul>
 

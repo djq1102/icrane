@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="GBK" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.monitor.app.dao.user.NoticeDao">
+	<resultMap type="Notice" id="noticeResult" >
+		<result property="noticeId" column="notice_id"/>
+		<result property="toCustomerId" column="to_customer_id"/>
+		<result property="userId" column="user_id"/>
+		<result property="title" column="title"/>
+		<result property="content" column="content"/>
+		<result property="noticeStart" column="notice_start"/>
+		<result property="noticeEnd" column="notice_end"/>
+		<result property="gmtCreate" column="gmt_create"/>
+		<result property="gmtModify" column="gmt_modify"/>
+	</resultMap>
+	
+	<sql id="noticeFields">
+		<![CDATA[
+			notice_id,
+			to_customer_id,
+			user_id,
+			title,
+			content,
+			notice_start,
+			notice_end,
+			gmt_create,
+			gmt_modify
+		]]>
+	</sql>
+	
+	<sql id="selectCondition">
+		<where>
+			<if test="null != noticeStart">
+				 <![CDATA[  AND gmt_create >= #{noticeStart} ]]>
+			</if>
+			<if test="null != noticeEnd">
+				<![CDATA[ AND gmt_create <= #{noticeEnd} ]]>
+			</if>
+		</where>
+	</sql>
+	
+	<sql id="updateFields">
+		<set>
+			gmt_modify = now(),
+			<if test="null != userId">
+				user_id = #{userId},
+			</if>
+			<if test="null != title">
+				title = #{title},
+			</if>
+			<if test="null != content">
+				content = #{content},
+			</if>
+			<if test="null != toCustomerId">
+				to_customer_id = #{toCustomerId},
+			</if>
+		</set>
+	</sql>
+	
+	<insert id="addNotice" useGeneratedKeys="true" keyProperty="noticeId" parameterType="Notice">
+		<![CDATA[
+		INSERT INTO cr_notice(
+		]]>
+		<include refid="noticeFields"/>
+		<![CDATA[
+		) VALUES (
+		    #{noticeId},
+		 	#{toCustomerId},
+		 	#{userId}, 
+		 	#{title},  
+		 	#{content}, 
+		 	#{noticeStart},
+		 	#{noticeEnd}, 
+	  		now(),
+	  		now()
+		)
+		]]>
+	</insert>
+	
+	<delete id="delNotice" parameterType="java.lang.Long">
+		DELETE cr_notice WHERE notice_id = #{noticeId}
+	</delete>
+	
+	<select id="queryNotices" parameterType="NoticeQuery" resultMap="noticeResult">
+		SELECT <include refid="noticeFields"/>
+		FROM cr_notice 
+		<include refid="selectCondition"/>
+	</select>
+	
+	<select id="queryNoticeById" parameterType="java.lang.Long" resultMap="noticeResult">
+		SELECT <include refid="noticeFields"/>
+		FROM cr_notice where notice_id =  #{noticeId}
+	</select>
+	
+	<select id="totalCount" resultType="int">
+        select count(*) c from cr_notice 
+        <include refid="selectCondition"/>
+    </select>	
+    
+	<update id="updateNotice" parameterType="Notice">
+		UPDATE cr_notice
+		<include refid="updateFields"/>
+		WHERE notice_id = #{noticeId}
+	</update>
+</mapper>
