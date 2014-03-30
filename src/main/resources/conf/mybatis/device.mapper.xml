@@ -6,6 +6,7 @@
 		<result property="deviceId" column="device_id"/>
 		<result property="siteId" column="site_id"/>
 		<result property="customerId" column="customer_id"/>
+		<result property="location" column="location"/>
 		<result property="deviceName" column="device_name"/>
 		<result property="modelId" column="model_id"/>
 		<result property="deviceIp" column="device_ip"/>
@@ -29,6 +30,7 @@
 			site_id,
 			customer_id,
 			device_name,
+		    location,
 			model_id,
 			device_ip,
 			user_name,
@@ -84,7 +86,10 @@
 				user_pwd = #{userPwd},
 			</if>
 			<if test="null != serialNumber">
-				serial_number = #{serialNumber}
+				serial_number = #{serialNumber},
+			</if>
+			<if test="null != location">
+				location = #{location}
 			</if>
 		</set>
 	</sql>
@@ -100,6 +105,7 @@
 		 	#{siteId}, 
 		 	#{customerId},
 		 	#{deviceName}, 
+		 	#{location},
 		 	#{modelId},
 		 	#{deviceIp},
 			#{userName}, 
@@ -116,6 +122,15 @@
 		FROM cr_device
 		<include refid="selectCondition"/>
 	</select>
+	
+	<select id="queryByDeviceIds" parameterType="java.util.Map" resultMap="deviceResult">
+		SELECT <include refid="deviceFields"/>
+		FROM cr_device where device_id in 
+		<foreach item="item" index="index" collection="deviceIds" open="(" separator="," close=")">
+				#{item}
+		</foreach>
+	</select>
+	
 	
 	<select id="queryByDeviceId" parameterType="java.lang.Long" resultMap="deviceResult">
 		SELECT <include refid="deviceFields"/>
