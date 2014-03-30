@@ -1,7 +1,9 @@
 package com.monitor.app.service;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.annotation.Resource;
 
@@ -53,6 +55,21 @@ public class DeviceService {
 		}
 		return MsgUtils.fillModule(device);
 	}
+	
+	@SuppressWarnings({ "rawtypes", "unchecked" })
+	public ServiceResult queryByDeviceIds(List<Long> deviceIds) throws ManagerException{
+		Map params = new HashMap();
+		params.put("deviceIds", deviceIds);
+		List<Device> deviceList = new ArrayList<Device>();
+		try {
+			deviceList = deviceDao.queryByDeviceIds(params);
+		} catch (DAOException e) {
+			throw new ManagerException(e);
+		}
+		return MsgUtils.fillModule(deviceList);
+	}
+
+	
 	
 	public ServiceResult queryBySiteId(long siteId) throws ManagerException{
 		List<Device> devices = new ArrayList<Device>() ;

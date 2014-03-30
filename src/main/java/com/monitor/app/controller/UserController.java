@@ -111,7 +111,7 @@ public class UserController {
 		return "403";
 	}
 	
-	@RequestMapping(value = "/index")
+	@RequestMapping(value = "/user/index")
 	public String index(Model model,HttpSession session) {
 		
 		Authentication auth = SecurityContextHolder.getContext().getAuthentication();

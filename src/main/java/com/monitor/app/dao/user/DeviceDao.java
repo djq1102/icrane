@@ -1,6 +1,7 @@
 package com.monitor.app.dao.user;
 
 import java.util.List;
+import java.util.Map;
 
 import com.monitor.app.dataobject.Device;
 import com.monitor.app.dataobject.DeviceAccessoryBindDO;
@@ -12,6 +13,9 @@ public interface DeviceDao {
 	  public int addDevice(Device device) throws DAOException;
 	  
 	  public Device queryByDeviceId(long deviceId)throws DAOException;
+	  
+	  @SuppressWarnings("rawtypes")
+	  public List<Device> queryByDeviceIds(Map params) throws DAOException;
 	  
 	  public List<Device> queryDevice(DeviceQuery deviceQuery) throws DAOException;
 	  

@@ -29,6 +29,7 @@ import com.monitor.app.service.ModelService;
 import com.monitor.app.service.SiteService;
 import com.monitor.app.utils.JsonUtil;
 import com.monitor.app.utils.MsgUtils;
+import com.monitor.app.utils.ToolsUtil;
 
 
 @Controller
@@ -46,6 +47,7 @@ public class DeviceController {
 	
 	@RequestMapping(value = "/device/addDevice")
 	public String addDevice(Device device, Model model) throws ManagerException {
+		ToolsUtil.spiltLocation(device);
 		ServiceResult result = deviceService.addDevice(device);
 		if(!result.isSuccess()){
 			logger.error(">>>action=addCustomers error" + device.getDeviceName());
@@ -90,9 +92,21 @@ public class DeviceController {
 		ServiceResult result = deviceService.queryByDeviceId(deviceId);
 		if(result.isSuccess()){
 			Device device  = (Device)result.getModule();
+			String location = device.getLocation();
+			String lat = "";
+			String lng = "";
+			if(location != null && location != ""){
+				String [] array = location.split(",");
+				if(array != null && array.length == 2){
+					lat = array[0];
+					lng = array[1];
+				}
+			}
 			model.addAttribute("plcModels", queryAllModels());
 			model.addAttribute("customers", queryAllCustomers());
 			model.addAttribute("sites", querySitesByCustomerId(device.getCustomerId()));
+			model.addAttribute("lng", lng);
+			model.addAttribute("lat", lat);
 			model.addAttribute("device", device);
 		}else{
 			model.addAttribute("msg", MsgUtils.MSG_FAIL);
@@ -115,6 +129,7 @@ public class DeviceController {
 	public String updateDevice(Device device,Model model) throws Exception{
 		ServiceResult result = deviceService.queryByDeviceId(device.getDeviceId());
 		if(result.isSuccess()){
+			ToolsUtil.spiltLocation(device);
 			ServiceResult editResult = deviceService.updateDevice(device);
 			if(!editResult.isSuccess()){
 				logger.error(">>>action=updateDevice error" + device.getDeviceName());

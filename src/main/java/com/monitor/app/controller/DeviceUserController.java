@@ -46,7 +46,6 @@ public class DeviceUserController {
 	@Resource
 	private UserDeviceRelationService userDeviceRelationService;
 	
-	
 	/**
 	 * Simply selects the home view to render by returning its name.
 	 * @throws ManagerException 
@@ -112,23 +111,24 @@ public class DeviceUserController {
 		}
 		
 		List<UserDeviceRelation> userDeviceRelations = new ArrayList<UserDeviceRelation>();
-		for(String deviceId : my_multi_select2){
-			ServiceResult deviceResult = deviceService.queryByDeviceId(Long.valueOf(deviceId));
-			if(deviceResult.isSuccess()){
-				Device device = (Device)deviceResult.getModule();
-				UserDeviceRelation relation = new UserDeviceRelation();
-				relation.setDeviceId(device.getDeviceId());
-				relation.setDeviceName(device.getDeviceName());
-				relation.setSiteId(device.getSiteId());
-				relation.setUserId(userId);
-				userDeviceRelations.add(relation);
+		if(my_multi_select2 != null){
+			for(String deviceId : my_multi_select2){
+				ServiceResult deviceResult = deviceService.queryByDeviceId(Long.valueOf(deviceId));
+				if(deviceResult.isSuccess()){
+					Device device = (Device)deviceResult.getModule();
+					UserDeviceRelation relation = new UserDeviceRelation();
+					relation.setDeviceId(device.getDeviceId());
+					relation.setDeviceName(device.getDeviceName());
+					relation.setSiteId(device.getSiteId());
+					relation.setUserId(userId);
+					userDeviceRelations.add(relation);
+				}
+			}
+			ServiceResult result = userDeviceRelationService.addUserDeviceRelation(userDeviceRelations);
+			if(!result.isSuccess()){
+				logger.warn("[设备分配查询]分配数据失败："+ my_multi_select2);
 			}
 		}
-		ServiceResult result = userDeviceRelationService.addUserDeviceRelation(userDeviceRelations);
-		if(result.isSuccess()){
-			return "deviceuser/deviceuser";
-		}else{
-			return "deviceuser/deviceuser";
-		}
+	    return "userInfo/userinfo";
 	}
 }
