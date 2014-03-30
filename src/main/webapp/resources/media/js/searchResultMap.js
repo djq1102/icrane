@@ -18,22 +18,23 @@
     function addSites(data) {   
       for(var one in data){   
         var name= data[one].name;
+        var deviceId = data[one].deviceId
         var latitude = data[one].latitude;   
         var longitude = data[one].longitude;   
-        addSite(map,name,latitude,longitude)   
+        addSite(map,deviceId,name,latitude,longitude)   
       }   
     }   
-    function addSite(map, name, lat, lng) {   
+    function addSite(map,deviceId,name, lat, lng) {   
          var location = new google.maps.LatLng(lat,lng)   
          var marker = new google.maps.Marker({   
          position: location,   
          map: map   
       });   
-      attachSecretMessage(marker, name);   
+      attachSecretMessage(marker,name,deviceId);   
     }   
-    function attachSecretMessage(marker,name) {   
+    function attachSecretMessage(marker,name,deviceId) {   
       var infowindow = new google.maps.InfoWindow(   
-          { content: '<b>设备名称: </b><a href="/front/device/index" target="_BLANK">'+name+'</a></br>',   
+          { content: '<b>设备名称: </b><a href="/front/device/index.htm?deviceId='+deviceId+'" target="_BLANK">'+name+'</a></br>',   
             size: new google.maps.Size(50,50)   
           });   
         google.maps.event.addListener(marker, 'click', function() {   
