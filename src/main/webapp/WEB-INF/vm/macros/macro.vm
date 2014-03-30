@@ -205,7 +205,7 @@
 
 						<li  #if ($id == 17) class="active" #end>
 
-							<a href="">
+							<a href="/notice/index">
 
 							信息发布设置</a>
 
