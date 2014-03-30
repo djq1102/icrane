@@ -14,9 +14,9 @@
 					<!-- BEGIN SIDEBAR TOGGLER BUTTON -->
 
 				</li>
-				<li >
+				<li #if ($id == 0) class="start active" #end>
 
-					<a href="index.html">
+					<a href="/mngindex/index">
 
 					<i class="icon-home"></i> 
 
