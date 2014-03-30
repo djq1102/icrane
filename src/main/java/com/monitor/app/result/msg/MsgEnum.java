@@ -54,6 +54,10 @@ public enum MsgEnum {
 	ACCESSORY_QUERY_FAIL("配件查询失败"),
 	ACCESSORY_QUERY_EMPTY("未查到该配件"),
 	
+	DEVICE_DOC_ADD_FAIL("设备文档增加失败"),
+	DEVICE_DOC_QUERYFAIL("设备文档查询失败"),
+	DEVICE_DOC_DELETE_FAIL("设备文档删除失败"),
+	
 	SITE_ADD_FAIL("现场添加失败"),
 	SITE_NOT_EXIST("现场不存在"),
 	SITE_UPDATE_FAIL("现场修改失败"),

@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="GBK" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.monitor.app.dao.user.DeviceDocDao">
+	<resultMap type="DeviceDoc" id="deviceDocResult" >
+		<result property="id" column="id"/>
+		<result property="deviceId" column="device_id"/>
+		<result property="docName" column="doc_name"/>
+		<result property="status" column="status"/>
+		<result property="gmtCreate" column="gmt_create"/>
+		<result property="gmtModify" column="gmt_modify"/>
+	</resultMap>
+	
+	<sql id="deviceDocFields">
+		<![CDATA[
+			id,
+			device_id,
+			doc_name,
+			status,
+			gmt_create,
+			gmt_modify
+		]]>
+	</sql>
+	
+	<sql id="selectCondition">
+		<where>
+			<if test="0 != deviceId">
+				 AND device_id = #{deviceId} AND status=0
+			</if>
+		</where>
+	</sql>
+	
+	<sql id="updateFields">
+		<set>
+			gmt_modify = now(),status=1
+		</set>
+	</sql>
+	
+	<insert id="addDeviceDoc" useGeneratedKeys="true" keyProperty="id" parameterType="DeviceDoc">
+		<![CDATA[
+		INSERT INTO cr_device_doc(
+		]]>
+		<include refid="deviceDocFields"/>
+		<![CDATA[
+		) VALUES (
+		    #{id},
+		 	#{deviceId},
+		 	#{docName}, 
+		 	#{status},  
+	  		now(),
+	  		now()
+		)
+		]]>
+	</insert>
+	
+	<select id="queryDeviceDocs" parameterType="DeviceDocQuery" resultMap="deviceDocResult">
+		SELECT <include refid="deviceDocFields"/>
+		FROM cr_device_doc 
+		<include refid="selectCondition"/>
+	</select>
+	
+	<update id="delDeviceDoc" parameterType="java.lang.Long">
+		UPDATE cr_device_doc <include refid="updateFields"/> WHERE id = #{id}
+	</update>
+</mapper>
