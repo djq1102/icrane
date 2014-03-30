@@ -41,10 +41,8 @@
 						</a>
 
 						<ul class="dropdown-menu">
-
-
-							<li><a href="login.html"><i class="icon-key"></i>退出</a></li>
-
+							<li><a href="/index.htm"><i class="icon-home"></i>监控前台</a></li>
+							<li><a href="/logout.htm"><i class="icon-key"></i>退出</a></li>
 						</ul>
 
 					</li>
