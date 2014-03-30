@@ -97,12 +97,12 @@ public class HomeController extends AbstractController{
 				String location = device.getLocation().trim();
 				String array[] = location.split(",");
 				MerchantInfor info = new MerchantInfor();
+				info.setDeviceId(String.valueOf(device.getDeviceId()));
 				info.setLatitude(array[0]);
 				info.setLongitude(array[1]);
 				info.setName(device.getDeviceName());
 				maplist.add(info);
 			}
-
 		}
 		return JSONObject.toJSONString(maplist);
 	}

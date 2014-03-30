@@ -41,6 +41,11 @@
 		FROM cr_user_device_relation where user_id = #{userId}
 	</select>
 	
+	<select id="queryUserDeviceRelationByUserIdAndDeviceId" parameterType="java.util.Map" resultMap="userDeviceRelationResult">
+		SELECT <include refid="userDeviceRelationFields"/>
+		FROM cr_user_device_relation where user_id = #{userId} and device_id = #{deviceId}
+	</select>
+	
 	<delete id="batchDeleteUserDeviceRelationBydeviceId" parameterType="java.util.Map">
 		delete from cr_user_site_relation where user_id = #{userId} and device_id in 
 		<foreach item="item" index="index" collection="deviceIds" open="(" separator="," close=")">

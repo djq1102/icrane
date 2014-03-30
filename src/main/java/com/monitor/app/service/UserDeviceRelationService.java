@@ -97,4 +97,20 @@ public class UserDeviceRelationService {
 		ServiceResult result = new ServiceResult(true);
 		return result;
 	}
+	
+	public ServiceResult queryUserDeviceRelationByUserIdAndDeviceId(long userId,long deviceId) throws ManagerException{
+		Map<String,Long> param = new HashMap<String,Long>();
+		param.put("userId", userId);
+		param.put("deviceId", deviceId);
+		UserDeviceRelation userDeviceRelation;
+		try {
+			userDeviceRelation  = userDeviceRelationDao.queryUserDeviceRelationByUserIdAndDeviceId(param);
+			if(userDeviceRelation == null){
+			  return MsgUtils.fillMsg(MsgEnum.USER_DEVICE_RELATION);
+			}
+		} catch (DAOException e) {
+			throw new ManagerException(e);
+		}
+		return MsgUtils.fillModule(userDeviceRelation);
+	}
 }

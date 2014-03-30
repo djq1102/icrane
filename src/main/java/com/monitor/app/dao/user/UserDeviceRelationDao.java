@@ -18,6 +18,8 @@ public interface UserDeviceRelationDao {
 
 	public int deleteUserDeviceRelationByUserId(long userId) throws DAOException;
 	
-	List<UserDeviceRelation> queryUserDeviceRelationByUserId(long userId) throws DAOException;
+	public UserDeviceRelation queryUserDeviceRelationByUserIdAndDeviceId(Map<String,Long> params) throws DAOException;
+	
+	public List<UserDeviceRelation> queryUserDeviceRelationByUserId(long userId) throws DAOException;
 
 }
