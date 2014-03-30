@@ -12,7 +12,9 @@
         			<table class="table table-hover table-striped table-bordered">
 						#foreach($doc in $deviceDocs)
 							<tr>
-        						<td>$doc.docName</td>
+        						<td>
+									<a href="/doc/download/${doc.id}" target="blank">$doc.docName</a>
+								</td>
         						<td><a href="/doc/del/$!deviceId/${doc.id}" class="btn red icn-only"><i class="icon-remove icon-white">删除</i></a></td>
         					</tr>
 						#end

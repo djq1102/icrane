@@ -28,4 +28,6 @@ public interface DeviceDocDao {
 	
 	public List<DeviceDoc> queryDeviceDocs(DeviceDocQuery query) throws DAOException;
 	
+	public DeviceDoc queryDoc(long docId) throws DAOException;
+	
 }

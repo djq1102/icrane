@@ -25,8 +25,9 @@
 	<sql id="selectCondition">
 		<where>
 			<if test="0 != deviceId">
-				 AND device_id = #{deviceId} AND status=0
+				 AND device_id = #{deviceId} 
 			</if>
+			AND status=0
 		</where>
 	</sql>
 	
@@ -59,7 +60,12 @@
 		<include refid="selectCondition"/>
 	</select>
 	
+	<select id="queryDoc" parameterType="java.lang.Long" resultMap="deviceDocResult">
+		SELECT <include refid="deviceDocFields"/>
+		FROM cr_device_doc where id=#{id} and status=0
+	</select>
+	
 	<update id="delDeviceDoc" parameterType="java.lang.Long">
-		UPDATE cr_device_doc <include refid="updateFields"/> WHERE id = #{id}
+		UPDATE cr_device_doc <include refid="updateFields"/> WHERE id = #{id} 
 	</update>
 </mapper>

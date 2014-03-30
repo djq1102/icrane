@@ -4,10 +4,16 @@
 package com.monitor.app.controller;
 
 import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.OutputStream;
 
 import javax.annotation.Resource;
 import javax.servlet.ServletContext;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
 import org.apache.commons.fileupload.FileItem;
 import org.springframework.stereotype.Controller;
@@ -69,8 +75,7 @@ public class DeviceFileController extends AbstractController implements ServletC
 		//1.上传
 		FileItem fi = mFile.getFileItem();
 		String fileName = fi.getName();
-		String rootPath = this.servletContext.getRealPath("/");
-		String filePath = rootPath + SEP + uploadPath+ SEP+deviceId+SEP;
+		String filePath = buildFilePath(deviceId);
 		File targetFile = new File(filePath, fileName);  
         if(!targetFile.exists()){  
             targetFile.mkdirs();  
@@ -95,6 +100,12 @@ public class DeviceFileController extends AbstractController implements ServletC
         
 		return "redirect:/doc/"+deviceId;
 	}
+
+	private String buildFilePath(long deviceId) {
+		String rootPath = this.servletContext.getRealPath("/");
+		String filePath = rootPath + SEP + uploadPath+ SEP+deviceId+SEP;
+		return filePath;
+	}
 	
 	@Override
 	public void setServletContext(ServletContext servletContext) {
@@ -113,4 +124,42 @@ public class DeviceFileController extends AbstractController implements ServletC
 		return "redirect:/doc/"+deviceId;
 	}
 	
+	@RequestMapping(value = "/doc/download/{docId}")
+	public void download(@PathVariable("docId") int docId,HttpServletResponse response, Model model) throws Exception{
+		//1.查询文档对象
+		ServiceResult result = deviceDocService.queryDocById(docId);
+		if(!result.isSuccess()){
+			model.addAttribute("msg","文档不存在");
+			return ;
+		}
+		
+		//2.文件路径。。下载
+		DeviceDoc doc = (DeviceDoc)result.getModule();
+		long deviceId = doc.getDeviceId();
+		String fileName =doc.getDocName();
+		String filePath = buildFilePath(deviceId);
+		File targetFile = new File(filePath, fileName);  
+        if(!targetFile.exists()){  
+        	model.addAttribute("msg","文档不存在");
+			return ;
+        }  
+		
+        response.setCharacterEncoding("utf-8");    
+        response.setContentType("multipart/form-data");    
+        response.setHeader("Content-Disposition", "attachment;fileName="+fileName);
+        try {    
+            InputStream inputStream=new FileInputStream(targetFile);    
+            OutputStream os=response.getOutputStream();    
+            byte[] b=new byte[1024];    
+            int length;    
+            while((length=inputStream.read(b))>0){    
+                os.write(b,0,length);    
+            }    
+            inputStream.close();    
+        } catch (FileNotFoundException e) {    
+            e.printStackTrace();    
+        } catch (IOException e) {    
+            e.printStackTrace();    
+        }    
+	}
 }

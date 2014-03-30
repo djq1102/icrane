@@ -71,4 +71,18 @@ public class DeviceDocService {
 		//success
 		return MsgUtils.fillModule(docs);
 	}
+	
+	public ServiceResult queryDocById(long docId){
+		DeviceDoc doc = null;
+		try{
+			doc = deviceDocDao.queryDoc(docId);
+		}catch(Exception e){
+			log.error("query_doc_fails",e);
+			return MsgUtils.fillMsg(MsgEnum.DEVICE_DOC_QUERYFAIL);
+		}
+		
+		//success
+		return MsgUtils.fillModule(doc);
+	}
+	
 }
