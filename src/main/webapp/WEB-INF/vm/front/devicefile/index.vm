@@ -1,0 +1,88 @@
+#set($layout="/layout/empty.vm")
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<link href="/media/css/global.css" type="text/css" rel="stylesheet" />
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title></title>
+<script type="text/javascript">
+function changeTrColor(obj){    
+    var _table=obj.parentNode;
+    for (var i=0;i<_table.rows.length;i++){
+        _table.rows[i].style.backgroundColor="";
+    }    
+    obj.style.backgroundColor="#fff6c4";
+}
+</script>
+</head>
+<body>
+    <div class="top">
+   	  <div class="top_logo"><a href="#"><img src="/media/image/logo.png" width="316" height="80" /></a></div>
+        <div class="top_info">您好，<span style="color:#ff4e00;">系统管理员</span>欢迎登录云设备平台<span style="margin:0 5px; color:#FFF;"><a href="#" style="color:#FFF;">修改密码</a></span><span style="margin:0 5px;"><a href="#"  style="color:#FFF;">退出</a></span><span class="top_help"><img src="/media/image/wh.png" width="16" height="16" /></span><a href="#"  style="color:#FFF;">帮助／指南</a></div>
+    </div>
+
+        <div style="clear:both;"></div>      
+
+        <!--<div class="menu">
+        	<ul>
+            	<li class="bg" style=" height:51px; line-height:51px;"><span class="ico"><img src="/media/image/1.gif" width="16" height="16" /></span>账户管理</li>
+                <li><span class="ico"><img src="/media/image/2.gif" width="16" height="16" /></span><a href="#">业务类型管理</a></li>
+                <li><a href="#"><span class="ico"><img src="/media/image/3.gif" width="16" height="16" /></span>账户类型管理</a></li>
+                <li><a href="#"><span class="ico"><img src="/media/image/4.gif" width="16" height="16" /></span>交易明细管理</a></li>
+                <li><a href="#"><span class="ico"><img src="/media/image/5.gif" width="16" height="16" /></span>对账管理</a></li>
+                <li><a href="#"><span class="ico"><img src="/media/image/6.gif" width="16" height="16" /></span>日志管理</a></li>
+                <li><a href="#"><span class="ico"><img src="/media/image/7.gif" width="16" height="16" /></span>操作员管理</a></li>
+                <li><a href="#"><span class="ico"><img src="/media/image/7.gif" width="16" height="16" /></span>操作员管理</a></li>
+            </ul>
+        </div>-->
+</div>
+    <div class="main">
+    	
+        <div style="clear:both; float:none;"></div>
+        <div class="content">
+        #parse ("/front/common/setting.vm")
+         <div class="return"><a href="/front/device/index.htm?deviceId=${deviceId}"></a></div><div style="position:absolute; left:120px; top:18px; z-index:6; height:40px; line-height:40px; font-size:18px; color:#333; font-family:Microsoft YaHei">设备资料</div>
+        	<div class="content_title">
+<table class="icomenu1" width="100%" border="0">
+  <tr>
+    <td><a><img src="/media/image/ziliao.png" width="144" height="144" /></a></td>
+    <td><a><img src="/media/image/ziliao.png" width="144" height="144" /></a></td>
+    <td><a><img src="/media/image/ziliao.png" width="144" height="144" /></a></td>
+    <td><a><img src="/media/image/ziliao.png" width="144" height="144" /></a></td>
+  </tr>
+  <tr style="height:40px; line-height:40px; color:#333;">
+    <td>设备资料1</td>
+    <td>设备资料1</td>
+    <td>设备资料1</td>
+    <td>设备资料1</td>
+  </tr>
+</table>
+<table class="icomenu1" width="100%" border="0">
+  <tr>
+    <td><a><img src="/media/image/ziliao.png" width="144" height="144" /></a></td>
+    <td><a><img src="/media/image/ziliao.png" width="144" height="144" /></a></td>
+    <td><a><img src="/media/image/ziliao.png" width="144" height="144" /></a></td>
+    <td><a><img src="/media/image/ziliao.png" width="144" height="144" /></a></td>
+  </tr>
+  <tr style="height:40px; line-height:40px; color:#333;">
+    <td>设备资料1</td>
+    <td>设备资料2</td>
+    <td>设备资料3</td>
+	<td>设备资料4</td>
+    <td></td>
+  </tr>
+</table>
+
+            </div>
+             <div style="margin:0 auto; width:100%; width:240px; height:90px; margin-top:20px;"><table width="200" border="0" cellspacing="0" >
+  <tr>
+    <td><div class="next1"><a>上一页</a></div></td>
+    <td><div class="next2"><a>下一页</a></div></td>
+  </tr>
+</table>
+</div>
+        </div>
+    </div>
+</body>
+</html>
