@@ -1,6 +1,34 @@
 #set($layout="/layout/empty.vm")
-index testing...
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
-<br/>
-<a href ="/logout">登出, ${username}
-</a>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<link href="/media/css/global.css" type="text/css" rel="stylesheet" />
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title></title>
+<script type="text/javascript">
+function changeTrColor(obj){    
+    var _table=obj.parentNode;
+    for (var i=0;i<_table.rows.length;i++){
+        _table.rows[i].style.backgroundColor="";
+    }    
+    obj.style.backgroundColor="#fff6c4";
+}
+</script>
+</head>
+<body>
+    <div class="top">
+   	  <div class="top_logo"><a href="#"><img src="/media/image/logo.png" width="316" height="80" /></a></div>
+        <div class="top_info">您好，<span style="color:#ff4e00;">系统管理员</span>欢迎登录云设备平台<span style="margin:0 5px; color:#FFF;"><a href="#" style="color:#FFF;">修改密码</a></span><span style="margin:0 5px;"><a href="#"  style="color:#FFF;">退出</a></span><span class="top_help"><img src="/media/image/wh.png" width="16" height="16" /></span><a href="#"  style="color:#FFF;">帮助／指南</a></div>
+    </div>
+    <div style="clear:both;"></div>      
+    <div class="main">
+    	<div style="clear:both; float:none;"></div>
+        <div class="content">
+         <div class="shezhi" ><a></a></div>
+         <div class="caidan" ><a></a></div>
+         <div></div>
+    </div>
+		<div class="content_title">adf</div>
+</body>
+</html>
