@@ -1,12 +1,15 @@
 <!-- BEGIN CONTAINER -->
+<body onload="initialize()">  
+
 <div class="page-container row-fluid">
 <!-- BEGIN SIDEBAR -->
 #menu (6)
 <!-- END SIDEBAR -->
-
 <!-- BEGIN PAGE -->
 #parse ("/device/device_input_page_content.vm")
+#parse("control/device/device_content.vm")	
+
 <!-- END PAGE -->
 </div>
 <!-- END CONTAINER -->
-
+</body>

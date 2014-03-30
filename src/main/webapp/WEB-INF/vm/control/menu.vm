@@ -83,14 +83,11 @@
 						<li #if ($id == 4) class="active" #end>
 
 							<a href="/customer/index.htm">
-
 							客户管理</a>
 
 						</li>
 						<li #if ($id == 5) class="active" #end>
-
 							<a href="/site/index.htm">
-
 							现场管理</a>
 
 						</li>
@@ -99,14 +96,6 @@
 							设备管理</a>
 
 						</li>
-						<li #if ($id == 7) class="active" #end >
-
-							<a href="">
-
-							设备分配管理</a>
-
-						</li>
-						
 					</ul>
 
 				</li>

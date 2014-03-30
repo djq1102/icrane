@@ -1,3 +1,4 @@
+<body onload="initEdit($!lat,$!lng)">  
 <!-- BEGIN CONTAINER -->
 <div class="page-container row-fluid">
 <!-- BEGIN SIDEBAR -->
@@ -6,7 +7,9 @@
 
 <!-- BEGIN PAGE -->
 #parse ("/device/device_edit_input_page_content.vm")
+#parse("control/device/device_content.vm")	
+
 <!-- END PAGE -->
 </div>
 <!-- END CONTAINER -->
-
+</body>

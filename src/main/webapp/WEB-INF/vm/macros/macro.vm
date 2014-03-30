@@ -67,27 +67,17 @@
 					<ul class="sub-menu">
 						
 						<li #if ($id == 4) class="active" #end>
-
 							<a href="/customer/index.htm">
-
 							客户管理</a>
-
 						</li>
 						<li #if ($id == 5) class="active" #end>
-
 							<a href="/site/index.htm">
-
 							现场管理</a>
-
 						</li>
 						<li #if ($id == 6) class="active" #end>
-
 							<a href="/device/index.htm">
-
 							设备管理</a>
-
 						</li>
-						
 					</ul>
 
 				</li>
