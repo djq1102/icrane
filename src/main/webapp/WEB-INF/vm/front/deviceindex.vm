@@ -30,16 +30,15 @@ function changeTrColor(obj){
     	
         <div style="clear:both; float:none;"></div>
         <div class="content">
-         <div class="shezhi" ><a></a></div>
-         <div class="caidan" ><a></a></div>
+         #parse ("/front/common/setting.vm")
          <div></div>
         	<div class="content_title">
             <table class="icomenu" width="100%" border="0">
   <tr>
-    <td><a><img src="/media/image/pj.png" width="152" height="152" /></a></td>
-    <td><a><img src="/media/image/dt.png" width="152" height="152" /></a></td>
-    <td><a><img src="/media/image/gzbj.png" width="152" height="152" /></a></td>
-    <td><a><img src="/media/image/spjk.png" width="152" height="152" /></a></td>
+    <td><a href="/front/accessory/index?deviceId=${deviceId}"><img src="/media/image/pj.png" width="152" height="152" /></a></td>
+    <td><a  href="/front/accessory/index?deviceId=${deviceId}"><img src="/media/image/gzbj.png" width="152" height="152" /></a></td>
+    <td><a  href="/front/devicefile/index?deviceId=${deviceId}"><img src="/media/image/sjjk.png" width="152" height="152" /></a></td>
+    <td><a  href="/front/devicefile/index?deviceId=${deviceId}"}><img src="/media/image/spjk.png" width="152" height="152" /></a></td>
   </tr>
   <tr style="height:40px; line-height:40px; color:#333;">
     <td>配件信息</td>
@@ -50,8 +49,8 @@ function changeTrColor(obj){
 </table>
             <table class="icomenu" width="100%" border="0">
   <tr>
-    <td><a><img src="/media/image/sbzl.png" width="152" height="152" /></a></td>
-    <td><a><img src="/media/image/sbbb.png" width="152" height="152" /></a></td>
+    <td><a href="/front/devicefile/index?deviceId=${deviceId}"><img src="/media/image/sbzl.png" width="152" height="152" /></a></td>
+    <td><a href="/front/devicefile/index?deviceId=${deviceId}"><img src="/media/image/sbbb.png" width="152" height="152" /></a></td>
 	 <td><a style="width:152px; display:inline-block;"></a></td>
     <td><a style="width:152px; display:inline-block;"></a></td>
   </tr>
