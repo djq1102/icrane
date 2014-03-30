@@ -5,7 +5,7 @@
 <!-- END SIDEBAR -->
 
 <!-- BEGIN PAGE -->
-#parse ("/customer/mngindex_page_content.vm")
+#parse ("/mngindex/mngindex_page_content.vm")
 <!-- END PAGE -->
 </div>
 <!-- END CONTAINER -->
