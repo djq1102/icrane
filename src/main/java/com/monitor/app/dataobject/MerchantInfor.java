@@ -2,6 +2,7 @@ package com.monitor.app.dataobject;
 
 public class MerchantInfor {
 
+	private String deviceId ;
 	private String name;
 	private String latitude;// 纬度
 	private String longitude;// 经度
@@ -23,5 +24,11 @@ public class MerchantInfor {
 	}
 	public void setLongitude(String longitude) {
 		this.longitude = longitude;
+	}
+	public String getDeviceId() {
+		return deviceId;
+	}
+	public void setDeviceId(String deviceId) {
+		this.deviceId = deviceId;
 	}
 }
