@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="GBK" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.monitor.app.dao.model.ModelVarDao">
+	<resultMap type="ModelVar" id="plcModelVarResult" >
+		<result property="varId" column="var_id"/>
+		<result property="varName" column="var_name"/>
+		<result property="alias" column="alias"/>
+		<result property="type" column="type"/>
+		<result property="unit" column="unit"/>
+		<result property="modelId" column="model_id"/>
+		<result property="gmtCreate" column="gmt_create"/>
+		<result property="gmtModify" column="gmt_modify"/>
+	</resultMap>
+	<sql id="plcModelVarFields">
+		<![CDATA[
+			var_id,
+			var_name,
+			alias,
+			type,
+			unit,
+			model_id,
+			gmt_create,
+			gmt_modify
+		]]>
+	</sql>
+	<sql id="selectCondition">
+		<where>
+			<if test="0 != modelId">
+				AND model_id = #{modelId}
+			</if>
+			<if test="0 != varId">
+				AND var_id = #{varId}
+			</if>
+			<if test="null != varName and varName != ''">
+				AND var_name like "%"#{varName}"%"
+			</if>
+		</where>
+	</sql>
+	<sql id="updateFields">
+		<set>
+			gmt_modify = now(),
+			<if test="null != alias">
+				alias = #{alias},
+			</if>
+			<if test="null != type">
+				type = #{type},
+			</if>
+			<if test="null != unit">
+				unit = #{unit},
+			</if>
+		</set>
+	</sql>
+	<select id="queryPlcModelVar" parameterType="plcModelVarQuery" resultMap="plcModelVarResult">
+		SELECT <include refid="plcModelVarFields"/> 
+		FROM cr_model_var 
+		<include refid="selectCondition"/>
+	</select>
+	<select id="totalCount" parameterType="plcModelVarQuery" resultType="int">
+        select count(*) c from cr_model_var <include refid="selectCondition"/>
+    </select>	
+	<insert id="addPlcModelVar" useGeneratedKeys="true" keyProperty="varId" parameterType="ModelVar">
+		<![CDATA[
+		INSERT INTO cr_model_var(
+		]]>
+		<include refid="plcModelVarFields"/>
+		<![CDATA[
+		) VALUES (
+		    #{varId},
+		 	#{varName}, 
+		 	#{alias},
+		 	#{type},
+		 	#{unit},
+		 	#{modelId},
+	  		now(),
+	  		now()
+		)
+		]]>
+	</insert>
+	<update id="updatePlcModelVar" parameterType="ModelVar">
+		UPDATE cr_model_var
+		<include refid="updateFields"/>
+		WHERE var_id = #{varId}
+	</update>
+	<delete id="delPlcModelVar" parameterType="java.lang.Long">
+		DELETE cr_model_var WHERE var_id = #{varId}
+	</delete>
+</mapper>

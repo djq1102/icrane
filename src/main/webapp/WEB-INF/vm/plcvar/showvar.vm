@@ -5,7 +5,7 @@
 <!-- END SIDEBAR -->
 
 <!-- BEGIN PAGE -->
-#parse ("control/plcvar/main_content.vm")
+#parse ("control/plcvar/main_var_content.vm")
 <!-- END PAGE -->
 </div>
 <!-- END CONTAINER -->
@@ -31,9 +31,11 @@
 	jQuery(document).ready(function() {   
 		var modelId = $("#modelId").val();
 		if(modelId=="") modelId=0;
-		var modelName = $("#modelName").val();
+		var varId = $("#varId").val();
+		if(varId=="") varId=0;
+		var varName = $("#varName").val();
 		var ajax_data = {
-			ajax_url:"/plcvar/queryModel?modelId="+modelId+"&modelName="+modelName,
+			ajax_url:"/plcvar/queryModelVar?modelId="+modelId+"&varName="+varName+"&varId="+varId,
 			last_index:4,
 			update_url:"/plcvar/updateModelVar?modelId=",
 			query_url:"/plcvar/queryModelVarIndex?modelId="
@@ -77,7 +79,7 @@
 									'bSortable' : false,
 									'aTargets' : [ ajax_data.last_index], 
 									'mRender': function ( data, type, full ) {
-								        return '<a href="'+ajax_data.update_url+data+'">更新变量</a>'+'&nbsp;<a href="'+ajax_data.query_url+data+'">查看变量</a>';
+								        return data;
 									}
 								}]
 							});

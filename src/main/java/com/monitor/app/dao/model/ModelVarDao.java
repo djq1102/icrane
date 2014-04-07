@@ -6,6 +6,7 @@ package com.monitor.app.dao.model;
 import java.util.List;
 
 import com.monitor.app.dataobject.ModelVar;
+import com.monitor.app.query.PlcModelVarQuery;
 
 /**
  * @author ibm
@@ -13,12 +14,13 @@ import com.monitor.app.dataobject.ModelVar;
  */
 public interface ModelVarDao {
 
-	public int addModelVar(ModelVar modelVar);
+	public int addPlcModelVar(ModelVar modelVar);
 	
-	public int updateModelVar(ModelVar modelVar);
+	public int updatePlcModelVar(ModelVar modelVar);
 	
-	public int delModelVar(long varId);
+	public int delPlcModelVar(long varId);
 	
-	public List<ModelVar> queryVarsByModelId(long modelId);
+	public List<ModelVar> queryPlcModelVar(PlcModelVarQuery query);
 	
+	public int totalCount(PlcModelVarQuery query);
 }

@@ -36,6 +36,7 @@
 		<typeAlias alias="UserSiteRelation" type="com.monitor.app.dataobject.UserSiteRelation"/>
 		<typeAlias alias="UserDeviceRelation"  type="com.monitor.app.dataobject.UserDeviceRelation"/>
 		<typeAlias alias="PlcModel"  type="com.monitor.app.dataobject.PlcModel"/>
+		<typeAlias alias="ModelVar"  type="com.monitor.app.dataobject.ModelVar"/>
 		<typeAlias alias="ModelAccessory" type="com.monitor.app.dataobject.ModelAccessory"/>
 		<typeAlias alias="DeviceAccBindData" type="com.monitor.app.dataobject.DeviceAccessoryBindDO"/>
 		<typeAlias alias="Notice" type="com.monitor.app.dataobject.Notice"/>
@@ -46,6 +47,7 @@
 		<typeAlias alias="siteQuery"   type="com.monitor.app.query.SiteQuery"/>
 		<typeAlias alias="deviceQuery" type="com.monitor.app.query.DeviceQuery"/>
 		<typeAlias alias="plcModelQuery" type="com.monitor.app.query.PlcModelQuery"/>
+		<typeAlias alias="plcModelVarQuery" type="com.monitor.app.query.PlcModelVarQuery"/>
 		<typeAlias alias="AccessoryQuery" type="com.monitor.app.query.ModelAccessoryQuery"/>
 		<typeAlias alias="NoticeQuery" type="com.monitor.app.query.NoticeQuery"/>
 		<typeAlias alias="DeviceDocQuery" type="com.monitor.app.query.DeviceDocQuery"/>
@@ -60,6 +62,7 @@
 		<mapper resource="conf/mybatis/userDeviceRelation.mapper.xml"/>
 		<mapper resource="conf/mybatis/device.mapper.xml"/>
 		<mapper resource="conf/mybatis/plcModel.mapper.xml"/>
+		<mapper resource="conf/mybatis/modelVar.mapper.xml"/>
 		<mapper resource="conf/mybatis/accessory.mapper.xml"/>
 		<mapper resource="conf/mybatis/notice.mapper.xml"/>
 		<mapper resource="conf/mybatis/doc.mapper.xml"/>

@@ -105,7 +105,7 @@
 						
 						<li #if ($id == 9) class="active" #end >
 
-							<a href="">
+							<a href="/plcvar/index">
 
 							机型变量管理</a>
 

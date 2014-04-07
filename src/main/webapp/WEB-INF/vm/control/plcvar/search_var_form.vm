@@ -1,0 +1,49 @@
+<div class="span12">
+	<!-- BEGIN SEARCH PORTLET-->
+	<div class="portlet ">
+		<div class="portlet-title">
+			<div class="caption"><i class="icon-search"></i>查询条件</div>
+			<div class="tools">
+				<a href="javascript:;" class="collapse"></a>
+			</div>
+		</div>
+		
+		<div class="portlet-body form" style="display: block;">
+		<form class="form-horizontal" action="/plcvar/queryModelVarIndex" method="POST">
+			<div class="row-fluid">
+				<!--/span-->
+				<div class="span4 ">
+					<div class="control-group">
+						<label class="control-label">变量编号</label>
+						<div class="controls">
+							<input type="text" id="varId" class="m-wrap span12" name="varId" value="$!{varId}"> 
+							<input type="hidden" name="modelId" id="modelId" value="$!{modelId}" />
+						</div>
+					</div>
+				</div>
+				<!--/span-->
+				<div class="span4 ">
+					<div class="control-group">
+						<label class="control-label">变量名称</label>
+						<div class="controls">
+							<input type="text" id="varName" class="m-wrap span12" name="varName" value="$!{varName}"> 
+						</div>
+					</div>
+				</div>
+				<!--/span-->
+			</div>
+			<!--/row-->
+			
+			<div class="row-fluid">
+				<div class="span4 ">
+					<div class="control-group">
+						<div class="controls">
+							<button class="btn purple">查询 <i class="icon-search"></i></button>	</div>
+					</div>
+				</div>
+			</div>
+		</form>
+		</div>
+	</div>
+	<!-- END SEARCH FORM>
+</div>

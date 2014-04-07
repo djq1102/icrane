@@ -13,6 +13,7 @@ import org.springframework.stereotype.Service;
 
 import com.monitor.app.dao.model.ModelVarDao;
 import com.monitor.app.dataobject.ModelVar;
+import com.monitor.app.query.PlcModelVarQuery;
 import com.monitor.app.result.ServiceResult;
 import com.monitor.app.result.msg.MsgEnum;
 import com.monitor.app.utils.MsgUtils;
@@ -29,9 +30,9 @@ public class VariableService {
 	@Resource
 	private ModelVarDao modelVarDao;
 	
-	public ServiceResult addModelVar(ModelVar modelVar){
+	public ServiceResult addPlcModelVar(ModelVar modelVar){
 		try{
-			int count = modelVarDao.addModelVar(modelVar);
+			int count = modelVarDao.addPlcModelVar(modelVar);
 			if(count<=0){
 				return MsgUtils.fillMsg(MsgEnum.MODEL_VAR_ADD_FAIL);
 			}
@@ -43,9 +44,9 @@ public class VariableService {
 		return MsgUtils.fillModule(null);
 	}
 	
-	public ServiceResult updateModelVar(ModelVar modelVar){
+	public ServiceResult updatePlcModelVar(ModelVar modelVar){
 		try{
-			int count = modelVarDao.updateModelVar(modelVar);
+			int count = modelVarDao.updatePlcModelVar(modelVar);
 			if(count<=0){
 				return MsgUtils.fillMsg(MsgEnum.MODEL_VAR_UPDATE_FAIL);
 			}
@@ -58,9 +59,9 @@ public class VariableService {
 		
 	}
 	
-	public ServiceResult delModelVar(long varId){
+	public ServiceResult delPlcModelVar(long varId){
 		try{
-			int count = modelVarDao.delModelVar(varId);
+			int count = modelVarDao.delPlcModelVar(varId);
 			if(count<=0){
 				return MsgUtils.fillMsg(MsgEnum.MODEL_VAR_DELETE_FAIL);
 			}
@@ -73,10 +74,10 @@ public class VariableService {
 		
 	}
 	
-	public ServiceResult queryModelVars(long modelId){
+	public ServiceResult queryPlcModelVar(PlcModelVarQuery query){
 		List<ModelVar> vars = null;
 		try{
-			vars = modelVarDao.queryVarsByModelId(modelId);
+			vars = modelVarDao.queryPlcModelVar(query);
 			
 		}catch(Exception e){
 			log.error("query_model_var_fails",e);
@@ -84,6 +85,18 @@ public class VariableService {
 		}
 		//success
 		return MsgUtils.fillModule(vars);
+	}
+
+	public ServiceResult totalCount(PlcModelVarQuery query){
+		int count = 0;
+		try{
+			count = modelVarDao.totalCount(query);
+		}catch(Exception e){
+			log.error("query_model_total_count_fails",e);
+			return MsgUtils.fillMsg(MsgEnum.MODEL_QUERY_FAIL);
+		}
+		
+		return MsgUtils.fillModule(count);
 	}
 	
 }
