@@ -1,4 +1,4 @@
-package com.monitor.app.controller;
+package com.monitor.app.controller.device;
 
 import java.util.ArrayList;
 import java.util.HashMap;

@@ -1,7 +1,7 @@
 /**
  * 
  */
-package com.monitor.app.controller;
+package com.monitor.app.controller.device;
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -25,6 +25,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.context.ServletContextAware;
 import org.springframework.web.multipart.commons.CommonsMultipartFile;
 
+import com.monitor.app.controller.AbstractController;
 import com.monitor.app.dataobject.DeviceDoc;
 import com.monitor.app.query.DeviceDocQuery;
 import com.monitor.app.result.ServiceResult;
