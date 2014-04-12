@@ -9,8 +9,12 @@ import java.util.Map;
 
 import javax.servlet.http.HttpSession;
 
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.UserDetails;
+
 import com.alibaba.fastjson.JSONObject;
-import com.monitor.app.web.security.ext.SessionConstant;
+import com.monitor.app.web.security.ext.UserExt;
 
 /**
  * @author ibm
@@ -29,27 +33,36 @@ public class AbstractController {
 			return JSONObject.toJSONString(map);
 	}
 	
-	public long getUserId(HttpSession session){
-		Object userId = session.getAttribute(SessionConstant.USER_ID);
-		if(userId!=null){
-			return Long.parseLong(userId.toString());
+	private UserExt getUserExt(){
+		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+		if(auth!=null){
+			UserDetails userDetails = (UserDetails) auth.getPrincipal();
+			if(userDetails!=null){
+				UserExt userExt = (UserExt)userDetails;
+				return userExt;
+			}
 		}
+		return null;
+	}
+	
+	public long getUserId(HttpSession session){
+		UserExt userExt = getUserExt();
+		if(userExt!=null) return userExt.getUserId();
+		
 		return 0L;
 	}
 	
 	public long getCustomerId(HttpSession session){
-		Object userId = session.getAttribute(SessionConstant.CUSTOMER_ID);
-		if(userId!=null){
-			return Long.parseLong(userId.toString());
-		}
+		UserExt userExt = getUserExt();
+		if(userExt!=null) return userExt.getCustomerId();
+		
 		return 0L;
 	}
 	
 	public String getUserName(HttpSession session){
-		Object username = session.getAttribute(SessionConstant.USER_NAME);
-		if(username!=null){
-			return username.toString();
-		}
+		UserExt userExt = getUserExt();
+		if(userExt!=null) return userExt.getUsername();
+		
 		return null;
 	}
 }
