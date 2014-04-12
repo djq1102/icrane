@@ -15,7 +15,7 @@ import com.monitor.app.query.DeviceDocQuery;
 import com.monitor.app.result.ServiceResult;
 import com.monitor.app.service.DeviceDocService;
 @Controller
-public class FileDeviceFileController {
+public class FrontDeviceFileController {
 
 	@Resource
 	private DeviceDocService deviceDocService;
