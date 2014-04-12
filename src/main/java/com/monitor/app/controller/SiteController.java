@@ -162,9 +162,8 @@ public class SiteController extends AbstractController{
 		return JsonUtil.buildJosn(resultMap, numResult, sEcho);
 	}
 	
-	
 	@RequestMapping(value = "/site/deleteSite",method = RequestMethod.GET)
-	public String deleteUserInfo(@RequestParam("siteId") long siteId,Model model,HttpSession session) throws ManagerException {
+	public String deleteSite(@RequestParam("siteId") long siteId,Model model,HttpSession session) throws ManagerException {
 		logger.warn(">>>action=edit" );
 		long userId = getUserId(session);
 	    ServiceResult relationResult = siteService.deteleSite(userId,siteId);
