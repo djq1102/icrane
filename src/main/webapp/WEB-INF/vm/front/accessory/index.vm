@@ -31,7 +31,7 @@
     <td><div class="w"><a style="">电气配件</a></div></td>
   </tr>
 </table>
-<div class="lbxx"><a class="lban1"></a><a class="lban2"></a></div>
+<div class="lbxx"><a href="/front/accessory/addToCart?deviceId=${deviceId}" class="lban2"></a></div>
 </div>
             <div class="content_list">
             <table class="content_tag" width="100%" border="0">
