@@ -55,7 +55,7 @@ public class HomeController extends AbstractController{
 		
 		model.addAttribute("serverTime", formattedDate );
 		
-		return "home";
+		return "index";
 	}
 	
 	@RequestMapping(value = "/index", method = RequestMethod.GET)
