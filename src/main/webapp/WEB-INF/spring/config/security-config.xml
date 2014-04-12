@@ -7,8 +7,8 @@
             http://www.springframework.org/schema/security
             http://www.springframework.org/schema/security/spring-security-3.2.xsd">
  
- 	 <http pattern="/**/style/*" security="none"/>
- 	 <http pattern="/**/media/*" security="none"/>
+ 	 <http pattern="/**/style/**/*" security="none"/>
+ 	 <http pattern="/**/media/**/*" security="none"/>
  	 <http pattern="/login" security="none"/>
      <http access-denied-page="/403"><!-- 当访问被拒绝时，会转到403 -->
          <form-login login-page="/login"
