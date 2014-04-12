@@ -1,0 +1,18 @@
+#set($layout="/layout/empty.vm")
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<link href="/media/css/global.css" type="text/css" rel="stylesheet" />
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title></title>
+<script type="text/javascript">
+function changeTrColor(obj){    
+    var _table=obj.parentNode;
+    for (var i=0;i<_table.rows.length;i++){
+        _table.rows[i].style.backgroundColor="";
+    }    
+    obj.style.backgroundColor="#fff6c4";
+}
+</script>
+</head>
