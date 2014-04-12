@@ -64,4 +64,8 @@
 		</foreach>
 	</delete>
 	
+	<delete id="deleteUserDeviceRelationByDeviceId" parameterType="java.lang.Long">
+		 delete from cr_user_device_relation where device_id = #{deviceId}
+	</delete>
+	
 </mapper>

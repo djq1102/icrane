@@ -148,7 +148,7 @@
     </select>	
     
     <delete id="deleteDevice" parameterType="java.lang.Long" >
-    	delete cr_device where device_id =  #{deviceId}
+    	delete from cr_device where device_id =  #{deviceId}
     </delete>
     
     

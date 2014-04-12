@@ -127,6 +127,13 @@
         <include refid="selectCondition"/>
     </select>	
     
+    <delete id="delteSiteId"  parameterType="java.util.Map">
+    	DELETE FROM cr_site WHERE site_id = #{siteId} and 
+    	<if test="null != customerId">
+			customer_id = #{customerId}
+    	</if>
+    </delete>
+    
 	<update id="updateSite" parameterType="Site">
 		UPDATE cr_site
 		<include refid="updateFields"/>

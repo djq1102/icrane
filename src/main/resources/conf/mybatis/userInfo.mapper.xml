@@ -97,7 +97,7 @@
 	</select>
 	
 	<delete id="deleteUserInfo" parameterType="java.lang.Long">
-		DELETE cr_user_info where user_id = #{userId}
+		DELETE from cr_user_info where user_id = #{userId}
 	</delete>
 	
 	<select id="queryUserInfo" parameterType="UserInfoQuery" resultMap="userInfoResult">
