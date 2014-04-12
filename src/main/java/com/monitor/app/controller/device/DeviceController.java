@@ -6,6 +6,7 @@ import java.util.List;
 import java.util.Map;
 
 import javax.annotation.Resource;
+import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 
 import org.slf4j.Logger;
@@ -21,6 +22,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.monitor.app.controller.AbstractController;
 import com.monitor.app.dataobject.Customer;
 import com.monitor.app.dataobject.Device;
 import com.monitor.app.dataobject.PlcModel;
@@ -39,7 +41,7 @@ import com.monitor.app.validator.DeviceValidator;
 
 
 @Controller
-public class DeviceController {
+public class DeviceController extends AbstractController{
 	
 	private static final Logger logger = LoggerFactory.getLogger(DeviceController.class);
 	@Resource
@@ -206,12 +208,23 @@ public class DeviceController {
 		}
 	}
 	
+	@RequestMapping(value = "/device/deleteDevice",method = RequestMethod.GET)
+	public String deleteDevice(@RequestParam("deviceId") long deviceId,Model model,HttpSession session) throws ManagerException {
+		logger.warn(">>>action=deleteDevice" );
+	    ServiceResult relationResult = deviceService.deleteDevice(deviceId);
+	    if(relationResult.isSuccess()){
+	    	return "";
+	    }else{
+	    	return "error";
+	    }
+    }
+
+	
 	@RequestMapping(value = "/device/deviceInput",method = RequestMethod.GET)
 	public String deviceInput(Model model) throws ManagerException {
 		logger.warn(">>>action=deviceInput");
 		model.addAttribute("customers", queryAllCustomers());
 		model.addAttribute("plcModels", queryAllModels());
-		//客户 和现场需要级联
 		return "device/device_input";
 	}
 	
