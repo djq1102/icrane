@@ -34,6 +34,7 @@
 		var ajax_data = {
 			ajax_url:"/customer/queryCustomerList.do?customerName="+customerName+"&customerType="+custType,
 			last_index:6,
+			delete_url:"/customer/deleteCustomer?customerId=",
 			edit_url:"/customer/editCustomer.htm?customerId="
 		} 
 	   console.log(ajax_data.ajax_url);

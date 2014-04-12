@@ -73,7 +73,7 @@ public class CustomerController {
 	}
 	
 	@SuppressWarnings("unchecked")
-	@RequestMapping(value = "/customer/deleteCustomer",method = RequestMethod.POST)
+	@RequestMapping(value = "/customer/deleteCustomer")
 	public String deleteCustomer(@RequestParam("customerId") long customerId,Model model) throws ManagerException {
 		ServiceResult userInfoResult = userInfoService.queryUserInfoByCustomerId(customerId);
 		if(userInfoResult.isSuccess()){
