@@ -170,6 +170,7 @@ public class SiteController extends AbstractController{
 		return JsonUtil.buildJosn(resultMap, numResult, sEcho);
 	}
 	
+	@SuppressWarnings("unchecked")
 	@RequestMapping(value = "/site/deleteSite",method = RequestMethod.GET)
 	public String deleteSite(@RequestParam("siteId") long siteId,Model model,HttpSession session) throws ManagerException {
 		logger.warn(">>>action=edit" );
@@ -178,6 +179,7 @@ public class SiteController extends AbstractController{
 		if(siteResult.isSuccess()){
 			List<Device> devices = (List<Device>)siteResult.getModule();
 			if(!devices.isEmpty()){
+				model.addAttribute("msg", "现场下存在关联设备，请先删除设备!");
 				return "error";
 			}
 		}
@@ -186,13 +188,14 @@ public class SiteController extends AbstractController{
 			UserInfo userInfo = (UserInfo)sericeResult.getModule();
 			ServiceResult relationResult = siteService.deteleSite(userInfo.getCustomerId(),siteId);
 		    if(relationResult.isSuccess()){
-		    	return "";
+				return "site/site";
 		    }else{
+				model.addAttribute("msg",relationResult.getMsg());
 		    	return "error";
 		    }
-
 		}else{
-			return "";
+			model.addAttribute("msg",sericeResult.getMsg());
+	    	return "error";
 		}
 		
 	}

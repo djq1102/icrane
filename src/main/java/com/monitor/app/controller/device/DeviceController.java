@@ -36,7 +36,6 @@ import com.monitor.app.service.ModelService;
 import com.monitor.app.service.SiteService;
 import com.monitor.app.service.UserDeviceRelationService;
 import com.monitor.app.utils.JsonUtil;
-import com.monitor.app.utils.MsgUtils;
 import com.monitor.app.utils.ToolsUtil;
 import com.monitor.app.validator.DeviceValidator;
 
@@ -95,7 +94,9 @@ public class DeviceController extends AbstractController{
 		ToolsUtil.spiltLocation(device);
 		ServiceResult result = deviceService.addDevice(device);
 		if(!result.isSuccess()){
-			logger.error(">>>action=addCustomers error" + device.getDeviceName());
+			logger.error(">>>action=addDevice error" + device.getDeviceName());
+			model.addAttribute("msg", result.getMsg());
+			return "error";
 		}
 		return "redirect:index.htm";
 	}
@@ -153,10 +154,11 @@ public class DeviceController extends AbstractController{
 			model.addAttribute("lng", lng);
 			model.addAttribute("lat", lat);
 			model.addAttribute("device", device);
+			return "device/device_edit_input";
 		}else{
-			model.addAttribute("msg", MsgUtils.MSG_FAIL);
+			model.addAttribute("msg", result.getMsg());
+			return "error";
 		}
-		return "device/device_edit_input";
 	}
 	
 	@RequestMapping(value = "/device/deleteDevice")
@@ -165,8 +167,8 @@ public class DeviceController extends AbstractController{
 		if(result.isSuccess()){
 			return "redirect:index.htm";
 		}else{
-			model.addAttribute("msg", MsgUtils.MSG_FAIL);
-			return "redirect:index.htm";
+			model.addAttribute("msg", result.getMsg());
+			return "error";
 		}
 	}
 
@@ -205,11 +207,14 @@ public class DeviceController extends AbstractController{
 			ServiceResult editResult = deviceService.updateDevice(device);
 			if(!editResult.isSuccess()){
 				logger.error(">>>action=updateDevice error" + device.getDeviceName());
+				model.addAttribute("msg", editResult.getMsg());
+				return "error";
 			}
 			return "redirect:index.htm";
 		}else{
 			logger.error(">>>action=queryByDeviceId error" + device.getDeviceId());
-			return "redirect:index.htm";
+			model.addAttribute("error",result.getMsg() );
+			return "error";
 		}
 	}
 	
@@ -258,7 +263,4 @@ public class DeviceController extends AbstractController{
 		List<Site> sites = (List)result.getModule();
 		return sites;
 	}
-
-	
-
 }

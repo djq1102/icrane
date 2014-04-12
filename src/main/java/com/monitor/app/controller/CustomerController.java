@@ -28,7 +28,6 @@ import com.monitor.app.result.ServiceResult;
 import com.monitor.app.service.CustomerService;
 import com.monitor.app.service.UserInfoService;
 import com.monitor.app.utils.JsonUtil;
-import com.monitor.app.utils.MsgUtils;
 import com.monitor.app.validator.CustomerValidator;
 
 /**
@@ -77,7 +76,7 @@ public class CustomerController {
 		return "redirect:index.htm";
 	}
 	
-	@RequestMapping(value = "/customer/addCustomer",method = RequestMethod.POST)
+	@RequestMapping(value = "/customer/addCustomer")
 	public String addCustomer(@Valid @ModelAttribute("customer") Customer customer,BindingResult bingResult,Model model) throws ManagerException {
 		if(bingResult.hasFieldErrors()){
 			if( bingResult.getFieldError("customerName") != null){
@@ -98,6 +97,8 @@ public class CustomerController {
 		ServiceResult result = customerService.addCustomer(customer);
 		if(!result.isSuccess()){
 			logger.error(">>>action=addCustomers error" + customer.getCustomerName());
+			model.addAttribute("msg", result.getMsg());
+			return "error";
 		}
 		return "redirect:index.htm";
 	}
@@ -128,7 +129,7 @@ public class CustomerController {
 			Customer customer = (Customer)result.getModule();
 			model.addAttribute("customer", customer);
 		}else{
-			model.addAttribute("msg", MsgUtils.MSG_FAIL);
+			model.addAttribute("msg",result.getMsg());
 		}
 		return "customer/customer_edit_input";
 	}
@@ -163,13 +164,14 @@ public class CustomerController {
 			dbCustomer.setCustomerName(customer.getCustomerName());
 			ServiceResult editResult = customerService.updateCustomer(dbCustomer);
 			if(editResult.isSuccess()){
-				model.addAttribute("msg", MsgUtils.MSG_SUCCESS);
+				return "customer/customer";
 			}else{
-				model.addAttribute("msg",MsgUtils.MSG_FAIL);
+				model.addAttribute("msg",editResult.getMsg());
+				return "error";
 			}
-			return "customer/customer";
 		}else{
-			return "customer/customer";
+			model.addAttribute("msg",result.getMsg());
+			return "error";
 		}
 	}
 	

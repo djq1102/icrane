@@ -157,13 +157,14 @@ public class UserInfoController extends AbstractController{
 			}
 			ServiceResult editResult = userInfoService.userInfoEdit(userInfo);
 			if(editResult.isSuccess()){
-				model.addAttribute("msg", MsgUtils.MSG_SUCCESS);
+				return "userInfo/userinfo";
 			}else{
-				model.addAttribute("msg",MsgUtils.MSG_FAIL);
+				model.addAttribute("msg",editResult.getMsg());
+				return "error";
 			}
-			return "userInfo/userinfo";
 		}else{
-			return "userInfo/userinfo";
+			model.addAttribute("msg", result.getMsg());
+			return "error";
 		}
 	}
 	

@@ -127,6 +127,8 @@ public class DeviceUserController {
 			ServiceResult result = userDeviceRelationService.addUserDeviceRelation(userDeviceRelations);
 			if(!result.isSuccess()){
 				logger.warn("[设备分配查询]分配数据失败："+ my_multi_select2);
+				model.addAttribute("msg", result.getMsg());
+				return "error";
 			}
 		}
 	    return "userInfo/userinfo";
