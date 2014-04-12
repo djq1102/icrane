@@ -1,4 +1,4 @@
 <div class="top">
    	  <div class="top_logo"><a href="#"><img src="/media/image/logo.png" width="316" height="80" /></a></div>
-        <div class="top_info">您好，<span style="color:#ff4e00;">系统管理员</span>欢迎登录云设备平台<span style="margin:0 5px; color:#FFF;"></span><span style="margin:0 5px;"><a href="#"  style="color:#FFF;">退出</a></span><span class="top_help"><img src="/media/image/wh.png" width="16" height="16" /></span><a href="#"  style="color:#FFF;">帮助／指南</a></div>
+        <div class="top_info">您好，<span style="color:#ff4e00;">系统管理员</span>欢迎登录云设备平台<span style="margin:0 5px; color:#FFF;"></span><span style="margin:0 5px;"><a href="logout"  style="color:#FFF;">退出</a></span><span class="top_help"><img src="/media/image/wh.png" width="16" height="16" /></span><a href="#"  style="color:#FFF;">帮助／指南</a></div>
  </div>
