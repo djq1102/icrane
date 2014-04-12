@@ -30,7 +30,6 @@ import com.monitor.app.service.CustomerService;
 import com.monitor.app.service.UserDeviceRelationService;
 import com.monitor.app.service.UserInfoService;
 import com.monitor.app.utils.JsonUtil;
-import com.monitor.app.utils.MsgUtils;
 import com.monitor.app.validator.UserInfoValidator;
 
 /**
@@ -86,11 +85,12 @@ public class UserInfoController extends AbstractController{
 			model.addAttribute("loginErrorName", "登录户名已经存在!");
 			return userinfoInput(model);
 		}
-
 		logger.warn(">>>action=addUserInfo," + userInfo.getUserName());
 		ServiceResult result = userInfoService.userInfoAdd(userInfo);
 		if(!result.isSuccess()){
 			logger.error(">>>action=addUserInfor error" + userInfo.getUserName());
+			model.addAttribute("msg", result.getMsg());
+			return "error";
 		}
 		return "redirect:index.htm";
 	}
@@ -103,10 +103,11 @@ public class UserInfoController extends AbstractController{
 			UserInfo userInfo  = (UserInfo)result.getModule();
 			model.addAttribute("customers", queryAllCustomers());
 			model.addAttribute("userInfo", userInfo);
+			return "userInfo/userinfo_edit_input";
 		}else{
-			model.addAttribute("msg", MsgUtils.MSG_FAIL);
+			model.addAttribute("msg",result.getMsg());
+			return "error";
 		}
-		return "userInfo/userinfo_edit_input";
 	}
 	
 	@RequestMapping(value = "/userInfo/deleteUserInfo",method = RequestMethod.GET)
@@ -117,9 +118,12 @@ public class UserInfoController extends AbstractController{
 	    	ServiceResult result = userInfoService.userInfoDelte(userId);
 			if(!result.isSuccess()){
 				logger.warn(">>>action=deleteUserInfo error userId="+userId );
+				model.addAttribute("msg", result.getMsg());
+				return "error";
 			}
 			return "userInfo/userinfo";
 	    }else{
+			model.addAttribute("msg", relationResult.getMsg());
 	    	return "error";
 	    }
     }
