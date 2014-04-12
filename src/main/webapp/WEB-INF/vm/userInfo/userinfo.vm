@@ -36,11 +36,7 @@
 
 <script src="/media/js/app.js"></script>    
 
-
-
 <script>
-
-     
 
 	jQuery(document).ready(function() {   
 		  
@@ -52,7 +48,7 @@
 	   var ajax_data = {
 			ajax_url:"/userInfo/queryList.do?userPhone="+userPhone+"&userName="+userName+"&roleType="+roleType+"&customerId="+custId,
 			last_index:7,
-			delete_url:"http://localhost:8080/demo/JqueryTableServlet?id=",
+			delete_url:"/userInfo/deleteUserInfo?id=",
 			edit_url:"/userInfo/editUserInfo.do?userId="
 		} 
 		  console.log(ajax_data.ajax_url);

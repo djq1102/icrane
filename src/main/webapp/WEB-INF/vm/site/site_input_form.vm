@@ -27,13 +27,13 @@
 					<div class="control-group">
 						<label class="control-label">现场名称:</label>
 						<div class="controls">
-							<input type="text" class="m-wrap span12" name="siteName"> 
+							<input type="text" class="m-wrap span12" name="siteName" value="$!{site.siteName}"> 
+							 <font color="red">$!{siteErrorName}</font>
 						</div>
 					</div>
 				</div>
 
 				<!--/span-->
-
 				<div class="span4 ">
 					<div class="control-group">
 						<label class="control-label">状态:</label>
@@ -45,7 +45,6 @@
 						</div>
 					</div>
 				</div>
-
 				<!--/span-->
 			</div>
 			<!--/row-->
@@ -54,18 +53,19 @@
 					<div class="control-group">
 						<label class="control-label">地址:</label>
 						<div class="controls">
-							<input type="text" class="m-wrap span12" name="siteAddress"> 
+							<input type="text" class="m-wrap span12" name="siteAddress" value="$!{site.siteAddress}"> 
+						    <font color="red">$!{siteErrorAddress}</font>
 						</div>
 					</div>
 				</div>
 
 				<!--/span-->
-
 				<div class="span4 ">
 					<div class="control-group">
 						<label class="control-label">联系人:</label>
 						<div class="controls">
-							<input type="text" class="m-wrap span12" name="contactName"> 
+							<input type="text" class="m-wrap span12" name="contactName" value="$!{site.contactName}">
+							<font color="red">$!{contactErrorName}</font>
 						</div>
 					</div>
 				</div>
@@ -75,7 +75,8 @@
 					<div class="control-group">
 						<label class="control-label">手机号:</label>
 						<div class="controls">
-							<input type="text" class="m-wrap span12" name="contactPhone"> 
+							<input type="text" class="m-wrap span12" name="contactPhone" value="$!{site.contactPhone}"> 
+							<font color="red">$!{contactErrorPhone}</font>
 						</div>
 					</div>
 				</div>
@@ -87,12 +88,11 @@
 					<div class="control-group">
 						<label class="control-label">邮箱:</label>
 						<div class="controls">
-							<input type="text" class="m-wrap span12" name="contactEmail"> 
+							<input type="text" class="m-wrap span12" name="contactEmail" value="$!{site.contactEmail}"> 
+							<font color="red">$!{contactErrorEmail}</font>
 						</div>
 					</div>
-
 				</div>
-
 				<!--/span-->
 			</div>
 			<!--/row-->

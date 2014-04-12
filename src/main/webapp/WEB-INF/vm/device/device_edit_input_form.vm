@@ -50,7 +50,8 @@
 					<div class="control-group">
 						<label class="control-label">设备名称:</label>
 						<div class="controls">
-							<input type="text" class="m-wrap span12" name="deviceName" value="$!{device.deviceName}"> 
+							<input type="text" class="m-wrap span12" name="deviceName" value="$!{device.deviceName}"
+                            <font color="red">$!{deviceErrorName}</font>
 						</div>
 					</div>
 				</div>
@@ -78,7 +79,8 @@
 					<div class="control-group">
 						<label class="control-label">设备IP:</label>
 						<div class="controls">
-							<input type="text" class="m-wrap span12" name="deviceIp" value="$!{device.deviceIp}"> 
+							<input type="text" class="m-wrap span12" name="deviceIp" value="$!{device.deviceIp}">
+							<font color="red">$!{deviceErrorIp}</font>
 						</div>
 					</div>
 				</div>
@@ -88,7 +90,8 @@
 					<div class="control-group">
 						<label class="control-label">视频用户名:</label>
 						<div class="controls">
-							<input type="text" class="m-wrap span12" name="userName" value="$!{device.userName}"> 
+							<input type="text" class="m-wrap span12" name="userName" value="$!{device.userName}">
+							<font color="red">$!{userErrorName}</font>
 						</div>
 					</div>
 				</div>
@@ -101,7 +104,8 @@
 					<div class="control-group">
 						<label class="control-label">视频密码:</label>
 						<div class="controls">
-							<input type="text" class="m-wrap span12" name="userPwd" value="$!{device.userPwd}"> 
+							<input type="text" class="m-wrap span12" name="userPwd" value="$!{device.userPwd}"
+                            <font color="red">$!{userErrorPwd}</font>
 						</div>
 					</div>
 				</div>
@@ -111,7 +115,8 @@
 					<div class="control-group">
 						<label class="control-label">序列号:</label>
 						<div class="controls">
-							<input type="text" class="m-wrap span12" name="serialNumber" value="$!{device.serialNumber}"> 
+							<input type="text" class="m-wrap span12" name="serialNumber" value="$!{device.serialNumber}">
+							<font color="red">$!{serialErrorNumber}</font>
 						</div>
 					</div>
 				</div>
@@ -124,7 +129,8 @@
 					<div class="control-group">
 						<label class="control-label">位置坐标:</label>
 						<div class="controls">
-							<input id="location" type="text" name="location" size="128" readonly value="$!{device.location}"> 
+							<input id="location" type="text" name="location" size="128" readonly value="$!{device.location}">
+						    <font color="red">$!{errorLocation}</font>
 						</div>
 					</div>
 				</div>

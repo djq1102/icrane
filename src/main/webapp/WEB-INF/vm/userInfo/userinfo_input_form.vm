@@ -26,10 +26,9 @@
 						<label class="control-label">用户角色:</label>
 						<div class="controls">
 							<select class="small m-wrap" tabindex="1" name="roleType">
-								<option value="1">平台管理员</option>
-								<option value="2">客户管理员</option>
-								<option value="3">普通用户</option>
-							</select>
+								<option value="1" selected>平台管理员</option>
+								<option value="2"  #if('2' == $!{userInfo.roleType}) selected #end>客户管理员</option>
+								<option value="3"  #if('3' == $!{userInfo.roleType}) selected #end>普通用户</option>							</select>
 						</div>
 					</div>
 				</div>
@@ -38,7 +37,8 @@
 					<div class="control-group">
 						<label class="control-label">用户姓名:</label>
 						<div class="controls">
-							<input type="text" class="m-wrap span12" name="userName"> 
+							<input type="text" class="m-wrap span12" name="userName" value="$!{userInfo.userName}">
+							<font color="red">$!{userErrorName}</font>
 						</div>
 					</div>
 				</div>
@@ -51,7 +51,8 @@
 					<div class="control-group">
 						<label class="control-label">手机号:</label>
 						<div class="controls">
-							<input type="text" class="m-wrap span12" name="userPhone" > 
+							<input type="text" class="m-wrap span12" name="userPhone" value="$!{userInfo.userPhone}"> 
+							<font color="red">$!{userErrorPhone}</font>
 						</div>
 					</div>
 				</div>
@@ -61,7 +62,8 @@
 					<div class="control-group">
 						<label class="control-label">登录用户名:</label>
 						<div class="controls">
-							<input type="text" class="m-wrap span12" name="loginName" > 
+							<input type="text" class="m-wrap span12" name="loginName" value="$!{userInfo.loginName}"> 
+							<font color="red">$!{loginErrorName}</font>
 						</div>
 					</div>
 				</div>
@@ -71,7 +73,8 @@
 					<div class="control-group">
 						<label class="control-label">登录密码:</label>
 						<div class="controls">
-							<input type="text" class="m-wrap span12" name="password"> 
+							<input type="text" class="m-wrap span12" name="password" value="$!{userInfo.password}">
+							<font color="red">$!{errorPassword}</font>
 						</div>
 					</div>
 				</div>
@@ -84,7 +87,8 @@
 					<div class="control-group">
 						<label class="control-label">邮箱:</label>
 						<div class="controls">
-							<input type="text" class="m-wrap span12" name="userEmail"> 
+							<input type="text" class="m-wrap span12" name="userEmail" value="$!{userInfo.userEmail}"> 
+							<font color="red">$!{userErrorEmail}</font>
 						</div>					
 					</div>
 				</div>

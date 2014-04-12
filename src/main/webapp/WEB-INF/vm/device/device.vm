@@ -48,7 +48,7 @@
 	  var ajax_data = {
 			ajax_url:"/device/queryDeviceList.do?deviceName="+deviceName+"&customerId="+customerId,
 			last_index:6,
-			delete_url:"http://localhost:8080/demo/JqueryTableServlet?id=",
+			delete_url:"/device/deleteDevice?id=",
 			edit_url:"/device/editDevice.do?deviceId="
 	  } 
 		console.log(ajax_data.ajax_url);

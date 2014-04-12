@@ -27,7 +27,8 @@
 					<div class="control-group">
 						<label class="control-label">客户名称:</label>
 						<div class="controls">
-							<input type="text" class="m-wrap span12" name="customerName" value="$!{customer.customerName}"> 
+							<input type="text" class="m-wrap span12" name="customerName" value="$!{customer.customerName}">
+							<font color="red">$!{customerErrorName}</font>
 						</div>
 					</div>
 				</div>
@@ -52,6 +53,7 @@
 							<label class="control-label">联系人:</label>
 							<div class="controls">
 								<input type="text" class="m-wrap span12" name="contactName" value="$!{customer.contactName}"> 
+								<font color="red">$!{contactErrorName}</font>
 							</div>
 						</div>
 				</div>
@@ -60,7 +62,8 @@
 					<div class="control-group">
 						<label class="control-label">手机号:</label>
 						<div class="controls">
-							<input type="text" class="m-wrap span12" name="contactPhone" value="$!{customer.contactPhone}"> 
+							<input type="text" class="m-wrap span12" name="contactPhone" value="$!{customer.contactPhone}">
+						    <font color="red">$!{contactErrorPhone}</font>
 						</div>
 					</div>
 				</div>
@@ -70,7 +73,8 @@
 					<div class="control-group">
 						<label class="control-label">邮箱:</label>
 						<div class="controls">
-							<input type="text" class="m-wrap span12" name="contactEmail" value="$!{customer.contactEmail}"> 
+							<input type="text" class="m-wrap span12" name="contactEmail" value="$!{customer.contactEmail}">
+							<font color="red">$!{contactErrorEmail}</font>
 						</div>
 					</div>
 				</div>
