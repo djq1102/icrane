@@ -48,7 +48,7 @@
 	   var ajax_data = {
 			ajax_url:"/userInfo/queryList.do?userPhone="+userPhone+"&userName="+userName+"&roleType="+roleType+"&customerId="+custId,
 			last_index:7,
-			delete_url:"/userInfo/deleteUserInfo?id=",
+			delete_url:"/userInfo/deleteUserInfo?userId=",
 			edit_url:"/userInfo/editUserInfo.do?userId="
 		} 
 		  console.log(ajax_data.ajax_url);

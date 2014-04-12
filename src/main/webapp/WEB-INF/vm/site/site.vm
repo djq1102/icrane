@@ -47,7 +47,7 @@
 		var ajax_data = {
 			ajax_url:"/site/querySiteList.do?siteName="+siteName+"&customerId="+customerId+"&status="+status,
 			last_index:7,
-			delete_url:"/site/deleteSite?id=",
+			delete_url:"/site/deleteSite?siteId=",
 			edit_url:"/site/editSite.do?siteId="
 		} 
 		console.log(ajax_data.ajax_url);
