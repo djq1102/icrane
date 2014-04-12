@@ -26,6 +26,9 @@ table { border-collapse: collapse; border-spacing: 0; border-collapse:collapse; 
 /*导航结束*/
 /*主干内容开始*/
 .main{ padding:0 70px; overflow:hidden; position:relative;  background:url(../image/main_bg.jpg) left repeat-x ;}
+.lbxx{height:70px; background-color:#FFF; border:1px solid #dadada; text-align:left; padding-top:12px; overflow:hidden;}
+.lban1{background:url(../image/pj_03.gif) no-repeat left top; cursor:pointer; width:194px; height:57px; display:inline-block; margin-left:15px;}
+.lban2{background:url(../images/pj_04.gif) no-repeat left top; width:194px; height:57px; display:inline-block; cursor:pointer;}
 .icomenu{font-family:Microsoft YaHei;font-size:24px; text-align:center; margin-bottom:60px;}
 .icomenu1{font-family:Microsoft YaHei;font-size:18px; text-align:center; margin-bottom:40px;}
 .icomenu img{ margin-bottom:0px;}
