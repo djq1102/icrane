@@ -22,10 +22,14 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.monitor.app.dataobject.Customer;
+import com.monitor.app.dataobject.Site;
+import com.monitor.app.dataobject.UserInfo;
 import com.monitor.app.exception.ManagerException;
 import com.monitor.app.query.CustomerInfoQuery;
 import com.monitor.app.result.ServiceResult;
 import com.monitor.app.service.CustomerService;
+import com.monitor.app.service.DeviceService;
+import com.monitor.app.service.SiteService;
 import com.monitor.app.service.UserInfoService;
 import com.monitor.app.utils.JsonUtil;
 import com.monitor.app.validator.CustomerValidator;
@@ -44,6 +48,10 @@ public class CustomerController {
 	private CustomerService customerService;
 	@Resource
 	private UserInfoService userInfoService;
+	@Resource
+	private SiteService siteService;
+	@Resource
+	private DeviceService deviceService;
 	
 	@InitBinder  
 	public void initBinder(DataBinder binder) {  
@@ -64,14 +72,50 @@ public class CustomerController {
 		return "customer/customer_input";
 	}
 	
+	@SuppressWarnings("unchecked")
 	@RequestMapping(value = "/customer/deleteCustomer",method = RequestMethod.POST)
 	public String deleteCustomer(@RequestParam("customerId") long customerId,Model model) throws ManagerException {
+		ServiceResult userInfoResult = userInfoService.queryUserInfoByCustomerId(customerId);
+		if(userInfoResult.isSuccess()){
+			List<UserInfo> userInfos = (List<UserInfo>)userInfoResult.getModule();
+			if(userInfos.isEmpty()){
+				model.addAttribute("msg", "客户下存在用户，请先删除该客户下的用户!");
+				return "error";
+			}
+		}else{
+			model.addAttribute("msg", userInfoResult.getMsg());
+			return "error";
+		}
 		
-		userInfoService.queryUserInfoByCustomerId(customerId);
+		ServiceResult siteResult = siteService.querySiteByCustomerId(customerId);
+		if(siteResult.isSuccess()){
+			List<Site> sites = (List<Site>)userInfoResult.getModule();
+			if(sites.isEmpty()){
+				model.addAttribute("msg", "客户下存在现场，请先删除该客户下的现场!");
+				return "error";
+			}
+		}else{
+			model.addAttribute("msg", userInfoResult.getMsg());
+			return "error";
+		}
 		
+		ServiceResult customerResult = customerService.queryByCustomerId(customerId);
+		if(customerResult.isSuccess()){
+			List<Customer> customers = (List<Customer>)userInfoResult.getModule();
+			if(customers.isEmpty()){
+				model.addAttribute("msg", "客户下存在设备，请先删除该客户下的设备!");
+				return "error";
+			}
+		}else{
+			model.addAttribute("msg", userInfoResult.getMsg());
+			return "error";
+		}
+
 		ServiceResult result = customerService.deleteCustomer(customerId);
 		if(!result.isSuccess()){
 			logger.error(">>>action=delteCustomer error" + customerId);
+			model.addAttribute("msg", result.getMsg());
+			return "error";
 		}
 		return "redirect:index.htm";
 	}

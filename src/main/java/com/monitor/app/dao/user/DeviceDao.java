@@ -21,6 +21,8 @@ public interface DeviceDao {
 	  
 	  public List<Device> queryDevicesBySiteId(long siteId) throws DAOException;
 	  
+	  public List<Device> queryByCustomerId(long customerId) throws DAOException;
+	  
 	  public int updateDevice(Device device)throws DAOException;
 	  
 	  public int countAll(DeviceQuery deviceQuery) throws DAOException;

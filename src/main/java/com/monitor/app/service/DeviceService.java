@@ -83,6 +83,17 @@ public class DeviceService {
 		return MsgUtils.fillModule(devices);
 	}
 	
+	public ServiceResult queryByCustomerId(long customerId) throws ManagerException{
+		List<Device> devices = new ArrayList<Device>() ;
+		try {
+			devices = deviceDao.queryByCustomerId(customerId);
+		} catch (DAOException e) {
+			throw new ManagerException(e);
+		}
+		return MsgUtils.fillModule(devices);
+	}
+
+	
 	public ServiceResult deleteDevice(long deviceId) throws ManagerException{
 		try{
 			userDeviceRelationDao.deleteUserDeviceRelationByDeviceId(deviceId);
