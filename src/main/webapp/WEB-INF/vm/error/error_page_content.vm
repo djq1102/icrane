@@ -7,7 +7,6 @@
 					<button data-dismiss="modal" class="close" type="button"></button>
 					<h3>portlet Settings</h3>
 				</div>
-
 			</div>
 
 			<!-- END SAMPLE PORTLET CONFIGURATION MODAL FORM-->
@@ -23,75 +22,36 @@
 					<div class="span12">
 
 						<!-- BEGIN STYLE CUSTOMIZER -->
-
 						#parse("/control/style_customizer.vm")
-
 						<!-- END BEGIN STYLE CUSTOMIZER -->  
 
 						<!-- BEGIN PAGE TITLE & BREADCRUMB-->
-
 						<h3 class="page-title">
-
 							系统错误
-
 						</h3>
 						<ul class="breadcrumb">
-
 							<li>
-
 								<i class="icon-home"></i>
-
 								<a href="index">首页</a> 
-
 								<i class="icon-angle-right"></i>
-
 							</li>
-
-							<li>
-
-								<a href="#">Extra</a>
-
-								<i class="icon-angle-right"></i>
-
-							</li>
-
-							<li><a href="#">404 Page Option 1</a></li>
-
 						</ul>
 						<!-- END PAGE TITLE & BREADCRUMB-->
 					</div>
 				</div>
 				<!-- END PAGE HEADER-->
-
 				<!-- BEGIN PAGE CONTENT-->
 				<div class="row-fluid">
-
 					<div class="span12 page-404">
-
-						<div class="number">
-
-							Error
-
-						</div>
-
 						<div class="details">
-
 							<h3>系统错误信息</h3>
-
 							<p>
-
 								$msg<br />
-
 								<a href="/mng/index">返回</a> 
-
 							</p>
-
 						</div>
-
 					</div>
-
 				</div>
-
 				<!-- END PAGE CONTENT-->
 			</div>
 

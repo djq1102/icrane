@@ -13,9 +13,7 @@ import org.springframework.stereotype.Service;
 
 import com.monitor.app.dao.user.DeviceDocDao;
 import com.monitor.app.dataobject.DeviceDoc;
-import com.monitor.app.dataobject.Notice;
 import com.monitor.app.query.DeviceDocQuery;
-import com.monitor.app.query.NoticeQuery;
 import com.monitor.app.result.ServiceResult;
 import com.monitor.app.result.msg.MsgEnum;
 import com.monitor.app.utils.MsgUtils;

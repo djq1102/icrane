@@ -15,7 +15,7 @@
                 	<ul>
                     	<li style="background:url(/media/image/key.jpg) no-repeat bottom left; text-indent:2em; font-size:15px; font-weight:bold;"><span>管理登录</span></li>
                         <li><span class="l_txt">操作账号：</span><span><input class="txt_182_1" name="j_username" type="text" /></span></li>
-                        <li><span class="l_txt">操作密码：</span><span><input class="txt_182_1" name="j_password" type="text" /></span></li>
+                        <li><span class="l_txt">操作密码：</span><span><input class="txt_182_1" name="j_password" type="password" /></span></li>
                         
                         <li><span id="button_login" class="button_login"><a></a></span></li>
                     </ul>
