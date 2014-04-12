@@ -18,6 +18,8 @@ public enum MsgEnum {
 	CUSTOMER_ADD_FAIL("客户添加失败"),
 	CUSTOMER_UPDATE_FAIL("客户修改失败"),
 	CUSTOMER_NOT_EXIST("客户不存在"),
+	CUSTOMER_DETELE_FAIL("客户删除失败"),
+	
 	
 	DEVICE_ADD_FAIL("设备添加失败"),
 	DEVICE_UPDATE_FAIL("设备修改失败"),
@@ -59,6 +61,7 @@ public enum MsgEnum {
 	DEVICE_DOC_DELETE_FAIL("设备文档删除失败"),
 	
 	SITE_ADD_FAIL("现场添加失败"),
+	SITE_DELETE_FAIL("现在删除失败"),
 	SITE_NOT_EXIST("现场不存在"),
 	SITE_UPDATE_FAIL("现场修改失败"),
 	

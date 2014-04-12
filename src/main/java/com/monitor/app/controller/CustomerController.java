@@ -6,11 +6,16 @@ import java.util.List;
 import java.util.Map;
 
 import javax.annotation.Resource;
+import javax.validation.Valid;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
+import org.springframework.validation.DataBinder;
+import org.springframework.web.bind.annotation.InitBinder;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -23,6 +28,7 @@ import com.monitor.app.result.ServiceResult;
 import com.monitor.app.service.CustomerService;
 import com.monitor.app.utils.JsonUtil;
 import com.monitor.app.utils.MsgUtils;
+import com.monitor.app.validator.CustomerValidator;
 
 /**
  * 
@@ -36,6 +42,11 @@ public class CustomerController {
 	private static final Logger logger = LoggerFactory.getLogger(CustomerController.class);
 	@Resource
 	private CustomerService customerService;
+	
+	@InitBinder  
+	public void initBinder(DataBinder binder) {  
+	   binder.setValidator(new CustomerValidator());  
+	}  
 	
 	@RequestMapping(value = "/customer/index",method = {RequestMethod.POST,RequestMethod.GET})
 	public String index(Model model,Customer customer) {
@@ -51,8 +62,32 @@ public class CustomerController {
 		return "customer/customer_input";
 	}
 	
+	@RequestMapping(value = "/customer/deleteCustomer",method = RequestMethod.POST)
+	public String deleteCustomer(@RequestParam("customerId") long customerId,Model model) throws ManagerException {
+		ServiceResult result = customerService.deleteCustomer(customerId);
+		if(!result.isSuccess()){
+			logger.error(">>>action=delteCustomer error" + customerId);
+		}
+		return "redirect:index.htm";
+	}
+	
 	@RequestMapping(value = "/customer/addCustomer",method = RequestMethod.POST)
-	public String addCustomer(Customer customer, Model model) throws ManagerException {
+	public String addCustomer(@Valid @ModelAttribute("customer") Customer customer,BindingResult bingResult,Model model) throws ManagerException {
+		if(bingResult.hasFieldErrors()){
+			if( bingResult.getFieldError("customerName") != null){
+				model.addAttribute("customerErrorName", bingResult.getFieldError("customerName").getDefaultMessage());
+			}
+			if(bingResult.getFieldError("contactName") != null){
+				model.addAttribute("contactErrorName",bingResult.getFieldError("contactName").getDefaultMessage());
+			}
+			if(bingResult.getFieldError("contactEmail") != null){
+				model.addAttribute("contactErrorEmail",bingResult.getFieldError("contactEmail").getDefaultMessage());
+			}
+			if(bingResult.getFieldError("contactPhone") != null){
+				model.addAttribute("contactErrorPhone",bingResult.getFieldError("contactPhone").getDefaultMessage());
+			}
+			return customerInput(model);
+		}
 		logger.warn(">>>action=addCustomers" + customer.getCustomerName());
 		ServiceResult result = customerService.addCustomer(customer);
 		if(!result.isSuccess()){
@@ -93,7 +128,23 @@ public class CustomerController {
 	}
 	
 	@RequestMapping(value = "/customer/updateCustomer")
-	public String updateCustomer(Customer customer,Model model) throws ManagerException {
+	public String updateCustomer(@Valid @ModelAttribute("customer") Customer customer,BindingResult bingResult,Model model) throws ManagerException {
+		if(bingResult.hasFieldErrors()){
+			if( bingResult.getFieldError("customerName") != null){
+				model.addAttribute("customerErrorName", bingResult.getFieldError("customerName").getDefaultMessage());
+			}
+			if(bingResult.getFieldError("contactName") != null){
+				model.addAttribute("contactErrorName",bingResult.getFieldError("contactName").getDefaultMessage());
+			}
+			if(bingResult.getFieldError("contactEmail") != null){
+				model.addAttribute("contactErrorEmail",bingResult.getFieldError("contactEmail").getDefaultMessage());
+			}
+			if(bingResult.getFieldError("contactPhone") != null){
+				model.addAttribute("contactErrorPhone",bingResult.getFieldError("contactPhone").getDefaultMessage());
+			}
+			return editCustomer(customer.getCustomerId(),model);
+		}
+		
 		logger.warn(">>>action=updateCustomer," + customer.getCustomerId());
 		ServiceResult result = customerService.queryByCustomerId(customer.getCustomerId());
 		if(result.isSuccess()){

@@ -22,6 +22,9 @@ public class DeviceValidator implements Validator {
 		if(device.getSiteId() <= 0){
 		   errors.rejectValue("siteId", "siteId", "设备所属现场为必选!"); 		
 		}
+		if(StringUtils.isBlank(device.getDeviceIp())){
+			errors.rejectValue("deviceIp", "deviceIp", "设备ip不能为空!");
+		}
 		if(StringUtils.isBlank(device.getDeviceName())){
 		   errors.rejectValue("deviceName","deviceName","设备名称不能为空!");
 		}

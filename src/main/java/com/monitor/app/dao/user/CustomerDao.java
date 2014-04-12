@@ -16,6 +16,8 @@ public interface CustomerDao {
 	 public int addCustomer(Customer customer) throws DAOException;
 	 
 	 public int updateCustomer(Customer customer) throws DAOException;
+	 
+	 public int deleteCustomer(long customerId) throws DAOException;
 	  
 	 public List<Customer> queryCustomer(CustomerInfoQuery query) throws DAOException;
 	 

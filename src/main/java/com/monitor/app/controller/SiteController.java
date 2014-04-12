@@ -7,11 +7,17 @@ import java.util.List;
 import java.util.Map;
 
 import javax.annotation.Resource;
+import javax.servlet.http.HttpSession;
+import javax.validation.Valid;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
+import org.springframework.validation.DataBinder;
+import org.springframework.web.bind.annotation.InitBinder;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -27,12 +33,13 @@ import com.monitor.app.service.CustomerService;
 import com.monitor.app.service.SiteService;
 import com.monitor.app.utils.JsonUtil;
 import com.monitor.app.utils.MsgUtils;
+import com.monitor.app.validator.SiteValidator;
 
 /**
  * Handles requests for the application home page.
  */
 @Controller
-public class SiteController {
+public class SiteController extends AbstractController{
 	
 	private static final Logger logger = LoggerFactory.getLogger(SiteController.class);
 	
@@ -40,6 +47,11 @@ public class SiteController {
 	private SiteService siteService;
 	@Resource
 	private CustomerService customerService;
+	
+	@InitBinder  
+	public void initBinder(DataBinder binder) {  
+	   binder.setValidator(new SiteValidator());  
+	}  
 	
 	@RequestMapping(value = "/site/index",method = {RequestMethod.POST,RequestMethod.GET})
 	public String index(Model model,Site site) throws ManagerException {
@@ -59,8 +71,26 @@ public class SiteController {
 	}
 	
 	@RequestMapping(value = "/site/addSite")
-	public String addSite(Site site,Model model) throws Exception{
+	public String addSite(@Valid @ModelAttribute("site") Site site,BindingResult bingResult,Model model) throws Exception{
 		site.setLocation("1204,32");
+		if(bingResult.hasFieldErrors()){
+			if(bingResult.getFieldError("siteName") != null){
+				model.addAttribute("siteErrorName", bingResult.getFieldError("siteName").getDefaultMessage());
+			}
+			if(bingResult.getFieldError("siteAddress") != null){
+				model.addAttribute("siteErrorAddress", bingResult.getFieldError("siteAddress").getDefaultMessage());
+			}
+			if(bingResult.getFieldError("contactName") != null){
+				model.addAttribute("contactErrorName",bingResult.getFieldError("contactName").getDefaultMessage());
+			}
+			if(bingResult.getFieldError("contactEmail") != null){
+				model.addAttribute("contactErrorEmail",bingResult.getFieldError("contactEmail").getDefaultMessage());
+			}
+			if(bingResult.getFieldError("contactPhone") != null){
+				model.addAttribute("contactErrorPhone",bingResult.getFieldError("contactPhone").getDefaultMessage());
+			}
+			return siteInput(model);
+		}
 		ServiceResult result	= siteService.addSite(site);
 		if(!result.isSuccess()){
 			logger.error(">>>action=addSite error" + site.getSiteName());
@@ -69,10 +99,27 @@ public class SiteController {
 	}
 	
 	@RequestMapping(value = "/site/updateSite")
-	public String updateSite(Site site,Model model) throws Exception{
-		site.setLocation("1204,32");
-		ServiceResult result = siteService.queryBySiteId(site.getSiteId());
+	public String updateSite(@Valid @ModelAttribute("site") Site site,BindingResult bingResult,Model model) throws Exception{
+				ServiceResult result = siteService.queryBySiteId(site.getSiteId());
 		if(result.isSuccess()){
+			if(bingResult.hasFieldErrors()){
+				if(bingResult.getFieldError("siteName") != null){
+					model.addAttribute("siteErrorName", bingResult.getFieldError("siteName").getDefaultMessage());
+				}
+				if(bingResult.getFieldError("siteAddress") != null){
+					model.addAttribute("siteErrorAddress", bingResult.getFieldError("siteAddress").getDefaultMessage());
+				}
+				if(bingResult.getFieldError("contactName") != null){
+					model.addAttribute("contactErrorName",bingResult.getFieldError("contactName").getDefaultMessage());
+				}
+				if(bingResult.getFieldError("contactEmail") != null){
+					model.addAttribute("contactErrorEmail",bingResult.getFieldError("contactEmail").getDefaultMessage());
+				}
+				if(bingResult.getFieldError("contactPhone") != null){
+					model.addAttribute("contactErrorPhone",bingResult.getFieldError("contactPhone").getDefaultMessage());
+				}
+				return editSite(site.getSiteId(),model);
+			}
 			ServiceResult updateresult = siteService.updateSite(site);
 			if(!updateresult.isSuccess()){
 				logger.error(">>>action=updateSite error" + site.getSiteName());
@@ -82,7 +129,6 @@ public class SiteController {
 		}
 		return "redirect:index.htm";
 	}
-	
 	
 	@RequestMapping(value = "/site/editSite")
 	public String editSite(@RequestParam("siteId") long siteId,Model model) throws Exception{
@@ -115,6 +161,19 @@ public class SiteController {
 		List<Map> resultMap = buildList(siteList);
 		return JsonUtil.buildJosn(resultMap, numResult, sEcho);
 	}
+	
+	
+	@RequestMapping(value = "/site/deleteSite",method = RequestMethod.GET)
+	public String deleteUserInfo(@RequestParam("siteId") long siteId,Model model,HttpSession session) throws ManagerException {
+		logger.warn(">>>action=edit" );
+		long userId = getUserId(session);
+	    ServiceResult relationResult = siteService.deteleSite(userId,siteId);
+	    if(relationResult.isSuccess()){
+	    	return "";
+	    }else{
+	    	return "error";
+	    }
+    }
 	
 	@SuppressWarnings({ "unchecked"})
 	@RequestMapping(value = "/site/querySiteListBycustomerId",method = {RequestMethod.GET,RequestMethod.POST},produces = "application/json; charset=utf-8")

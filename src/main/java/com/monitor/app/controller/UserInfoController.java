@@ -6,11 +6,16 @@ import java.util.List;
 import java.util.Map;
 
 import javax.annotation.Resource;
+import javax.validation.Valid;  
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
+import org.springframework.validation.DataBinder;
+import org.springframework.web.bind.annotation.InitBinder;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -22,9 +27,11 @@ import com.monitor.app.exception.ManagerException;
 import com.monitor.app.query.UserInfoQuery;
 import com.monitor.app.result.ServiceResult;
 import com.monitor.app.service.CustomerService;
+import com.monitor.app.service.UserDeviceRelationService;
 import com.monitor.app.service.UserInfoService;
 import com.monitor.app.utils.JsonUtil;
 import com.monitor.app.utils.MsgUtils;
+import com.monitor.app.validator.UserInfoValidator;
 
 /**
  * 
@@ -32,13 +39,20 @@ import com.monitor.app.utils.MsgUtils;
  *
  */
 @Controller
-public class UserInfoController {
+public class UserInfoController extends AbstractController{
 	
 	private static final Logger logger = LoggerFactory.getLogger(UserInfoController.class);
 	@Resource
 	private UserInfoService userInfoService;
 	@Resource
 	private CustomerService customerService;
+	@Resource
+	private UserDeviceRelationService userDeviceRelationService;
+	
+	@InitBinder  
+	public void initBinder(DataBinder binder) {  
+	   binder.setValidator(new UserInfoValidator());  
+	}  
 	
 	@RequestMapping(value = "/userInfo/userinfoInput",method = RequestMethod.GET)
 	public String userinfoInput(Model model) throws ManagerException {
@@ -48,29 +62,35 @@ public class UserInfoController {
 	}
 	
 	@RequestMapping(value = "/userInfo/addUserInfo",method = RequestMethod.POST)
-	public String addUserInfo(@RequestParam("userName") String userName, @RequestParam("userPhone") String userPhone, 
-			@RequestParam("userEmail") String userEmail, @RequestParam("loginName") String loginName,
-			@RequestParam("password") String password, 
-			@RequestParam("customerId") long customerId, 
-			@RequestParam("roleType") int roleType, Model model) {
-		
-		ServiceResult userInfoResult = userInfoService.queryUser(userName);
-		if(!userInfoResult.isSuccess()){
-			
+	public String addUserInfo(@Valid @ModelAttribute("userInfo")UserInfo userInfo,BindingResult bingResult,Model model) throws ManagerException {
+		if(bingResult.hasFieldErrors()){
+			if(bingResult.getFieldError("userName") != null){
+				model.addAttribute("userErrorName", bingResult.getFieldError("userName").getDefaultMessage());
+			}
+			if(bingResult.getFieldError("loginName") != null){
+				model.addAttribute("loginErrorName",bingResult.getFieldError("loginName").getDefaultMessage());
+			}
+			if(bingResult.getFieldError("userEmail") != null){
+				model.addAttribute("userErrorEmail",bingResult.getFieldError("userEmail").getDefaultMessage());
+			}
+			if(bingResult.getFieldError("password") != null){
+				model.addAttribute("errorPassword",bingResult.getFieldError("password").getDefaultMessage());
+			}
+			if(bingResult.getFieldError("userPhone") != null){
+				model.addAttribute("userErrorPhone",bingResult.getFieldError("userPhone").getDefaultMessage());
+			}
+			return userinfoInput(model);
 		}
-		
-		logger.warn(">>>action=addUserInfo," + userName);
-		UserInfo userInfo = new UserInfo();
-		userInfo.setUserName(userName);
-		userInfo.setUserPhone(userPhone);
-		userInfo.setUserEmail(userEmail);
-		userInfo.setLoginName(loginName);
-		userInfo.setPassword(password);
-		userInfo.setCustomerId(customerId);
-		userInfo.setRoleType((short)roleType);
+		ServiceResult userInfoResult = userInfoService.queryUser(userInfo.getLoginName());
+		if(userInfoResult.isSuccess()){
+			model.addAttribute("loginErrorName", "登录户名已经存在!");
+			return userinfoInput(model);
+		}
+
+		logger.warn(">>>action=addUserInfo," + userInfo.getUserName());
 		ServiceResult result = userInfoService.userInfoAdd(userInfo);
 		if(!result.isSuccess()){
-			logger.error(">>>action=addUserInfor error" + userName);
+			logger.error(">>>action=addUserInfor error" + userInfo.getUserName());
 		}
 		return "redirect:index.htm";
 	}
@@ -90,32 +110,52 @@ public class UserInfoController {
 	}
 	
 	@RequestMapping(value = "/userInfo/deleteUserInfo",method = RequestMethod.GET)
-	public String deleteUserInfo(@RequestParam("userId") long userId,Model model) {
+	public String deleteUserInfo(@RequestParam("userId") long userId,Model model) throws ManagerException {
 		logger.warn(">>>action=edit" );
-		ServiceResult result = userInfoService.userInfoDelte(userId);
-		if(!result.isSuccess()){
-			logger.warn(">>>action=deleteUserInfo error userId="+userId );
-		}
-		return "userInfo/userinfo";
-	}
+	    ServiceResult relationResult =userDeviceRelationService.deleteUserDeviceRelationByUserId(userId);	
+	    if(relationResult.isSuccess()){
+	    	ServiceResult result = userInfoService.userInfoDelte(userId);
+			if(!result.isSuccess()){
+				logger.warn(">>>action=deleteUserInfo error userId="+userId );
+			}
+			return "userInfo/userinfo";
+
+	    }else{
+	    	return "error";
+	    }
+    }
 	
 	@RequestMapping(value = "/userInfo/updateUserInfo")
-	public String updateUserInfo(@RequestParam("userId")long userId,@RequestParam("userName") String userName, @RequestParam("userPhone") String userPhone, 
-			@RequestParam("userEmail") String userEmail, @RequestParam("loginName") String loginName,
-			@RequestParam("password") String password, 
-			@RequestParam("customerId") long customerId, 
-			@RequestParam("roleType") int roleType, Model model) {
-		logger.warn(">>>action=edit," + userName);
-		ServiceResult result = userInfoService.queryUserInfoByuserId(userId);
+	public String updateUserInfo(@Valid @ModelAttribute("userInfo")UserInfo userInfo,BindingResult bingResult, Model model) throws ManagerException {
+		if(bingResult.hasFieldErrors()){
+			if(bingResult.getFieldError("userName") != null){
+				model.addAttribute("userErrorName", bingResult.getFieldError("userName").getDefaultMessage());
+			}
+			if(bingResult.getFieldError("loginName") != null){
+				model.addAttribute("loginErrorName",bingResult.getFieldError("loginName").getDefaultMessage());
+			}
+			if(bingResult.getFieldError("userEmail") != null){
+				model.addAttribute("userErrorEmail",bingResult.getFieldError("userEmail").getDefaultMessage());
+			}
+			if(bingResult.getFieldError("password") != null){
+				model.addAttribute("errorPassword",bingResult.getFieldError("password").getDefaultMessage());
+			}
+			if(bingResult.getFieldError("userPhone") != null){
+				model.addAttribute("userErrorPhone",bingResult.getFieldError("userPhone").getDefaultMessage());
+			}
+			return editUserInfo(userInfo.getUserId(),model);
+		}
+		logger.warn(">>>action=edit," + userInfo.getUserName());
+		ServiceResult result = userInfoService.queryUserInfoByuserId(userInfo.getUserId());
 		if(result.isSuccess()){
-			UserInfo userInfo = (UserInfo)result.getModule();
-			userInfo.setUserName(userName);
-			userInfo.setUserPhone(userPhone);
-			userInfo.setUserEmail(userEmail);
-			userInfo.setLoginName(loginName);
-			userInfo.setPassword(password);
-			userInfo.setCustomerId(customerId);
-			userInfo.setRoleType((short)roleType);
+			UserInfo dbUserInfo = (UserInfo)result.getModule();
+			if(!dbUserInfo.getLoginName().equals(userInfo.getLoginName())){
+				ServiceResult userInfoResult = userInfoService.queryUser(userInfo.getLoginName());
+				if(userInfoResult.isSuccess()){
+					model.addAttribute("loginErrorName", "登录户名已经存在!");
+					return userinfoInput(model);
+				}
+			}
 			ServiceResult editResult = userInfoService.userInfoEdit(userInfo);
 			if(editResult.isSuccess()){
 				model.addAttribute("msg", MsgUtils.MSG_SUCCESS);

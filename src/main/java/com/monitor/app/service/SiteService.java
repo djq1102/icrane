@@ -40,6 +40,20 @@ public class SiteService {
 		return MsgUtils.fillModule(site);
 	}
 	
+	public ServiceResult deteleSite(long userId,long siteId) throws ManagerException{
+		try{
+			int row = siteDao.delteSiteId(userId,siteId);
+			if(row != 1){
+				return MsgUtils.fillMsg(MsgEnum.SITE_DELETE_FAIL);
+			}
+		}catch(DAOException e){
+			throw new ManagerException(e);
+		}
+		ServiceResult result = new ServiceResult(true);
+		return result;
+	}
+
+	
 	public ServiceResult queryBySiteId(long siteId) throws ManagerException{
 		Site site ;
 		try {

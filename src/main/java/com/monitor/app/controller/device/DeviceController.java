@@ -6,11 +6,16 @@ import java.util.List;
 import java.util.Map;
 
 import javax.annotation.Resource;
+import javax.validation.Valid;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
+import org.springframework.validation.DataBinder;
+import org.springframework.web.bind.annotation.InitBinder;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -30,6 +35,7 @@ import com.monitor.app.service.SiteService;
 import com.monitor.app.utils.JsonUtil;
 import com.monitor.app.utils.MsgUtils;
 import com.monitor.app.utils.ToolsUtil;
+import com.monitor.app.validator.DeviceValidator;
 
 
 @Controller
@@ -45,8 +51,40 @@ public class DeviceController {
 	@Resource
 	private ModelService modelService;
 	
+	@InitBinder  
+	public void initBinder(DataBinder binder) {  
+	   binder.setValidator(new DeviceValidator());  
+	}  
+	
 	@RequestMapping(value = "/device/addDevice")
-	public String addDevice(Device device, Model model) throws ManagerException {
+	public String addDevice(@Valid @ModelAttribute("device")Device device,BindingResult bingResult,Model model) throws ManagerException {
+		if(bingResult.hasFieldErrors()){
+			if(bingResult.getFieldError("customerId") != null){
+				model.addAttribute("errorCustomerId", bingResult.getFieldError("customerId").getDefaultMessage());
+			}
+			if(bingResult.getFieldError("siteId") != null){
+				model.addAttribute("errorSiteId",bingResult.getFieldError("siteId").getDefaultMessage());
+			}
+			if(bingResult.getFieldError("deviceIp") != null){
+				model.addAttribute("deviceErrorIp", bingResult.getFieldError("deviceIp").getDefaultMessage());
+			}
+			if(bingResult.getFieldError("deviceName") != null){
+				model.addAttribute("deviceErrorName",bingResult.getFieldError("deviceName").getDefaultMessage());
+			}
+			if(bingResult.getFieldError("serialNumber") != null){
+				model.addAttribute("serialErrorNumber",bingResult.getFieldError("serialNumber").getDefaultMessage());
+			}
+			if(bingResult.getFieldError("userName") != null){
+				model.addAttribute("userErrorName", bingResult.getFieldError("userName").getDefaultMessage());
+			}
+			if(bingResult.getFieldError("userPwd") != null){
+				model.addAttribute("userErrorPwd", bingResult.getFieldError("userPwd").getDefaultMessage());
+			}
+			if(bingResult.getFieldError("location") != null){
+				model.addAttribute("errorLocation", bingResult.getFieldError("location").getDefaultMessage());
+			}
+			return deviceInput(model);
+		}
 		ToolsUtil.spiltLocation(device);
 		ServiceResult result = deviceService.addDevice(device);
 		if(!result.isSuccess()){
@@ -126,9 +164,36 @@ public class DeviceController {
 	}
 
 	@RequestMapping(value = "/device/updateDevice")
-	public String updateDevice(Device device,Model model) throws Exception{
+	public String updateDevice(@Valid @ModelAttribute("device")Device device,BindingResult bingResult,Model model) throws Exception{
 		ServiceResult result = deviceService.queryByDeviceId(device.getDeviceId());
 		if(result.isSuccess()){
+			if(bingResult.hasFieldErrors()){
+				if(bingResult.getFieldError("customerId") != null){
+					model.addAttribute("errorCustomerId", bingResult.getFieldError("customerId").getDefaultMessage());
+				}
+				if(bingResult.getFieldError("siteId") != null){
+					model.addAttribute("errorSiteId",bingResult.getFieldError("siteId").getDefaultMessage());
+				}
+				if(bingResult.getFieldError("deviceIp") != null){
+					model.addAttribute("deviceErrorIp", bingResult.getFieldError("deviceIp").getDefaultMessage());
+				}
+				if(bingResult.getFieldError("deviceName") != null){
+					model.addAttribute("deviceErrorName",bingResult.getFieldError("deviceName").getDefaultMessage());
+				}
+				if(bingResult.getFieldError("serialNumber") != null){
+					model.addAttribute("serialErrorNumber",bingResult.getFieldError("serialNumber").getDefaultMessage());
+				}
+				if(bingResult.getFieldError("userName") != null){
+					model.addAttribute("userErrorName", bingResult.getFieldError("userName").getDefaultMessage());
+				}
+				if(bingResult.getFieldError("userPwd") != null){
+					model.addAttribute("userErrorPwd", bingResult.getFieldError("userPwd").getDefaultMessage());
+				}
+				if(bingResult.getFieldError("location") != null){
+					model.addAttribute("errorLocation", bingResult.getFieldError("location").getDefaultMessage());
+				}				
+				return editDevice(device.getDeviceId(), model);
+			}
 			ToolsUtil.spiltLocation(device);
 			ServiceResult editResult = deviceService.updateDevice(device);
 			if(!editResult.isSuccess()){

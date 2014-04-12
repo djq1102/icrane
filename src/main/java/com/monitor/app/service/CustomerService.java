@@ -31,13 +31,27 @@ public class CustomerService {
 		try{
 			int row = customerDao.addCustomer(customer);
 			if(row != 1){
-				return MsgUtils.fillMsg(MsgEnum.SITE_ADD_FAIL);
+				return MsgUtils.fillMsg(MsgEnum.CUSTOMER_ADD_FAIL);
 			}
 		}catch(DAOException e){
 			throw new ManagerException(e);
 		}
 		return MsgUtils.fillModule(customer);
 	}
+	
+	public ServiceResult deleteCustomer(long customerId) throws ManagerException{
+		try{
+			int row = customerDao.deleteCustomer(customerId);
+			if(row != 1){
+				return MsgUtils.fillMsg(MsgEnum.CUSTOMER_DETELE_FAIL);
+			}
+		}catch(DAOException e){
+			throw new ManagerException(e);
+		}
+		ServiceResult result = new ServiceResult(true);
+		return result;
+	}
+
 	
 	public ServiceResult queryByCustomerId(long customerId) throws ManagerException{
 		Customer customer ;

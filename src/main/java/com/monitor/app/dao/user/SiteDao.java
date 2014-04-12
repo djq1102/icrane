@@ -9,6 +9,8 @@ import com.monitor.app.query.SiteQuery;
 public interface SiteDao {
 	
 	 public int addSite(Site site) throws DAOException;
+	 
+	 public int delteSiteId(long userId,long siteId) throws DAOException;
 	  
 	 public Site queryBySiteId(long siteId) throws DAOException;
 	 
