@@ -37,7 +37,7 @@ import com.monitor.app.service.DeviceDocService;
  *
  */
 @Controller
-public class DeviceFileController extends AbstractController implements ServletContextAware{
+public class FrontDeviceFileController extends AbstractController implements ServletContextAware{
 
 	
 	private static final String uploadPath="WEB-INF/upload/doc";
