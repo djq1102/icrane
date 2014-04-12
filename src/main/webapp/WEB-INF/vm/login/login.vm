@@ -20,8 +20,6 @@
                         <li><span id="button_login" class="button_login"><a></a></span></li>
                     </ul>
             	</div>
-                <button>提交</button>
-                </button>
                 <div style="clear:both;"></div>
                 <div style=" font-size:12px; color:#999; margin-top:150px; text-align:center; line-height:20px;">初始账号admin 密码为空 ，请及时修改密码；<br /></div>
                 </div>
