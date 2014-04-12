@@ -57,7 +57,7 @@ public class MyUserDetailService implements UserDetailsService {
 		
 		UserExt user = new UserExt(username, password, true, true, true, true, auths);
 		user.setUserId(userInfo.getUserId());
-		user.setCustomerId(user.getCustomerId());
+		user.setCustomerId(userInfo.getCustomerId());
 		
 		return user;
 	}
