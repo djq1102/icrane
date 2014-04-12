@@ -14,6 +14,7 @@ import com.monitor.app.query.UserInfoQuery;
 import com.monitor.app.result.ServiceResult;
 import com.monitor.app.result.msg.MsgEnum;
 import com.monitor.app.utils.MsgUtils;
+import com.monitor.app.utils.PassMd5Util;
 
 /**
  * @author Administrator
@@ -29,11 +30,12 @@ public class UserInfoService {
 		if(userInfo==null){
 			return MsgUtils.fillMsg(MsgEnum.USER_NOT_EXIST);
 		}
-		
 		return MsgUtils.fillModule(userInfo);
 	}
 	
 	public ServiceResult userInfoAdd(UserInfo userInfo){
+		String userPasswd = PassMd5Util.encodeMd5WithSalt(userInfo.getPassword(), userInfo.getLoginName());
+		userInfo.setPassword(userPasswd);
 		int row = userInfoQueryDao.addUserInfo(userInfo);
 		if(row != 1){
 			return MsgUtils.fillMsg(MsgEnum.USER_ADD_FAIL);
@@ -42,6 +44,8 @@ public class UserInfoService {
 	}
 	
 	public ServiceResult userInfoEdit(UserInfo userInfo) {
+		String userPasswd = PassMd5Util.encodeMd5WithSalt(userInfo.getPassword(), userInfo.getLoginName());
+		userInfo.setPassword(userPasswd);		
 		int row = userInfoQueryDao.updateUserInfo(userInfo);
 		if(row != 1){
 			return MsgUtils.fillMsg(MsgEnum.USER_UPDATE_FAIL);
