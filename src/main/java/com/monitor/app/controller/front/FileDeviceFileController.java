@@ -5,7 +5,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 @Controller
-public class DeviceFileController {
+public class FileDeviceFileController {
 
 	@RequestMapping(value = "/front/devicefile/index")
 	public String index(@RequestParam("deviceId") long deviceId, Model model) throws Exception{
