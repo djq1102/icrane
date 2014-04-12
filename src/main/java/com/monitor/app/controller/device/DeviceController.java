@@ -6,7 +6,6 @@ import java.util.List;
 import java.util.Map;
 
 import javax.annotation.Resource;
-import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 
 import org.slf4j.Logger;
@@ -30,10 +29,12 @@ import com.monitor.app.dataobject.Site;
 import com.monitor.app.exception.ManagerException;
 import com.monitor.app.query.DeviceQuery;
 import com.monitor.app.result.ServiceResult;
+import com.monitor.app.service.AccessoryService;
 import com.monitor.app.service.CustomerService;
 import com.monitor.app.service.DeviceService;
 import com.monitor.app.service.ModelService;
 import com.monitor.app.service.SiteService;
+import com.monitor.app.service.UserDeviceRelationService;
 import com.monitor.app.utils.JsonUtil;
 import com.monitor.app.utils.MsgUtils;
 import com.monitor.app.utils.ToolsUtil;
@@ -48,6 +49,10 @@ public class DeviceController extends AbstractController{
 	private DeviceService deviceService;
 	@Resource
 	private CustomerService customerService;
+	@Resource
+	private UserDeviceRelationService userDeviceRelationService;
+	@Resource
+	private AccessoryService accessoryService;
 	@Resource
 	private SiteService siteService;
 	@Resource
@@ -207,18 +212,6 @@ public class DeviceController extends AbstractController{
 			return "redirect:index.htm";
 		}
 	}
-	
-	@RequestMapping(value = "/device/deleteDevice",method = RequestMethod.GET)
-	public String deleteDevice(@RequestParam("deviceId") long deviceId,Model model,HttpSession session) throws ManagerException {
-		logger.warn(">>>action=deleteDevice" );
-	    ServiceResult relationResult = deviceService.deleteDevice(deviceId);
-	    if(relationResult.isSuccess()){
-	    	return "";
-	    }else{
-	    	return "error";
-	    }
-    }
-
 	
 	@RequestMapping(value = "/device/deviceInput",method = RequestMethod.GET)
 	public String deviceInput(Model model) throws ManagerException {

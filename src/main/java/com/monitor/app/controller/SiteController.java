@@ -25,12 +25,16 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.alibaba.fastjson.JSONObject;
 import com.monitor.app.dataobject.Customer;
+import com.monitor.app.dataobject.Device;
 import com.monitor.app.dataobject.Site;
+import com.monitor.app.dataobject.UserInfo;
 import com.monitor.app.exception.ManagerException;
 import com.monitor.app.query.SiteQuery;
 import com.monitor.app.result.ServiceResult;
 import com.monitor.app.service.CustomerService;
+import com.monitor.app.service.DeviceService;
 import com.monitor.app.service.SiteService;
+import com.monitor.app.service.UserInfoService;
 import com.monitor.app.utils.JsonUtil;
 import com.monitor.app.utils.MsgUtils;
 import com.monitor.app.validator.SiteValidator;
@@ -46,7 +50,11 @@ public class SiteController extends AbstractController{
 	@Resource
 	private SiteService siteService;
 	@Resource
+	private UserInfoService userInfoService;
+	@Resource
 	private CustomerService customerService;
+	@Resource
+	private DeviceService deviceService;
 	
 	@InitBinder  
 	public void initBinder(DataBinder binder) {  
@@ -166,13 +174,28 @@ public class SiteController extends AbstractController{
 	public String deleteSite(@RequestParam("siteId") long siteId,Model model,HttpSession session) throws ManagerException {
 		logger.warn(">>>action=edit" );
 		long userId = getUserId(session);
-	    ServiceResult relationResult = siteService.deteleSite(userId,siteId);
-	    if(relationResult.isSuccess()){
-	    	return "";
-	    }else{
-	    	return "error";
-	    }
-    }
+		ServiceResult siteResult = deviceService.queryBySiteId(siteId);
+		if(siteResult.isSuccess()){
+			List<Device> devices = (List<Device>)siteResult.getModule();
+			if(!devices.isEmpty()){
+				return "error";
+			}
+		}
+		ServiceResult sericeResult = userInfoService.queryUserInfoByuserId(userId);
+		if(sericeResult.isSuccess()){
+			UserInfo userInfo = (UserInfo)sericeResult.getModule();
+			ServiceResult relationResult = siteService.deteleSite(userInfo.getCustomerId(),siteId);
+		    if(relationResult.isSuccess()){
+		    	return "";
+		    }else{
+		    	return "error";
+		    }
+
+		}else{
+			return "";
+		}
+		
+	}
 	
 	@SuppressWarnings({ "unchecked"})
 	@RequestMapping(value = "/site/querySiteListBycustomerId",method = {RequestMethod.GET,RequestMethod.POST},produces = "application/json; charset=utf-8")

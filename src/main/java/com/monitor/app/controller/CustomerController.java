@@ -26,6 +26,7 @@ import com.monitor.app.exception.ManagerException;
 import com.monitor.app.query.CustomerInfoQuery;
 import com.monitor.app.result.ServiceResult;
 import com.monitor.app.service.CustomerService;
+import com.monitor.app.service.UserInfoService;
 import com.monitor.app.utils.JsonUtil;
 import com.monitor.app.utils.MsgUtils;
 import com.monitor.app.validator.CustomerValidator;
@@ -42,6 +43,8 @@ public class CustomerController {
 	private static final Logger logger = LoggerFactory.getLogger(CustomerController.class);
 	@Resource
 	private CustomerService customerService;
+	@Resource
+	private UserInfoService userInfoService;
 	
 	@InitBinder  
 	public void initBinder(DataBinder binder) {  
@@ -64,6 +67,9 @@ public class CustomerController {
 	
 	@RequestMapping(value = "/customer/deleteCustomer",method = RequestMethod.POST)
 	public String deleteCustomer(@RequestParam("customerId") long customerId,Model model) throws ManagerException {
+		
+		userInfoService.queryUserInfoByCustomerId(customerId);
+		
 		ServiceResult result = customerService.deleteCustomer(customerId);
 		if(!result.isSuccess()){
 			logger.error(">>>action=delteCustomer error" + customerId);

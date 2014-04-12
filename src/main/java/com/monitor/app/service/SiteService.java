@@ -1,12 +1,15 @@
 package com.monitor.app.service;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.annotation.Resource;
 
 import org.springframework.stereotype.Service;
 
+import com.monitor.app.dao.user.DeviceDao;
 import com.monitor.app.dao.user.SiteDao;
 import com.monitor.app.dataobject.Site;
 import com.monitor.app.exception.DAOException;
@@ -27,6 +30,8 @@ public class SiteService {
 	
 	@Resource
 	private SiteDao siteDao;
+	@Resource
+	private DeviceDao deviceDao;
 
 	public ServiceResult addSite(Site site) throws ManagerException{
 		try{
@@ -40,9 +45,14 @@ public class SiteService {
 		return MsgUtils.fillModule(site);
 	}
 	
-	public ServiceResult deteleSite(long userId,long siteId) throws ManagerException{
+	public ServiceResult deteleSite(long customerId,long siteId) throws ManagerException{
 		try{
-			int row = siteDao.delteSiteId(userId,siteId);
+			
+			
+			Map<String,Long> params = new HashMap<String,Long>();
+			params.put("customerId", customerId);
+			params.put("siteId", siteId);
+			int row = siteDao.delteSiteId(params);
 			if(row != 1){
 				return MsgUtils.fillMsg(MsgEnum.SITE_DELETE_FAIL);
 			}

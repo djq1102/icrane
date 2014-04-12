@@ -1,6 +1,7 @@
 package com.monitor.app.dao.user;
 
 import java.util.List;
+import java.util.Map;
 
 import com.monitor.app.dataobject.Site;
 import com.monitor.app.exception.DAOException;
@@ -10,7 +11,7 @@ public interface SiteDao {
 	
 	 public int addSite(Site site) throws DAOException;
 	 
-	 public int delteSiteId(long userId,long siteId) throws DAOException;
+	 public int delteSiteId(Map<String,Long> params) throws DAOException;
 	  
 	 public Site queryBySiteId(long siteId) throws DAOException;
 	 

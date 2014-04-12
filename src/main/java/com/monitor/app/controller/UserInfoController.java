@@ -119,7 +119,6 @@ public class UserInfoController extends AbstractController{
 				logger.warn(">>>action=deleteUserInfo error userId="+userId );
 			}
 			return "userInfo/userinfo";
-
 	    }else{
 	    	return "error";
 	    }

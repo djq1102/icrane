@@ -87,10 +87,17 @@ public class UserDeviceRelationService {
 	
 	public ServiceResult deleteUserDeviceRelationByUserId(long userId) throws ManagerException{
 		try{
-			int row = userDeviceRelationDao.deleteUserDeviceRelationByUserId(userId);
-			if(row == 0){
-				return MsgUtils.fillMsg(MsgEnum.USER_DEVICE_RELATION_DELETE_FAIL);
-			}
+			userDeviceRelationDao.deleteUserDeviceRelationByUserId(userId);
+		}catch(DAOException e){
+			throw new ManagerException(e);
+		}
+		ServiceResult result = new ServiceResult(true);
+		return result;
+	}
+	
+	public ServiceResult deleteUserDeviceRelationByDevieId(long deviceId) throws ManagerException{
+		try{
+			userDeviceRelationDao.deleteUserDeviceRelationByDeviceId(deviceId);
 		}catch(DAOException e){
 			throw new ManagerException(e);
 		}

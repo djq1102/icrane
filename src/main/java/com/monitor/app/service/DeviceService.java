@@ -10,6 +10,7 @@ import javax.annotation.Resource;
 import org.springframework.stereotype.Service;
 
 import com.monitor.app.dao.user.DeviceDao;
+import com.monitor.app.dao.user.UserDeviceRelationDao;
 import com.monitor.app.dataobject.Device;
 import com.monitor.app.dataobject.DeviceAccessoryBindDO;
 import com.monitor.app.exception.DAOException;
@@ -30,6 +31,9 @@ public class DeviceService {
 	
 	@Resource
 	private DeviceDao deviceDao;
+	
+	@Resource
+	private UserDeviceRelationDao userDeviceRelationDao;
 	
 	public ServiceResult addDevice(Device device) throws ManagerException{
 		try{
@@ -68,8 +72,6 @@ public class DeviceService {
 		}
 		return MsgUtils.fillModule(deviceList);
 	}
-
-	
 	
 	public ServiceResult queryBySiteId(long siteId) throws ManagerException{
 		List<Device> devices = new ArrayList<Device>() ;
@@ -83,10 +85,9 @@ public class DeviceService {
 	
 	public ServiceResult deleteDevice(long deviceId) throws ManagerException{
 		try{
-			int row = deviceDao.deleteDevice(deviceId);
-			if(row != 1){
-				return MsgUtils.fillMsg(MsgEnum.DEVICE_ADD_FAIL);
-			}
+			userDeviceRelationDao.deleteUserDeviceRelationByDeviceId(deviceId);
+			deviceDao.batchDeleteAccBindBydeviceId(deviceId);
+			deviceDao.deleteDevice(deviceId);
 		}catch(DAOException e){
 			throw new ManagerException(e);
 		}
