@@ -9,6 +9,7 @@
 	<import resource="config/velocity-config.xml"/>
 	<import resource="config/db-config.xml"/>
 	<import resource="config/security-config.xml"/>
+	<import resource="config/mail-config.xml"/>
 	
 	<bean id="resourceConfiguration" class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
 	    <property name="location">
@@ -24,4 +25,5 @@
 	        <value>1048576</value>  
 	    </property>  
 	</bean> 
+	
 </beans>

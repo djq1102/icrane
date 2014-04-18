@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+	
+	<bean id="mailService" class="com.monitor.app.service.MailService">
+		<property name="mailServer">  
+	        <value>${mail.server}</value>  
+	    </property>  
+	    <property name="mailServerPort">  
+	        <value>${mail.server.port}</value>  
+	    </property>  
+	    <property name="mailUserName">  
+	        <value>${mail.sender.username}</value>  
+	    </property>  
+	    <property name="mailUserPass">  
+	        <value>${mail.sender.password}</value>  
+	    </property>  
+	    <property name="mailFromAddress">  
+	        <value>${mail.sender.email}</value>  
+	    </property>  
+	    <property name="mailToAddress">  
+	        <value>${mail.receiver.email}</value>  
+	    </property>  
+	</bean>
+    
+</beans>
