@@ -53,8 +53,73 @@
 		console.log(ajax_data.ajax_url);
 	   // initiate layout and plugins
 	   App.init();
-	   TableManaged.init(ajax_data);
+	   tableInit(ajax_data);
 	});
+	
+	function tableInit(ajax_data){
+	// begin second table
+			$('#sample_2')
+					.dataTable(
+							{
+								"aLengthMenu" : [ [ 5, 15, 20, -1 ],
+										[ 5, 15, 20 ] // change per
+								// page values
+								// here
+								],
+								// set the initial value
+								"bSort": false,
+								"bFilter": false,//去掉搜索框
+								"bServerSide" : true,
+								"sAjaxSource" : ajax_data.ajax_url,
+								//"fnServerData":receiveTableData,
+								"iDisplayLength" : 5,
+								"sDom" : "<'row-fluid'<'span6'l><'span6'f>r>t<'row-fluid'<'span6'i><'span6'p>>",
+								"sPaginationType" : "bootstrap",
+								"oLanguage" : {
+									"sLengthMenu" : "_MENU_ 每页",
+									"oPaginate" : {
+										"sPrevious" : "前一页",
+										"sNext" : "后一页"
+									},
+									"sZeroRecords": "对不起，查询不到相关数据！",
+									"sEmptyTable" : "表中无数据存在！",
+									"sInfo" : "当前显示 _START_ 到 _END_ 条，共 _TOTAL_ 条记录",			
+								},
+								"aoColumnDefs" : [
+													{
+													'bSortable' : false,
+													'aTargets' : [1], 
+													'mRender': function ( data, type, full ) {
+												        return '<a href="'+ajax_data.view_url+data+'">'+data+'</a>';
+													}
+													},
+													{
+													'bSortable' : false,
+													'aTargets' : [6], 
+													'mRender': function ( data, type, full ) {
+												        return '<a href="'+ajax_data.edit_url+data+'">修改</a>'+'&nbsp;<a href="'+ajax_data.delete_url+data+'">删除</a>';
+													}
+													}
+												]
+							});
+
+					jQuery('#sample_2 .group-checkable').change(function() {
+						var set = jQuery(this).attr("data-set");
+						var checked = jQuery(this).is(":checked");
+						jQuery(set).each(function() {
+							if (checked) {
+								$(this).attr("checked", true);
+							} else {
+								$(this).attr("checked", false);
+							}
+						});
+						jQuery.uniform.update(set);
+					});
+
+					jQuery('#sample_2_wrapper .dataTables_length select').addClass(
+							"m-wrap small"); // modify table per page dropdown
+					jQuery('#sample_2_wrapper .dataTables_length select').select2(); // initialzie
+			}
 </script>
 
 <!-- END PAGE LEVEL SCRIPTS -->
