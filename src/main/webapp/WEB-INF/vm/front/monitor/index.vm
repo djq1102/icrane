@@ -1,0 +1,46 @@
+ #parse ("/front/head.vm")
+ <body>
+   
+    #parse ("/front/top.vm")
+
+        <div style="clear:both;"></div>      
+
+    <div class="main">
+        <div style="clear:both; float:none;"></div>
+        <div class="content">
+			#parse ("/front/common/setting.vm")
+			<div class="return"><a href="/front/device/index.htm?deviceId=${deviceId}"></a></div>
+			<div style="position:absolute; left:120px; top:18px; z-index:6; height:40px; line-height:40px; font-size:18px; color:#333; font-family:Microsoft YaHei">设备资料</div>
+        	<div class="content_title">
+                
+				#foreach($groupDoc in $groupDocs)
+    				<table class="icomenu1" width="100%" border="0">
+                      <tr>
+						#foreach($doc in $groupDoc)
+                        <td><a href="/doc/download/${doc.id}"><img src="/media/image/ziliao.png" width="144" height="144" /></a></td>
+						#end
+						#if($groupDoc.size()!=4)
+							#set($s=4 - $groupDoc.size())
+							#foreach($tmp in [0..$s])
+								<td width="144" height="144" ></td>
+							#end
+						#end
+                      </tr>
+                      <tr style="height:40px; line-height:40px; color:#333;">
+						#foreach($doc in $groupDoc)
+                        <td>${doc.docName}</td>
+						#end
+						#if($groupDoc.size()!=4)
+							#set($s=4 - $groupDoc.size())
+							#foreach($tmp in [0..$s])
+								<td></td>
+							#end
+						#end
+                      </tr>
+                    </table>
+				#end
+             </div>
+		</div>
+		</div>
+	</body>
+</html>
