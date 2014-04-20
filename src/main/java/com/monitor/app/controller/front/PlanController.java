@@ -5,6 +5,7 @@ import java.util.Date;
 import java.util.List;
 
 import javax.annotation.Resource;
+import javax.servlet.http.HttpSession;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -26,10 +27,10 @@ public class PlanController extends AbstractController {
 	@Resource
 	private NoticeService noticeService;
 
-	private static final long DAY = 3;
+	private static final long DAY = 2;
 	
 	@RequestMapping(value = "/front/plan/index")
-	public String index(@RequestParam("deviceId") long deviceId, Model model) throws Exception{
+	public String index(@RequestParam("deviceId") long deviceId, Model model, HttpSession session) throws Exception{
 		logger.warn(">>>action=index");
 		
 		NoticeQuery query = new NoticeQuery();
@@ -39,6 +40,7 @@ public class PlanController extends AbstractController {
 		c.setTimeInMillis(ago3Time);
 		Date ago3Date = c.getTime();
 		
+		query.setToCustomerId(getCustomerId(session));
 		query.setNoticeStart(ago3Date);
 		query.setNeedPagination(false);
 		ServiceResult result = noticeService.queryNotices(query);

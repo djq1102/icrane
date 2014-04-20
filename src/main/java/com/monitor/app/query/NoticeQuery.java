@@ -15,6 +15,7 @@ public class NoticeQuery extends Pagination {
 
 	private static final long serialVersionUID = 3180461278973247102L;
 
+	private long toCustomerId;
 	private Date noticeStart;
 	private Date noticeEnd;
 	
@@ -29,6 +30,12 @@ public class NoticeQuery extends Pagination {
 	}
 	public void setNoticeEnd(Date noticeEnd) {
 		this.noticeEnd = noticeEnd;
+	}
+	public long getToCustomerId() {
+		return toCustomerId;
+	}
+	public void setToCustomerId(long toCustomerId) {
+		this.toCustomerId = toCustomerId;
 	}
 	
 	
