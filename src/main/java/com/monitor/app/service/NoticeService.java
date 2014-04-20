@@ -3,6 +3,7 @@
  */
 package com.monitor.app.service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.annotation.Resource;
@@ -80,6 +81,24 @@ public class NoticeService {
 		try{
 			
 			notices = noticeDao.queryNotices(query);
+			
+			if(query.getToCustomerId()!=0L){
+				if(notices!=null){
+					List<Notice> filtedNotices = new ArrayList<Notice>();
+					for(Notice notice: notices){
+						String toCustomerId = notice.getToCustomerId();
+						String[] cIds = toCustomerId.split(",");
+						for(String cId : cIds){
+							if(cId.equals(String.valueOf(query.getToCustomerId()))){
+								filtedNotices.add(notice);
+								break;
+							}
+						}
+					}
+					return MsgUtils.fillModule(filtedNotices);
+				}
+			}
+			
 		}catch(Exception e){
 			log.error("query_notice_fails",e);
 			return MsgUtils.fillMsg(MsgEnum.NOTICE_QUERY_FAIL);

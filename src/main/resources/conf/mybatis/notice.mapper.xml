@@ -36,9 +36,6 @@
 			<if test="null != noticeEnd">
 				<![CDATA[ AND gmt_create <= #{noticeEnd} ]]>
 			</if>
-			<if test="null != toCustomerId">
-				<![CDATA[ AND to_customer_id = #{toCustomerId} ]]>
-			</if>
 		</where>
 	</sql>
 	
