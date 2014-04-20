@@ -72,10 +72,6 @@
 
             </div>
              <div style="margin:0 auto; width:100%; width:240px; height:90px; margin-top:20px;"><table width="200" border="0" cellspacing="0" >
-  <tr>
-    <td><div class="next1"><a>上一页</a></div></td>
-    <td><div class="next2"><a>下一页</a></div></td>
-  </tr>
 </table>
 </div>
         </div>
