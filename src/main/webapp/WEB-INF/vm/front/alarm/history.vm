@@ -27,8 +27,8 @@
          
 <div><table width="100%" border="0" cellspacing="0" >
   <tr>
-    <td><div class="x">实时报警</div></td>
-    <td><div class="w"><a href="/front/alarm/history?deviceId=${deviceId}" style="text-decoration:none">历史报警</a></div></td>
+    <td><div class="w"><a href="/front/alarm/index?deviceId=${deviceId}" style="text-decoration:none">实时报警</a></div></td>
+    <td><div class="x">历史报警</div></td>
   </tr>
 </table>
 </div>
