@@ -33,7 +33,7 @@
 	<td><a  href="/front/devicefile/index?deviceId=${deviceId}"}><img src="/media/image/spjk.png" width="152" height="152" /></a></td>
     <td><a href="/front/devicefile/index?deviceId=${deviceId}"><img src="/media/image/sbzl.png" width="152" height="152" /></a></td>
     <td><a href="/front/devicefile/index?deviceId=${deviceId}"><img src="/media/image/sbbb.png" width="152" height="152" /></a></td>
-	 <td><a style="width:152px; display:inline-block;"><img src="/media/image/sbbb.png" width="152" height="152" /></a></td>
+	 <td><a href="/front/plan/index?deviceId=${deviceId}" style="width:152px; display:inline-block;"><img src="/media/image/sbbb.png" width="152" height="152" /></a></td>
   </tr>
   <tr style="height:40px; line-height:40px; color:#333;">
 	  <td>设备视频监控</td>
