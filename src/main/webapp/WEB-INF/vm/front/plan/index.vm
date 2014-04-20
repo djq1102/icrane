@@ -34,17 +34,13 @@
               </tr>
 			</table>
             <table width="100%" border="0" class="content_list_123">
-            	<!--第一行开始-->
-              <tr class="content_list_tr1" style="cursor:hand;" onmouseout="" onmousemove="changeTrColor(this)">
-                <td class="content_list_tag1">广播消息1</td>
-              </tr>
-              <!--第一行结束-->
-   
-            	<!--第二行开始-->
-              <tr class="content_list_tr2" style="cursor:hand;" onmouseout="" onmousemove="changeTrColor(this)">
-                <td class="content_list_tag1">广播消息2</td>
-              
-              </tr>
+				#foreach($notice in $notices)
+				  <!--第一行开始-->
+                  <tr class="content_list_tr1" style="cursor:hand;" onmouseout="" onmousemove="changeTrColor(this)">
+                    <td class="content_list_tag1">$notice.content</td>
+                  </tr>
+                  <!--第一行结束-->
+				#end
 			</table>
             <!--翻页开始-->
 
