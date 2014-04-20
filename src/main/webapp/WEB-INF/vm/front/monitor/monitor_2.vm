@@ -5,14 +5,14 @@
 
         <!--<div class="menu">
         	<ul>
-            	<li class="bg" style=" height:51px; line-height:51px;"><span class="ico"><img src="images/1.gif" width="16" height="16" /></span>账户管理</li>
-                <li><span class="ico"><img src="images/2.gif" width="16" height="16" /></span><a href="#">业务类型管理</a></li>
-                <li><a href="#"><span class="ico"><img src="images/3.gif" width="16" height="16" /></span>账户类型管理</a></li>
-                <li><a href="#"><span class="ico"><img src="images/4.gif" width="16" height="16" /></span>交易明细管理</a></li>
-                <li><a href="#"><span class="ico"><img src="images/5.gif" width="16" height="16" /></span>对账管理</a></li>
-                <li><a href="#"><span class="ico"><img src="images/6.gif" width="16" height="16" /></span>日志管理</a></li>
-                <li><a href="#"><span class="ico"><img src="images/7.gif" width="16" height="16" /></span>操作员管理</a></li>
-                <li><a href="#"><span class="ico"><img src="images/7.gif" width="16" height="16" /></span>操作员管理</a></li>
+            	<li class="bg" style=" height:51px; line-height:51px;"><span class="ico"><img src="/media/image/1.gif" width="16" height="16" /></span>账户管理</li>
+                <li><span class="ico"><img src="/media/image/2.gif" width="16" height="16" /></span><a href="#">业务类型管理</a></li>
+                <li><a href="#"><span class="ico"><img src="/media/image/3.gif" width="16" height="16" /></span>账户类型管理</a></li>
+                <li><a href="#"><span class="ico"><img src="/media/image/4.gif" width="16" height="16" /></span>交易明细管理</a></li>
+                <li><a href="#"><span class="ico"><img src="/media/image/5.gif" width="16" height="16" /></span>对账管理</a></li>
+                <li><a href="#"><span class="ico"><img src="/media/image/6.gif" width="16" height="16" /></span>日志管理</a></li>
+                <li><a href="#"><span class="ico"><img src="/media/image/7.gif" width="16" height="16" /></span>操作员管理</a></li>
+                <li><a href="#"><span class="ico"><img src="/media/image/7.gif" width="16" height="16" /></span>操作员管理</a></li>
             </ul>
         </div>-->
 </div>
@@ -36,7 +36,7 @@
 <div class="lbxx1">
 <table width="100%" border="0" >
   <tr>
-    <td valign="top" style="width:277px; font-family:Microsoft YaHei, Verdana, Geneva, sans-serif; font-size:15px; color:#333;"><img style="margin-top:0px;" src="images/jiqi.jpg" width="277" height="625" /></td>
+    <td valign="top" style="width:277px; font-family:Microsoft YaHei, Verdana, Geneva, sans-serif; font-size:15px; color:#333;"><img style="margin-top:0px;" src="/media/image/jiqi.jpg" width="277" height="625" /></td>
     <td valign="top" style=" width:300px; padding-top:20px; padding-left:20px; border-left:1px solid #969ca8; font-family:Microsoft YaHei, Verdana, Geneva, sans-serif; font-size:15px; color:#333;">
 输出电流：
 <br /><br />           
@@ -71,50 +71,50 @@
     <td  style=" padding:10px; font-family:Microsoft YaHei, Verdana, Geneva, sans-serif;">
     <table>  
     <tr style="height:40px; text-indent:1em;">
-    <td><img style="margin-top:0px;" src="images/hongdiandian.jpg" width="19" height="19" /></td>
+    <td><img style="margin-top:0px;" src="/media/image/hongdiandian.jpg" width="19" height="19" /></td>
     <td>主接触器反馈</td></tr>
         <tr style="height:40px; text-indent:1em;">
-    <td><img style="margin-top:0px;" src="images/hongdiandian.jpg" width="19" height="19" /></td>
+    <td><img style="margin-top:0px;" src="/media/image/hongdiandian.jpg" width="19" height="19" /></td>
     <td>相序保护器</td></tr>
             <tr style="height:40px; text-indent:1em;">
-    <td><img style="margin-top:0px;" src="images/hongdiandian.jpg" width="19" height="19" /></td>
+    <td><img style="margin-top:0px;" src="/media/image/hongdiandian.jpg" width="19" height="19" /></td>
     <td>门限位1</td></tr>
             <tr style="height:40px; text-indent:1em;">
-    <td><img style="margin-top:0px;" src="images/hongdiandian.jpg" width="19" height="19" /></td>
+    <td><img style="margin-top:0px;" src="/media/image/hongdiandian.jpg" width="19" height="19" /></td>
     <td>门限位2</td></tr>
             <tr style="height:40px; text-indent:1em;">
-    <td><img style="margin-top:0px;" src="images/hongdiandian.jpg" width="19" height="19" /></td>
+    <td><img style="margin-top:0px;" src="/media/image/hongdiandian.jpg" width="19" height="19" /></td>
     <td>门限位3</td></tr>
             <tr style="height:40px; text-indent:1em;">
-    <td><img style="margin-top:0px;" src="images/hongdiandian.jpg" width="19" height="19" /></td>
+    <td><img style="margin-top:0px;" src="/media/image/hongdiandian.jpg" width="19" height="19" /></td>
     <td>小车机房急停</td></tr>
             <tr style="height:40px; text-indent:1em;">
-    <td><img style="margin-top:0px;" src="images/hongdiandian.jpg" width="19" height="19" /></td>
+    <td><img style="margin-top:0px;" src="/media/image/hongdiandian.jpg" width="19" height="19" /></td>
     <td>电气房急停</td></tr>
             <tr style="height:40px; text-indent:1em;">
-    <td><img style="margin-top:0px;" src="images/hongdiandian.jpg" width="19" height="19" /></td>
+    <td><img style="margin-top:0px;" src="/media/image/hongdiandian.jpg" width="19" height="19" /></td>
     <td>门限位1</td></tr>
     </table>
     </td>
     <td valign="top" style="border-left:1px solid #969ca8; font-family:Microsoft YaHei, Verdana, Geneva, sans-serif; text-indent:1em; padding:10px;">
     <table>  
     <tr style="height:40px; text-indent:1em;">
-    <td><img style="margin-top:0px;" src="images/hongdiandian.jpg" width="19" height="19" /></td>
+    <td><img style="margin-top:0px;" src="/media/image/hongdiandian.jpg" width="19" height="19" /></td>
     <td>主起升制动器断路器反馈</td></tr>
         <tr style="height:40px; text-indent:1em;">
-    <td><img style="margin-top:0px;" src="images/hongdiandian.jpg" width="19" height="19" /></td>
+    <td><img style="margin-top:0px;" src="/media/image/hongdiandian.jpg" width="19" height="19" /></td>
     <td>主起升制动器断路器反馈
 </td></tr>
             <tr style="height:40px; text-indent:1em;">
-    <td><img style="margin-top:0px;" src="images/hongdiandian.jpg" width="19" height="19" /></td>
+    <td><img style="margin-top:0px;" src="/media/image/hongdiandian.jpg" width="19" height="19" /></td>
     <td>主起升制动器断路器反馈
 </td></tr>
             <tr style="height:40px; text-indent:1em;">
-    <td><img style="margin-top:0px;" src="images/hongdiandian.jpg" width="19" height="19" /></td>
+    <td><img style="margin-top:0px;" src="/media/image/hongdiandian.jpg" width="19" height="19" /></td>
     <td>主起升制动器断路器反馈
 </td></tr>
             <tr style="height:40px; text-indent:1em;">
-    <td><img style="margin-top:0px;" src="images/hongdiandian.jpg" width="19" height="19" /></td>
+    <td><img style="margin-top:0px;" src="/media/image/hongdiandian.jpg" width="19" height="19" /></td>
     <td>主机构联锁
 </td></tr>
     </table>
