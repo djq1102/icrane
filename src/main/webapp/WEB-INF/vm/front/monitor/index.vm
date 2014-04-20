@@ -16,65 +16,63 @@
                 <li><a href="#"><span class="ico"><img src="/media/image/7.gif" width="16" height="16" /></span>操作员管理</a></li>
             </ul>
         </div>-->
-</div>
-    <div class="main">
-    	
-        <div style="clear:both; float:none;"></div>
-        <div class="content">
-         <div class="shezhi" ><a></a></div>
-         <div class="caidan" ><a></a></div>
-         <div class="return"><a></a></div><div style="position:absolute; left:120px; top:18px; z-index:6; height:40px; line-height:40px; font-size:18px; color:#333; font-family:Microsoft YaHei">设备数据监控</div>
-        	<div class="content_title">
-            <table class="icomenu1" width="100%" border="0">
-  <tr>
-    <td><a><img src="/media/image/ziliao.png" width="144" height="144" /></a></td>
-    <td><a><img src="/media/image/ziliao.png" width="144" height="144" /></a></td>
-    <td><a><img src="/media/image/ziliao.png" width="144" height="144" /></a></td>
-    <td><a><img src="/media/image/ziliao.png" width="144" height="144" /></a></td>
-  </tr>
-  <tr style="height:40px; line-height:40px; color:#333;">
-    <td>数据监控1</td>
-    <td>数据监控1</td>
-    <td>数据监控1</td>
-    <td>数据监控1</td>
-  </tr>
-</table>
-            <table class="icomenu1" width="100%" border="0">
-  <tr>
-    <td><a><img src="/media/image/ziliao.png" width="144" height="144" /></a></td>
-    <td><a><img src="/media/image/ziliao.png" width="144" height="144" /></a></td>
-    <td><a><img src="/media/image/ziliao.png" width="144" height="144" /></a></td>
-    <td><a><img src="/media/image/ziliao.png" width="144" height="144" /></a></td>
-  </tr>
-  <tr style="height:40px; line-height:40px; color:#333;">
-    <td>数据监控1</td>
-    <td>数据监控1</td>
-    <td>数据监控1</td>
-	<td>数据监控1</td>
-    <td></td>
-  </tr>
-</table>
-            <table class="icomenu1" width="100%" border="0">
-  <tr>
-    <td><a><img src="/media/image/ziliao.png" width="144" height="144" /></a></td>
-    <td><a><img src="/media/image/ziliao.png" width="144" height="144" /></a></td>
-    <td><a><img src="/media/image/ziliao.png" width="144" height="144" /></a></td>
-    <td><a><img src="/media/image/ziliao.png" width="144" height="144" /></a></td>
-  </tr>
-  <tr style="height:40px; line-height:40px; color:#333;">
-    <td>数据监控1</td>
-    <td>数据监控1</td>
-    <td>数据监控1</td>
-	<td>数据监控1</td>
-    <td></td>
-  </tr>
-</table>
+<div class="main">
+    <div style="clear:both; float:none;"></div>
+    <div class="content">
+      #parse ("/front/common/setting.vm")
+	 <div class="return"><a></a></div><div style="position:absolute; left:120px; top:18px; z-index:6; height:40px; line-height:40px; font-size:18px; color:#333; font-family:Microsoft YaHei">设备数据监控</div>
+    	<div class="content_title">
+			            <table class="icomenu1" width="100%" border="0">
+                      <tr>
+                        <td><a><img src="/media/image/ziliao.png" width="144" height="144" /></a></td>
+                        <td><a><img src="/media/image/ziliao.png" width="144" height="144" /></a></td>
+                        <td><a><img src="/media/image/ziliao.png" width="144" height="144" /></a></td>
+                        <td><a><img src="/media/image/ziliao.png" width="144" height="144" /></a></td>
+                      </tr>
+                      <tr style="height:40px; line-height:40px; color:#333;">
+                        <td>数据监控1</td>
+                        <td>数据监控1</td>
+                        <td>数据监控1</td>
+                        <td>数据监控1</td>
+                      </tr>
+                    </table>
+                                <table class="icomenu1" width="100%" border="0">
+                      <tr>
+                        <td><a><img src="/media/image/ziliao.png" width="144" height="144" /></a></td>
+                        <td><a><img src="/media/image/ziliao.png" width="144" height="144" /></a></td>
+                        <td><a><img src="/media/image/ziliao.png" width="144" height="144" /></a></td>
+                        <td><a><img src="/media/image/ziliao.png" width="144" height="144" /></a></td>
+                      </tr>
+                      <tr style="height:40px; line-height:40px; color:#333;">
+                        <td>数据监控1</td>
+                        <td>数据监控1</td>
+                        <td>数据监控1</td>
+                    	<td>数据监控1</td>
+                        <td></td>
+                      </tr>
+                    </table>
+                                <table class="icomenu1" width="100%" border="0">
+                      <tr>
+                        <td><a><img src="/media/image/ziliao.png" width="144" height="144" /></a></td>
+                        <td><a><img src="/media/image/ziliao.png" width="144" height="144" /></a></td>
+                        <td><a><img src="/media/image/ziliao.png" width="144" height="144" /></a></td>
+                        <td><a><img src="/media/image/ziliao.png" width="144" height="144" /></a></td>
+                      </tr>
+                      <tr style="height:40px; line-height:40px; color:#333;">
+                        <td>数据监控1</td>
+                        <td>数据监控1</td>
+                        <td>数据监控1</td>
+                    	<td>数据监控1</td>
+                        <td></td>
+                      </tr>
+                    </table>
+                    
+                                </div>
+                                 <div style="margin:0 auto; width:100%; width:240px; height:90px; margin-top:20px;"><table width="200" border="0" cellspacing="0" >
+                    </table>
 
-            </div>
-             <div style="margin:0 auto; width:100%; width:240px; height:90px; margin-top:20px;"><table width="200" border="0" cellspacing="0" >
-</table>
-</div>
-        </div>
+		</div>
     </div>
+</div>
 </body>
 </html>

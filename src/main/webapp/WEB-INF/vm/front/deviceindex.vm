@@ -11,8 +11,7 @@
         <div style="clear:both; float:none;"></div>
         <div class="content">
          #parse ("/front/common/setting.vm")
-         <div></div>
-        	<div class="content_title">
+		  <div class="content_title">
             <table class="icomenu" width="100%" border="0">
   <tr>
 	<td><a href="/index"><img src="/media/image/dt.png" width="152" height="152"></a></td>
