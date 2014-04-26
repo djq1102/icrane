@@ -40,7 +40,7 @@
 					<div class="control-group">
 						<label class="control-label">配件图片名:</label>
 						<div class="controls">
-							<input type="text" class="m-wrap span12" name="fileName" value="$!{accessory.fileName}"> 
+							<input type="text" class="m-wrap span12" id="fileName" name="fileName" value="$!{accessory.fileName}"> 
 						</div>
 					</div>
 				</div>
@@ -50,21 +50,12 @@
 					<div class="control-group">
 						<label class="control-label">配件图片路径:</label>
 						<div class="controls">
-							<input type="text" class="m-wrap span12" name="filePath" value="$!{accessory.filePath}"> 
-						</div>
-					</div>
-				</div>
-			</div>
-			<!--/row-->
-			
-			<div class="row-fluid">
-				<!--/span-->
-				<div class="span4 ">
-					<div class="control-group">
-						<label class="control-label">选择图片:</label>
-						<div class="controls">
-							<input type="file" class="m-wrap span12" name="selectFile" size="20"> 
-							<input type="button" class="m-wrap span12" name="upFile" value="上传"> 
+							#if($!{accessory.filePath})
+								#set($fp=$!{accessory.filePath})
+							#else
+								#set($fp='/upload/acc/')
+							#end
+							<input type="text" class="m-wrap span12" name="filePath" value="$fp" readonly > 
 						</div>
 					</div>
 				</div>
@@ -78,5 +69,30 @@
 		</form>
 		</div>
 	</div>
+	
+	<script src="/media/js/jquery-1.10.1.min.js" type="text/javascript"></script>
+	<form action="/acc/upload" id="form1" name="form1" encType="multipart/form-data"  method="post" target="hidden_frame">
+		<span id="msg"></span>  
+	<!--/row-->
+			<div class="row-fluid">
+				<div class="span4 ">
+					<div class="control-group">
+						<label class="control-label">选择图片:</label>
+						<div class="controls">
+							<input type="file" class="m-wrap span12"  id="selectFile" name="selectFile" size="20"> 
+							<input type="button" class="m-wrap span12" id="upFile" name="upFile" value="上传"> 
+						</div>
+					</div>
+				</div>
+			</div>		
+	  <iframe name="hidden_frame" id="hidden_frame" style='display:none'></iframe>  
+	 </form>
+	 <script type="text/javascript">
+		jQuery("#upFile").click(function(){
+			jQuery("#form1").submit();
+			$("#selectFile").val('');
+		});
+	 </script>		
 	<!-- END INPUT FORM>
 </div>
+	

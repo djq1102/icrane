@@ -3,20 +3,26 @@
  */
 package com.monitor.app.controller.accessory;
 
+import java.io.File;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Random;
 
 import javax.annotation.Resource;
+import javax.servlet.ServletContext;
 
+import org.apache.commons.fileupload.FileItem;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.context.ServletContextAware;
+import org.springframework.web.multipart.commons.CommonsMultipartFile;
 
 import com.monitor.app.controller.AbstractController;
 import com.monitor.app.dataobject.ModelAccessory;
@@ -31,8 +37,11 @@ import com.monitor.app.utils.MsgUtils;
  *
  */
 @Controller
-public class AccessoryController extends AbstractController{
+public class AccessoryController extends AbstractController implements ServletContextAware{
 
+	private static final String SEP = System.getProperty("file.separator");
+	private static final String uploadPath="WEB-INF"+SEP+"upload"+SEP+"acc"+SEP;
+	
 	@Resource
 	private AccessoryService accessoryService;
 	
@@ -97,6 +106,61 @@ public class AccessoryController extends AbstractController{
 		}
 		
 		return outputJsonAsResponse(Collections.EMPTY_LIST, 0 , sEcho);
+	}
+	
+	private ServletContext servletContext; 
+	@Override
+	public void setServletContext(ServletContext servletContext) {
+		this.servletContext = servletContext;
+	}
+	
+	@RequestMapping(value = "/acc/upload",method = RequestMethod.POST,produces = "text/html; charset=utf-8")
+	@ResponseBody
+	public String upload(@RequestParam("selectFile") CommonsMultipartFile mFile) throws Exception{
+		
+		//1.上传
+		FileItem fi = mFile.getFileItem();
+		String fileName = fi.getName();
+		
+		String filePath = buildFilePath();
+		File targetPath = new File(filePath);  
+        if(!targetPath.exists()){  
+        	targetPath.mkdirs();  
+        }  
+        
+		//2.保存 file
+        File picFile = new File(filePath, fileName);
+        if(picFile.exists()){
+        	Random rnd = new Random();
+    		int flag = rnd.nextInt(100)+1;
+    		
+    		int suffixIdx  = fileName.lastIndexOf(".");
+    		if(suffixIdx!=-1){
+    			String name = fileName.substring(0,suffixIdx);
+    			String suffix = fileName.substring(suffixIdx,fileName.length());
+    			fileName = name+"_"+ flag+suffix;
+    		}else{
+    			fileName = fileName+"_"+ flag;
+    		}
+        }
+        
+        //3.
+        File targetFile = new File(filePath, fileName);  
+        try {  
+        	mFile.transferTo(targetFile);  
+        } catch (Exception e) {  
+            e.printStackTrace();  
+        }  
+		
+        String callback="<script type='text/javascript'>window.top.callback('"+fileName+"')</script>";
+        
+		return callback;
+	}
+	
+	private String buildFilePath() {
+		String rootPath = this.servletContext.getRealPath("/");
+		String filePath = rootPath + SEP + uploadPath;
+		return filePath;
 	}
 	
 	@RequestMapping(value = "/acc/update")

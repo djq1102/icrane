@@ -30,7 +30,12 @@
 	<link href="/media/css/uniform.default.css" rel="stylesheet" type="text/css"/>
 
 	<!-- END GLOBAL MANDATORY STYLES -->
-	
+	#parse("control/script.vm")	
+	<script>
+	function callback(msg){
+			$("#fileName").val(msg);
+		}
+	</script>
 		<!-- BEGIN PAGE LEVEL STYLES -->
 
 		<link rel="stylesheet" type="text/css" href="/media/css/bootstrap-fileupload.css" />

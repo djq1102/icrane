@@ -39,9 +39,8 @@ import com.monitor.app.service.DeviceDocService;
 @Controller
 public class DeviceFileController extends AbstractController implements ServletContextAware{
 
-	
-	private static final String uploadPath="WEB-INF/upload/doc";
 	private static final String SEP = System.getProperty("file.separator");
+	private static final String uploadPath="WEB-INF"+SEP+"upload"+SEP+"doc";
 	
 	private ServletContext servletContext; 
 	
