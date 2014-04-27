@@ -38,6 +38,18 @@
 				<!--/span-->
 				<div class="span4 ">
 					<div class="control-group">
+						<label class="control-label">配件类型:</label>
+						<div class="controls">
+							<select id="customerId"  class="small m-wrap" tabindex="1" name="accessoryType" >
+								<option value="0" selected>机械配件</option>
+								<option value="1" >电器配件</option>
+							</select>
+						</div>
+					</div>
+				</div>
+				<!--/span-->
+				<div class="span4 ">
+					<div class="control-group">
 						<label class="control-label">配件图片名:</label>
 						<div class="controls">
 							<input type="text" class="m-wrap span12" id="fileName" name="fileName" value="$!{accessory.fileName}"> 
