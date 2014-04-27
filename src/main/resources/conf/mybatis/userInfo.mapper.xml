@@ -55,7 +55,15 @@
 			<if test="null != userPhone">
 				user_phone = #{userPhone},
 			</if>
-			
+			<if test="null != customerId and customerId != 0">
+				customer_id = #{customerId},
+			</if>
+			<if test="null !=roleType and roleType != 0">
+				role_type = #{roleType},
+			</if>
+			<if test="null != password">
+			   password = #{password},
+			</if>
 			<if test="null != userEmail">
 				user_email = #{userEmail},
 			</if>
