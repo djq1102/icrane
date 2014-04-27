@@ -5,6 +5,7 @@ import org.springframework.validation.Errors;
 import org.springframework.validation.Validator;
 
 import com.monitor.app.dataobject.UserInfo;
+import com.monitor.app.utils.ValidatorUtil;
 
 public class UserInfoValidator implements Validator {
 	
@@ -23,8 +24,14 @@ public class UserInfoValidator implements Validator {
 	    if(StringUtils.isBlank(userInfo.getUserPhone())){
 		     errors.rejectValue("userPhone", "userPhone", "手机不能为空!"); 
 	    }
+	    if(!ValidatorUtil.checkMobileNumber(userInfo.getUserPhone())){
+		     errors.rejectValue("userPhone", "userPhone", "手机输入有误!"); 
+	    }
 	    if(StringUtils.isBlank(userInfo.getUserEmail())){
 		     errors.rejectValue("userEmail", "userEmail", "邮箱不能为空!"); 		
+	    }
+	    if(ValidatorUtil.checkEmail(userInfo.getUserEmail())){
+		     errors.rejectValue("userEmail", "userEmail", "邮箱输入有误!"); 		
 	    }
 	    if(StringUtils.isBlank(userInfo.getUserName())){
 	    	errors.rejectValue("userName", "userName", "用户名不能为空!");

@@ -5,6 +5,7 @@ import org.springframework.validation.Errors;
 import org.springframework.validation.Validator;
 
 import com.monitor.app.dataobject.Customer;
+import com.monitor.app.utils.ValidatorUtil;
 
 public class CustomerValidator implements Validator {
 	
@@ -25,9 +26,17 @@ public class CustomerValidator implements Validator {
 		if(StringUtils.isBlank(customer.getContactEmail())){
 			errors.rejectValue("contactEmail", "contactEmail", "客户的邮箱不能为空!");
 		}
+		if(!ValidatorUtil.checkEmail(customer.getContactEmail())){
+			errors.rejectValue("contactEmail", "contactEmail", "客户的邮箱输入有误!");
+		}
 		if(StringUtils.isBlank(customer.getContactPhone())){
 			errors.rejectValue("contactPhone", "contactPhone","客户的手机号不能为空!");
 		}
+		if(!ValidatorUtil.checkMobileNumber(customer.getContactPhone())){
+			errors.rejectValue("contactPhone", "contactPhone","客户的手机号输入有误!");
+		}
 	}
+	
+	
 
 }

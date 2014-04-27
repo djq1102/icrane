@@ -5,6 +5,7 @@ import org.springframework.validation.Errors;
 import org.springframework.validation.Validator;
 
 import com.monitor.app.dataobject.Site;
+import com.monitor.app.utils.ValidatorUtil;
 
 public class SiteValidator implements Validator {
 	
@@ -31,10 +32,12 @@ public class SiteValidator implements Validator {
 		if(StringUtils.isBlank(site.getContactPhone())){
 			errors.rejectValue("contactPhone", "contactPhone","现场的手机号不能为空!");
 		}
+		if(!ValidatorUtil.checkMobileNumber(site.getContactPhone())){
+			errors.rejectValue("contactPhone", "contactPhone","现场的手机号输入有误!");
+		}
 		if(StringUtils.isBlank(site.getSiteAddress())){
 			errors.rejectValue("siteAddress", "siteAddress", "现场地址不能为空!");
 		}
-
 	}
 
 }
