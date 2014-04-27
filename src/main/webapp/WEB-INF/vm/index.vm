@@ -5,11 +5,17 @@
 <link href="/media/css/global.css" type="text/css" rel="stylesheet" />
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=true"></script>
+
+<script type="text/javascript" src="/media/js/jquery-1.10.1.min.js"></script>
 <script type="text/javascript" src="/media/js/searchResultMap.js"></script>
+<script type="text/javascript" src="/media/js/slideup.js"></script>
  
 <!-- END PAGE LEVEL PLUGINS -->
 <!-- END PAGE LEVEL SCRIPTS -->
 <script type="text/javascript">
+$(function(){
+	$(".line").slideUp();	
+})
 function changeTrColor(obj){    
     var _table=obj.parentNode;
     for (var i=0;i<_table.rows.length;i++){
@@ -24,7 +30,25 @@ function changeTrColor(obj){
         <div class="top_info">您好，<span style="color:#ff4e00;">系统管理员</span>欢迎登录云设备平台<span style="margin:0 5px; color:#FFF;"><a href="#" style="color:#FFF;">修改密码</a></span><span style="margin:0 5px;"><a href="#"  style="color:#FFF;">退出</a></span><span class="top_help"><img src="/media/image/wh.png" width="16" height="16" /></span><a href="#"  style="color:#FFF;">帮助／指南</a></div>
     </div>
     <div style="clear:both;"></div> 
-	 <div style="height:50px; width:100%; background:url(/media/image/t_bg.jpg) no-repeat top right #405d95; border-top:1px solid #5f77a7;  font-family:Microsoft YaHei; font-size:18px; "><h6 style="height:40px; line-height:40px; margin-top:4px; text-align:left; color:#FFF;  padding-left:2em; ">提示信息：这是移动互联的时代，也是移动应用暴增的时代。</h6></div>    
+	 <div style="height:50px; width:100%; background:url(/media/image/t_bg.jpg) no-repeat top right #405d95; border-top:1px solid #5f77a7;  font-family:Microsoft YaHei; font-size:18px; ">
+		 <ul class="line">
+				<li style="margin-top: 0px; ">
+				    	<h6 style="height:40px; line-height:40px; margin-top:4px; text-align:left; color:#FFF;  padding-left:2em; ">
+	        		提示信息：这是移动互联的时代，也是移动应用暴增的时代。 	
+	        		</h6>
+        		</li>
+        		<li style="margin-top: 0px; ">
+				    	<h6 style="height:40px; line-height:40px; margin-top:4px; text-align:left; color:#FFF;  padding-left:2em; ">
+	        		提示信息：这是移动互联的时代，也是移动应用暴增的时代。 	
+	        		</h6>
+        		</li>
+        		<li style="margin-top: 0px; ">
+				    	<h6 style="height:40px; line-height:40px; margin-top:4px; text-align:left; color:#FFF;  padding-left:2em; ">
+	        		提示信息：这是移动互联的时代，也是移动应用暴增的时代。 	
+	        		</h6>
+        		</li>
+		 </ul>
+	 </div>    
         
     <div class="main">
     	 <div style="clear:both; float:none;"></div>
