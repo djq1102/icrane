@@ -40,7 +40,6 @@
 						<div class="controls">
 							<select id="siteId" class="small m-wrap" tabindex="1" name="siteId">
                                 <option value="0">--全部--</option>
-								
 							</select>
 						</div>
 					</div>

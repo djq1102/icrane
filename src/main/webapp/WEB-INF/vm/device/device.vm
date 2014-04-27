@@ -59,8 +59,7 @@
 	});
 	
 	function tableInit(ajax_data){
-		$('#sample_2')
-					.dataTable(
+		$('#sample_2').dataTable(
 							{
 								"aLengthMenu" : [ [ 5, 15, 20, -1 ],
 										[ 5, 15, 20 ] // change per
@@ -131,7 +130,7 @@
 	            $("#siteId").append("<option value='"+json[i].siteId+"'>"+json[i].siteName+"</option>");  
 	        }  
 	    },'json');  
-} 
+    } 
 </script>
 
 <!-- END PAGE LEVEL SCRIPTS -->

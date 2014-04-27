@@ -17,7 +17,7 @@
 					<div class="control-group">
 						<label class="control-label">所属客户:</label>
 						<div class="controls">
-							<select class="small m-wrap" tabindex="1" name="customerId">
+							<select class="small m-wrap" tabindex="1" name="customerId" id="customerId">
 								#foreach($customer in $customers)
 									<option value="$!{customer.customerId}">$!{customer.customerName}</option>
 								#end	
@@ -29,22 +29,16 @@
 				</div>
 
 				<!--/span-->
+				<!--/span-->
 				<div class="span4 ">
-
 					<div class="control-group">
-
-						<label class="control-label">所属现场:</label>
-
+						<label class="control-label">所属现场</label>
 						<div class="controls">
-							<select class="small m-wrap" tabindex="1" name="siteId">
-								<option value="1">现场1</option>
-								<option value="2">现场2</option>
+							<select id="siteId" class="small m-wrap" tabindex="1" name="siteId">
 							</select>
 						</div>
 					</div>
-
 				</div>
-
 				<!--/span-->
 
 				<div class="span4 ">

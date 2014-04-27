@@ -46,7 +46,7 @@
 	   var status = $("#status").val();
 		var ajax_data = {
 			ajax_url:"/site/querySiteList.do?siteName="+siteName+"&customerId="+customerId+"&status="+status,
-			last_index:7,
+			last_index:8,
 			delete_url:"/site/deleteSite?siteId=",
 			edit_url:"/site/editSite.do?siteId="
 		} 

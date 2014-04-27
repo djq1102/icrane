@@ -8,6 +8,7 @@ import java.util.Map;
 import javax.annotation.Resource;
 import javax.validation.Valid;
 
+import org.apache.commons.lang.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
@@ -108,7 +109,9 @@ public class DeviceController extends AbstractController{
 			Device device) throws ManagerException {
 		logger.warn(">>>action=queryDeviceList" + device.getDeviceName());
 		DeviceQuery query = new DeviceQuery();
-		query.setDeviceName(device.getDeviceName());
+		if(StringUtils.isNotBlank(device.getDeviceName())){
+			query.setDeviceName(device.getDeviceName());
+		}
 		query.setSiteId(device.getSiteId());
 		query.setCustomerId(device.getCustomerId());
 		query.setBegin(start);
@@ -124,8 +127,12 @@ public class DeviceController extends AbstractController{
 	public String index(Model model,Device device) throws ManagerException{
 		logger.warn(">>>action=index");
 		model.addAttribute("customers", queryAllCustomers());
-		model.addAttribute("deviceName", device.getDeviceName());
-		model.addAttribute("customerId", device.getCustomerId());
+		if(StringUtils.isNotBlank(device.getDeviceName())){
+			model.addAttribute("deviceName", device.getDeviceName());
+		}
+		if(device.getCustomerId() != null && device.getCustomerId() != 0){
+			model.addAttribute("customerId", device.getCustomerId());
+		}
 		if(device.getCustomerId() != null){
 			model.addAttribute("sites", querySitesByCustomerId(device.getCustomerId()));
 		}
