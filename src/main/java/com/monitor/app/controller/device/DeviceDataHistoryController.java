@@ -9,11 +9,13 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import com.monitor.app.controller.AbstractController;
+
 /**
  * Handles requests for the application home page.
  */
 @Controller
-public class DeviceDataHistoryController { 
+public class DeviceDataHistoryController  extends AbstractController{ 
 	
 	private static final Logger logger = LoggerFactory.getLogger(DeviceDataHistoryController.class);
 	
