@@ -7,7 +7,11 @@
 		<div class="portlet-body form" style="display: block;">
 			
 		<form class="form-horizontal" action="/notice/addOrUpdate" method="POST">
+			#if($!noticeId)
 			<input type="hidden" name="noticeId" value="$!noticeId"/>
+			#else
+				<input type="hidden" name="noticeId" value="0"/>
+			#end
 			<div class="row-fluid">
 				<div class="span12 ">
 					<div class="control-group">

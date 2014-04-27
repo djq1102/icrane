@@ -72,7 +72,7 @@ public class NoticeController extends AbstractController{
 	@RequestMapping(value = "/notice/addOrUpdate")
 	public String add(@RequestParam(value="noticeId", required=false) long noticeId,
 			@RequestParam("title") String title, @RequestParam("content") String content,
-			String[] my_multi_select2, Model model, HttpSession session) throws Exception{
+			 @RequestParam("my_multi_select2") String[] my_multi_select2, Model model, HttpSession session) throws Exception{
 		if(my_multi_select2==null){
 			model.addAttribute("msg","请选中发送通知对象");
 			return "error";
