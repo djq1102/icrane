@@ -137,3 +137,6 @@ border:0px;
 .window_content_title_ico a{ background:url(../image/close_ico.jpg) no-repeat left top; width:30px; height:36px; line-height:36px; cursor:pointer; display:inline-block; text-indent:3em;}
 .window_content_title_ico a:hover{background:url(../image/close_ico_on.jpg) no-repeat top left; text-decoration:none; }
 
+* {margin:0; padding:0}
+ul.line{width:500px; height:30px; overflow:hidden;margin-bottom:20px;} 
+ul.line li{height:30px;text-indent:15px; font-size:12px; line-height:30px;list-style:none} 

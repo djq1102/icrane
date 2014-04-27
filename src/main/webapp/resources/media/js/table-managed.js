@@ -42,7 +42,7 @@ var TableManaged = function() {
 									'bSortable' : false,
 									'aTargets' : [ ajax_data.last_index], 
 									'mRender': function ( data, type, full ) {
-								        return '<a href="'+ajax_data.edit_url+data+'">修改</a>'+'&nbsp;<a href="'+ajax_data.delete_url+data+'">删除</a>'+'&nbsp;<a href="'+ajax_data.view_url+data+'">查看</a>';
+								        return '<a href="'+ajax_data.edit_url+data+'">修改</a>'+'&nbsp;<a href="'+ajax_data.delete_url+data+'">删除</a>';
 									}
 								}]
 							});
