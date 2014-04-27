@@ -15,6 +15,7 @@ import org.springframework.security.core.userdetails.UserDetails;
 
 import com.alibaba.fastjson.JSONObject;
 import com.monitor.app.web.security.ext.UserExt;
+import com.monitor.app.web.security.util.RoleEnum;
 
 /**
  * @author ibm
@@ -42,6 +43,13 @@ public class AbstractController {
 				return userExt;
 			}
 		}
+		return null;
+	}
+	
+	public RoleEnum getRole(HttpSession session){
+		UserExt userExt = getUserExt();
+		if(userExt!=null) return userExt.getRole();
+		
 		return null;
 	}
 	

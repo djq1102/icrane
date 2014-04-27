@@ -8,6 +8,8 @@ import java.util.Collection;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.User;
 
+import com.monitor.app.web.security.util.RoleEnum;
+
 /**
  * @author ibm
  *
@@ -37,8 +39,17 @@ public class UserExt extends User {
 		this.customerId = customerId;
 	}
 
+	public RoleEnum getRole() {
+		return role;
+	}
+
+	public void setRole(RoleEnum role) {
+		this.role = role;
+	}
+
 	private static final long serialVersionUID = 1L;
 	private long userId;
 	private long customerId;
+	private RoleEnum role;
 	
 }
