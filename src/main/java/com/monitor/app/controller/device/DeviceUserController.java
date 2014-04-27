@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.alibaba.fastjson.JSONObject;
+import com.monitor.app.controller.AbstractController;
 import com.monitor.app.dataobject.Device;
 import com.monitor.app.dataobject.Site;
 import com.monitor.app.dataobject.UserDeviceRelation;
@@ -34,7 +35,7 @@ import com.monitor.app.service.UserInfoService;
  */
 
 @Controller
-public class DeviceUserController {
+public class DeviceUserController  extends AbstractController{
 
 	private static final Logger logger = LoggerFactory.getLogger(DeviceUserController.class);
 	@Resource

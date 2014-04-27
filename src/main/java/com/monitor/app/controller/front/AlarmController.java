@@ -7,8 +7,10 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.monitor.app.controller.AbstractController;
+
 @Controller
-public class AlarmController {
+public class AlarmController  extends AbstractController{
 
 	private static final Logger logger = LoggerFactory.getLogger(AccController.class);
 	

@@ -10,12 +10,13 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.monitor.app.controller.AbstractController;
 import com.monitor.app.dataobject.DeviceDoc;
 import com.monitor.app.query.DeviceDocQuery;
 import com.monitor.app.result.ServiceResult;
 import com.monitor.app.service.DeviceDocService;
 @Controller
-public class FrontDeviceFileController {
+public class FrontDeviceFileController  extends AbstractController{
 
 	@Resource
 	private DeviceDocService deviceDocService;
