@@ -60,11 +60,11 @@ public class AccessoryController extends AbstractController implements ServletCo
 	}
 	
 	@RequestMapping(value = "/acc/add")
-	public String add(@RequestParam("accessoryName") String name, @RequestParam("accessoryPrice") String price, 
+	public String add(@RequestParam("accessoryName") String name,@RequestParam("accessoryType") int accessoryType,  @RequestParam("accessoryPrice") String price, 
 			@RequestParam("fileName") String fileName, @RequestParam("filePath") String filePath, Model model) throws Exception{
 		
 		//1.上传图片后修改filename，filepath
-		ModelAccessory acc = buildModelAccessory(name, price, fileName, filePath);
+		ModelAccessory acc = buildModelAccessory(name, accessoryType, price, fileName, filePath);
 		ServiceResult result = accessoryService.addAccessory(acc);
 		
 		if(result.isSuccess()){
@@ -75,9 +75,10 @@ public class AccessoryController extends AbstractController implements ServletCo
 		return "accessory/accessory";
 	}
 
-	private ModelAccessory buildModelAccessory(String name, String price,String fileName, String filePath) {
+	private ModelAccessory buildModelAccessory(String name, int accessoryType, String price,String fileName, String filePath) {
 		ModelAccessory acc= new ModelAccessory();
 		acc.setAccessoryName(name);
+		acc.setAccessoryType(accessoryType);
 		acc.setAccessoryPrice(MoneyUtil.parseCent4Money(price));
 		acc.setFileName(fileName);
 		acc.setFilePath(filePath);
@@ -165,11 +166,11 @@ public class AccessoryController extends AbstractController implements ServletCo
 	
 	@RequestMapping(value = "/acc/update")
 	public String update(@RequestParam("accessoryId") long accessoryId, @RequestParam("accessoryName") String accessoryName,
-			@RequestParam("accessoryPrice") String accessoryPrice,@RequestParam("fileName") String fileName,
+			@RequestParam("accessoryType") int accessoryType,@RequestParam("accessoryPrice") String accessoryPrice,@RequestParam("fileName") String fileName,
 			@RequestParam("filePath") String filePath, 
 			Model model) throws Exception{
 		//1.判断是否有修改过图片
-		ModelAccessory acc = buildModelAccessory(accessoryName,accessoryPrice, fileName, filePath);
+		ModelAccessory acc = buildModelAccessory(accessoryName,accessoryType,accessoryPrice, fileName, filePath);
 		acc.setAccessoryId(accessoryId);
 		
 		ServiceResult result = accessoryService.updateAccessory(acc);
