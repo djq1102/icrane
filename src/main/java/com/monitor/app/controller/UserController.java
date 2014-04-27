@@ -32,9 +32,6 @@ import com.monitor.app.web.security.ext.UserExt;
 @Controller
 public class UserController extends AbstractController{
 	
-	@Resource
-	private NoticeService noticeService;
-	
 	private static final Logger logger = LoggerFactory.getLogger(UserController.class);
 	@Resource
 	private UserService userService;
@@ -119,7 +116,6 @@ public class UserController extends AbstractController{
 		return "403";
 	}
 	
-	private static final long DAY = 2;
 	
 	@RequestMapping(value = "/user/index")
 	public String index(Model model,HttpSession session) {
@@ -136,22 +132,6 @@ public class UserController extends AbstractController{
 				session.setAttribute(SessionConstant.CUSTOMER_ID, userExt.getCustomerId());
 				
 				
-				NoticeQuery query = new NoticeQuery();
-				Date noticeStart = new Date();
-				Calendar c = Calendar.getInstance();
-				long ago3Time = noticeStart.getTime() - 60*60*24*1000*DAY;
-				c.setTimeInMillis(ago3Time);
-				Date ago3Date = c.getTime();
-				
-				query.setToCustomerId(getCustomerId(session));
-				query.setNoticeStart(ago3Date);
-				query.setNeedPagination(false);
-				ServiceResult result = noticeService.queryNotices(query);
-				
-				if(result.isSuccess()){
-					List<Notice> notices = (List<Notice> )result.getModule();
-					model.addAttribute("notices", notices);
-				}
 				return "index";
 			}
 		}
