@@ -5,7 +5,7 @@
 	<properties>
 		<property name="dialect" value="mysql"/>
 		<property name="pageSqlId" 
-		value=".*(queryUserInfo|queryCustomer|queryPlcModel|queryModelAccessory|queryNotices)$"/> 
+		value=".*(queryUserInfo|queryDevice|queryCustomer|queryPlcModel|queryModelAccessory|queryNotices)$"/> 
 	</properties>
 	<settings>
 		<!-- 全局的映射器启用或者禁用缓存 -->
