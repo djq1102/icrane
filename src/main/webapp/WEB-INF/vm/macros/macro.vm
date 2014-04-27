@@ -140,31 +140,6 @@
 
 				</li>
 
-					<li #if ($id > 15 && $id < 17) class="start active" #end>
-
-					<a href="javascript:;">
-
-					<i class="icon-warning-sign"></i> 
-
-					<span class="title">设备异常管理</span>
-
-					<span class="arrow "></span>
-
-					</a>
-
-					<ul class="sub-menu">
-
-						<li #if ($id == 16) class="active" #end>
-
-							<a href="">
-
-							报警规则设置</a>
-
-						</li>
-
-					</ul>
-
-				</li>
 				<li #if ($id > 16 && $id < 18) class="start active" #end>
 
 					<a href="javascript:;">
