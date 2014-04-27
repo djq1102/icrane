@@ -29,7 +29,8 @@
          var image='/media/image/crane.png';
          var marker = new google.maps.Marker({   
          position: location, 
-         map: map     
+         map: map,
+         icon:image
       });   
       attachSecretMessage(marker,name,deviceId);   
     }   
