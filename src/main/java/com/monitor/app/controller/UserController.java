@@ -1,5 +1,7 @@
 package com.monitor.app.controller;
 
+import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 
 import javax.annotation.Resource;
@@ -16,7 +18,10 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.monitor.app.dataobject.Notice;
+import com.monitor.app.query.NoticeQuery;
 import com.monitor.app.result.ServiceResult;
+import com.monitor.app.service.NoticeService;
 import com.monitor.app.service.UserService;
 import com.monitor.app.web.security.ext.SessionConstant;
 import com.monitor.app.web.security.ext.UserExt;
@@ -25,7 +30,10 @@ import com.monitor.app.web.security.ext.UserExt;
  * Handles requests for the application home page.
  */
 @Controller
-public class UserController {
+public class UserController extends AbstractController{
+	
+	@Resource
+	private NoticeService noticeService;
 	
 	private static final Logger logger = LoggerFactory.getLogger(UserController.class);
 	@Resource
@@ -111,6 +119,8 @@ public class UserController {
 		return "403";
 	}
 	
+	private static final long DAY = 2;
+	
 	@RequestMapping(value = "/user/index")
 	public String index(Model model,HttpSession session) {
 		
@@ -124,6 +134,24 @@ public class UserController {
 				session.setAttribute(SessionConstant.USER_ID, userExt.getUserId());
 				session.setAttribute(SessionConstant.USER_NAME, userDetails.getUsername());
 				session.setAttribute(SessionConstant.CUSTOMER_ID, userExt.getCustomerId());
+				
+				
+				NoticeQuery query = new NoticeQuery();
+				Date noticeStart = new Date();
+				Calendar c = Calendar.getInstance();
+				long ago3Time = noticeStart.getTime() - 60*60*24*1000*DAY;
+				c.setTimeInMillis(ago3Time);
+				Date ago3Date = c.getTime();
+				
+				query.setToCustomerId(getCustomerId(session));
+				query.setNoticeStart(ago3Date);
+				query.setNeedPagination(false);
+				ServiceResult result = noticeService.queryNotices(query);
+				
+				if(result.isSuccess()){
+					List<Notice> notices = (List<Notice> )result.getModule();
+					model.addAttribute("notices", notices);
+				}
 				return "index";
 			}
 		}
