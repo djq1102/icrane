@@ -2,13 +2,6 @@
 <body>
 #parse ("/front/top.vm")
 
-<script>
-	setInterval("fresh()",3000);
-	function fresh() {
-		window.location.href = '/device/supervisoryValue?deviceId=${deviceId}&showType=2';
-	}
-</script>
-
 <div style="clear:both;"></div>
 <div class="main">
 	<div style="clear:both; float:none;"></div>

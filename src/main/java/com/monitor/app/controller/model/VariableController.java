@@ -170,6 +170,7 @@ public class VariableController extends AbstractController {
 			@RequestParam("showType") long showType, Model model)
 			throws ManagerException {
 		// TODO
+		
 		ServiceResult result = deviceService.queryByDeviceId(deviceId);
 		if (result.isSuccess()) {
 			Device device = (Device) result.getModule();
@@ -196,6 +197,14 @@ public class VariableController extends AbstractController {
 			return "front/monitor/monitor_1";
 		} else if (2 == showType) {
 			return "front/monitor/monitor_2";
+		} else if (3 == showType) {
+			return "front/monitor/monitor_3";
+		} else if (4 == showType) {
+			return "front/monitor/monitor_4";
+		} else if (5 == showType) {
+			return "front/monitor/monitor_5";
+		} else if (6 == showType) {
+			return "front/monitor/monitor_6";
 		}
 		return "front/monitor/index";
 	}

@@ -1,141 +1,116 @@
- #parse ("/front/head.vm")
+#parse ("/front/head.vm")
 <body>
-    #parse ("/front/top.vm")
+#parse ("/front/top.vm")
 
+<script>
+	setInterval("fresh()",3000);
+	function fresh() {
+		window.location.href = '/device/supervisoryValue?deviceId=${deviceId}&showType=1';
+	}
+</script>
 
-        <div style="clear:both;"></div>      
-
-        <!--<div class="menu">
-        	<ul>
-            	<li class="bg" style=" height:51px; line-height:51px;"><span class="ico"><img src="/media/image/1.gif" width="16" height="16" /></span>账户管理</li>
-                <li><span class="ico"><img src="/media/image/2.gif" width="16" height="16" /></span><a href="#">业务类型管理</a></li>
-                <li><a href="#"><span class="ico"><img src="/media/image/3.gif" width="16" height="16" /></span>账户类型管理</a></li>
-                <li><a href="#"><span class="ico"><img src="/media/image/4.gif" width="16" height="16" /></span>交易明细管理</a></li>
-                <li><a href="#"><span class="ico"><img src="/media/image/5.gif" width="16" height="16" /></span>对账管理</a></li>
-                <li><a href="#"><span class="ico"><img src="/media/image/6.gif" width="16" height="16" /></span>日志管理</a></li>
-                <li><a href="#"><span class="ico"><img src="/media/image/7.gif" width="16" height="16" /></span>操作员管理</a></li>
-                <li><a href="#"><span class="ico"><img src="/media/image/7.gif" width="16" height="16" /></span>操作员管理</a></li>
-            </ul>
-        </div>-->
+<div style="clear:both;"></div>
 </div>
-    <div class="main">
-    	
-        <div style="clear:both; float:none;"></div>
-        <div class="content">
-        <div class="shezhi" ><a></a></div>
-         <div class="caidan" ><a></a></div>
-         <div class="return"><a></a></div><div style="position:absolute; left:120px; top:18px; z-index:6; height:40px; line-height:40px; font-size:18px; color:#333; font-family:Microsoft YaHei">设备管理</div>
-         
-
-         
-         <div style="float:left; margin-bottom:10px;"><span style="width:440px; font-size:15px; display:inline-block; text-align:left;">设备编号<input style=" text-align:left; width:200px; height:30px; font-family:Verdana, Geneva, sans-serif; font-size:18px; margin-left:10px;" name="" type="text" /></span><span style="width:500px; font-size:15px; ">风速&nbsp;&nbsp;<input style="width:200px; height:30px; font-family:Verdana, Geneva, sans-serif; font-size:18px; margin-left:10px;"  name="" type="text" />m/s（米/秒）</span></div>
-         <br />
-         <div style="float:left;  margin-bottom:10px;"><span style="width:440px; font-size:15px;  display:inline-block; text-align:left;">运行时间<input style="width:200px; height:30px; font-family:Verdana, Geneva, sans-serif; font-size:18px; margin-left:10px;"  name="" type="text" /> h/min（小时/分）</span><span style="width:500px; font-size:15px; ">起重量<input style="width:200px; height:30px; font-family:Verdana, Geneva, sans-serif; font-size:18px; margin-left:10px;"  name="" type="text" />T(吨)</span></div>
-          <div style=" clear:both;"></div>
-
-         <div style=" clear:both;"></div>     
-
-<div class="lbxx1">
-<table width="100%" border="0" >
-  <tr>
-    <td valign="top" style="width:477px;"><img style="margin-top:0px;" src="/media/image/left.jpg" width="477" height="625" /></td>
-    <td style="border-left:1px solid #969ca8;"><table width="100%" border="0" style="margin-top:0px; height:628px;">
-  <tr style=" height:170px;">
-    <td valign="top" style=" padding:10px;">
-    	<table width="100%" border="0" >
-  <tr>
-    <td><div style="background:#5c667a url(/media/image/123.jpg) right no-repeat; width:100%;  border-radius:4px; color:#FFF; height:40px; line-height:40px; font-family:Microsoft YaHei, Verdana, Geneva, sans-serif; text-indent:1em; ">起重机状态</div></td>
-  </tr>
-</table>
-<table width="100%" border="0" style="font-size:14px; font-family:Verdana, Geneva, sans-serif; font-family:Microsoft YaHei; ">
-  <tr style="height:40px;">
-    <td><img style="margin-top:0px;" src="/media/image/hongdiandian.jpg" width="19" height="19" /></td>
-    <td>相序保护器</td>
-    <td><img style="margin-top:0px;" src="/media/image/hongdiandian.jpg" width="19" height="19" /></td>
-    <td>门限位3</td>
-    <td><img style="margin-top:0px;" src="/media/image/hongdiandian.jpg" width="19" height="19" /></td>
-    <td>超速开关</td>
-  </tr>
-    <tr style="height:40px;">
-    <td><img style="margin-top:0px;" src="/media/image/hongdiandian.jpg" width="19" height="19" /></td>
-    <td>相序保护器</td>
-    <td><img style="margin-top:0px;" src="/media/image/hongdiandian.jpg" width="19" height="19" /></td>
-    <td>门限位3</td>
-    <td><img style="margin-top:0px;" src="/media/image/hongdiandian.jpg" width="19" height="19" /></td>
-    <td>超速开关</td>
-  </tr>
-    <tr style="height:40px;">
-    <td><img style="margin-top:0px;" src="/media/image/hongdiandian.jpg" width="19" height="19" /></td>
-    <td>相序保护器</td>
-    <td><img style="margin-top:0px;" src="/media/image/hongdiandian.jpg" width="19" height="19" /></td>
-    <td>门限位3</td>
-    <td><img style="margin-top:0px;" src="/media/image/hongdiandian.jpg" width="19" height="19" /></td>
-    <td>超速开关</td>
-  </tr>
-
-</table>
-    </td>
-  </tr>
-  <tr  style=" height:170px;">
-    <td valign="top" style=" padding:10px;">
-        	<table width="100%" border="0" >
-  <tr>
-    <td><div style="background:#5c667a url(/media/image/123.jpg) right no-repeat; width:100%;  border-radius:4px; color:#FFF; height:40px; line-height:40px; font-family:Microsoft YaHei, Verdana, Geneva, sans-serif; text-indent:1em; ">运行状态</div></td>
-  </tr>
-</table>
-<table width="100%" border="0" style="font-size:14px; font-family:Verdana, Geneva, sans-serif; font-family:Microsoft YaHei; height:150px;">
-  <tr style="height:40px;">
-    <td width="60">起降机构</td>
-    <td><input style="width:100px; height:30px; font-family:Verdana, Geneva, sans-serif; font-size:18px; margin-left:0px;"  name="" type="text" /></td>
-    <td><a style="background:url(/media/image/button_s_1.jpg) no-repeat top left; width:157px; height:36px; display:inline-block; cursor:pointer; "></a></td>
-
-    <td width="110"><input style="width:100px; height:30px; font-family:Verdana, Geneva, sans-serif; font-size:18px; margin-left:0px;"  name="" type="text" /></td>
-    <td>HZ</td>
-  </tr>
-  <tr style="height:40px;">
-    <td width="60">起降机构</td>
-    <td><input style="width:100px; height:30px; font-family:Verdana, Geneva, sans-serif; font-size:18px; margin-left:0px;"  name="" type="text" /></td>
-    <td><a style="background:url(/media/image/button_s_1.jpg) no-repeat top left; width:157px; height:36px; display:inline-block; cursor:pointer; "></a></td>
-
-    <td width="110"><input style="width:100px; height:30px; font-family:Verdana, Geneva, sans-serif; font-size:18px; margin-left:0px;"  name="" type="text" /></td>
-    <td>HZ</td>
-  </tr>
-  <tr style="height:40px;">
-    <td width="60">起降机构</td>
-    <td><input style="width:100px; height:30px; font-family:Verdana, Geneva, sans-serif; font-size:18px; margin-left:0px;"  name="" type="text" /></td>
-    <td><a style="background:url(/media/image/button_s_1.jpg) no-repeat top left; width:157px; height:36px; display:inline-block; cursor:pointer; "></a></td>
-
-    <td width="110"><input style="width:100px; height:30px; font-family:Verdana, Geneva, sans-serif; font-size:18px; margin-left:0px;"  name="" type="text" /></td>
-    <td>HZ</td>
-  </tr>
-</table>
-    </td>
-  </tr>
-  <tr>
-    <td valign="top" style=" padding:10px;">
-        	<table width="100%" border="0" >
-  <tr>
-    <td><div style="background:#5c667a url(/media/image/123.jpg) right no-repeat; width:100%;  border-radius:4px; color:#FFF; height:40px; line-height:40px; font-family:Microsoft YaHei, Verdana, Geneva, sans-serif; text-indent:1em; ">联动台控制信号</div></td>
-  </tr>
-</table>
-<table width="100%" border="0" style="font-size:14px; font-family:Verdana, Geneva, sans-serif; font-family:Microsoft YaHei; ">
-  <tr style="height:40px;">
-    <td><img style="margin-top:0px;" src="/media/image/jk_1.jpg" width="266" height="266" /></td>
-    <td><img style="margin-top:0px;" src="/media/image/jk_2.jpg" width="266" height="266" /></td>
-  </tr>
-
-</table>
-    </td>
-  </tr>
-</table>
-</td>
-  </tr>
-</table>
-
-            </div>
-            <div style="margin:0 auto; width:100%; width:240px; height:90px; margin-top:20px;">
+	<div class="main">
+	<div style="clear:both; float:none;"></div>
+	<div class="content">
+	<div class="return"><a href="/device/supervisory?deviceId=${deviceId}"></a></div><div style="position:absolute; left:120px; top:18px; z-index:6; height:40px; line-height:40px; font-size:18px; color:#333; font-family:Microsoft YaHei">设备管理</div>
+	<div style="float:left; margin-bottom:10px;"><span style="width:440px; font-size:15px; display:inline-block; text-align:left;">设备编号<input style=" text-align:left; width:200px; height:30px; font-family:Verdana, Geneva, sans-serif; font-size:18px; margin-left:10px;" name="" type="text" readonly="readonly" value="${deviceId}"/></span><span style="width:500px; font-size:15px; ">风速&nbsp;&nbsp;<input style="width:200px; height:30px; font-family:Verdana, Geneva, sans-serif; font-size:18px; margin-left:10px;"  name="" type="text" />m/s（米/秒）</span></div>
+	<br />
+	<div style="float:left;  margin-bottom:10px;"><span style="width:440px; font-size:15px;  display:inline-block; text-align:left;">运行时间<input style="width:200px; height:30px; font-family:Verdana, Geneva, sans-serif; font-size:18px; margin-left:10px;"  name="" type="text" /> h/min（小时/分）</span><span style="width:500px; font-size:15px; ">起重量<input style="width:200px; height:30px; font-family:Verdana, Geneva, sans-serif; font-size:18px; margin-left:10px;"  name="" type="text" />T(吨)</span></div>
+	<div style=" clear:both;"></div>
+	<div style=" clear:both;"></div>
+	<div class="lbxx1">
+	<table width="100%" border="0" >
+		<tr>
+			<td valign="top" style="width:477px;"><img style="margin-top:0px;" src="/media/image/left.jpg" width="477" height="625" /></td>
+			<td style="border-left:1px solid #969ca8;"><table width="100%" border="0" style="margin-top:0px; height:628px;">
+				<tr style=" height:170px;">
+					<td valign="top" style=" padding:10px;">
+						<table width="100%" border="0" >
+							<tr>
+								<td><div style="background:#5c667a url(/media/image/123.jpg) right no-repeat; width:100%;  border-radius:4px; color:#FFF; height:40px; line-height:40px; font-family:Microsoft YaHei, Verdana, Geneva, sans-serif; text-indent:1em; ">起重机状态</div></td>
+							</tr>
+						</table>
+						<table width="100%" border="0" style="font-size:14px; font-family:Verdana, Geneva, sans-serif; font-family:Microsoft YaHei; ">
+							<tr style="height:40px;">
+								<td><img style="margin-top:0px;" src="/media/image/hongdiandian.jpg" width="19" height="19" /></td>
+								<td>相序保护器</td>
+								<td><img style="margin-top:0px;" src="/media/image/hongdiandian.jpg" width="19" height="19" /></td>
+								<td>门限位3</td>
+								<td><img style="margin-top:0px;" src="/media/image/hongdiandian.jpg" width="19" height="19" /></td>
+								<td>超速开关</td>
+							</tr>
+							<tr style="height:40px;">
+								<td><img style="margin-top:0px;" src="/media/image/hongdiandian.jpg" width="19" height="19" /></td>
+								<td>相序保护器</td>
+								<td><img style="margin-top:0px;" src="/media/image/hongdiandian.jpg" width="19" height="19" /></td>
+								<td>门限位3</td>
+								<td><img style="margin-top:0px;" src="/media/image/hongdiandian.jpg" width="19" height="19" /></td>
+								<td>超速开关</td>
+							</tr>
+							<tr style="height:40px;">
+								<td><img style="margin-top:0px;" src="/media/image/hongdiandian.jpg" width="19" height="19" /></td>
+								<td>相序保护器</td>
+								<td><img style="margin-top:0px;" src="/media/image/hongdiandian.jpg" width="19" height="19" /></td>
+								<td>门限位3</td>
+								<td><img style="margin-top:0px;" src="/media/image/hongdiandian.jpg" width="19" height="19" /></td>
+								<td>超速开关</td>
+							</tr>
+						</table>
+					</td>
+				</tr>
+				<tr style=" height:170px;">
+					<td valign="top" style=" padding:10px;">
+						<table width="100%" border="0" >
+							<tr>
+								<td><div style="background:#5c667a url(/media/image/123.jpg) right no-repeat; width:100%;  border-radius:4px; color:#FFF; height:40px; line-height:40px; font-family:Microsoft YaHei, Verdana, Geneva, sans-serif; text-indent:1em; ">运行状态</div></td>
+							</tr>
+						</table>
+						<table width="100%" border="0" style="font-size:14px; font-family:Verdana, Geneva, sans-serif; font-family:Microsoft YaHei; height:150px;">
+							<tr style="height:40px;">
+								<td width="60">起降机构</td>
+								<td><input style="width:100px; height:30px; font-family:Verdana, Geneva, sans-serif; font-size:18px; margin-left:0px;"  name="" type="text" /></td>
+								<td><a style="background:url(/media/image/button_s_1.jpg) no-repeat top left; width:157px; height:36px; display:inline-block; cursor:pointer; "></a></td>
+								<td width="110"><input style="width:100px; height:30px; font-family:Verdana, Geneva, sans-serif; font-size:18px; margin-left:0px;"  name="" type="text" /></td>
+								<td>HZ</td>
+							</tr>
+							<tr style="height:40px;">
+								<td width="60">起降机构</td>
+								<td><input style="width:100px; height:30px; font-family:Verdana, Geneva, sans-serif; font-size:18px; margin-left:0px;"  name="" type="text" /></td>
+								<td><a style="background:url(/media/image/button_s_1.jpg) no-repeat top left; width:157px; height:36px; display:inline-block; cursor:pointer; "></a></td>
+								<td width="110"><input style="width:100px; height:30px; font-family:Verdana, Geneva, sans-serif; font-size:18px; margin-left:0px;"  name="" type="text" /></td>
+								<td>HZ</td>
+							</tr>
+							<tr style="height:40px;">
+								<td width="60">起降机构</td>
+								<td><input style="width:100px; height:30px; font-family:Verdana, Geneva, sans-serif; font-size:18px; margin-left:0px;"  name="" type="text" /></td>
+								<td><a style="background:url(/media/image/button_s_1.jpg) no-repeat top left; width:157px; height:36px; display:inline-block; cursor:pointer; "></a></td>
+								<td width="110"><input style="width:100px; height:30px; font-family:Verdana, Geneva, sans-serif; font-size:18px; margin-left:0px;"  name="" type="text" /></td>
+								<td>HZ</td>
+							</tr>
+						</table>
+					</td>
+				</tr>
+				<tr>
+					<td valign="top" style=" padding:10px;">
+						<table width="100%" border="0" >
+			  				<tr>
+								<td><div style="background:#5c667a url(/media/image/123.jpg) right no-repeat; width:100%;  border-radius:4px; color:#FFF; height:40px; line-height:40px; font-family:Microsoft YaHei, Verdana, Geneva, sans-serif; text-indent:1em; ">联动台控制信号</div></td>
+							</tr>
+						</table>
+						<table width="100%" border="0" style="font-size:14px; font-family:Verdana, Geneva, sans-serif; font-family:Microsoft YaHei; ">
+							<tr style="height:40px;">
+								<td><img style="margin-top:0px;" src="/media/image/jk_1.jpg" width="266" height="266" /></td>
+								<td><img style="margin-top:0px;" src="/media/image/jk_2.jpg" width="266" height="266" /></td>
+							</tr>
+						</table>
+					</td>
+				</tr>
+			</td>
+		</tr>
+	</table>
 </div>
-        </div>
-    </div>
+<div style="margin:0 auto; width:100%; width:240px; height:90px; margin-top:20px;"></div>
 </body>
 </html>
