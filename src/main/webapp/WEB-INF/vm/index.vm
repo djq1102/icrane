@@ -32,21 +32,13 @@ function changeTrColor(obj){
     <div style="clear:both;"></div> 
 	 <div style="height:50px; width:100%; background:url(/media/image/t_bg.jpg) no-repeat top right #405d95; border-top:1px solid #5f77a7;  font-family:Microsoft YaHei; font-size:18px; ">
 		 <ul class="line">
+				#foreach($notice in $notices)
 				<li style="margin-top: 0px; ">
 				    	<h6 style="height:40px; line-height:40px; margin-top:4px; text-align:left; color:#FFF;  padding-left:2em; ">
-	        		提示信息：这是移动互联的时代，也是移动应用暴增的时代。 	
+	        		提示信息：$notice.content 	
 	        		</h6>
         		</li>
-        		<li style="margin-top: 0px; ">
-				    	<h6 style="height:40px; line-height:40px; margin-top:4px; text-align:left; color:#FFF;  padding-left:2em; ">
-	        		提示信息：这是移动互联的时代，也是移动应用暴增的时代。 	
-	        		</h6>
-        		</li>
-        		<li style="margin-top: 0px; ">
-				    	<h6 style="height:40px; line-height:40px; margin-top:4px; text-align:left; color:#FFF;  padding-left:2em; ">
-	        		提示信息：这是移动互联的时代，也是移动应用暴增的时代。 	
-	        		</h6>
-        		</li>
+				#end
 		 </ul>
 	 </div>    
         

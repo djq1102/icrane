@@ -14,6 +14,7 @@ public class ModelAccessoryQuery extends Pagination {
 	private static final long serialVersionUID = 6556912306884548857L;
 
 	private long accessoryId;
+	private int accessoryType;
 	private String accessoryName;
 
 	public long getAccessoryId() {
@@ -30,6 +31,14 @@ public class ModelAccessoryQuery extends Pagination {
 
 	public void setAccessoryName(String accessoryName) {
 		this.accessoryName = accessoryName;
+	}
+
+	public int getAccessoryType() {
+		return accessoryType;
+	}
+
+	public void setAccessoryType(int accessoryType) {
+		this.accessoryType = accessoryType;
 	}
 
 

@@ -5,6 +5,7 @@
 	<resultMap type="ModelAccessory" id="accessoryResult" >
 		<result property="accessoryId" column="accessory_id"/>
 		<result property="accessoryName" column="accessory_name"/>
+		<result property="accessoryType" column="accessory_type"/>
 		<result property="accessoryPrice" column="accessory_price"/>
 		<result property="fileName" column="file_name"/>
 		<result property="filePath" column="file_path"/>
@@ -16,6 +17,7 @@
 		<![CDATA[
 			accessory_id,
 			accessory_name,
+			accessory_type,
 			accessory_price,
 			file_name,
 			file_path,
@@ -29,6 +31,9 @@
 			<if test="0 != accessoryId">
 				AND accessory_id = #{accessoryId}
 			</if>
+			<if test="null != accessoryType">
+				AND accessory_type = #{accessoryType}
+			</if>
 			<if test="null != accessoryName and accessoryName != ''">
 				AND accessory_name like "%"#{accessoryName}"%"
 			</if>
@@ -40,6 +45,9 @@
 			gmt_modify = now(),
 			<if test="null != accessoryName">
 				accessory_name = #{accessoryName},
+			</if>
+			<if test="null != accessoryType">
+				accessory_type = #{accessoryType},
 			</if>
 			<if test="null != accessoryPrice">
 				accessory_price = #{accessoryPrice},
@@ -62,6 +70,7 @@
 		) VALUES (
 		    #{accessoryId},
 		 	#{accessoryName}, 
+		 	#{accessoryType}, 
 		 	#{accessoryPrice},
 		 	#{fileName}, 
 		 	#{filePath}, 
