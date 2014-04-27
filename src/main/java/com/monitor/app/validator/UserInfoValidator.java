@@ -30,7 +30,7 @@ public class UserInfoValidator implements Validator {
 	    if(StringUtils.isBlank(userInfo.getUserEmail())){
 		     errors.rejectValue("userEmail", "userEmail", "邮箱不能为空!"); 		
 	    }
-	    if(ValidatorUtil.checkEmail(userInfo.getUserEmail())){
+	    if(!ValidatorUtil.checkEmail(userInfo.getUserEmail())){
 		     errors.rejectValue("userEmail", "userEmail", "邮箱输入有误!"); 		
 	    }
 	    if(StringUtils.isBlank(userInfo.getUserName())){

@@ -27,7 +27,10 @@ public class SiteValidator implements Validator {
 			errors.rejectValue("contactName", "contactName", "现场联系人不能为空!");
 		}
 		if(StringUtils.isBlank(site.getContactEmail())){
-			errors.rejectValue("contactEmail", "contactEmail", "现场密码不能为空!");
+			errors.rejectValue("contactEmail", "contactEmail", "现场邮件不能为空!");
+		}
+		if(!ValidatorUtil.checkEmail(site.getContactEmail())){
+			errors.rejectValue("contactEmail", "contactEmail", "现场邮件输入有误!");
 		}
 		if(StringUtils.isBlank(site.getContactPhone())){
 			errors.rejectValue("contactPhone", "contactPhone","现场的手机号不能为空!");

@@ -31,6 +31,8 @@ import com.monitor.app.service.UserDeviceRelationService;
 import com.monitor.app.service.UserInfoService;
 import com.monitor.app.utils.JsonUtil;
 import com.monitor.app.validator.UserInfoValidator;
+import com.monitor.app.web.security.util.RoleEnum;
+import com.monitor.app.web.security.util.RoleEnumUtil;
 
 /**
  * 
@@ -161,7 +163,7 @@ public class UserInfoController extends AbstractController{
 			}
 			ServiceResult editResult = userInfoService.userInfoEdit(userInfo);
 			if(editResult.isSuccess()){
-				return "userInfo/userinfo";
+				return "redirect:index.htm";
 			}else{
 				model.addAttribute("msg",editResult.getMsg());
 				return "error";
@@ -187,7 +189,7 @@ public class UserInfoController extends AbstractController{
 	@RequestMapping(value = "/userInfo/queryList",method = RequestMethod.GET,produces = "application/json; charset=utf-8")
 	@ResponseBody 
 	public String queryUserInfoList(@RequestParam("iDisplayStart") int start, @RequestParam("iDisplayLength") int pagesize, @RequestParam("sEcho") int sEcho,
-		UserInfo userInfo){
+		UserInfo userInfo) throws Exception{
 		UserInfoQuery userInfoQuery = new UserInfoQuery();
 		userInfoQuery.setCustomerId(userInfo.getCustomerId());
 		userInfoQuery.setUserPhone(userInfo.getUserPhone());
@@ -197,19 +199,41 @@ public class UserInfoController extends AbstractController{
 		userInfoQuery.setEnd(start+pagesize);
 		ServiceResult result = userInfoService.queryAllUserInfo(userInfoQuery);
 		ServiceResult numResult = userInfoService.totalCount(userInfoQuery);
+		
+		ServiceResult customerResult = customerService.queryAllCustomers();
+		
+		List<Customer> customerList = (List)customerResult.getModule();
 		List<UserInfo> userInfoList  = (List<UserInfo>)result.getModule();
-		List<Map> resultMap = buildList(userInfoList);
+		
+		List<Map> resultMap = buildList(userInfoList,customerList);
 		return JsonUtil.buildJosn(resultMap, numResult, sEcho);
 	}
 	
 	@SuppressWarnings({ "rawtypes", "unchecked" })
-	private List<Map> buildList(List<UserInfo> userInfoList){
+	private List<Map> buildList(List<UserInfo> userInfoList,List<Customer> customerList){
 		List<Map> result = new ArrayList<Map>();
+		
+		Map<Long,String> customerMap = new HashMap<Long,String>();
+		if(customerList != null){
+			for(Customer customer:customerList){
+				customerMap.put(customer.getCustomerId(), customer.getCustomerName());
+			}
+		}
+		
 		for(UserInfo userInfo:userInfoList){
 			Map map = new HashMap();
 			map.put("0", userInfo.getUserId());
-			map.put("1", userInfo.getCustomerId());
-			map.put("2",userInfo.getRoleType());
+			if(customerMap != null){
+				map.put("1", customerMap.get(userInfo.getCustomerId()));
+			}
+			RoleEnum roleEnum = RoleEnumUtil.toAuthRole(userInfo.getRoleType());
+			String roleType = "普通用户";
+			if(RoleEnum.ROLE_SUPERADMIN.equals(roleEnum)){
+				roleType = "平台管理员";
+			}else if(RoleEnum.ROLE_CUTOMERADMIN.equals(roleEnum)){
+				roleType = "客户管理员";
+			}
+			map.put("2",roleType);
 			map.put("3", userInfo.getUserName());
 			map.put("4", userInfo.getUserPhone());
 			map.put("5", userInfo.getUserEmail());

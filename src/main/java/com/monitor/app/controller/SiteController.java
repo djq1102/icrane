@@ -165,8 +165,10 @@ public class SiteController extends AbstractController{
 		query.setEnd(start+pagesize);
 		ServiceResult result = siteService.queryAllSite(query);
 		ServiceResult numResult = siteService.totalCount(query);
+		
+		List<Customer> customerList = queryAllCustomers();
 		List<Site> siteList  = (List<Site>)result.getModule();
-		List<Map> resultMap = buildList(siteList);
+		List<Map> resultMap = buildList(siteList,customerList);
 		return JsonUtil.buildJosn(resultMap, numResult, sEcho);
 	}
 	
@@ -212,17 +214,34 @@ public class SiteController extends AbstractController{
 	}
 	
 	@SuppressWarnings({ "rawtypes", "unchecked" })
-	private List<Map> buildList(List<Site> siteList){
+	private List<Map> buildList(List<Site> siteList,List<Customer> customerList){
 		List<Map> result = new ArrayList<Map>();
+		Map<Long,String> customerMap = new HashMap<Long,String>();
+		if(customerList != null){
+			for(Customer customer:customerList){
+				customerMap.put(customer.getCustomerId(), customer.getCustomerName());
+			}
+		}
+		
 		for(Site site:siteList){
 			Map map = new HashMap();
 			map.put("0", site.getSiteId());
-			map.put("1", site.getCustomerId());
+			String customerName = "";
+			if(customerMap != null){
+				customerName = customerMap.get(site.getCustomerId());
+			}
+			map.put("1", customerName);
 			map.put("2", site.getSiteName());
 			map.put("3", site.getContactName());
 			map.put("4", site.getContactPhone());
 			map.put("5", site.getContactEmail());
-			map.put("6", site.getStatus());
+			String statusName = "";
+			if(site.getStatus() == 1){
+				statusName = "在建";
+			}else{
+				statusName = "维修";
+			}
+			map.put("6", statusName);
 			map.put("7", site.getSiteId());
 			result.add(map);
 		}
