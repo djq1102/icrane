@@ -25,10 +25,11 @@
       }   
     }   
     function addSite(map,deviceId,name, lat, lng) {   
-         var location = new google.maps.LatLng(lat,lng)   
+         var location = new google.maps.LatLng(lat,lng);
+         var image='/media/image/crane.png';
          var marker = new google.maps.Marker({   
-         position: location,   
-         map: map   
+         position: location, 
+         map: map     
       });   
       attachSecretMessage(marker,name,deviceId);   
     }   
