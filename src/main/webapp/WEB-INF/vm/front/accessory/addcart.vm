@@ -30,42 +30,48 @@
 <div class="lbxx">
 	<a class="lban1" ></a><input type="text" style="cursor:pointer;height:27px;width:500px;display:inline-block;margin-left:15px"/><input type="button" value="发送购买" style="cursor:pointer;height:27px;width:500px;display:inline-block;margin-left:15px"/>
 </div>
-</div>
+ <div class="content_list">
 		<table class="content_tag" width="100%" border="0">
               <tr>
-                <td class="content_list_tag1">编号</td>
-                <td class="content_list_tag2">物料名称</td>
+                <td class="content_list_tag1"><input type="checkbox" style="background:#333; border:yellow 2px solid;" value="aaa"/></td>
+                <td class="content_list_tag2">编号</td>
+                <td class="content_list_tag3">物料名称</td>
+                <td class="content_list_tag4">规格型号</td>
+                <td class="content_list_tag5">物料类别</td>
               </tr>
-		</table>
-		<table width="100%" border="0" class="content_list_123">
+			</table>
+            <table width="100%" border="0" class="content_list_123">
             	<!--第一行开始-->
               <tr class="content_list_tr1" style="cursor:hand;" onmouseout="" onmousemove="changeTrColor(this)">
-                <td class="content_list_tag1">1</td>
-                <td class="content_list_tag2">配件1</td>
+                <td class="content_list_tag1"><input type="checkbox" style="background:#333; border:yellow 2px solid;" value="aaa"/></td>
+                <td class="content_list_tag2">自在分享</td>
+                <td class="content_list_tag3">东来东往</td>
+                <td class="content_list_tag4">张飞</td>
+                <td class="content_list_tag5">13588371856</td>
               </tr>
               <!--第一行结束-->
    
             	<!--第二行开始-->
               <tr class="content_list_tr2" style="cursor:hand;" onmouseout="" onmousemove="changeTrColor(this)">
-                <td class="content_list_tag1">2</td>
-                <td class="content_list_tag2">配件2</td>
+                <td class="content_list_tag1"><input type="checkbox" style="background:#333; border:yellow 2px solid;" value="aaa"/></td>
+                <td class="content_list_tag2">自在分享</td>
+                <td class="content_list_tag3">东来东往</td>
+                <td class="content_list_tag4">张飞</td>
+                <td class="content_list_tag5">13588371856</td>
               </tr>
               <!--第二行结束-->
-            	<!--第一行开始-->
-              <tr class="content_list_tr1" style="cursor:hand;" onmouseout="" onmousemove="changeTrColor(this)">
-                <td class="content_list_tag1">3</td>
-                <td class="content_list_tag2">配件3</td>
-              </tr>
-              <!--第一行结束-->
-   
-            	<!--第二行开始-->
-              <tr class="content_list_tr2" style="cursor:hand;" onmouseout="" onmousemove="changeTrColor(this)">
-                <td class="content_list_tag1">4</td>
-                <td class="content_list_tag2">配件4</td>
-              </tr>
-              <!--第二行结束--> 
 			</table>
-      </div>
+            <!--翻页开始-->
+     </div>
+		<div class="lbxx">
+		<table width="100%" border="0" cellspacing="0" >
+		  <tr>
+		    <td width="250"><a class="lban1"></a></td>
+		    <td align="left"><span><input style="width:400px; height:38px;" name="" type="text" /></span></td>
+		    <td width="250"><a class="lban3"></a></td>
+		     <td width="250"><a class="lban2"></a></td>
+		  </tr>
+		</table></div>
 		</div>
         </div>
     </div>
