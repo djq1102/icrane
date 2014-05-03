@@ -119,7 +119,12 @@ public class DeviceController extends AbstractController{
 		ServiceResult result = deviceService.queryAllDevice(query);
 		ServiceResult numResult = deviceService.totalCount(query);
 		List<Device> deviceList  = (List<Device>)result.getModule();
-		List<Map> resultMap = buildList(deviceList);
+		
+		List<Customer> customerList = queryAllCustomers();
+		
+		List<Site> siteList = queryAllSites();
+		
+		List<Map> resultMap = buildList(deviceList,customerList,siteList);
 		return JsonUtil.buildJosn(resultMap, numResult, sEcho);
 	}
 	
@@ -234,13 +239,37 @@ public class DeviceController extends AbstractController{
 	}
 	
 	@SuppressWarnings({ "rawtypes", "unchecked" })
-	private List<Map> buildList(List<Device> deviceList){
+	private List<Map> buildList(List<Device> deviceList,List<Customer> customerList,List<Site> siteList){
 		List<Map> result = new ArrayList<Map>();
+		Map<Long,String> customerMap = new HashMap<Long,String>();
+		
+		Map<Long,String> siteMap = new HashMap<Long,String>();
+
+		if(customerList != null){
+			for(Customer customer:customerList){
+				customerMap.put(customer.getCustomerId(), customer.getCustomerName());
+			}
+		}
+		
+		if(siteList != null){
+			for(Site site:siteList){
+				siteMap.put(site.getSiteId(), site.getSiteName());
+			}
+		}
+		
 		for(Device device:deviceList){
 			Map map = new HashMap();
 			map.put("0", device.getDeviceId());
-			map.put("1", device.getCustomerId());
-			map.put("2", device.getSiteId());
+			String customerName = "";
+			String siteName = "";
+			if(customerMap != null){
+				customerName = customerMap.get(device.getCustomerId());
+			}
+			map.put("1", customerName);
+			if(siteMap != null){
+				siteName = siteMap.get(device.getSiteId());
+			}
+			map.put("2", siteName);
 			map.put("3", device.getDeviceName());
 			map.put("4", device.getModelId());
 			map.put("5", device.getSerialNumber());
@@ -255,6 +284,13 @@ public class DeviceController extends AbstractController{
 		ServiceResult result = customerService.queryAllCustomers();
 		List<Customer> customers = (List)result.getModule();
 		return customers;
+	}
+	
+	@SuppressWarnings({ "unchecked", "rawtypes" })
+	private List<Site> queryAllSites() throws ManagerException{
+		ServiceResult result = siteService.queryAllSites();
+		List<Site> sites = (List)result.getModule();
+		return sites;
 	}
 	
 	@SuppressWarnings({ "unchecked", "rawtypes" })
