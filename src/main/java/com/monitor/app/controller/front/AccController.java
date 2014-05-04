@@ -15,8 +15,15 @@ public class AccController  extends AbstractController{
 	private static final Logger logger = LoggerFactory.getLogger(AccController.class);
 	
 	@RequestMapping(value = "/front/accessory/index")
-	public String index(@RequestParam("deviceId") long deviceId, Model model) throws Exception{
+	public String index(@RequestParam("deviceId") long deviceId, 
+			@RequestParam(value="accType",required=true,defaultValue="0") int accType,Model model) throws Exception{
 		logger.warn(">>>action=index");
+		
+		//1.根据设备id查询配件iddefaultValue
+		
+		//2.查询配件ids的机械配件或电气配件
+		
+		//3.配件list
 		
 		model.addAttribute("deviceId", deviceId);
 		return "front/accessory/index";
