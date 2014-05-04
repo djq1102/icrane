@@ -27,8 +27,9 @@
          
 <div><table width="100%" border="0" cellspacing="0" >
   <tr>
-    <td><div class="x">机械配件</div></td>
-    <td><div class="w"><a style="">电气配件</a></div></td>
+	#set($url="/front/device/index.htm?deviceId=${deviceId}&accType=${accType}")
+    <td><div #if($accType=="0")class="x"#else class="w"#end><a href="$url>机械配件</a></div></td>
+    <td><div #if($accType=="1")class="x"#else class="w"#end><a href="$url>电气配件</a></div></td>
   </tr>
 </table>
 <div class="lbxx"><a href="/front/accessory/addToCart?deviceId=${deviceId}" class="lban2"></a></div>
@@ -45,46 +46,29 @@
 			</table>
             <table width="100%" border="0" class="content_list_123">
             	<!--第一行开始-->
+				#foreach($acc in $accs)
               <tr class="content_list_tr1" style="cursor:hand;" onmouseout="" onmousemove="changeTrColor(this)">
-                <td class="content_list_tag1"><input type="checkbox" style="background:#333; border:yellow 2px solid;" value="aaa"/></td>
-                <td class="content_list_tag2">自在分享</td>
-                <td class="content_list_tag3">东来东往</td>
-                <td class="content_list_tag4">张飞</td>
-                <td class="content_list_tag5">13588371856</td>
+                <td class="content_list_tag1">
+					<input type="checkbox" style="background:#333; border:yellow 2px solid;" value="$acc.accessoryId"/>
+				</td>
+                <td class="content_list_tag2">$acc.accessoryName</td>
+                <td class="content_list_tag3">$moneyUtil.formatLong4Money($acc.accessoryPrice)</td>
+                <td class="content_list_tag4">$acc.accessoryName</td>
+                <td class="content_list_tag5">$acc.accessoryName</td>
               </tr>
+			  #end
               <!--第一行结束-->
-   
-            	<!--第二行开始-->
-              <tr class="content_list_tr2" style="cursor:hand;" onmouseout="" onmousemove="changeTrColor(this)">
-                <td class="content_list_tag1"><input type="checkbox" style="background:#333; border:yellow 2px solid;" value="aaa"/></td>
-                <td class="content_list_tag2">自在分享</td>
-                <td class="content_list_tag3">东来东往</td>
-                <td class="content_list_tag4">张飞</td>
-                <td class="content_list_tag5">13588371856</td>
-              </tr>
-              <!--第二行结束-->
-            	<!--第一行开始-->
-              <tr class="content_list_tr1" style="cursor:hand;" onmouseout="" onmousemove="changeTrColor(this)">
-                <td class="content_list_tag1"><input type="checkbox" style="background:#333; border:yellow 2px solid;" value="aaa"/></td>
-                <td class="content_list_tag2">自在分享</td>
-                <td class="content_list_tag3">东来东往</td>
-                <td class="content_list_tag4">张飞</td>
-                <td class="content_list_tag5">13588371856</td>
-              </tr>
-              <!--第一行结束-->
-   
-            	
-   
             
 			</table>
             <!--翻页开始-->
 
             </div>
             <div style="margin:0 auto; width:100%; width:240px; height:90px; margin-top:20px;"><table width="200" border="0" cellspacing="0" >
-  <tr>
+
+  <!--tr>
     <td><div class="next1"><a>上一页</a></div></td>
     <td><div class="next2"><a>下一页</a></div></td>
-  </tr>
+  </tr-->
 </table>
 </div>
         </div>

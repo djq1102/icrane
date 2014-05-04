@@ -3,7 +3,10 @@
  */
 package com.monitor.app.service;
 
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.annotation.Resource;
 
@@ -12,7 +15,10 @@ import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 
 import com.monitor.app.dao.model.AccessoryDao;
+import com.monitor.app.dataobject.Device;
 import com.monitor.app.dataobject.ModelAccessory;
+import com.monitor.app.exception.DAOException;
+import com.monitor.app.exception.ManagerException;
 import com.monitor.app.query.ModelAccessoryQuery;
 import com.monitor.app.result.ServiceResult;
 import com.monitor.app.result.msg.MsgEnum;
@@ -116,5 +122,19 @@ public class AccessoryService {
 		ModelAccessoryQuery query = new ModelAccessoryQuery();
 		query.setNeedPagination(false);
 		return queryAccessorys(query);
+	}
+	
+	public ServiceResult queryByAccessoryIds(List<Long> accIds, int accType){
+		Map params = new HashMap();
+		params.put("accessoryIds", accIds);
+		params.put("accType", accType);
+		List<ModelAccessory> accessoryList = new ArrayList<ModelAccessory>();
+		try {
+			accessoryList = accessoryDao.queryByAccessoryIds(params);
+		} catch (Exception e) {
+			log.error("query_acc_list_fails",e);
+			return MsgUtils.fillMsg(MsgEnum.ACCESSORY_QUERY_FAIL);
+		}
+		return MsgUtils.fillModule(accessoryList);
 	}
 }
