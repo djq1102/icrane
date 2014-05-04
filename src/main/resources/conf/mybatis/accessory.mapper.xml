@@ -95,6 +95,14 @@
 		FROM cr_device_accessory where accessory_id =  #{accessoryId}
 	</select>
 	
+	<select id="queryByAccessoryIds" parameterType="java.util.Map" resultMap="accessoryResult">
+		SELECT <include refid="accessoryFields"/>
+		FROM cr_device_accessory where accessory_type = #{accessoryType} and accessory_id in 
+		<foreach item="item" index="index" collection="accessoryIds" open="(" separator="," close=")">
+				#{item}
+		</foreach>
+	</select>
+	
 	<select id="totalCount" resultType="int">
         select count(*) c from cr_device_accessory 
         <include refid="selectCondition"/>

@@ -4,6 +4,7 @@
 package com.monitor.app.dao.model;
 
 import java.util.List;
+import java.util.Map;
 
 import com.monitor.app.dataobject.ModelAccessory;
 import com.monitor.app.query.ModelAccessoryQuery;
@@ -25,5 +26,7 @@ public interface AccessoryDao {
 	public List<ModelAccessory> queryModelAccessory(ModelAccessoryQuery query);
 	
 	public int totalCount(ModelAccessoryQuery query);
+	
+	public List<ModelAccessory> queryByAccessoryIds(Map params);
 	
 }
