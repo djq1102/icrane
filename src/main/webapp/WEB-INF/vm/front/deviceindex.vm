@@ -2,48 +2,46 @@
 <body>
     #parse ("/front/top.vm")
 
-        <div style="clear:both;"></div>      
+    <div style="clear:both;"></div>      
 
        
-</div>
-    <div class="main">
+<div class="main">
     	
-        <div style="clear:both; float:none;"></div>
-        <div class="content">
-         #parse ("/front/common/setting.vm")
+  <div style="clear:both; float:none;"></div>
+  <div class="content">
+       #parse ("/front/common/setting.vm")
 		  <div class="content_title">
             <table class="icomenu" width="100%" border="0">
-  <tr>
-	<td><a href="/index"><img src="/media/image/dt.png" width="152" height="152"></a></td>
-    <td><a href="/front/accessory/index?deviceId=${deviceId}"><img src="/media/image/pj.png" width="152" height="152" /></a></td>
-    <td><a  href="/front/alarm/index?deviceId=${deviceId}"><img src="/media/image/gzbj.png" width="152" height="152" /></a></td>
-    <td><a  href="/front/devicefile/index?deviceId=${deviceId}"><img src="/media/image/sjjk.png" width="152" height="152" /></a></td>
-    
-  </tr>
-  <tr style="height:40px; line-height:40px; color:#333;">
-	 <td>系统首页</td>
-    <td>配件信息</td>
-    <td>故障报警信息</td>
-    <td>设备数据监控</td>
-  </tr>
-</table>
- <table class="icomenu" width="100%" border="0">
-  <tr>
-	<td><a  href="/front/devicefile/index?deviceId=${deviceId}"}><img src="/media/image/spjk.png" width="152" height="152" /></a></td>
-    <td><a href="/front/devicefile/index?deviceId=${deviceId}"><img src="/media/image/sbzl.png" width="152" height="152" /></a></td>
-    <td><a href="/front/alarm/index?deviceId=${deviceId}"><img src="/media/image/sbbb.png" width="152" height="152" /></a></td>
-	 <td><a href="/front/plan/index?deviceId=${deviceId}" style="width:152px; display:inline-block;"><img src="/media/image/sbbb.png" width="152" height="152" /></a></td>
-  </tr>
-  <tr style="height:40px; line-height:40px; color:#333;">
-	  <td>设备视频监控</td>
-	 <td>设备资料</td>
-    <td>设备报表</td>
-    <td>生产计划</td>
-  </tr>
-</table>
-
-            </div>
+			  <tr>
+				<td><a href="/index"><img src="/media/image/dt.png" width="152" height="152"></a></td>
+			    <td><a href="/front/accessory/index?deviceId=${deviceId}"><img src="/media/image/pj.png" width="152" height="152" /></a></td>
+			    <td><a  href="/front/alarm/index?deviceId=${deviceId}"><img src="/media/image/gzbj.png" width="152" height="152" /></a></td>
+			    <td><a  href="/front/devicefile/index?deviceId=${deviceId}"><img src="/media/image/sjjk.png" width="152" height="152" /></a></td>
+			    
+			  </tr>
+			  <tr style="height:40px; line-height:40px; color:#333;">
+				 <td>系统首页</td>
+			    <td>配件信息</td>
+			    <td>故障报警信息</td>
+			    <td>设备数据监控</td>
+			  </tr>
+			</table>
+ 			<table class="icomenu" width="100%" border="0">
+			  <tr>
+				<td><a  href="/front/devicefile/index?deviceId=${deviceId}"}><img src="/media/image/spjk.png" width="152" height="152" /></a></td>
+			    <td><a href="/front/devicefile/index?deviceId=${deviceId}"><img src="/media/image/sbzl.png" width="152" height="152" /></a></td>
+			    <td><a href="/front/alarm/index?deviceId=${deviceId}"><img src="/media/image/sbbb.png" width="152" height="152" /></a></td>
+				 <td><a href="/front/plan/index?deviceId=${deviceId}" style="width:152px; display:inline-block;"><img src="/media/image/sbbb.png" width="152" height="152" /></a></td>
+			  </tr>
+			  <tr style="height:40px; line-height:40px; color:#333;">
+				  <td>设备视频监控</td>
+				 <td>设备资料</td>
+			    <td>设备报表</td>
+			    <td>生产计划</td>
+			  </tr>
+			</table>
         </div>
     </div>
+</div>
 </body>
 </html>
